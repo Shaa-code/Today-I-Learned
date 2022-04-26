@@ -1,4 +1,4 @@
-# Learned From CodeState
+# Learned From CodeState 🏳️
 
 코드스테이츠에서 하루하루 배운것들을 기록합니다.
 
