@@ -299,7 +299,7 @@ rel은 relation의 약자로 연결관계를 의미한다.
 ```css
 /* CSS CODE */
 h4 {
-	color : red;
+    color : red;
 }
 ```
 
@@ -320,7 +320,7 @@ id를 따로 지정해주고 ‘#‘ Selector를 사용해서 색깔을 따로 �
 ```css
 /* CSS CODE */
 #navigation-title{
-	color : red;
+    color : red;
 }
 ```
 
