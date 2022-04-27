@@ -384,8 +384,8 @@ Class는 CSS에서는 Selector 앞에 .을 사용함.
 ```css
 /* CSS CODE */
 .selected {
-  font-weight: bold;
-  color: #009999;
+  font-weight : bold;
+  color : #009999;
 }
 ```
 
