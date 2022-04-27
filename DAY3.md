@@ -332,7 +332,8 @@ id를 따로 지정해주고 ‘#‘ Selector를 사용해서 색깔을 따로 �
 
 ### 두번째 방법 : 태그에 class를 추가하여 스타일을 적용
 
-```css
+```html
+<!-- HTML CODE -->
 <ul>
   <li class="menu-item">Home</li>
   <li class="menu-item">Mac</li>
@@ -342,6 +343,7 @@ id를 따로 지정해주고 ‘#‘ Selector를 사용해서 색깔을 따로 �
 ```
 
 ```css
+/* CSS CODE */
 .menu-item{
     text-decoration : underline;
 }
@@ -362,7 +364,8 @@ Class는 CSS에서는 Selector 앞에 .을 사용함.
 
 ### 세번째 방법 : 태그에 여러개의 class를 추가해 하나의 element에 적용하기
 
-```css
+```html
+<!-- HTML CODE -->
 <ul>
   <li class="menu-item selected">Home</li>
   <li class="menu-item">Mac</li>
@@ -372,12 +375,14 @@ Class는 CSS에서는 Selector 앞에 .을 사용함.
 ```
 
 ```css
+/* CSS CODE */
 .menu-item{
     text-decoration : underline;
 }
 ```
 
 ```css
+/* CSS CODE */
 .selected {
   font-weight: bold;
   color: #009999;
@@ -400,6 +405,7 @@ Class는 CSS에서는 Selector 앞에 .을 사용함.
 ### 텍스트 꾸미기
 
 ```css
+/* CSS CODE */
 .DecorateText{
     color : #155724; /* 글자 색상*/
     background-color: #d4edda; /* 배경 색상 */
