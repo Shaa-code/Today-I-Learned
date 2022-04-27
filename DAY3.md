@@ -269,6 +269,7 @@ em: 해당 요소(element)의 글꼴 크기를 1em으로 정의한다.
 ```html
 <link rel="stylesheet" href="index.css" />
 ```
+위 코드를 html 코드에 추가한다.
 
 `link 태그는 HTML 파일과 다른 파일을 연결하는 목적으로 사용.`
 
