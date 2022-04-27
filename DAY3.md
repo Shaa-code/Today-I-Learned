@@ -1,47 +1,62 @@
 ## 웹개발 이해하기
 
+
 ### HTML이란?
+
 
 웹문서를 구조(Structure)적으로 표현하기 위한 언어
 
+
 ex) 문, 벽, 전등의 설계도상 위치
+
 
 ### CSS란?
 
+
 구조적인 문서를 시각적으로 표현(Presentation)하기 위한 언어.
+
 
 ex) 벽의 색깔과 재질.
 
+
 ### Javascript란?
+
 
 정적인 웹페이지를 브라우저를 통해 동적으로 상호작용(Interaction) 해주는언어
 
+
 ex) 전등의 On/Off
+
 
 ## HTML 기초
 
+
 ### HTML의 기본구조와 문법
+
 
 ### 태그란?
 
+
 <>로 묶인 HTML의 기본구성요소
 
+
 ### 트리구조로 내려간다.
+
 
 ```java
 <!DOCTYPE html>
 <html>
 
-    <head>
+    <head> <!-- 머리 부분! -->
         <title>Page title</title>
-    </head>
+    </head> <!-- 머리 부분! -->
 
-    <body>
-        <h1>Hello world</h1>
-        <div>Contents here
-            <span>Here too!</span>
+    <body> <!-- 몸통 부분! -->
+        <h1> Hello world </h1>
+        <div> Contents here
+            <span> Here too! </span>
         </div>
-    </body>
+    </body> <!-- 머리 부분! -->
 
 </html>
 ```
@@ -50,11 +65,13 @@ ex) 전등의 On/Off
 
 ```java
 <img src = "*.png"></img>
-<img src = "*.png"/> // 뒷 태그에 붙는 img 생략가능
+<img src = "*.png"> // 뒷 태그에 붙는 img 생략가능
 ```
 
 이것을 "Self-Tag Closing"라고 한다.
 
+
+### div는 한줄, span은 크기만큼!
 ```java
 <div>div 태그는 한줄을 차지 합니다.</div>
 <div>division 2</div>
@@ -85,20 +102,25 @@ span태그는 옆에 계속해서 추가되어 붙게된다.
 
 target=”_blank”는 기존의 창에서 넘어가는것이 아닌 새 창에 띄우고 싶을때 사용하는 옵션이다.
 
+코드 :
+
 ```html
 <ul>
-		<li>Item 1</li>
-		<li>Item 2</li>
-		<li>Item 3 has nested list
-		    <ul>
-		        <li>Item 3-1</li>
-		    </ul>
-		</li>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3 has nested list
+        <ul>
+	    <li>Item 3-1</li>
+        </ul>
+    </li>
 </ul>
 ```
+결과 :
 
 ![Untitled 2](https://user-images.githubusercontent.com/70310271/165533202-c591527d-740c-4fcb-bdc2-3e794f618b16.png)
 
+
+코드 :
 
 ```html
 <ol>
@@ -111,9 +133,12 @@ target=”_blank”는 기존의 창에서 넘어가는것이 아닌 새 창에 
     </li>
 </ol>
 ```
+결과 :
 
 ![Untitled 3](https://user-images.githubusercontent.com/70310271/165533230-d2df20f0-8bd2-47b0-8e88-5cda53f393d7.png)
 
+
+코드 :
 
 ```html
 <body>
@@ -140,6 +165,8 @@ target=”_blank”는 기존의 창에서 넘어가는것이 아닌 새 창에 
 </body>
 ```
 
+결과 :
+
 ![Untitled 4](https://user-images.githubusercontent.com/70310271/165533260-a8fce7f6-5c7a-4dc7-9922-e3f51c9d714d.png)
 
 
@@ -161,7 +188,7 @@ checkbox는 여러개를 선택할 수 있다.
 
 [https://www.w3schools.com/html/exercise.asp?filename=exercise_html_attributes1](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_attributes1)
 
-굉장히 도움 많이 됨
+굉장히 도움 많이 되니 필요할때마다 연습하자.
 
 ## CSS기초
 
@@ -199,7 +226,7 @@ html <body>
   </body>
 ```
 
-CSS <body>내용
+CSS 
 
 ```css
 body{
