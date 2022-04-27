@@ -192,7 +192,7 @@ checkbox는 여러개를 선택할 수 있다.
 
 ## CSS기초
 
-html <body>
+HTML의 <body>에 해당하는 부분
 
 ```html
 <body>
@@ -226,7 +226,7 @@ html <body>
   </body>
 ```
 
-CSS 
+CSS의 body에 해당하는 부분
 
 ```css
 body{
@@ -433,9 +433,9 @@ Class는 CSS에서는 Selector 앞에 .을 사용함.
 | 기본적으로 갖는 너비(width) | 100% | 글자가 차지하는 만큼 | 글자가 차지하는 만큼 |
 | width, height 사용 가능 여부 | 가능 | 가능 | 불가능 |
 
-block 요소의 대표적인 예 : <div>, <p>
+block 요소의 대표적인 예 : '<div>', '<p>'
 
-Inline 요소의 대표적인 예 : <span>
+Inline 요소의 대표적인 예 : '<span>'
 
 span은 width와 height가 일반적으로 적용되지 않는다.
 
@@ -451,14 +451,20 @@ CSS BOX Model
 
 top, right, bottom, left 순서이다.
 
+코드 :
+	
 ```css
 p {
     border : 1px solid red;
 }
 ```
 
+결과 :
+	
 ![Untitled 13](https://user-images.githubusercontent.com/70310271/165534483-4cd3b0f1-d4c7-4137-b20e-c6965d8d97e6.png)
 
+
+코드 :
 
 ```css
 p{
@@ -467,18 +473,25 @@ p{
 }
 ```
 
+결과 :
+	
 ![Untitled 14](https://user-images.githubusercontent.com/70310271/165534509-d09ffa15-5c2e-46b7-8b54-7339c179dc44.png)
 
 
+코드 :
+	
 ```css
 p {
     border : 1px solid red;
     margin : 10px 20px; 
 }
 ```
+	
+결과 :
 
 ![Untitled 15](https://user-images.githubusercontent.com/70310271/165534526-cf352027-b439-40c9-ac07-68968724c27a.png)
 
+코드 :
 
 ```css
 p{
@@ -486,8 +499,9 @@ p{
 }
 ```
 
+결과 :
+	
 ![Untitled 16](https://user-images.githubusercontent.com/70310271/165534547-47525c61-79f2-4165-a1e0-e4780f8a40d4.png)
-
 
 ```css
 p {
@@ -500,7 +514,10 @@ p {
 
 특정해서 속성을 줄수도 있다.
 
+
 ### Padding (안쪽 여백)
+	
+코드 :
 
 ```css
 p {
@@ -508,9 +525,13 @@ p {
 }
 ```
 
+결과 :
+	
 ![Untitled 17](https://user-images.githubusercontent.com/70310271/165534597-5bb0436a-5c91-4954-8b9e-f4a02534d336.png)
 
 
+코드 :
+	
 ```css
 p{
     border : 1px solid red;
@@ -518,8 +539,11 @@ p{
 }
 ```
 
+결과 :
+	
 ![Untitled 18](https://user-images.githubusercontent.com/70310271/165534616-c3dae760-a1f9-4602-a8b2-e7d31e0e4a69.png)
 
+코드 :
 
 ```css
 p {
@@ -527,14 +551,17 @@ p {
   overflow: auto;
 }
 ```
-
+	
 height가 40이여서 Box가 찌그러질때, overflow: auto를 추가해주면, 오른쪽에 스크롤바가 추가되어 내리면서 확인할 수 있게된다.
 
+결과 :
+	
 ![Untitled 19](https://user-images.githubusercontent.com/70310271/165534635-e8792e30-41d0-45a6-a83b-e5fff990de09.png)
 
 
 ![Untitled 20](https://user-images.githubusercontent.com/70310271/165534649-3dafcfe1-b1bd-4c79-9c31-162bc93144f1.png)
 
+코드 :
 
 ```css
 <div id="container">
@@ -543,6 +570,9 @@ height가 40이여서 Box가 찌그러질때, overflow: auto를 추가해주면,
     </div>
 </div>
 ```
+	
+결과 :
+	
 
 ![Untitled 21](https://user-images.githubusercontent.com/70310271/165534688-f513aad3-f8f3-4924-ad45-861780c8b293.png)
 
@@ -555,6 +585,8 @@ height가 40이여서 Box가 찌그러질때, overflow: auto를 추가해주면,
 이때, 자동으로 모든 박스에서 여백과 테두리를 포함해주는 크기로 계산해주는 코드가 있다.
 
 앞으로 모든 요소에 이 코드를 추가하도록 한다.’
+	
+코드 :
 
 ```css
 *{
@@ -562,12 +594,21 @@ height가 40이여서 Box가 찌그러질때, overflow: auto를 추가해주면,
 }
 ```
 
+결과 :
+
+	
 ![Untitled 23](https://user-images.githubusercontent.com/70310271/165534789-8f0c2da0-1fe5-42db-84c5-f9505e8ef758.png)
 
 
 borderbox 기준으로 계산을 하도록 하자!
 
+
+	
+
+	
+	
 비고
+
 
 ### CSS Selector
 
