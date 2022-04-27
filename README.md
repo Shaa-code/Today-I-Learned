@@ -6,4 +6,4 @@
 
 [DAY2](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY2.md) - 웹 개발 기초(컴퓨터구성요소)
 
-[DAY3](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY3.md) - 
+[DAY3](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY3.md) - HTML, CSS (1)
