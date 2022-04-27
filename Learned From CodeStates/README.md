@@ -4,4 +4,6 @@
 
 [DAY1](https://github.com/Shaa-code/Today-I-Learned/blob/main/Learned%20From%20CodeStates/DAY1.md) - 메타인지
 
-[DAY2](https://github.com/Shaa-code/Today-I-Learned/blob/main/Learned%20From%20CodeStates/DAY2.md) - 컴퓨터와 웹이해
+[DAY2](https://github.com/Shaa-code/Today-I-Learned/blob/main/Learned%20From%20CodeStates/DAY2.md) - 컴퓨터구성요소와 웹 이해
+
+
