@@ -76,7 +76,8 @@ span태그는 옆에 계속해서 추가되어 붙게된다.
 //이미지 삽입
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4832f963-621a-4f00-80b2-b84f2939970f/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/165533183-6fce23c6-d501-4542-9682-eb9d58c496b9.png)
+
 
 ```java
 <a href="https://peaceofm1nd.tistory.com/" target="_blank">티스토리</a>
@@ -96,7 +97,8 @@ target=”_blank”는 기존의 창에서 넘어가는것이 아닌 새 창에 
 </ul>
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f9bc94b5-8395-400c-b8ca-c91439ab771a/Untitled.png)
+![Untitled 2](https://user-images.githubusercontent.com/70310271/165533202-c591527d-740c-4fcb-bdc2-3e794f618b16.png)
+
 
 ```html
 <ol>
@@ -110,7 +112,8 @@ target=”_blank”는 기존의 창에서 넘어가는것이 아닌 새 창에 
 </ol>
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d521778d-acc2-40b5-b616-1e0532bfccb2/Untitled.png)
+![Untitled 3](https://user-images.githubusercontent.com/70310271/165533230-d2df20f0-8bd2-47b0-8e88-5cda53f393d7.png)
+
 
 ```html
 <body>
@@ -137,7 +140,8 @@ target=”_blank”는 기존의 창에서 넘어가는것이 아닌 새 창에 
 </body>
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/93e583a3-1f51-4732-8ce2-b1d76e802abd/Untitled.png)
+![Untitled 4](https://user-images.githubusercontent.com/70310271/165533260-a8fce7f6-5c7a-4dc7-9922-e3f51c9d714d.png)
+
 
 ### 자주쓰는 input에 대해서 알아보자.
 
@@ -153,7 +157,7 @@ checkbox는 여러개를 선택할 수 있다.
 
 ### 구성요소 정의
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b94b59d0-67ff-45db-a46c-1dd7f83f0e2f/Untitled.png)
+![Untitled 5](https://user-images.githubusercontent.com/70310271/165533297-cc62d776-e18d-47a9-ad45-fa4235a2f787.png)
 
 [https://www.w3schools.com/html/exercise.asp?filename=exercise_html_attributes1](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_attributes1)
 
@@ -207,7 +211,8 @@ background : #fff;
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ded117c7-1b6a-488b-b7e9-34b47ffce0c8/Untitled.png)
+![Untitled 6](https://user-images.githubusercontent.com/70310271/165533387-6ff96acb-fe12-477d-9acf-5f282a7c3c80.png)
+
 
 ### 텍스트의 가운데 정렬을 하기 위한 속성
 
@@ -275,8 +280,9 @@ h4 {
 ```
 
 결과 :
+	
+![Untitled 7](https://user-images.githubusercontent.com/70310271/165533441-742a68e9-8e6f-4ec8-8613-bfcc9d5bcf67.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fd4ff273-f2d5-4296-992c-33109d3d12e4/Untitled.png)
 
 해결방안 :
 
@@ -296,7 +302,8 @@ id를 따로 지정해주고 ‘#‘ Selector를 사용해서 색깔을 따로 �
 
 결과 :
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/337dc8d5-c260-487e-8990-fa651ffd84cc/Untitled.png)
+![Untitled 8](https://user-images.githubusercontent.com/70310271/165534143-40dfb36b-bf9e-4295-a38a-47565b00c8b7.png)
+
 
 ### 두번째 방법 : 태그에 class를 추가하여 스타일을 적용
 
@@ -315,7 +322,8 @@ id를 따로 지정해주고 ‘#‘ Selector를 사용해서 색깔을 따로 �
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d20c153-e71d-45fb-a90c-114a903e39e3/Untitled.png)
+![Untitled 9](https://user-images.githubusercontent.com/70310271/165534177-76b3f0d9-66ff-4bde-91a3-642ee0c79b19.png)
+
 
 ### Id와 class의 차이
 
@@ -353,7 +361,8 @@ Class는 CSS에서는 Selector 앞에 .을 사용함.
 
 둘다 적용이 된 채로 들어간다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2605744a-5360-43cd-b936-215a71309923/Untitled.png)
+![Untitled 10](https://user-images.githubusercontent.com/70310271/165534268-9368e337-8019-404a-b034-cd255e2b6d03.png)
+
 
 다시 정리하자면,
 
@@ -385,8 +394,9 @@ Class는 CSS에서는 Selector 앞에 .을 사용함.
 ### 줄바꿈이 되는 박스 vs 옆으로 붙는 박스
 
 위를 Hello world를 보자, 얘는 전체를 차지하고 있어서 다음에 무언가 나오면 바로 줄바꿈이 되는것임. 얘를 Block level Element 라고 함.
+	
+![Untitled 11](https://user-images.githubusercontent.com/70310271/165534323-bd5ade5a-cfee-4b8e-9b09-498d20b84a47.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/244cf832-e201-4538-9085-62b26223ea54/Untitled.png)
 
 밑의 “안녕하세요 생활코딩입니다.”를 보자. 빨간블록에 해당하는 인라인블록인 생활코딩 부분은 바로 다음은 줄바꿈이 되지 않았다. 얘를 Inline(OR inline-block) level Element라고 함.
 
@@ -404,7 +414,7 @@ span은 width와 height가 일반적으로 적용되지 않는다.
 
 하지만 display : inline-block 이라는 설정을 해주면, width와 height 설정해 줄 수 있다.
 
-![CSS BOX Model](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a7003efc-8af1-4083-bbe6-cf9e476899d7/Untitled.png)
+![CSS BOX Model](https://user-images.githubusercontent.com/70310271/165534372-15fe86ce-382c-4ef6-8b32-689c1e106b64.png)
 
 CSS BOX Model
 
@@ -420,7 +430,8 @@ p {
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/867ead86-aac4-4a82-ac11-6bb8db38acf3/Untitled.png)
+![Untitled 13](https://user-images.githubusercontent.com/70310271/165534483-4cd3b0f1-d4c7-4137-b20e-c6965d8d97e6.png)
+
 
 ```css
 p{
@@ -429,7 +440,8 @@ p{
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6d42582b-934c-4030-b37d-1d1ef98e5ab3/Untitled.png)
+![Untitled 14](https://user-images.githubusercontent.com/70310271/165534509-d09ffa15-5c2e-46b7-8b54-7339c179dc44.png)
+
 
 ```css
 p {
@@ -438,7 +450,8 @@ p {
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18bec4b9-2ec6-4751-9dff-99c7f6046fe6/Untitled.png)
+![Untitled 15](https://user-images.githubusercontent.com/70310271/165534526-cf352027-b439-40c9-ac07-68968724c27a.png)
+
 
 ```css
 p{
@@ -446,7 +459,8 @@ p{
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/52812efc-9b27-4c84-a8d6-9a4cf2b4c6e2/Untitled.png)
+![Untitled 16](https://user-images.githubusercontent.com/70310271/165534547-47525c61-79f2-4165-a1e0-e4780f8a40d4.png)
+
 
 ```css
 p {
@@ -467,7 +481,8 @@ p {
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d1c42493-5062-472b-bc98-b839bd07a0b8/Untitled.png)
+![Untitled 17](https://user-images.githubusercontent.com/70310271/165534597-5bb0436a-5c91-4954-8b9e-f4a02534d336.png)
+
 
 ```css
 p{
@@ -476,7 +491,8 @@ p{
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18ac19f8-b0fd-4b22-979d-f565cc5725c8/Untitled.png)
+![Untitled 18](https://user-images.githubusercontent.com/70310271/165534616-c3dae760-a1f9-4602-a8b2-e7d31e0e4a69.png)
+
 
 ```css
 p {
@@ -487,9 +503,11 @@ p {
 
 height가 40이여서 Box가 찌그러질때, overflow: auto를 추가해주면, 오른쪽에 스크롤바가 추가되어 내리면서 확인할 수 있게된다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24f5efbf-e494-4261-a948-0dc2a16c2163/Untitled.png)
+![Untitled 19](https://user-images.githubusercontent.com/70310271/165534635-e8792e30-41d0-45a6-a83b-e5fff990de09.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/afd8c1f1-a932-474f-8514-1e3d738277d9/Untitled.png)
+
+![Untitled 20](https://user-images.githubusercontent.com/70310271/165534649-3dafcfe1-b1bd-4c79-9c31-162bc93144f1.png)
+
 
 ```css
 <div id="container">
@@ -499,9 +517,9 @@ height가 40이여서 Box가 찌그러질때, overflow: auto를 추가해주면,
 </div>
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/781bafff-1b62-40b2-97f1-5ad78c0843be/Untitled.png)
+![Untitled 21](https://user-images.githubusercontent.com/70310271/165534688-f513aad3-f8f3-4924-ad45-861780c8b293.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0417b42b-7993-4b55-b9ee-660515fcba3b/Untitled.png)
+![Untitled 22](https://user-images.githubusercontent.com/70310271/165534735-a253395d-1448-4bc9-ad50-d01c54416978.png)
 
 처음 레이아웃 디자인을 할 때 가장 많이 하는 실수가 있다.
 
@@ -517,7 +535,8 @@ height가 40이여서 Box가 찌그러질때, overflow: auto를 추가해주면,
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1f298eeb-0dec-4c9f-8eca-6c0c48e37423/Untitled.png)
+![Untitled 23](https://user-images.githubusercontent.com/70310271/165534789-8f0c2da0-1fe5-42db-84c5-f9505e8ef758.png)
+
 
 borderbox 기준으로 계산을 하도록 하자!
 
