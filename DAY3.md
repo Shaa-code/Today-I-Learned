@@ -64,7 +64,8 @@ Self-Tag Closing
 <div>divisioXn 3</div>
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/834340cd-f61a-49b5-accd-481a372b5cac/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/165532256-11120497-901f-4d39-804f-20c8d8b25991.png)
+
 
 보다시피 div태그는 태그마다 개행되며 아래에 추가되는 반면,
 
