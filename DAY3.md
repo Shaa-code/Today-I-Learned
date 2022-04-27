@@ -187,9 +187,9 @@ checkbox는 여러개를 선택할 수 있다.
 
 굉장히 도움 많이 되니 필요할때마다 연습하자.
 
-## CSS기초
+## CSS 기초
 
-HTML의 <body>에 해당하는 부분
+HTML의 \<body>
 
 ```html
 <body>
@@ -223,7 +223,7 @@ HTML의 <body>에 해당하는 부분
   </body>
 ```
 
-CSS의 body에 해당하는 부분
+CSS의 \body
 
 ```css
 body{
