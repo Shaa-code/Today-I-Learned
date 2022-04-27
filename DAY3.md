@@ -53,7 +53,7 @@ ex) 전등의 On/Off
 <img src = "*.png"/> // 뒷 태그에 붙는 img 생략가능
 ```
 
-Self-Tag Closing
+이것을 "Self-Tag Closing"라고 한다.
 
 ```java
 <div>div 태그는 한줄을 차지 합니다.</div>
