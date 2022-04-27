@@ -6,4 +6,4 @@
 
 [DAY2](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY2.md) - 컴퓨터구성요소와 웹 이해
 
-
+[DAY3](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY3.md) - 웹 개발의 기초
