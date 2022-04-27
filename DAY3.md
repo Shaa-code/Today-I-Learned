@@ -78,7 +78,7 @@ ex) 전등의 On/Off
 <div>divisioXn 3</div>
 ```
 
-![Untitled align="center"](https://user-images.githubusercontent.com/70310271/165532256-11120497-901f-4d39-804f-20c8d8b25991.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/165532256-11120497-901f-4d39-804f-20c8d8b25991.png)
 
 
 보다시피 div태그는 태그마다 개행되며 아래에 추가되는 반면,
