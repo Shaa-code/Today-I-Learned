@@ -184,7 +184,11 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 ![Untitled 6](https://user-images.githubusercontent.com/70310271/165781305-358e2b46-dba6-4a48-b56b-178bcf3b74e0.png)
 
 
+
+
 이제 옆으로 눕히는법에 대해서 배웠으니, 일자로 정렬된것들의 비율을 조절하는법을 배워보자.
+
+
 
 
 ### flex - grow의 비율 전환에 대해
