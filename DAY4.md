@@ -35,7 +35,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 
 여백 때문에, border를 기준으로 width를 설정해야한다.
 
-## PAGE LAYOUT
+## Page Layout
 
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/165781024-f59c3771-5e99-4a6d-92b9-a7de440c78b6.png)
