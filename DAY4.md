@@ -486,9 +486,9 @@ body {
 
 평소, 웹사이트를 둘러보면서 이 사이트는 어떻게 디자인되어 있는지를 계속 생각해보면서 태그 단위로 나누어보자.
 
-클래스는 <li class=”comment”> → li.comment 처럼
+클래스는 \<li class=”comment”\> → li.comment 처럼
 
-아이디는 <div id = “writing-section”> → div#witing-section 처럼.
+아이디는 \<div id = “writing-section”\> → div#witing-section 처럼.
 
 생각해보는 습관을 가지면 실력이 굉장히 빨리 늘것이다.
 
