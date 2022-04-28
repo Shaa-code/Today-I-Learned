@@ -502,3 +502,18 @@ ex) 네이버 댓글창
     <input type="text" placeholder="클린봇이 악성댓글을 감지합니다."><span><button>설정</button></span>
 </div>
 ```
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
