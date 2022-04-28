@@ -1,16 +1,21 @@
 ## 배우기 전 알고 있어야할것.
 
+
 잠깐 기억 을 더듬고 넘어가자.
+
 
 ### 셀렉터 #이란?
 
 id셀렉터로 css에서 특정아이디에 해당하는 부분을 꾸밀때 사용한다.
 
+
 ### 셀렉터 .이란?
+
 
 클래스셀렉터로 css에서 특정클래스에 해당하는 영역을 꾸밀때 사용한다.
 
 ### 절대 단위와 상대 단위
+
 
 절대 단위란, px처럼 인쇄를하기 위한 용도에 사용하기위한 단위이고
 
@@ -18,9 +23,11 @@ id셀렉터로 css에서 특정아이디에 해당하는 부분을 꾸밀때 사
 
 ### CSS 박스모델이란?
 
+
 margin(바깥 여백), border, padding(안쪽 여백), content.
 
 ### 박스 측정기준
+
 
 content-box는 content를 기준으로 width를 설정하는것이고
 
@@ -29,6 +36,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 여백 때문에, border를 기준으로 width를 설정해야한다.
 
 ## PAGE LAYOUT
+
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/165781024-f59c3771-5e99-4a6d-92b9-a7de440c78b6.png)
 
@@ -41,6 +49,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 
 ### 화면을 나누는 방법
 
+
 수직분할 : 정가운데를 갈라 좌,우로 배치
 
 ![Untitled 2](https://user-images.githubusercontent.com/70310271/165781105-fa0f15bf-22e8-4965-abb9-43c0299b8396.png)
@@ -52,6 +61,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 
 
 이후에 코드를 직접 구현해보자.
+
 
 코드 :
 
@@ -77,6 +87,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
     </div> <!--component3 닫기-->
 
 </div> // <!--container닫기-->
+
 ```
 
 ```css
@@ -109,6 +120,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 
 이때 필요한것이 바로`‘flex’`이다.
 
+
 ### display : flex는 왜 사용하는걸까?
 
 밑으로 내려가는것을 오른쪽으로 보내주기 위해서 사용한다.
@@ -126,6 +138,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 </div>
 ```
 
+
 ```css
 /* CSS CODE */
 #outer{
@@ -139,6 +152,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
     padding : 10px;
 }
 ```
+
 
 결과 :
 
@@ -159,7 +173,9 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 }
 ```
 
+
 ![Untitled 6](https://user-images.githubusercontent.com/70310271/165781305-358e2b46-dba6-4a48-b56b-178bcf3b74e0.png)
+
 
 
 ### flex - grow의 비율 전환에 대해
@@ -171,6 +187,7 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 flex - grow의 전환 비율의 직관이 바로 느껴지지 않아 1시간동안 찾아다니며 붙잡고 있었다...
 
 코드 :
+
 
 ```html
 <!-- HTML CODE -->
@@ -203,6 +220,7 @@ flex - grow의 전환 비율의 직관이 바로 느껴지지 않아 1시간동�
   flex: 2 1 auto;
 }
 ```
+
 
 ![Untitled 7](https://user-images.githubusercontent.com/70310271/165781341-44d5c9c8-7dab-4293-882d-dc0c59c6801d.png)
 
@@ -242,6 +260,7 @@ target은 혼자서 모든 자리를 차지하게 되는것이다.
 }
 ```
 
+
 결과 :
 
 ![Untitled 8](https://user-images.githubusercontent.com/70310271/165781366-b4bc51b3-51c2-46a2-808c-95a5244dd03b.png)
@@ -276,6 +295,7 @@ target은 사라지고 box들끼리 모든 자리를 차지하게 되는것이�
 
 결과 :
 
+
 ![Untitled 9](https://user-images.githubusercontent.com/70310271/165781398-9caca038-0a85-44f8-9204-94405d711f63.png)
 
 
@@ -294,6 +314,7 @@ flex-shirnk : 1; → 브라우저(Internet Explorer 또는 Chrome)를 커서로 
 flex-basis : 300px; → 300px 이하로 줄어들지 않음.
 
 코드 :
+
 
 ```html
 <!--HTML CODE -->
@@ -421,17 +442,20 @@ body {
 
 시각적 효과와 사용 목적을 고려하여 구성 배열하는 일, 또는 그 기술
 
+
 ### 와이어프레임이란?
 
 웹이나 앱을 개발할때 레이아웃의 뼈대를 그리는 단계를 와이어 프레임이라고 한다.
 
 와이어 프레임은 아주 단순하게 레이아웃과 제품의 구조를 보여주는 용도이다.
 
+
 ### 목업 (Mock-up)이란?
 
 목업의 정의 : 실물 크기의 모형
 
 실제 제품이 작동하는 모습과 동일하게 HTML문서와 CSS를 작성하는것.
+
 
 ### 웹 앱 태그 구조 잡기
 
@@ -453,6 +477,7 @@ body {
 
 그리고, 정답확인은 브라우저에서 Ctrl + Shift + C 로 찍어보자.
 
+    
 ex) 네이버 댓글창
 
 ![Untitled 11](https://user-images.githubusercontent.com/70310271/165781494-c8ec9f3f-8627-4bb0-8f9e-f4969cd3012f.png)
