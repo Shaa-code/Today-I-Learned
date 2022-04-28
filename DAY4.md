@@ -116,6 +116,8 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 }
 ```
 
+결과 :
+
 ![Untitled 4](https://user-images.githubusercontent.com/70310271/165781157-380d912d-e8c1-4dd3-8365-58b49dd73880.png)
 
 
