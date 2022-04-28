@@ -44,12 +44,16 @@ border-box는 border를 기준으로 width를 설정하는것이다.
 
 ### 직접 VSCode의 모양을 구현해 보자.
 
+구현대상 : 
+
 ![Untitled](https://user-images.githubusercontent.com/70310271/165781024-f59c3771-5e99-4a6d-92b9-a7de440c78b6.png)
+
+예시 :
 
 ![Untitled 1](https://user-images.githubusercontent.com/70310271/165781066-3115e8f2-d3f5-4736-aea3-4005cb6c24e5.png)
 
 
-우선 직접 구현하기 위해 첫번째로 알아야할 점이 있다.
+*우선 직접 구현하기 위해 첫번째로 알아야할 점이 있다.*
 
 ### 화면을 나누는 방법
 
