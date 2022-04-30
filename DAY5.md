@@ -3,6 +3,9 @@
 오늘은 가상의 트위터 게시판를 페어 한 분과 같이 소통하며 구현해 보는 시간을 가졌다.
 <br/> <br/>
 
+<img width="916" alt="1234" src="https://user-images.githubusercontent.com/70310271/166112635-71436b47-b056-4147-9b2f-1f8e53bec21a.png">
+
+
 ## 페어 프로그래밍이란?
 
 한명은 코드를 구현해보는쪽(드라이버), 한명은 설명하는쪽(네비게이터)을 맡아 진행하는방식이다.
@@ -160,6 +163,7 @@ _“우선 따라가셔야한다는 압박감에 그냥 코드를 쳐보신게 �
       <!-- 제목을 담당하는 부분입니다! -->
       <div id="greeting">Twittler</div>
 
+
       <!-- 글을 쓰는(Write)부분입니다! -->
       <div class = "component1">
 
@@ -174,6 +178,7 @@ _“우선 따라가셔야한다는 압박감에 그냥 코드를 쳐보신게 �
       </div>
 
       <div></div>
+
 
       <!-- 글을 읽는(Read)부분입니다. -->
       <div class = "component2">
@@ -195,13 +200,13 @@ _“우선 따라가셔야한다는 압박감에 그냥 코드를 쳐보신게 �
 ```
 
 ```css
-/* CSS */
+/*CSS CODE*/
 #greeting {
   font-size: 2em;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: bold;
   border: 2px solid #ccc;
-  border-radius: 1em;
+  border-radius: 0.2em;
   color: white;
   background-color: #eee;
   text-shadow: 0 0 5px #333;
@@ -211,7 +216,7 @@ _“우선 따라가셔야한다는 압박감에 그냥 코드를 쳐보신게 �
 }
 
 .component1 {
-  background-color: paleturquoise;
+  background-color: #18BFE6;
   margin: 1.25em;
   padding: 1em;
   border: black;
@@ -233,24 +238,47 @@ _“우선 따라가셔야한다는 압박감에 그냥 코드를 쳐보신게 �
 }
 
 .component2 {
-  background-color: gray;
+  background-color: rgb(220, 220, 220);
   margin: 20px;
   border: black;
 }
 
-#randomButton {
-  margin: 10px;
-  padding: 20px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+.block {
+  background-color: #1b539d;
 }
 
-.block {
-  background-color: powderblue;
+#randomButton {
+  margin: 10px;
+  padding: 10px;
+}
+
+#tweetWrapper {
+  margin: 11px;
+  padding: 1px;
+}
+
+.tweet.white {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet__createdAt {
+  align-self: end;
+  margin-top: -1.3rem;
+}
+
+li {
+  margin : 10px;
+  list-style: none;
+  border-bottom: 2px solid #cbc7c7;
+}
+
+.tweet__username{
+  font-weight : bold;
 }
 ```
 
 결과 :
 
 ![Untitled 7](https://user-images.githubusercontent.com/70310271/165984714-b3301878-150a-4429-b106-ac087ed51e74.png)
-
-우선 주말에 더 보완해서 수정해봐야겠다.
