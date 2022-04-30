@@ -261,12 +261,12 @@ _“우선 따라가셔야한다는 압박감에 그냥 코드를 쳐보신게 �
 .tweet.white {
   list-style: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /*시간을 한줄로 겹치는 핵심 구현원리 1번*/
 }
 
 .tweet__createdAt {
   align-self: end;
-  margin-top: -1.3rem;
+  margin-top: -1.3rem; /*margin-top을 -로 설정해서 시간이 위쪽으로 올라가게 만드는 원리 2번*/
 }
 
 li {
