@@ -326,7 +326,7 @@ flex-shirnk : 1; → 브라우저(Internet Explorer 또는 Chrome)를 커서로 
 
 ### flex-basis
 
-`브라우저(Internet Explorer 또는 Chrome)를 커서로 당겨서 줄여도 크기내로 설정한 크기만큼 줄여지지 않는다.`
+`브라우저(Internet Explorer 또는 Chrome)를 커서로 당겨서 줄여도 설정한 basis의 크기만큼 줄여지지 않는다.`
 
 flex-basis : 300px; → 300px 이하로 줄어들지 않음.
 
