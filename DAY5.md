@@ -3,7 +3,7 @@
 오늘은 가상의 트위터 게시판를 페어 한 분과 같이 소통하며 구현해 보는 시간을 가졌다.
 <br/> <br/>
 
-<img width="916" alt="1234" src="https://user-images.githubusercontent.com/70310271/166112635-71436b47-b056-4147-9b2f-1f8e53bec21a.png">
+![image](https://user-images.githubusercontent.com/70310271/166112785-601e9655-a3f1-4f24-9731-3bd355ce1a9f.png)
 
 
 ## 페어 프로그래밍이란?
