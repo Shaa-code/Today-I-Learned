@@ -322,7 +322,8 @@ chmod에 어떤 방법들을 사용해서 파일을 설정하는지 알아보자
 | o (other) | = (set exact access) | x (execute) |
 | a (all == u, g ,o) |  |  |
 
-Symbolic method의 단점
+### Symbolic method의 단점
+
 Access class, Access Type, Operator 세가지 모두 기억해야만 변경할 수 있다.
 
 그에 대한 대안책으로 나온것이 Absolute form이다.
