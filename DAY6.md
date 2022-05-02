@@ -6,32 +6,38 @@
 
 CLI의 사용이유. → 상대적으로 높은 안정성과 빠른속도.
 
-
-GUI가 느린 구체적 이유는 그래픽에 컴퓨터 자원을 더 써서 상대적으로 느림.
-
-
 GUI의 사용이유. → 사용자가 쉽게 컴퓨터를 제어할수 있다는 장점.
 
+GUI가 느린 구체적 이유는 그래픽에 컴퓨터 자원을 더 쓰기 때문에 CLI보다 상대적으로 느림.
 
 입력을 담당하는 장치인 키보드나 마우스를 입력소스 (Input Source)로 정의.
 
-
 출력을 담당하는 장치인 모니터나 스피커를 출력소스 (Output Source)로 정의.
 
+<br/> 
 
 ### 프롬프트(Prompt)란?
 
 키보드의 입력을 확인하고 편집할 수 있는 한줄의 공간.
 
+<br/>
+
 ### pwd(print working directory)
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/166243524-a5c716f1-da25-45f7-979b-da5dc52c52fc.png)
 
+현재 내가 위치하는 working directory를 표시한다.
+
+<br/>
 
 ### mkdir(make directories)
 
 ![Untitled 1](https://user-images.githubusercontent.com/70310271/166243533-6861fd13-2e5a-4ee9-9954-9b9a5f59a31b.png)
 
+새 폴더를 만든다.
+
+
+<br/>
 
 ### ls(list)
 
@@ -55,29 +61,44 @@ ls-al (lists all the contents in a long format) // -la을 바꿔서 써도됨.
 
 ![Untitled 4](https://user-images.githubusercontent.com/70310271/166243587-a8708a30-ac0a-4e8e-b513-b766b0ae3b7b.png)
 
-### 앞에 쓰인 drw-의 의미는 무엇일까?
+<br/>
 
-d는 Directory로 이동이 가능함을 의미한다.
+### 앞에 쓰인 -rw의 의미는 무엇일까?
 
--는 파일을 나타낸다.
+'d' : Directory로 이동이 가능함을 의미한다.
 
-r는 Readonly
+'-' : Non-Directory 즉, 파일을 나타낸다.
 
-### 명령어를 사용해 폴더를 GUI 탐색기로 실행.
+'r' : Read Permission
 
-우선 윈도우 환경에서 사용하는 설치받은 WSL는 GUI를 지원하지 않는 CLI라서, GUI와 관련된 인터페이스가 존재하지 않는다.  즉, 일반적으로는 nautilus는 사용할 수 없다.
+'w' : Write Permisson
 
-따로 서버를 설치해서 GUI환경을 내부에 만들어주는 방법이 있다.
+'x' : Execute Permission
+
+<br/>
+
+### 명령어로 GUI 탐색기를 실행시켜 폴더를 둘러보자!
+
+우선 윈도우 환경에서 사용하는 설치받은 WSL2는 윈도우 운영체제와 메모리를 공유하는 구조가 아니다.
+그렇기에, WSL2를 사용하더라도 Linux 내부에서 GUI를 지원하지 않는 CLI환경이라, GUI와 연결할 수 있는 인터페이스가 존재하지 않는다.
+즉, 일반적으로는 nautilus 패키지는 사용할 수 없다.
+
+따로 Linux에 서버를 설치해서 GUI환경을 내부에 만들어주는 방법이 있다.
 
 [[WSL] (+ WSL 2) 윈도우에서 우분투 GUI 프로그램 실행](https://blog.nadekon.net/115)
 
-하지만 윈도우를 GUI로 Linux를 CLI로 활용하면 되므로 굳이 Linux에 또한번 GUI를 설치할 필요성을 느끼지 못했고 교육과정에서 중요한 내용이 아니라고 판단하여 그냥 넘어간다.
+하지만 윈도우를 GUI로 사용하고, Linux를 CLI로 활용하면 되므로 굳이 Linux에 또 한번의 GUI를 설치할 필요성을 느끼지 못했고
+교육과정에서 중요한 내용이 아니라고 판단하여 그냥 넘어간다.
 
 Mac이라면 open 명령어를 사용해보자.
+
+<br/>
 
 ### cd (change directory)
 
 ![Untitled 5](https://user-images.githubusercontent.com/70310271/166243625-7c527e96-90be-4103-83d2-5ba64f65fc79.png)
+
+<br/>
 
 ### touch (make a file)
 
@@ -85,15 +106,17 @@ Mac이라면 open 명령어를 사용해보자.
 
 ![Untitled 7](https://user-images.githubusercontent.com/70310271/166243664-5a771b91-f879-496d-9693-82b016b69418.png)
 
-실제 폴더에 생긴것 확인해보기.
+실제 폴더에 텍스트 파일이 생긴것을 확인하였다.
 
 ![Untitled 8](https://user-images.githubusercontent.com/70310271/166243921-454bc467-fb59-440f-abd0-8f64884703c9.png)
 
-GUI 상에서 내 텍스트 저장하기
+GUI 상에서 내 텍스트 저장해보자.
 
 ![Untitled 9](https://user-images.githubusercontent.com/70310271/166243925-95fdc12e-7f26-4720-9151-20c7621eb64c.png)
 
-실제로 변화확인
+위 처럼 실제로 텍스트 내용이 변화되었다.
+
+<br/>
 
 ### rm(remove)
 
@@ -111,6 +134,8 @@ rm -r(recusive) // 재귀하며 폴더안으로 들어간다고 생각하면 편
 
 rm -f(force) // 강제로 삭제한다.
 
+<br/>
+
 ### mv(move) // 이름을 변경할때도 사용한다.
 
 ![Untitled 13](https://user-images.githubusercontent.com/70310271/166244001-488a2ae4-a3cc-45f9-9bc8-d053f9b796ee.png)
@@ -118,6 +143,8 @@ rm -f(force) // 강제로 삭제한다.
 ![Untitled 14](https://user-images.githubusercontent.com/70310271/166244011-5e13cf96-d12d-4ed3-8d8a-282486803c66.png)
 
 이름을 만드는 경우에는 파일을 새로 작성하지 않고, 이름만 변화한다.
+
+<br/>
 
 ### cp(copy)
 
@@ -129,17 +156,24 @@ CLI에서 .는 현재폴더 ..는 현재보다 앞에있는 폴더를 가르킨�
 
 폴더의 복사의 경우도 똑같다.
 
+<br/>
+
 ## 관리자 권한과 경로
+
+<br/>
 
 ### 사용자와 관리자
 
-컴퓨터의 운영체제에는 사용자와 관리자가 있다.
+컴퓨터의 운영체제에는 사용자(User)와 관리자(Administer)가 있다.
 
 관리자는 사용자 보다 높은 권한을 갖는다.
+
 
 ### 상대경로 절대경로
 
 ![Untitled 17](https://user-images.githubusercontent.com/70310271/166244075-38fde532-568a-46fa-8dab-2dcfea0c761a.png)
+
+<br/>
 
 ### 관리자(root) 권한
 
@@ -155,6 +189,8 @@ CLI에서 .는 현재폴더 ..는 현재보다 앞에있는 폴더를 가르킨�
 
 사용자 폴더의 경로(Path)는 ‘~/’로 표시된다.
 
+<br/>
+
 ### sudo(**super user do)**
 
 관리자 권한을 획득하는 명령어
@@ -167,6 +203,8 @@ cp -rf you_are_the_best ../
 
 cp -rf you_are_the_best ~/helloWorld/ ← 이렇게도 된다는것 알고있자!
 
+<br/>
+
 ### 텍스트 에디터 nano.
 
 ![Untitled 20](https://user-images.githubusercontent.com/70310271/166244140-81e3fddd-7ca4-45e0-892f-06e7025f1b62.png)
@@ -178,6 +216,8 @@ cp -rf you_are_the_best ~/helloWorld/ ← 이렇게도 된다는것 알고있자
 Vim을 배워보도록해야겠다.
 
 [완전 초보를 위한 Vim](https://nolboo.kim/blog/2016/11/15/vim-for-beginner/)
+
+<br/>
 
 ## 패키지와 패키지 매니저
 
