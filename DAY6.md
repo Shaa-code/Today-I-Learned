@@ -67,7 +67,7 @@ GUI가 느린 구체적 이유는 그래픽에 컴퓨터 자원을 더 쓰기 �
 
 'd' : Directory로 이동이 가능함을 의미한다.
 
-'-' : Non-Directory 즉, 파일을 나타낸다.
+'-' : Non-Directory , No Permission
 
 'r' : Read Permission
 
@@ -75,7 +75,7 @@ GUI가 느린 구체적 이유는 그래픽에 컴퓨터 자원을 더 쓰기 �
 
 'x' : Execute Permission
 
-이 정도만 알고서 뒤에가서 깊게 파헤쳐본다.
+이 정도만 알자 뒤에서 깊게 파헤쳐본다.
 
 <br/>
 
