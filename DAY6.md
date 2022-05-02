@@ -225,6 +225,8 @@ cp -rf you_are_the_best ~/helloWorld/
 
 리눅스의 패키지는 여러파일을 모아 하나의 파일로 저장하고 있는 압축파일이다.
 
+<br/>
+
 - 패키지의 구성
     1. 프로그램 파일
     2. 프로그램에 대한 정보를 담은 파일
@@ -255,6 +257,7 @@ cp -rf you_are_the_best ~/helloWorld/
 
 ![Untitled 23](https://user-images.githubusercontent.com/70310271/166244194-d15c3286-0192-4b2c-a347-2ffa7e8da7ce.png)
 
+<br/>
 
 - wget 으로 URL을 통해 파일 다운로드 해보기
 
@@ -264,6 +267,7 @@ cp -rf you_are_the_best ~/helloWorld/
 
 ![Untitled 26](https://user-images.githubusercontent.com/70310271/166244256-def03bce-210a-44ca-b547-1bb87aaea341.png)
 
+<br/>
 
 - neofetch으로 컴퓨터 정보 알아보기
 
