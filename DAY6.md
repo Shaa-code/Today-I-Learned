@@ -278,9 +278,7 @@ cp -rf you_are_the_best ~/helloWorld/
 ![Untitled 29](https://user-images.githubusercontent.com/70310271/166244317-e5c77d09-5d08-429d-986e-f1d904be40fc.png)
 
 
-앞에 -rw-r—r—의 정체가 뭘까?
-
-이를 알아보자 !
+### 'drw-'의 정체가 뭘까?
 
 ![Untitled 30](https://user-images.githubusercontent.com/70310271/166244331-35adecd2-5735-4320-948f-3832938eacc2.png)
 
