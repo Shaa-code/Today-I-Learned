@@ -41,23 +41,23 @@ GUI가 느린 구체적 이유는 그래픽에 컴퓨터 자원을 더 쓰기 �
 
 ### ls(list)
 
-‘-’ (dash means option)
+- ‘-’ (dash means option)
 
 옵션의 순서는 기능에 영향을 미치지 않는다.
 
-ls -l (lists the contents in a long format)
+- ls -l (lists the contents in a long format)
 
 폴더나 파일의 포맷을 전부 표현하라는 의미입니다.
 
 ![Untitled 2](https://user-images.githubusercontent.com/70310271/166243552-a8e51423-3de4-451b-8361-207e4e2ec380.png)
 
-ls -a (lists all the contents)
+- ls -a (lists all the contents)
 
 숨어있는 폴더나 파일을 포함한 모든 항목을 터미널에 출력.
 
 ![Untitled 3](https://user-images.githubusercontent.com/70310271/166243570-08858897-36ad-4b58-8930-e6cd06c59c22.png)
 
-ls-al (lists all the contents in a long format) // -la을 바꿔서 써도됨.
+- ls-al (lists all the contents in a long format) // -la을 바꿔서 써도됨.
 
 ![Untitled 4](https://user-images.githubusercontent.com/70310271/166243587-a8708a30-ac0a-4e8e-b513-b766b0ae3b7b.png)
 
@@ -110,7 +110,7 @@ Mac이라면 open 명령어를 사용해보자.
 
 ![Untitled 8](https://user-images.githubusercontent.com/70310271/166243921-454bc467-fb59-440f-abd0-8f64884703c9.png)
 
-GUI 상에서 내 텍스트 저장해보자.
+GUI상에서 파일속에 글을 저장해보자.
 
 ![Untitled 9](https://user-images.githubusercontent.com/70310271/166243925-95fdc12e-7f26-4720-9151-20c7621eb64c.png)
 
