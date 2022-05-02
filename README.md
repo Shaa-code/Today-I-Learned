@@ -11,3 +11,5 @@
 [DAY4](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY4.md) - HTML, CSS (2)
 
 [DAY5](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY5.md) - HTML, CSS (3)
+
+[DAY6](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY6.md) - Linux
