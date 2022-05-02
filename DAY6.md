@@ -75,6 +75,8 @@ GUI가 느린 구체적 이유는 그래픽에 컴퓨터 자원을 더 쓰기 �
 
 'x' : Execute Permission
 
+이 정도만 알고서 뒤에가서 깊게 파헤쳐본다.
+
 <br/>
 
 ### 명령어로 GUI 탐색기를 실행시켜 폴더를 둘러보자!
@@ -160,8 +162,6 @@ CLI에서 .는 현재폴더 ..는 현재보다 앞에있는 폴더를 가르킨�
 
 ## 관리자 권한과 경로
 
-<br/>
-
 ### 사용자와 관리자
 
 컴퓨터의 운영체제에는 사용자(User)와 관리자(Administer)가 있다.
@@ -201,7 +201,9 @@ CLI에서 .는 현재폴더 ..는 현재보다 앞에있는 폴더를 가르킨�
 
 cp -rf you_are_the_best ../
 
-cp -rf you_are_the_best ~/helloWorld/ ← 이렇게도 된다는것 알고있자!
+cp -rf you_are_the_best ~/helloWorld/
+
+하나만 썻었지만, 위처럼 물결표를 사용해서도 접근할 수 있다는걸 알고있자!
 
 <br/>
 
@@ -211,9 +213,7 @@ cp -rf you_are_the_best ~/helloWorld/ ← 이렇게도 된다는것 알고있자
 
 화면에 표시된 ^X와 같은 내용은 Ctrl + X 키 조합을 의미한다.
 
-어차피 개발자라면 Vim이나 Emacs 같은 Cli 에디터를 하나쯤은 다뤄야하므로 시간이 난다면
-
-Vim을 배워보도록해야겠다.
+어차피 개발자라면 Vim이나 Emacs 같은 CLI 에디터를 하나쯤은 다뤄야하므로 시간이 난다면 Vim을 배워보도록해야겠다.
 
 [완전 초보를 위한 Vim](https://nolboo.kim/blog/2016/11/15/vim-for-beginner/)
 
@@ -227,22 +227,23 @@ Vim을 배워보도록해야겠다.
 
 - 패키지의 구성
     1. 프로그램 파일
-    2. **프로그램에 대한 정보를 담은 파일**
+    2. 프로그램에 대한 정보를 담은 파일
     3. 프로그램 설치파일
     4. 프로그램 설치 설명서
     
-
 패키지 안에는 하나의 프로그램이 정상적으로 설치되고 동작하기 위한 모든 파일이 압축되어 있다.
 
-**프로그램에 대한 정보를 담은 파일**은 프로그램 A를 설치하기위해 프로그램 B가 필요하다는 정보도 함께 담겨있다.
+프로그램에 대한 정보를 담은 파일은 프로그램 A를 설치하기위해 프로그램 B가 필요하다는 정보도 함께 담겨있다.
 
 이때, 패키지를 이용해 프로그램을 설치하면 패키지에 포함된 정보를 이용해 프로그램 B를 먼저 설치하고 나서 프로그램 A를 설치한다.
+
+<br/>
 
 ### 패키지 매니저 (apt ==  Advanced Package Tool)
 
 프로그램을 독립적으로 설치하면, 각각의 프로그램이 저장된 위치를 모두 알아야한다.
 
-프로그램이 많아지면, 업데이트를 하는일이 현실적으로 불가능함으로, 패키지 매니저가 이를 관리해준다.
+프로그램이 많아지면, 업데이트를 하는일이 현실적으로 불가능함으로, 패키지 매니저가 이를 관리해 준다.
 
 패키지 매니저는 모든 패키지의 저장소 위치를 저장하고 있다.
 
@@ -254,9 +255,8 @@ Vim을 배워보도록해야겠다.
 
 ![Untitled 23](https://user-images.githubusercontent.com/70310271/166244194-d15c3286-0192-4b2c-a347-2ffa7e8da7ce.png)
 
-Action Items
 
-1. wget 다운로드 이후 사용해보기
+- wget 으로 URL을 통해 파일 다운로드 해보기
 
 ![Untitled 24](https://user-images.githubusercontent.com/70310271/166244227-8440dcab-8cd6-4f22-bf74-2e60239a48fb.png)
 
@@ -264,14 +264,14 @@ Action Items
 
 ![Untitled 26](https://user-images.githubusercontent.com/70310271/166244256-def03bce-210a-44ca-b547-1bb87aaea341.png)
 
-wget은 URL을 통해 파일을 다운로드하는 프로그램이다.
 
-1. neofetch 다운로드 이후 사용해보기
+- neofetch으로 컴퓨터 정보 알아보기
 
 ![Untitled 27](https://user-images.githubusercontent.com/70310271/166244282-9be3b442-4639-4ed8-a210-5b9504eb3485.png)
 
 ![Untitled 28](https://user-images.githubusercontent.com/70310271/166244307-3eb6f199-ca72-4894-8d7e-5fa9067362f7.png)
 
+<br/>
 
 ### 사용권한
 
@@ -295,6 +295,8 @@ Group : 여러 User로 이루어진 집합
 Other : 파일을 만들지 않은 다른 모든 User를 의미한다.
 
 Other에게 권한을 설정한다는것은 전역설정을 한다는것을 의미한다.
+
+<br/>
 
 ### chmod (change mode)
 
@@ -346,6 +348,8 @@ u = r--(4+0+0) , g = -w-(0+2+0) , o = --x(0+0+1)
 | 1 | 0(-) + 0(-) + 1(x) | —x | execute only |
 | 0 | 0(-) + 0(-) + 0(-) | —- | none |
 
+<br/>
+
 ### 환경변수
 
 환경변수란?
@@ -371,6 +375,8 @@ u = r--(4+0+0) , g = -w-(0+2+0) , o = --x(0+0+1)
 
 음.. 다른사람이 서버를 활용하게 할 수 있게끔 만들어줄 수 있는 용도로 사용할 수 도 있겠구나!
 
+<br/>
+
 ### Linux에서 지역 환경 변수 영구 적용
 
 ![Untitled 34](https://user-images.githubusercontent.com/70310271/166244446-e2452f55-54ad-48bf-b2da-de286b0288fc.png)
@@ -380,6 +386,8 @@ u = r--(4+0+0) , g = -w-(0+2+0) , o = --x(0+0+1)
 ![Untitled 34](https://user-images.githubusercontent.com/70310271/166244460-6c7e81fd-ec2a-4fac-ac2c-3bfd7f578562.png)
 
 Prompt가 토끼 이미지로 수정된것을 볼 수 있다.
+
+<br/>
 
 ### Linux에서 전역 환경 변수 영구 적용
 
@@ -394,6 +402,8 @@ root/etc/profile 는 읽기전용이므로 권한을 전체로 바꿔준다.
 nano로 profile을 연 뒤, Alt + /로 맨 마지막 줄로가서 위의 전역 환경 변수를 설정해주면 끝이다.
 
 ![제목_없음](https://user-images.githubusercontent.com/70310271/166244554-5a96fdaa-838f-44e5-9b62-227e5641e8ff.png)
+
+<br/>
 
 ### export 키워드
 
