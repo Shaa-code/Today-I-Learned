@@ -127,6 +127,8 @@ username과 my-email에 내 정보를 얻으면된다.
 
 ## Git Workflow
 
+</br>
+
 ![Untitled 7](https://user-images.githubusercontent.com/70310271/166476298-33f70b5c-e3ac-4ae1-816a-8080ccab0445.png)
 
 ![Untitled 8](https://user-images.githubusercontent.com/70310271/166476320-3b8aaa2b-a415-424c-b055-c433180b8d55.png)
@@ -143,7 +145,7 @@ anything 폴더에 git을 init하고 난후, 파일 hi.txt를 생성한다.
 
 </br>
 
-### Staging Area란?
+Staging Area란?
 
 내 컴퓨터 (Work Space)에서 git의 관리를 받는 상태로 올려주는 영역.
 
