@@ -166,7 +166,7 @@ Repository는 넣을곳으로 미리 만들어두어야한다.
 
 Test라는 예제를 하나 만들어 두었다.
 
-![Untitled 17](https://user-images.githubusercontent.com/70310271/166477039-28bd32d1-05ef-4f10-acb6-6a686ff00e72.png)
+![Untitled 18](https://user-images.githubusercontent.com/70310271/166478219-8013512d-af37-425f-8aac-53e4da42f9ea.png)
 
 실제로 잘 보내지는것을 확인할 수 있다.
 
