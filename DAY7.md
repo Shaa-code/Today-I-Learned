@@ -4,6 +4,8 @@
 
 에디터를 종료한후 이전 코드로 돌아갈수 없을때, 이전에 작성으로 돌아가기위한 시스템.
 
+</br>
+
 ### 구체적으로 왜 필요한거지?
 
 매번 귀찮게 내가 바꾸고 날짜 체크해 주고 관리하는것을 자동으로 관리해줘서 편하기 때문이다.
@@ -15,6 +17,8 @@
 어떤 변경 사항이 발생했는지 알아보기도 쉽다.
 
 협업하기도 좋고, 백업하기도 좋다.
+
+</br>
 
 ### Git이란?
 
@@ -28,6 +32,8 @@ Distributed Version Control System
 
 ### Github란?
 
+</br>
+
 Git Repository를 관리 할 수 있는 클라우드 기반 서비스
 
 Git과는 별개로, 그냥 클라우드로 Repository를 옮길수 있게함.
@@ -35,6 +41,8 @@ Git과는 별개로, 그냥 클라우드로 Repository를 옮길수 있게함.
 ![Untitled 1](https://user-images.githubusercontent.com/70310271/166475888-c4133903-de63-44ae-8e1e-5996aaf66c3e.png)
 
 ### Git Repository란?
+
+</br>
 
 ![Untitled 2](https://user-images.githubusercontent.com/70310271/166475947-64f4c116-7ef5-4735-bc77-5287e95676f6.png)
 
@@ -48,6 +56,7 @@ GIt으로 관리되는 폴더
     
     내 컴퓨터의 저장소 (Git 계정을 의미하는게 아니다.)
     
+</br>
 
 ### Fork란?
 
@@ -55,11 +64,15 @@ Remote Repository 상에서 다른 사람의 Repository에 있는 내용을 나�
 
 ![Untitled 3](https://user-images.githubusercontent.com/70310271/166475971-f82cb897-ed16-4d94-b001-5db96d1d9957.png)
 
+</br>
+
 ### Clone이란?
 
 나의 Remote Repository에서 나의 컴퓨터 즉, Local Repository로 가져오는 작업.
 
 ![Untitled 4](https://user-images.githubusercontent.com/70310271/166475988-afb4a648-5551-43f0-b6b1-0067a86e633a.png)
+
+</br>
 
 ### Push란?
 
@@ -68,6 +81,8 @@ Local Repository에서 Remote Repository로 올려주는 작업.
 구체적으로는 Local Repository에 Commit을 해둔것을 Remote Repository에 올리는것이다.
 
 ![Untitled 5](https://user-images.githubusercontent.com/70310271/166476003-f14a500f-676b-4359-b75e-168de6b0ae2d.png)
+
+</br>
 
 ### Pull이란?
 
@@ -79,13 +94,15 @@ Remote Repository에 변경사항이 있을때 Local Repository로 가져오는 
 
 1. Clone과 Pull의 차이점은 뭐지?
 
-Pull은 Clone과 다르게 다른사람의 Repo에서도 요청할 수 있다는점 이다.
-Pull은 
+Pull은 Clone과 다르게 remote를 자동으로 연결시켜준다는 점이다.
 
-1. Pull은 어느시점에 일어나는거지?
+2. Pull은 어느시점에 일어나는거지?
 
  상대방이 수정을 해서 바로 Pull을 사용해 가지고오면 수정한 부분들 또한 덮어 씌어지는것아닐까?
- -> Branch 개념이 발생된 이유로 이어짐
+ 
+ 덮어 씌어진다. 하지만, Branch라는 개념을 활용해서 최종적으로 필요한 부분을 수정하고 선택할 수 있다.
+
+</br>
 
 ### Git 환경설정
 
@@ -98,11 +115,15 @@ git config --global user.email "my-email"
 
 username과 my-email에 내 정보를 얻으면된다.
 
+</br>
+
 ### -global 옵션을 설정하는 이유?
 
 `git 설정을 계속 반복하지 않고, 처음에 한번만 하기 위해서 사용한다.`
 
 나중에 이메일, 이름을 변경하고 싶다면 다시 명령어를 바꾸면된다.
+
+</br>
 
 ## Git Workflow
 
@@ -119,6 +140,8 @@ anything 폴더에 git을 init하고 난후, 파일 hi.txt를 생성한다.
 ![Untitled 10](https://user-images.githubusercontent.com/70310271/166476356-b80a5512-9615-4c12-aff6-f9887dfb2890.png)
 
 이후 add 명령어를 이용해서 Staging Area에 올려준다.
+
+</br>
 
 ### Staging Area란?
 
@@ -176,9 +199,13 @@ Test라는 예제를 하나 만들어 두었다.
 
 보다시피 Remote Repository에 잘 올라간것이 확인된다.
 
+</br>
+
 ### Pull Request란?
 
 Remote Repository에 Push 해놓은 변경사항에 대해서 함께 작업하는 다른 사람들에게 알리는것
+
+</br>
 
 ### 스스로 질문하고 답해보자.
 
@@ -224,6 +251,7 @@ modifed 상태란? Staged File이 Commit되기이전에 이전의 파일과는 �
 
 staged 상태란? 깃의 관리를 받고있는 상태
 
+</br>
 
 ### git push,pull 인자의 순서
 
@@ -239,7 +267,7 @@ git pull pair main → pair에게 main을 pull한다.
 
 에러가 나면 바뀌지 않는다.
 
- 
+</br>
  
 ### 헷갈리고 있다.
 
