@@ -24,7 +24,7 @@ Distributed Version Control System
 
 딱, 코드 기록관리와 과거 어떻게 썻는지 추적하는 시스템까지만 Git이라고함.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3c2ce2f1-98c5-49d3-9ec5-60e06444792a/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/166475857-7f131056-5925-4b89-8246-9f1460018ddf.png)
 
 ### Github란?
 
@@ -32,11 +32,11 @@ Git Repository를 관리 할 수 있는 클라우드 기반 서비스
 
 Git과는 별개로, 그냥 클라우드로 Repository를 옮길수 있게함.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1a9173b0-986e-42a9-a1ae-64debc6da616/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/166475888-c4133903-de63-44ae-8e1e-5996aaf66c3e.png)
 
 ### Git Repository란?
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7833fac4-d9b5-4cab-aeec-a78d44e7bcb2/Untitled.png)
+![Untitled 2](https://user-images.githubusercontent.com/70310271/166475947-64f4c116-7ef5-4735-bc77-5287e95676f6.png)
 
 GIt으로 관리되는 폴더
 
@@ -53,13 +53,13 @@ GIt으로 관리되는 폴더
 
 Remote Repository 상에서 다른 사람의 Repository에 있는 내용을 나의 Repository로 가져오는 작업
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b644eb84-2383-46d2-a0e3-f52d7add5765/Untitled.png)
+![Untitled 3](https://user-images.githubusercontent.com/70310271/166475971-f82cb897-ed16-4d94-b001-5db96d1d9957.png)
 
 ### Clone이란?
 
 나의 Remote Repository에서 나의 컴퓨터 즉, Local Repository로 가져오는 작업.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e97d3311-2047-489e-b675-3dc4b1a36b47/Untitled.png)
+![Untitled 4](https://user-images.githubusercontent.com/70310271/166475988-afb4a648-5551-43f0-b6b1-0067a86e633a.png)
 
 ### Push란?
 
@@ -67,23 +67,25 @@ Local Repository에서 Remote Repository로 올려주는 작업.
 
 구체적으로는 Local Repository에 Commit을 해둔것을 Remote Repository에 올리는것이다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/217f6763-d0b7-45d2-8331-8762b11d3d6f/Untitled.png)
+![Untitled 5](https://user-images.githubusercontent.com/70310271/166476003-f14a500f-676b-4359-b75e-168de6b0ae2d.png)
 
 ### Pull이란?
 
 Remote Repository에 변경사항이 있을때 Local Repository로 가져오는 작업.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/68cd4b0b-3c16-452d-b898-1ade105b6b46/Untitled.png)
+![Untitled 6](https://user-images.githubusercontent.com/70310271/166476035-7ceffa89-6359-4796-9db4-04df9c6a7897.png)
 
 의문점.
 
 1. Clone과 Pull의 차이점은 뭐지?
 
-Pull은 Clone과 다르게 다른사람의 Repo에서도 요청할 수 있다는점이다.
+Pull은 Clone과 다르게 다른사람의 Repo에서도 요청할 수 있다는점 이다.
+Pull은 
 
 1. Pull은 어느시점에 일어나는거지?
 
  상대방이 수정을 해서 바로 Pull을 사용해 가지고오면 수정한 부분들 또한 덮어 씌어지는것아닐까?
+ -> Branch 개념이 발생된 이유로 이어짐
 
 ### Git 환경설정
 
@@ -104,17 +106,17 @@ username과 my-email에 내 정보를 얻으면된다.
 
 ## Git Workflow
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b4aa9976-9e7c-402e-8ad9-d3601576bd6d/Untitled.png)
+![Untitled 7](https://user-images.githubusercontent.com/70310271/166476298-33f70b5c-e3ac-4ae1-816a-8080ccab0445.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3c31385f-9ce8-45bb-9a98-4c749ef90183/Untitled.png)
+![Untitled 8](https://user-images.githubusercontent.com/70310271/166476320-3b8aaa2b-a415-424c-b055-c433180b8d55.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7dfce41e-c657-4608-bfd9-b110d6b84ca7/Untitled.png)
+![Untitled 9](https://user-images.githubusercontent.com/70310271/166476331-5969f32a-4531-4912-a264-4a74811500d3.png)
 
 anything 폴더에 git을 init하고 난후, 파일 hi.txt를 생성한다.
 
 `이때 hi.txt는 “Untracked files” 이라고 정의되어 있다.`
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/49e69d89-92e5-4cd3-8286-2160e944470d/Untitled.png)
+![Untitled 10](https://user-images.githubusercontent.com/70310271/166476356-b80a5512-9615-4c12-aff6-f9887dfb2890.png)
 
 이후 add 명령어를 이용해서 Staging Area에 올려준다.
 
@@ -132,45 +134,45 @@ Untracked File == Unstaged File : 그냥 컴퓨터에 나돌아다니는 파일
 
 Staged File == git add로 git관리에 들어간 파일
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/340647ac-e555-4d1f-baa8-25824893d2f0/Untitled.png)
+![Untitled 11](https://user-images.githubusercontent.com/70310271/166476392-cbfd1adf-3897-487b-b367-de305237e039.png)
 
 hi.txt파일의 내용을 “안녕하세요”로 수정한후 다시 git status로 상태를 확인한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c2392bd1-ba28-48b1-a939-62816d116a25/Untitled.png)
+![Untitled 12](https://user-images.githubusercontent.com/70310271/166476414-a90d8516-7545-4da9-8014-c5ad26c6b56e.png)
 
-수정된 파일이기 때문에 “modfied” 라고 표시 되어있다. 
+수정된 파일이기 때문에 “modfied” 라고 표시 되어있다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b7727e15-66ba-41a3-9650-526fb7f38c6d/Untitled.png)
+![Untitled 13](https://user-images.githubusercontent.com/70310271/166476534-e97ea856-eac7-4c36-b446-d14ca3c30ddc.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/61397daf-a310-4a7c-838d-98574247bfd7/Untitled.png)
+![Untitled 14](https://user-images.githubusercontent.com/70310271/166476570-c34a7f7b-7f77-4460-8e10-eafebbd04d2d.png)
 
 실제로 해보니 이전상태 (commit하기 전의 상태로 돌아갔다.)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1b8866ae-38c5-4227-968a-968f10a1253c/Untitled.png)
+![Untitled 15](https://user-images.githubusercontent.com/70310271/166476721-74dfa661-e27f-4443-a416-5c096eca4585.png)
 
 다시 git status를 해보니, 커밋할것이 없다고 나온다.
 
 다시 “안녕하세요”로 파일을 수정하고 저장해주자.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/340647ac-e555-4d1f-baa8-25824893d2f0/Untitled.png)
+![Untitled 11](https://user-images.githubusercontent.com/70310271/166476978-cdb18aad-3834-4a2e-b024-c5fd76199a57.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7b3aab42-0cc0-4eda-aa97-0f25e72ca93f/Untitled.png)
+![Untitled 16](https://user-images.githubusercontent.com/70310271/166476998-19cb4380-3df2-4f78-8481-4e37b78a5d42.png)
 
 Github에 push하기 위해서 git remote add를 사용해 올릴 위치를 지정해주어야한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/775de638-96a3-4ecb-ac9e-448290f9016a/Untitled.png)
+![Untitled 17](https://user-images.githubusercontent.com/70310271/166476828-a18f5c3b-9a56-44a5-8b14-6755d8c4c401.png)
 
 Repository는 넣을곳으로 미리 만들어두어야한다.
 
 Test라는 예제를 하나 만들어 두었다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5d53777a-86f3-4756-908a-a81b709447b7/Untitled.png)
+![Untitled 17](https://user-images.githubusercontent.com/70310271/166477039-28bd32d1-05ef-4f10-acb6-6a686ff00e72.png)
 
 실제로 잘 보내지는것을 확인할 수 있다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ff2914bf-7a50-46f9-9cc0-cce2394d7e66/Untitled.png)
+![Untitled 19](https://user-images.githubusercontent.com/70310271/166477228-70cec294-1b57-4834-a8a4-45194aacf616.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e110c6eb-9a44-4d0b-a323-0075901f3f39/Untitled.png)
+![Untitled 20](https://user-images.githubusercontent.com/70310271/166477265-e606dd2b-4cc6-4308-b786-ada8389661ad.png)
 
 보다시피 Remote Repository에 잘 올라간것이 확인된다.
 
@@ -222,6 +224,7 @@ modifed 상태란? Staged File이 Commit되기이전에 이전의 파일과는 �
 
 staged 상태란? 깃의 관리를 받고있는 상태
 
+
 ### git push,pull 인자의 순서
 
 영어의 4형식으로 생각하자.
@@ -236,17 +239,15 @@ git pull pair main → pair에게 main을 pull한다.
 
 에러가 나면 바뀌지 않는다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f1a1cbed-fdac-4d4d-810b-ba1105175c3e/Untitled.png)
-
- 오타발견시 , 불필요한 커밋하지 않고 이전으로 돌리기
-
+ 
+ 
 ### 헷갈리고 있다.
 
 ### 왜 인지 반드시 이유를 적고 넘어 갈것.
 
 git pull pair origin X→ git pull pair main O
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6979f8e7-cdb8-427e-b8fc-841a99c64101/Untitled.png)
+![Untitled 22](https://user-images.githubusercontent.com/70310271/166477696-34535be0-9a1f-43cc-b31e-d7f6d0ba5a3a.png)
 
 git pull 인자의 순서에서 헷갈렸고, 또한 origin과 main의 종속관계에 대한 이해가 부족했기 때문이다.
 
@@ -254,6 +255,10 @@ Remote Repo의 origin을 사용하는게 아니라, 그 속의 Branch인 main을
 
 git push pair main X → git push origin main O
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3ee4df9f-ca5a-4740-b4e8-eb0bc29ea355/Untitled.png)
+![Untitled 23](https://user-images.githubusercontent.com/70310271/166477718-675c1847-3093-48a2-9695-99d353be2f30.png)
 
 pair에게 올려주는 상황이 아닌 origin에게 올려주는 상황이 되어야하므로 pair가 아닌 origin이 되어야한다.
+
+![Untitled 21](https://user-images.githubusercontent.com/70310271/166478042-7701aac6-df3e-4f43-a4a7-f079edb934fa.png)
+
+충돌이 일어나면 파일은 그대로 남는다.
