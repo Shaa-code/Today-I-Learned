@@ -131,6 +131,8 @@ username과 my-email에 내 정보를 얻으면된다.
 
 ![Untitled 7](https://user-images.githubusercontent.com/70310271/166476298-33f70b5c-e3ac-4ae1-816a-8080ccab0445.png)
 
+workflow를 그대로 따라가며 명령어를 익혀본다.
+
 ![Untitled 8](https://user-images.githubusercontent.com/70310271/166476320-3b8aaa2b-a415-424c-b055-c433180b8d55.png)
 
 ![Untitled 9](https://user-images.githubusercontent.com/70310271/166476331-5969f32a-4531-4912-a264-4a74811500d3.png)
