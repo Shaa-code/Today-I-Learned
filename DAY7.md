@@ -290,7 +290,3 @@ Remote Repo의 origin을 사용하는게 아니라, 그 속의 Branch인 main을
 ![Untitled 23](https://user-images.githubusercontent.com/70310271/166477718-675c1847-3093-48a2-9695-99d353be2f30.png)
 
 pair에게 올려주는 상황이 아닌 origin에게 올려주는 상황이 되어야하므로 pair가 아닌 origin이 되어야한다.
-
-![Untitled 21](https://user-images.githubusercontent.com/70310271/166478042-7701aac6-df3e-4f43-a4a7-f079edb934fa.png)
-
-충돌이 일어나면 파일은 그대로 남는다.
