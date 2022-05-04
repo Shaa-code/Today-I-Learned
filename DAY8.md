@@ -74,13 +74,15 @@ public class Solution {
 
 첫번째 방법 : 그냥 (char)캐스팅 연산자를 사용해서 바꾼다.
 
-두번째 방법 : UNICODE 2byte ‘0’을 더해준다. 
+두번째 방법 : ‘0’을 더해준다. (2byte UNICODE)
 
 String str1 = str1.toUpperCase(); 이렇게 적으면 당연히 안된다.
 
 String은 선언이기 때문에
 
 str1 = str1.toUpperCase()로 해주면 썻던것을 재 활용 할 수 있다.
+
+### Math.floor는 double을 반환한다. 
 
 ```java
 public class Solution { 
@@ -93,9 +95,9 @@ public class Solution {
 }
 ```
 
-`Math.floor는 double을 반환한다. 다시 int로 바꿔줘야한다는것 반드시 알고있자!`
+다시 int로 바꿔줘야한다는것 반드시 알고있자!
 
-### if,else문과 3항 연산자를 변환해서 쓸 줄 몰랐다.
+### if,else문과 3항 연산자를 변환해서 사용하자.
 
 ```java
 if(str1.equals(str2))
@@ -135,6 +137,9 @@ public class Solution {
 ```
 
 삼항 연산자를 써서 풀어내면 이렇게 된다.
+
+
+### String.format()을 쓰자!
 
 ```java
 public class Solution { 
