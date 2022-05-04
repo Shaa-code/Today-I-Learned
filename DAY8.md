@@ -57,9 +57,9 @@ public class  Solution {
 
 말그대로 문자 1을 숫자 100으로 바꿔보아라.
 
-1. 첫번째 방법, Character.GetNumericValue(’1’)
-2. 두번째 방법, Integer.parseInt(String.valueOf(’1’))
-3. 세번째 방법, ‘1’ - ‘0’을해서 숫자를 맞춰주는 방법;
+첫번째 방법 : Character.GetNumericValue(’1’)
+두번째 방법 : Integer.parseInt(String.valueOf(’1’))
+세번째 방법 : ‘1’ - ‘0’을해서 숫자를 맞춰주는 방법;
 
 valueOf는 메소드 안의 해당객체를 “String”으로 변환하는 객체이다.
 
@@ -82,8 +82,7 @@ public class Solution {
 ```
 
 첫번째 방법 : 그냥 (char)캐스팅 연산자를 사용해서 바꾼다.
-
-두번째 방법 : ‘0’을 더해준다. (2byte UNICODE)
+두번째 방법 : ‘0’을 더해준다. (2byte UNICODE) //'0'은 int로 48이다.
 
 String str1 = str1.toUpperCase(); 이렇게 적으면 당연히 안된다.
 
