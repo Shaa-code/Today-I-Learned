@@ -15,3 +15,5 @@
 [DAY6](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY6.md) - Linux
 
 [DAY7](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY7.md) - Git
+
+[DAY8](https://github.com/Shaa-code/Today-I-Learned/blob/main/DAY8.md) - Java 기초 (1)
