@@ -27,17 +27,17 @@ double 형이기 떄문에 3.14f라고 적으면 안된다.
 
 기본 자료형이 double이기 떄문에 그냥 3.14로 적던지 3.14d를 적던지 둘중에 하나만 해야된다.
 
-### Java char는 유니코드 2byte를 사용한다.
-
 <br/>
+
+### Java char는 유니코드 2byte를 사용한다.
 
 ‘0’ → 48 암기하자.
 
 ‘9’ → 57 암기하자.
 
-### 어떻게 char를 int로 바꾸지?
-
 <br/>
+
+### 어떻게 char를 int로 바꾸지?
 
 ```java
 public class  Solution { 
