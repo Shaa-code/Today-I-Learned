@@ -277,7 +277,7 @@ git pull pair main → pair에게 main을 pull한다.
 
 ### 반드시 이유를 적고 넘어 갈것.
 
-명령어 : git pull pair origin X→ git pull pair main O
+1. 명령어 : git pull pair origin X→ git pull pair main O
 
 ![Untitled 22](https://user-images.githubusercontent.com/70310271/166477696-34535be0-9a1f-43cc-b31e-d7f6d0ba5a3a.png)
 
@@ -285,7 +285,7 @@ git pull 인자의 순서에서 헷갈렸고, 또한 origin과 main의 종속관
 
 Remote Repo의 origin을 사용하는게 아니라, 그 속의 Branch인 main을 사용하고 있다면, main이 되어야한다.
 
-명령어 : git push pair main X → git push origin main O
+2. 명령어 : git push pair main X → git push origin main O
 
 ![Untitled 23](https://user-images.githubusercontent.com/70310271/166477718-675c1847-3093-48a2-9695-99d353be2f30.png)
 
