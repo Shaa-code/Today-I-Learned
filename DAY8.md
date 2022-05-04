@@ -1,8 +1,13 @@
 # DAY8
+<br/>
 
 개념적인 내용들은 원래 작성했던, Java의 정석 문서에 추가해서 복습했다.
 
+<br/>
+
 ## 코플릿을 풀면서 실수 했던 목록들에 대해서 적어둔다.
+
+<br/>
 
 - 파이썬을 쓰던 습관이 있어서 자료형 선언 안해줌.
 
@@ -26,11 +31,15 @@ double 형이기 떄문에 3.14f라고 적으면 안된다.
 
 ### Java char는 유니코드 2byte를 사용한다.
 
+<br/>
+
 ‘0’ → 48 암기하자.
 
 ‘9’ → 57 암기하자.
 
-### How to char to int
+### 어떻게 char를 int로 바꾸지?
+
+<br/>
 
 ```java
 public class  Solution { 
@@ -58,7 +67,9 @@ valueOf는 메소드 안의 해당객체를 “String”으로 변환하는 객�
 
 String객체로 형변환하는것이다.
 
-### How to int to char
+<br/>
+
+### 어떻게 int를 char로 바꾸지?
 
 ```java
 public class Solution { 
@@ -82,7 +93,9 @@ String은 선언이기 때문에
 
 str1 = str1.toUpperCase()로 해주면 썻던것을 재 활용 할 수 있다.
 
-### Math.floor는 double을 반환한다. 
+<br/>
+
+### Math.floor는 double을 반환한다.
 
 ```java
 public class Solution { 
@@ -96,6 +109,8 @@ public class Solution {
 ```
 
 다시 int로 바꿔줘야한다는것 반드시 알고있자!
+
+<br/>
 
 ### if,else문과 3항 연산자를 변환해서 사용하자.
 
@@ -138,6 +153,7 @@ public class Solution {
 
 삼항 연산자를 써서 풀어내면 이렇게 된다.
 
+<br/>
 
 ### String.format()을 쓰자!
 
