@@ -4,11 +4,11 @@
 
 ## 코플릿을 풀면서 실수 했던 목록들에 대해서 적어둔다.
 
-1. 자료형 선언 안해줌.
+- 파이썬을 쓰던 습관이 있어서 자료형 선언 안해줌.
 
-int hi = 5 인데 hi = 5; 라고 적고 시작해버림.
+    int hi = 5 인데 hi = 5; 라고 적고 시작해버림.
 
-1. 선언되어 있는 변수 pi에 실수 3.14를 할당하세요.
+- 선언되어 있는 변수 pi에 실수 3.14를 할당하세요.
 
 ```java
 public class Solution{
@@ -63,13 +63,10 @@ String객체로 형변환하는것이다.
 
 ```java
 public class Solution { 
-	public char convertToChar(int num) {
-    
-    char result = (char)(num);
-    // TODO: 여기에 코드를 작성합니다.
-    //하단의 코드는 수정하지 말아야 합니다.
-    return result;
-  }
+    public char convertToChar(int num) {
+        char result = (char)(num);
+        return result;
+    }
 }
 
 //1. char result = (char)(num + '0');
@@ -88,12 +85,12 @@ str1 = str1.toUpperCase()로 해주면 썻던것을 재 활용 할 수 있다.
 
 ```java
 public class Solution { 
-	public int computeAverageLengthOfWords2(String word1, String word2) {
-    // TODO;
-    int len1 = word1.length(), len2 = word2.length();
-    int avg = (len1 + len2) / 2;
-    return (int)Math.floor(avg);
-	} 
+    public int computeAverageLengthOfWords2(String word1, String word2) {
+        int len1 = word1.length(), len2 = word2.length();
+        int avg = (len1 + len2) / 2;
+	
+        return (int)Math.floor(avg);
+    } 
 }
 ```
 
@@ -111,7 +108,7 @@ if(str1.equals(str2))
 
 ->
 
-// 삼항연산자가 떠오르긴 하는데 어떻게 쓰는지 모름
+// 삼항연산자가 떠오르긴 하는데 연습이 안돼있었다.
 
 if(str1.equalsIgnoreCase(str2)) ? return true : return false;
 // 삼항 연산자는 if문이 필요없다 !
@@ -132,8 +129,7 @@ if/else문 : ‘문(statement)’으로서 if자체로는 아무런 `값을 만�
 
 ```java
 public class Solution { 
-	public boolean compareOnlyAlphabet(String str1, String str2) {
-    // TODO:
+    public boolean compareOnlyAlphabet(String str1, String str2) {
     return str1.equalsIgnoreCase(str2) ? true : false;
   }
 }
@@ -143,8 +139,7 @@ public class Solution {
 
 ```java
 public class Solution { 
-	public String showTime(int hour, int min, int sec) {
-    // TODO:
+    public String showTime(int hour, int min, int sec) {
     return String.format("현재 시각은 %d시 %d분 %d초 입니다.",hour,min,sec);
 	}
 }
