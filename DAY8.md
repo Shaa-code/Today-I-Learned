@@ -8,7 +8,6 @@
 
     int hi = 5 인데 hi = 5; 라고 적고 시작해버림.
 
-- 선언되어 있는 변수 pi에 실수 3.14를 할당하세요.
 
 ```java
 public class Solution{
