@@ -44,7 +44,7 @@ public class Solution {
 
 그냥 return해주면 된다.
 
-### 나누지도 어떤 값과 비교하지도 않고, 값이 나온다고 착각함.
+### 어떤 값과 비교하지도 않고, 값이 나온다고 착각함.
 
 ```java
 if(num % 3 && num % 5) return "FizzBuzz";
