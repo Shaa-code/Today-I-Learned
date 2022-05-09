@@ -74,8 +74,7 @@ public class Solution {
 	} 
 }
 ```
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/030fe597-179f-4cc8-b30d-57e77a00e3a3/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/167455212-2f6c3a19-b7c8-4030-8836-092c5ec98cb5.png)
 
 Arrays.copyOf(arr,5)는 처음부터 2까지를 복사한다.
 
