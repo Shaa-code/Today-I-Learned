@@ -154,4 +154,73 @@ replace(’기존문자’,’바꿀문자’)
 
 간단하다 정규식이냐 아니냐의 차이이다.
 
-특수문자가 들어가면,
+
+### 계산기 만들기
+
+package com.codestates.seb.calculator;
+import java.util.Scanner;
+
+
+public class Calculator {
+  public static void main(String[] args) {
+    System.out.println("===Java Calculator===");
+    Scanner kb = new Scanner(System.in);
+
+    try{
+
+    System.out.println("첫번째 숫자를 입력해주세요 : ");
+    double firstNum = Double.parseDouble(kb.nextLine());
+
+    System.out.println("연산자를 입력해 주세요. (\"+\",\"-\",\"*\",\"/\") : ");
+    char operator = kb.nextLine().charAt(0);
+
+    System.out.println("두번째 숫자를 입력해 주세요. : ");
+    double secondNum = Double.parseDouble(kb.nextLine());
+
+
+    if (operator == '+') {
+      System.out.println(firstNum + " + " + secondNum + " = " + plus(firstNum, secondNum));
+    } else if (operator == '-') {
+      System.out.println(firstNum + " + " + secondNum + " = " + minus(firstNum, secondNum));
+    } else if (operator == '*') {
+      System.out.println(firstNum + " + " + secondNum + " = " + multiply(firstNum, secondNum));
+    } else if (operator == '/') {
+      System.out.println(firstNum + " + " + secondNum + " = " + divide(firstNum, secondNum));
+    } else {
+      System.out.println("유효한 연산자가 아닙니다.");
+    }
+
+  } catch(Exception e){
+      System.out.println("유효한 입력값이 아닙니다.");
+      e.printStackTrace();
+      break;
+    }
+}
+
+  public static double plus(double firstNum, double secondNum){
+    return firstNum + secondNum;
+  }
+
+  public static double minus(double firstNum, double secondNum){
+    return firstNum - secondNum;
+  }
+
+  public static double multiply(double firstNum, double secondNum){
+    return firstNum * secondNum;
+  }
+
+  public static double divide(double firstNum, double secondNum){
+    return firstNum / secondNum;
+  }
+}
+      /*
+          요구 사항에 따라 간단한 계산기를 만들어주세요.
+          1. 사용자의 입력으로 첫 번째 숫자, 연산자, 두 번째 숫자를 받아야 합니다.
+          2. 연산자의 종류는 +, -, *, / 입니다.
+          3. 소수점 연산을 수행할 수 있어야 합니다.
+          4. 연산 결과를 콘솔에 출력합니다.
+      */
+// TODO...
+
+
+
