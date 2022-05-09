@@ -49,8 +49,6 @@ public class Solution {
   }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/37f449df-14ce-4c18-ab6e-5f9eeabf3b9a/Untitled.png)
-
 1차원 가변배열은 선언이 안된다.
 
 그럼 어떻게 상황에 대처해야할까?
