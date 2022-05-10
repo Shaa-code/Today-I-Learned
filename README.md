@@ -22,10 +22,3 @@
 [DAY9](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY9.md) - Java 기초 (2)
 
 [DAY10](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY10.md) - Java 기초 (3)
-
-
-
-
-
-
-- 자바의 정석
