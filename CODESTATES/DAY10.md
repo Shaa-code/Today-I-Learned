@@ -30,7 +30,7 @@ package com.codestates.coplit;
 
 public class Solution { 
 	public int[] getEvenNumbers(int[] arr) {
-    int[] concatArray = new int[]{}; //가
+    int[] nArr = new int[]{}; //가
 
     if(arr.length == 0) {
       return new int[]{};
@@ -38,9 +38,9 @@ public class Solution {
 
     for(int i = 0; i < arr.length; i++) {
       if(arr[i] % 2 == 0) {
-        concatArray = Arrays.copyOf(concatArray, concatArray.length + 1);
+        nArr = Arrays.copyOf(nArr, nArr.length + 1);
          //한칸씩 계속 늘려줌.
-        concatArray[concatArray.length - 1] = arr[i];
+        nArr[nArr.length - 1] = arr[i];
          //한칸씩 늘린칸에 대입함.
       }
     }
