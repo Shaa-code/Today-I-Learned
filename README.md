@@ -27,7 +27,7 @@
 
 [DAY13,14,15](https://github.com/Shaa-code/Today-I-Learned/blob/main/%EC%9E%90%EB%B0%94/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D2.md) - 객체지향 프로그래밍 심화
 
-[DAY16](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY16.md) - 컬렉션 프레임워크
+[DAY16,17](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY16.md) - 컬렉션 프레임워크
 
 
 
