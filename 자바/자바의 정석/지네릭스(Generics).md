@@ -587,7 +587,7 @@ Collections.sort(appleBox.getList(),new FruitComp());
 Collections.sort(grapeBBox.getList(),new FruitComp());
 ```
 
-<? super T>가 습관적으로 따라 붙는다.
+\<? super T\>가 습관적으로 따라 붙는다.
 
 그럴때는 그냥 와일드 카드를 무시하고 Comparator<T>로 생각하자.
 
