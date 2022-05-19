@@ -1,0 +1,690 @@
+프로그램의 흐름(flow)을 바꾸는 역할을 하는 문장들을 ‘제어문(control statement)이라고 한다.
+
+제어문에는 조건문과 반복문이 있다.
+
+### 조건문 - if, switch
+
+자바에서 조건식의 결과는 반드시 true 또는 false이어야 한다.
+
+if (x==0) System.out.println(”x==0”);처럼 한줄은 괄호없이 쓸 수 있다.
+
+하지만 왠만하면 생략하지 않고 사용하는것이 바람직하자.
+
+지금은 ‘이런 실수를 누가할까?’라는 생각이 들겠지만, 
+
+나중에 새로운 문장들이 추가되면, 에러를 못 찾아서 한참을 고생하다가 이렇게 어처구니 없는곳에서 실수가 발견되곤 한다.
+
+### if-else if문
+
+```java
+if (조건식 1){
+} else if (조건식 2){
+} else if (조건식 3){
+} else {
+}
+```
+
+점수 매기기 예시.
+
+```java
+
+if (score >= 90) {
+		grade = 'A';
+} else if (score >= 80){
+		grade = 'B';
+} ...
+
+---
+
+if (score >= 90){
+		grade = 'A';
+} else if (80 <= score && < 90){
+		grade = 'B';
+} ...
+```
+
+굳이 (score ≥ 80) 이 아니라  (80 ≤ score && < 90)으로 사용하고 싶다면
+
+```java
+if (score >= 90) {
+		grade = 'A';
+} 
+
+if (80 <= score && score < 90){
+		grade = 'B'
+}
+```
+
+싹다 if문으로 떼어내서 사용하면 된다.
+
+### 중첩 if문
+
+```java
+if (score ≥ 90) {
+		grade = 'A';
+		if (score >= 98) {
+				opt = '+';
+		} else if (score < 94) {
+				opt = '-';
+} else if (score >= 80){
+		grade = 'B';
+		if (score >= 88) {
+				opt = '+';
+		} else if (score < 84) {
+				opt = '-';
+} else {
+	grade = 'C';
+}
+```
+
+그냥 이런식으로 쓰면된다.
+
+### switch문
+
+쓰는 이유 
+
+if문은 true, false 2가지, 밖에 없기 때문에 경우의 수가 많아질수록 else-if를 계속 추가해야한다.
+
+이때 조건식이 많아져서 복잡해지고, 여러개의 조건식을 계산해야하므로 처리시간도 많이 걸린다.
+
+단 하나의 조건식으로 많은 경우의수를 처리할 수 있고 표현도 간결하므로 알아보기 쉽다.
+
+그래서 처리할 경우의 수가 많은 경우에는 if문 보다 switch문으로 작성하는것이 좋다.
+
+다만, switch문은 제약조건이 있기 때문에, 경우의 수가 많아도 어쩔 수 없이 if문으로 작성해야 하는 경우가 있다.
+
+```java
+switch (조건문){
+		case 값1 :
+
+				break;
+
+		case 값2 :
+
+				break;
+
+		default :
+}
+```
+
+조건식의 결과와 일치하는 case문이 하나도 없을 경우에 default문으로 이동한다.
+
+default == else와 같은 역할을 한다고 생각하자.
+
+default의 위치는 어디라도 상관 없으나 보통 마지막에 놓기 떄문에 break문을 쓰지 않아도된다.
+
+switch 문에서 break문은 각 case문의 영역을 구분하는 역할을 하는데, 만일 break문을 생략하면 case문 사이의 구분이 없어지므로 다른 break문을 만나거나 switch문 블럭{}의 끝을 만날 때 까지는 나오는 모든 문장들을 수행한다.
+
+이러한 이유로 각 case문의 마지막에 break문을 빼먹는 실수를 하지 않도록 주의해야한다.
+
+```java
+switch (level) {
+		case 3 :
+				grantDelete();
+		case 2 :
+				grantWrite();
+		case 1 :
+				grantRead();
+}
+```
+
+이 방식 처럼 고의적으로 break문을 생략하는 경우도 있다.
+
+level에 3이 들어가면, 3등급 이므로 3개의 권한을 모두 가지는 방식.
+
+### switch문의 제약조건
+
+1. switch문의 조건식은 결과값이 반드시 정수
+
+1. case문의 값 역시 정수
+
+이 값과 일치하는 case문으로 이동하기 때문
+
+1. case문의 값은 반드시 상수이어야한다.
+
+변수,실수,문자열은 case문의 값으로 사용할수 없다.
+
+```java
+int num, result;
+final int ONE = 1;
+
+switch(result)
+{
+		case '1': -> 된다. 문자리터럴(정수 49와 동일)
+		case ONE: -> 된다. 정수 상수.
+		case "YES": -> 된다. (문자열 리터럴. JDK 1.7부터 허용)
+		case num: -> 안된다. 변수는 불가능
+		case 1.0: -> 안된다. 실수도 불가능
+}
+```
+
+```java
+ublic static void main(String[] args) {
+        System.out.print("현재 월을 입력하세요.>");
+
+        Scanner scanner = new Scanner(System.in);
+        int month = scanner.nextInt();
+        switch(month) {
+            case 3:
+            case 4:
+            case 5:
+                System.out.println("봄");
+                break;
+            case 6: case 7: case 8:
+                System.out.println("여름");
+                break;
+            case 9: case 10: case 11:
+                System.out.println("가을");
+            default:
+            case 12: case 1: case 2:
+                System.out.println("겨울");
+                }
+			  }
+```
+
+case문은 한줄에 하나씩 쓰던 한줄에 붙여서 쓰던 상관없다.
+
+case 6: case 7: case 8:을 쓰면 3번 출력 될것이라 생각했지만, 1번만 출력된다!
+
+case에 없는 값이 입력되면 default로 넘어가서 System.out.println(”겨울”)이 실행된다.
+
+```java
+if (month == 3 || month == 4 || month == 5){
+		System.out.println("봄");
+} else if (month == 6 || month == 7 || month == 8){
+		System.out.println("여름");
+} else if (month == 9 || month == 10 || month == 11){
+		System.out.println("가을");
+} else{
+		System.out.println("겨울");
+}
+```
+
+이렇게 switch문은 else if문으로 바꿀수도 있다.
+
+```java
+public static void main(String[] args) {
+        System.out.print("가위1,바위2,보3");
+
+        Scanner scanner = new Scanner(System.in);
+        int user = scanner.nextInt();
+        int com = (int) (Math.random() * 3) + 1;
+
+        System.out.println("당신은" +user + "입니다.");
+        System.out.println("컴은" + com + "입니다");
+
+        switch(user-com) {
+            case 2: case -1:
+                System.out.println("당신이 졌습니다.");
+                break;
+            case 1: case -2:
+                System.out.println("당신이 이겼습니다.");
+                break;
+            case 0:
+                System.out.println("당신이 이겼습니다.");
+                break;
+        }
+}
+```
+
+Math.random() → 0.0과 1.0사이의 범위에 속하는 하나의 double값을 반환한다.
+
+0.0은 범위에 포함되고 1.0은 포함되지 않는다. 
+
+1과 3사이의 정수를 구하고 싶다면,
+
+1. $0.0 \le math.random()<1.0$ 
+
+위의 부등식에 3을 곱해보자.
+
+1. $0.0 \le math.random()*3<3.0$ 
+
+우의 부등식에 정수형으로 변환해주자.
+
+1. $(int)(0.0) \le (int)(math.random()*3) <(int)(3.0)$ 
+
+위의 부등식에 1을 더해주자.
+
+1. $1 \le (int)(math.random()*3)+1 <4$ 
+
+### 왜 user-com인가?
+
+컴승 : 1-2 = -1 , 2-3=-1 , 3-1=2 → -1,2
+
+유저승 : 2-1 = 1 , 3-2 = 1 , 1-3 = -2 → 1,-2
+
+무승부 : 1-1, 2-2, 3-3 → 0
+
+테이블에서 나오는 3가지경우(컴승,유저승,무승부)를 모두 적은것일 뿐이다.
+
+// `기억 할 것은 나오는 경우의수를 보고 switch문으로 처리할 수 있는지를 한번 생각해 보는것이다.`
+
+```java
+public static void main(String[] args) {
+        System.out.print("당신의 주민번호를 입력하세요.");
+
+        Scanner scanner = new Scanner(System.in);
+        String regNo = scanner.nextLine();
+
+        char gender = regNo.charAt(7);
+
+        switch(gender) {
+            case '1': case '3':
+                System.out.println("당신은 남자입니다.");
+                break;
+            case '2': case '4':
+                System.out.println("당신은 여자입니다.");
+                break;
+            default:
+                System.out.println("유효하지 않은 주민등록번호");
+        }
+    }
+```
+
+regNo.charAt(index) 메서드는 가져온 index번째값을 저장하는 역할을 한다.
+
+switch문에서는 조건을 잘만들어서 case문의 갯수를 줄이는것이 중요하다.
+
+ex) score / 10 으로 정수를 받는방식.
+
+### switch문의 중첩
+
+```java
+public static void main(String[] args) {
+        System.out.print("당신의 주민번호를 입력하세요.");
+
+        Scanner scanner = new Scanner(System.in);
+        String regNo = scanner.nextLine();
+
+        char gender = regNo.charAt(7);
+
+        switch(gender) {
+            case '1': case '3':
+                switch(gender) {
+                    case '1':
+                        System.out.println("당신은 2000년 이전에 출생 (남자)");
+                        break;
+                    case '3':
+                        System.out.println("당신은 2000년 이후 출생 (남자)");
+                }
+            case '2' :
+                switch(gender){
+                    case '2':
+                        System.out.println("당신은 2000 이전에 출생 (여자)");
+                }
+                break;
+            default:
+                System.out.println("유효X");
+```
+
+switch문을 사용할때는 break문의 위치를 계속해서 생각해야한다.
+
+break를 만나지 않으면 default로 넘어간다.
+
+## 반복문 - for, while, do-while
+
+### for문
+
+for (초기화; 조건식; 증감식);
+
+### 초기화
+
+for (int i = 1, j=0; i ≤ 10; i++)
+
+2개 초기화 가능
+
+### 조건식
+
+for (int i = 1; i ≤ 10; i++)
+
+### 증감식
+
+for(int i = 1; i≤10 ; i+=2) → 2씩 증가
+
+for(int i = 1; i≤10 ; i*=3) → 3배씩 증가
+
+for(int i = 1, j = 10 ; i≤10 ; i++, j—)
+
+증감식도 2개를 동시에 쓸수있음.
+
+for (;;) {} → 모두 생략할 수도 있음. (초기화, 조건식, 증감식 모두 생략됨. 조건식은 참이됨.)
+
+2*i(짝수),홀수(2*i+1),제곱(i*i), 역순(11-i), 순환(i%3), 반복(i/3)
+
+i % 3 → 1,2,0,1,2,0,1,2,0,1,2,0
+
+i / 3 → 0,0,1,1,1,2,2,2,3,3,3
+
+### 중첩 for문
+
+별찍기
+
+```java
+public static void main(String[] args) {
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= i; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+}
+
+return :
+
+*
+**
+***
+****
+*****
+```
+
+j와 i의 종속관계를 잘 살펴보자.
+
+System.out.println(””+i+j+k);를 사용하면
+
+“”+i+j+k → “”+1+2+3 → “1”+2+3 → “12”+3 → “123”
+
+3개가 합쳐진 문자열이 반환된다.
+
+```java
+public static void main(String[] args) {
+        for (int i=1; i<=5 ; i++) {
+            for (int j =1; j<=5; j++){
+                if (i==j) {
+                    System.out.printf("[%d,%d]", i, j);
+                }else{
+                    System.out.printf("%5c",' ');
+                }
+            }
+            System.out.println();
+        }
+    }
+```
+
+System.out.printf("%5c",' ');에 집중하자.
+
+깔끔하게 보려면 글자수만큼 공백을 추가해주는 방식이다.
+
+### 향상된 for문(Enhanced for statement)
+
+JDK1.5부터 배열과 컬렉션에 저장된 요소에 접근할 때 기존보다 편리한 방법으로 처리할 수 있도록 for문의 새로운 문법이 추가되었다.
+
+for( 타입 변수명 : 배열 또는 컬렉션) {}
+
+```java
+public static void main(String[] args) {
+        int[] arr = {10,20,30,40,50};
+        int sum = 0;
+
+        for(int i=0; i< arr.length; i++)
+            System.out.printf("%d ",arr[i]);
+        System.out.println();
+
+        for(int tmp : arr) { // arr에 있는 원소를 tmp에 옮긴다.
+            System.out.printf("%d ",tmp);
+            sum += tmp;
+        }
+        System.out.println();
+        System.out.println("sum="+sum);
+```
+
+향상된 for문은 일반적인 for문과 달리 배열이나 컬렉션에 저장된 요소들을 읽어오는 용도로만 사용할 수있다.
+
+## While문
+
+while (조건식){}
+
+### while문의 조건식은 생략이 불가능하다.
+
+for(;;) {}→ 조건식이 항상 참
+
+while(true) {}
+
+```java
+public static void main(String[] args) {
+        int i = 5;
+        while (i--!=0){
+            System.out.println(i + " - I can do it.");
+        }
+    }
+```
+
+```java
+while(i--!=0){
+		System.out.println(i);
+}
+
+-> 아래와 같음
+
+while(i!=0) {
+		i--;
+		System.out.println(i);
+}
+
+while(--i!=0){
+		System.out.println(i);
+}
+
+-> 아래와 같음
+
+--i;
+while(i!=0){
+		System.out.println(i);
+}
+```
+
+12345 % 10 → 5
+
+1234 % 10 → 4
+
+123 % 10 → 3
+
+12 % 10 → 2
+
+1 % 10 → 1
+
+12345 / 10 → 1234
+
+1234 / 10 → 123
+
+123 / 10 → 12
+
+12 / 10 → 1
+
+1 / 10 → 0
+
+input으로 크기가 측정되지 않은 값이 들어왔을때 이렇게 나누어서, while을 0으로 만드는 아이디어.
+
+while ((sum += ++i) <= 100)
+
+sum이 계속 증가하면서 100을 넘으면 중단되는 로직
+
+```java
+while(flag){
+	      System.out.print(">>");
+	
+	      String tmp= scanner.nextLine();
+	      num = Integer.parseInt(tmp);
+	
+	      if(num!=0) {
+	          sum += num;
+	      } else {
+	          flag = false;
+	      }
+```
+
+미리 boolean flag = true를 설정해놓고.
+
+원하던 조건들이 끝나면 flag를 false로 바꾸어버리는 아이디어.
+
+### do-while문
+
+```java
+public static void main(String[] args) {
+        int input = 0, answer = 0;
+
+        answer = (int) (Math.random() * 100) + 1;
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            System.out.print("1과 100사이의 정수를 입력하세요.");
+            input = scanner.nextInt();
+
+            if (input > answer) {
+                System.out.println("더 작은 수로 다시 시도해보세요.");
+            } else if (input < answer) {
+                System.out.println("더 큰 수로 다시 시도해보세요.");
+            }
+        }
+            while (input != answer) ;
+            System.out.println("정답");
+    }
+```
+
+```java
+public static void main(String[] args) {
+    for (int i =1 ; i<= 100; i++){
+        System.out.printf("i=%d",i);
+
+        int tmp = i;
+
+        do {
+            if (tmp % 10 % 3 == 0 && tmp % 10 != 0)
+                System.out.print("짝");
+        }
+            while ((tmp /= 10) != 0) ;
+            System.out.println();
+    }
+}
+```
+
+### break문
+
+```java
+public static void main(String[] args) {
+        int sum=0,i=0;
+
+        while (true){
+            if(sum > 100)
+                break;
+            ++i;
+            sum += i;
+        }
+        System.out.println("i=" +i);
+        System.out.println("sum=" +sum);
+    }
+```
+
+쉽다.
+
+### continue문
+
+continue문은 만나면 반복문의 끝으로 이동한다.
+
+for문의 경우 증감식으로 이동하며
+
+while문과 do-while문의 경우 조건식으로 이동한다.
+
+```java
+public static void main(String[] args) {
+    for (int i=0; i<= 10; i++){
+        if (i%3 ==0)
+            continue;
+        System.out.println(i);
+    }
+}
+```
+
+continue문과 반복문 블럭의끝’}’ 사이의 문장들을 건너뛰고 반복을 이어가는것이다.
+
+```java
+public static void main(String[] args) {
+        int menu = 0;
+        int num = 0;
+
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            System.out.println("select : 1");
+            System.out.println("select : 2");
+            System.out.println("select : 3");
+            System.out.print("0");
+
+            String tmp= scanner.nextLine();
+            menu = Integer.parseInt(tmp);
+
+            if(menu==0) {
+                System.out.println("종료");
+                break;
+            }else if(!(1 <= menu && menu <= 3)) {
+                System.out.println("잘못 선택");
+                continue;
+            }
+            System.out.println("menu");
+        }
+    }
+```
+
+### 이름 붙은 반복문
+
+break문은 근접한 단 하나의 반복문만 벗어날 수 있기 때문에, 여러개의 반복문이 중첩 된 경우에는 break문으로 중첩 반복문을 완전히 벗어날 수 없다.
+
+이때는 중첩 반복문 앞에 이름을 붙이고 break문과 continue문에 이름을 지정해 줌으로써 하나 이상의 반복문을 벗어나거나 반복을 건너뛸 수 있다.
+
+```java
+public static void main(String[] args) {
+    int menu = 0, num = 0;
+
+    Scanner scanner = new Scanner(System.in);
+
+    outer:
+    while(true) {
+        System.out.println("square");
+        System.out.println("square root");
+        System.out.println("log");
+        System.out.print("메뉴선택");
+
+        String tmp = scanner.nextLine();
+        menu = Integer.parseInt(tmp);
+
+        if(menu == 0) {
+            System.out.println("End");
+            break;
+        }else if (!(1 <= menu && menu <= 3)){
+            System.out.println("Error");
+            continue;
+        }
+
+        for(;;){
+            System.out.print("계산값 입력. 종료0, 전체종료 :99");
+            tmp = scanner.nextLine();
+            num = Integer.parseInt(tmp);
+
+            if(num == 0)
+                break;
+
+            if(num == 99)
+                break outer;
+
+            switch(menu) {
+                case 1:
+                    System.out.println("result="+ num*num);
+                    break;
+                case 2:
+                    System.out.println("result="+ Math.sqrt(num));
+                    break;
+                case 3:
+                    System.out.println("result="+ Math.log(num));
+                    break;
+            }
+        }
+    }
+}
+```
+
+얻어 갈게 많은 코드다.
+
+outer로 while문에 이름을 지정한다. 왜? →  이후에 한번에 종료하는 기능을 구현하기 위함.
+
+for (;;)로 while문 내부에서 for문이 계속해서 돌도록 만듦
+
+switch문으로 앞에서 정했던 menu에 의해서 계속해서 case가 정해지도록 반복시킴.
