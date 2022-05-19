@@ -333,7 +333,7 @@ x = x + (mod < 0.5 ? 0.0 : 0.5) 0이 0.0으로 변환되었다.
 
 ### lvalue와 rvalue
 
-대입연산자의 왼쪽 피연산자를 lvalue(left value)라 하고, 올른쪽 피연산자를 ‘rvalue(right value)’라고 한다.
+대입연산자의 왼쪽 피연산자를 'lvalue(left value)'라 하고, 오른쪽 피연산자를 'rvalue(right value)'라고 한다.
 
 lavlue는 반드시 변수처럼 값을 변경할 수 있는 것이 와야한다.
 
