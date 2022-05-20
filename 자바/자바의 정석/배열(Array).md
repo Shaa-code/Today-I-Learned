@@ -2,9 +2,8 @@
 
 | 선언방법 | 선언 예 |
 | --- | --- |
-| 타입[] 변수이름; | int[] score; String[] name; |
-| 타입 변수이름[]; | int score[]; String name[]; |
-
+| 타입[] 변수이름; | int[] score; \n String[] name; |
+| 타입 변수이름[]; | int score[]; \n String name[]; |
 
 저자의 경우 대괄호를 타입에 붙이는 쪽을 선호한다.
 
@@ -75,7 +74,7 @@ int[] score = {};
 ```java
 int[] iArr= {100,95,80,70,60};
 for(int i = 0; i< iArr.length; i++){
-		System.out.println(iArr[i]);
+    System.out.println(iArr[i]);
 }
 #System.out.print(iArr[i]+",") -> 줄 안바꾸고 ','로 요소 구분.
 #System.out.println(Arrays.toString(iArr)); 사용가능. -> return : [100,95,80,70,60]
@@ -94,7 +93,7 @@ System.out.println(chArr); -> abcd 출력
 int[] arr = new int[5];
 int[] tmp = new int[arr.length*2];
 for(int i = 0; i < arr.length; i++)
-		tmp[i] = arr[i];
+    tmp[i] = arr[i];
 arr = tmp;
 ```
 
@@ -199,7 +198,7 @@ public static void main(String[] args) {
 
 ```java
 for (i = 0; i < arr.length; i++) {
-		arr[i] = (int) (Math.random() *5);
+    arr[i] = (int) (Math.random() *5);
 }
 ```
 
