@@ -2,10 +2,9 @@
 
 | 선언방법 | 선언 예 |
 | --- | --- |
-| 타입[] 변수이름; | int[] score;
-String[] name; |
-| 타입 변수이름[]; | int score[];
-String name[]; |
+| 타입[] 변수이름; | int[] score; String[] name; |
+| 타입 변수이름[]; | int score[]; String name[]; |
+
 
 저자의 경우 대괄호를 타입에 붙이는 쪽을 선호한다.
 
