@@ -232,8 +232,8 @@ public static void main(String[] args) {
 ```
 
 ### 왜 numArr.length-1-i인가?
+![Untitled](https://user-images.githubusercontent.com/70310271/169558750-be22d4fe-8777-43a8-aa48-97242bfe77f3.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c7ee080a-63ba-4c20-b75f-c4c25c6f61a1/Untitled.png)
 
 버블정렬이 한번 수행될때마다. 가장뒤에서 1칸씩 앞으로 이동한 범위내에서 원소를 비교해야하기 때문이다.
 
