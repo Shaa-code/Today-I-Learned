@@ -74,18 +74,18 @@ char 또는 short의 표현범위가 좁아서 연산중에 overflow가 발생�
 
 i의 값 증가 → i의 값을 참조 → 연산결과를 j에 저장
 
-```python
+```java
 j = ++i; -> ++i;
-						j = i;
+j = i;
 ```
 
 후위형 증감연산자 연산과정
 
 i의 값을 참조 → 연산결과를 j에 저장 → i의 값 증가
 
-```python
+```java
 j = i++; -> j = i;
-						i++;
+i++;
 ```
 
 ### 부호 연산자 + -
@@ -98,14 +98,14 @@ boolean형과 char를 제외한 기본형에만 사용가능하다.
 
 부동소수점 값인 0.0f, 0.0d로 나누는것은 가능하지만 그 결과는 무한대(Infinity)이다.
 
-```python
+```java
 class OperatorEx6 {
-		public static void main(String[] args) {
-				byte a = 10;
-				byte b = 20;
-				byte c = a + b; #(byte)(a+b);로 돌아감.
-				System.out.println(c);
-		}
+    public static void main(String[] args) {
+        byte a = 10;
+        byte b = 20;
+        byte c = a + b; #(byte)(a+b);로 돌아감.
+        System.out.println(c);
+    }
 }
 ```
 
@@ -114,10 +114,10 @@ class OperatorEx6 {
 ```java
 class OperatorEx8 {
     public static void main(String[] args) {
-	      int a = 1_000_000; #1,000,000 
-	      int b = 2_000_000; #2,000,000
-				long c = a*b;  #(long)(a*b);
-				System.out.println(c);
+        int a = 1_000_000; #1,000,000
+	int b = 2_000_000; #2,000,000
+        long c = a*b;  #(long)(a*b);
+        System.out.println(c);
     }
 }
 ```
