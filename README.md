@@ -29,6 +29,6 @@
 
 [DAY16,17](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY16,17.md) - 컬렉션 프레임워크
 
-
+[DAY18,19](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY19.md) - 심화(Effective)
 
 
