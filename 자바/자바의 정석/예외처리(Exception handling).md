@@ -22,7 +22,7 @@
 
 ### 예외 클래스의 계층 구조
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/83df635f-e354-4e21-943b-88596be3a478/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/169657502-badd68e3-489e-4dec-8a65-782a6cdb21c8.png)
 
 모든 예외의 최고 조상은 Exception클래스이다.
 
@@ -249,7 +249,8 @@ if(e instanceof ExceptionA){
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4b2fa667-e225-40f0-9114-0db28eeb109f/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/169657522-a7581a50-f254-4a66-a855-99c3ce732780.png)
+
 
 멀티 catch블럭에 선언된 참조변수 e는 상수이므로 값을 변경할 수 없다는 제약이 있다.
 
