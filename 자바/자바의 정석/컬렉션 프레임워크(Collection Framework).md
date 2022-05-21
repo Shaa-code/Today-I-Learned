@@ -26,7 +26,7 @@ Vector나 Hashtable과 같은 기존의 컬렉션 클래스들은 호환을 위�
 
 그 대신에 새로추가된 ArrayList와 HashMap을 이용하자.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cd5f17f3-8b3e-43e2-9e05-08c9b34862d0/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/169659033-3f352c2c-4d00-4f77-b979-fce0d0dc1f6a.png)
 
 ### Collection인터페이스
 
