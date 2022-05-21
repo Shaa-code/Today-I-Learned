@@ -16,9 +16,7 @@ java.lang패키지의 클래스들은 import문 없이도 사용할 수 있게 �
 | public String toString() | 객체 자신의 정보를 문자열로 반환한다. |
 | public void notify() | 객체 자신을 사용하려고 기다리는 쓰레드를 하나만 깨운다. |
 | public void notifyAll() | 객체 자신을 사용하려고 기다리는 모든 쓰레드를 깨운다. |
-| public void wait()
-public void wait(long timeout)
-public void wait(long timeout, int nanos) | 다른 쓰레드가 notify()나 notifyAll()을 호출할 때 까지 현재 쓰레드를 무한히 또는 지정된 시간(timeout,nanos)동안 기다리게 한다.(timeout은 1/1000초, nanos는 1/1000000000초(10^9)) |
+| public void wait() </br> public void wait(long timeout) </br> public void wait(long timeout, int nanos) | 다른 쓰레드가 notify()나 notifyAll()을 호출할 때 까지 현재 쓰레드를 무한히 또는 지정된 시간(timeout,nanos)동안 기다리게 한다.(timeout은 1/1000초, nanos는 1/1000000000초(10^9)) |
 
 Object클래스는 멤버변수는 없고 오직 11개의 메서드만 가지고있다.
 
