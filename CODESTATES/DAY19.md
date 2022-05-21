@@ -124,8 +124,7 @@ return strs3.collect(Collectors.toList());
 return list.stream().map(m -> m*2).collect(Collectors.toList());
 ```
 
-### 원소 수 세어서 true, false 반환
-
+### 조건에 맞는 원소 수를 세어 boolean 반환
 ```java
 long hotDays = Arrays.stream(temperature)
               .filter(m -> m >= 30)
