@@ -42,7 +42,7 @@ boolean add(Object o)같은 경우, 객체가 컬렉션에 추가되면 true, �
 
 List인터페이스는 중복을 허용하면서 저장순서가 유지되는 컬렉션을 구현하는데 사용된다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0e26e93d-7480-4c8f-9385-dc15d2a8177d/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/169659056-384ea4fc-7833-47fe-ab64-27805818d197.png)
 
 ### ArrayList
 
@@ -118,7 +118,7 @@ list2 :[0, 2, 4, AA, B, C]
 list1 :[0, 2, 4]
 list2 :[2, AA, B, C] // Wrong Value : for (int i = 0 ; i < list2.size() ; i++)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/08e3c901-9fa2-4580-85bc-e2bddc591c0f/Untitled.png)
+![Untitled 2](https://user-images.githubusercontent.com/70310271/169659065-4902da3e-b936-4909-bb23-92103408abec.png)
 
 `Collection은 인터페이스이고, Collections는 클래스임에 주의하자.`
 
@@ -802,7 +802,8 @@ Queue의 변형으로, 한 쪽 끝으로만 추가/삭제할 수 있는 Queue와
 
 Deque의 조상은 Queue이며, 구현체로는 ArrayDeque과 LinkedList 등.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/42c860ad-6bac-4816-af97-834d8bc55527/Untitled.png)
+![Untitled 3](https://user-images.githubusercontent.com/70310271/169659091-55fc960f-89b3-436b-97c0-f2676da781d1.png)
+
 
 보다시피 스택처럼 쓸수도 있다.
 
@@ -1160,7 +1161,7 @@ HashMap은 동기화를 지원하지 않음. 동기화를 지원하는 HashTable
 
 Set인터페이스는 중복을 허용하지 않고 저장순서가 유지되지 않는 컬렉션 클래스를 구현하는데 사용된다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a4bc6d4e-955e-40f5-b260-b06629d0204f/Untitled.png)
+![Untitled 4](https://user-images.githubusercontent.com/70310271/169659101-f52bbd61-c879-4e1d-b00b-b5f2e7660c68.png)
 
 ### Map인터페이스
 
@@ -1168,7 +1169,7 @@ Map인터페이스는 키(key)와 값(value)을 하나의 쌍으로 묶어서 �
 
 Map이란 개념은 어떤 두 값을 연결한다는 의미에서 붙여진 이름이다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/215c69ae-b58b-4c38-8179-102db08a5b2b/Untitled.png)
+![Untitled 5](https://user-images.githubusercontent.com/70310271/169659105-ab6740a9-d7d8-4062-874e-7ab0e99bbd64.png)
 
 values()에서는 반환타입이 Collection이고, keySet()에서는 반환타입이다.
 
@@ -1563,7 +1564,7 @@ class TreeNode{
 
 예를 들어, 이진검색트리에 7,4,9,1,5의 순서로 값을 저장한다고 가정했을때,
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/084cb3a2-e8ba-44cb-8cf2-b6e99e087b68/Untitled.png)
+![Untitled 6](https://user-images.githubusercontent.com/70310271/169659114-8dbff43d-9cfa-4116-94d4-ed14cecfaf56.png)
 
 컴퓨터는 알아서 값을 비교하지 못하므로,
 
@@ -1672,7 +1673,7 @@ class TreeSetEx2{
 50보다 작은 값 :[10, 35, 45]
 50보다 큰 값 :[50, 65, 80, 95, 100]
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ae4f0742-3ee4-4bf2-bd19-cc4b5dd4f481/Untitled.png)
+![Untitled 7](https://user-images.githubusercontent.com/70310271/169659120-525cd2c7-9238-4619-b817-95fd6aa5c912.png)
 
 ## HashMap과 Hashtable
 
@@ -2159,4 +2160,5 @@ list2=[1, 1, 1, 1, 1]
 
 굉장히 유용한 Collections들이니 꼭 연습해두자.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bd840a09-5451-41d8-88b2-efa04afedeb5/Untitled.png)
+![Untitled 8](https://user-images.githubusercontent.com/70310271/169659134-c66e29a6-0596-4c1a-ad7d-0309596db120.png)
+
