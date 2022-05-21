@@ -1462,12 +1462,12 @@ Integer클래스의 실제코드
 | --- | --- | --- | --- |
 | boolean | Boolean | Boolean(boolean value) </br>Boolean(String s) | Boolean b = new Boolean(true);</br>Boolean b2 = new Boolean(”true”); |
 | char | Character | Character(char value) | Character c = new Character(’a’); |
-| byte | Byte | Byte(byte value)</br>Byte(String s) | Byte b = new Byte(10);</br>Byte b2 = new Byte(”10”); |
-| short | Short | Short(short value)</br>Short(String s) | Short s = new Short(10);</br>Short s2 = new Short(”10”); |
-| int | Integer | Integer(int value)</br>Integer(String s) | Integer i = new Integer(100);</br>Interger i2 = new Integer(”100”); |
-| long | Long | Long(long value)</br>Long(String s) | Long l = new Long(100);</br>Long l2 = new Long(”100”); |
-| float | Float | Float(double value)</br>Float(float value)</br>Float(String s) | Float f = new Float(1.0);</br>Float f2 = new Float(1.0)f;</br>Float f3 = new Float(”1.0f”); |
-| double | Double | Double(double value)</br>Double(String s) | Double d = new Double(1.0);</br>double d2 = new Double(”1.0”); |
+| byte | Byte | Byte(byte value)</br>Byte(String s) | Byte b = new Byte(10); </br>Byte b2 = new Byte(”10”); |
+| short | Short | Short(short value)</br>Short(String s) | Short s = new Short(10); </br>Short s2 = new Short(”10”); |
+| int | Integer | Integer(int value)</br>Integer(String s) | Integer i = new Integer(100); </br>Interger i2 = new Integer(”100”); |
+| long | Long | Long(long value)</br>Long(String s) | Long l = new Long(100); </br>Long l2 = new Long(”100”); |
+| float | Float | Float(double value)</br>Float(float value)</br>Float(String s) | Float f = new Float(1.0); </br>Float f2 = new Float(1.0)f;</br>Float f3 = new Float(”1.0f”); |
+| double | Double | Double(double value)</br>Double(String s) | Double d = new Double(1.0); </br>double d2 = new Double(”1.0”); |
 
 ```java
 class WrapperEX1{
