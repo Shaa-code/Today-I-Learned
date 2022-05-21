@@ -601,13 +601,14 @@ Stream<T[]>를 Stream<T>로 다룰때 더 편리한 경우가 있다.
 
 그때는 map대신 flatMap을 사용한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/42eb77a8-c73e-4d1d-a2b5-c9bf58a17d1e/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/169659601-c65ee510-a2a0-41f9-ad86-0da3db5b26c6.png)
+
 
 ```java
 Stream<String[]> - map(Arrays::stream) -> Stream<Stream<String>>
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cc34ea9b-a120-4be9-a974-023ec013e878/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/169659608-5ffce1a0-4d09-4c15-96f7-e696b68bb61e.png)
 
 ```java
 Stream<String[]> - flatMap(Arrays::stream) -> Stream<String>
