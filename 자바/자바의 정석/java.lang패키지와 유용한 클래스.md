@@ -736,7 +736,7 @@ CharSequence는 JDK1.4부터 추가된 인터페이스로 String, StringBuffer �
 
 contains(CharSequence s), repalce(CharSequence old, CharSequence new) 는 JDK1.5부터 추가되었다.
 
-[java.util.Date](http://java.util.Date) dd = new java.util.Date();에서 생성된 Date인스턴스는 현재시간을 갖는다.
+java.util.Date dd = new java.util.Date();에서 생성된 Date인스턴스는 현재시간을 갖는다.
 
 ### join()과 StringJoiner
 
