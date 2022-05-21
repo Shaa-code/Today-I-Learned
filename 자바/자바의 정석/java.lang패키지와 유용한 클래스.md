@@ -726,8 +726,7 @@ String s2 = s.concat(” World”); | s2 = “Hello World” |
 | String replaceFirst(String regex, String replacement) | 문자열 중에서 지정된 문자열(regex)과 일치하는 것 중 첫번째 것만 새로운 문자열(replacement)로 변경한다. | String ab = “AABBAABB”; </br> String r= ab.replaceFirst(”BB”,”bb”); | r = “AAbbAABB” |
 | String[] split(String regex) | 문자열을 지정된 분리자(regex)과 일치하는 것을 새로운 문자열(replacement)로 모두 변경한다. | String animals = “dog,cat,bear”; </br> String[] arr = animals.split(”,”); | arr[0] = “dog” </br> arr[1] = “cat” </br> arr[2] = “bear” |
 | String[] split(String regex,int limit) | 문자열을 지정된 분리자(regex)로 나누어 문자열배열에 담아 반환한다. 단, 문자열 전체를 지정된 수(limit)로 자른다. | String animals = “dog,cat,bear”; </br> String[] arr = animals.split(”,”,2); | arr[0] = “dog” </br> arr[1] = “cat,bear” |
-| boolean startsWith(String prefix) | 주어진 문자열(prefix)로 시작하는지 검사한다. | String s = “java.lang.Object”; </br> boolean b = s.startsWith(”java”); | b = true
-b2 = false |
+| boolean startsWith(String prefix) | 주어진 문자열(prefix)로 시작하는지 검사한다. | String s = “java.lang.Object”; </br> boolean b = s.startsWith(”java”); | b = true </br> b2 = false |
 | String substring(int begin) </br> String substring(int begin, int end) | 주어진 시작위치(begin)부터 끝 위치(end) 범위에 포함된 문자열을 얻는다. 이 때, 시작위치의 문자는 범위에 포함되지만, 끝 위치의 문자는 포함되지 않는다. (begin ≤ x < end) | String s = “java.lang.Object”; </br> String c = s.substring(10); </br> String p = s.substring(5,9); | c = “Object” </br> p = “lang” |
 | String toLowerCase() | String인스턴스에 저장되어있는 모든 문자열을 소문자로 변환하여 반환한다. | String s = “Hello” </br> String s1 = s.toLowerCase(); | s1 = “hello” |
 | String toString() | String인스턴스에 저장되어 있는 문자열을 반환한다. | String s = “Hello”; </br> String s1 = s.toString(); | s1 = “Hello” |
