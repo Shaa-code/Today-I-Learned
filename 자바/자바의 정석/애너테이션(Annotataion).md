@@ -90,7 +90,7 @@ IDE마다 다른것 같은데, -Xlint : deprecation이라고 표시를 해줌.
 
 Intellij는 그냥 밑줄을 그어서 표시해줌. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8cc72837-30ec-4fe0-ba21-fc954e59adf7/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/169659234-2991b37e-be22-4c3e-8183-417abf99191b.png)
 
 //return
 
