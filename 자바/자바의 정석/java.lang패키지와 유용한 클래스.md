@@ -1567,17 +1567,7 @@ Integer i3 = Integer.valueOf("100");
 
 | 문자열 → 기본형 | 문자열 → 래퍼 클래스 |
 | --- | --- |
-| byte b = Byte.parseByte(”100”);
-short s = Short.parseShort(”100”);
-int i = Integer.parseInt(”100”);
-long l = Long.parseLong(”100”);
-float f= Float.parseFloat(”3.14”);
-double d = Double.parseDouble(”3.14”); | Byte b= Byte.valueOf(”100”);
-Short s = Short.valueOf(”100”)
-Integer i = Integer.valueOf(”100”);
-Long l = Long.valueOf(”100”);
-Float f = Float.valueOf(”3.14”);
-Double d = Double.valueOf(”3.14”) |
+| byte b = Byte.parseByte(”100”);</br> short s = Short.parseShort(”100”);</br>int i = Integer.parseInt(”100”);</br>long l = Long.parseLong(”100”);</br>float f= Float.parseFloat(”3.14”);</br>double d = Double.parseDouble(”3.14”); | Byte b= Byte.valueOf(”100”);</br>Short s = Short.valueOf(”100”)</br>Integer i = Integer.valueOf(”100”);</br>Long l = Long.valueOf(”100”);</br>Float f = Float.valueOf(”3.14”); </br>Double d = Double.valueOf(”3.14”) |
 
 jdk1.5부터 도입된 ‘오토박싱(autoboxing)’기능 떄문에 반환값이 기본형일때와 래퍼클래스일때의 차이가 없어졌다.
 
@@ -2399,8 +2389,7 @@ nextElement는 Object를, nextToken은 String을 반환한다.
 | 생성자 / 메서드 | 설명 |
 | --- | --- |
 | StringTokenizer(String str, String delim) | 문자열(str)을 지정된 구분자(delim)로 나누는 StringTokenizer를 생성한다. (구분자는 토큰으로 간주되지 않음.) |
-| StringTokenizer(String str, String delim, boolean returnDelims) | 문자열(str)을 지정된 구분자(delim)로 나누는 StringTokenizer를 생성한다.
-returnDelims의 값을 true로 하면 구분자도 토큰으로 간주된다. |
+| StringTokenizer(String str, String delim, boolean returnDelims) | 문자열(str)을 지정된 구분자(delim)로 나누는 StringTokenizer를 생성한다.</br> returnDelims의 값을 true로 하면 구분자도 토큰으로 간주된다. |
 | int countTokens() | 전체 토큰의 수 를 반환한다. |
 | boolean hasMoreTokens() | 토큰이 남아있는지 알려준다. |
 | String nextToken() | 다음 토큰을 반환한다. |
