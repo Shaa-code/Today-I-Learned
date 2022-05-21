@@ -10,7 +10,7 @@ java.lang패키지의 클래스들은 import문 없이도 사용할 수 있게 �
 | --- | --- |
 | protected Object clone() | 객체 자신의 복사본을 반환한다. |
 | public boolean equals(Object obj) | 객체 자신과 객체obj가 같은 객체인지 알려준다. (같으면 true) |
-| protected void finalize() | 객체가 소멸될 때 가비지 컬렉터에 의해 자동적으로 호출된다.  이 때 수행되어야하는 코드가 있을 때 오버라이딩한다.(거의 사용X) |
+| protected void finalize() | 객체가 소멸될 때 가비지 컬렉터에 의해 자동적으로 호출된다. </br> 이 때 수행되어야하는 코드가 있을 때 오버라이딩한다.(거의 사용X) |
 | public Class getClass() | 객체 자신의 클래스 정보를 담고있는 Class인스턴스를 반환한다. |
 | public int hashCode() | 객체 자신의 해시코드를 반환한다. |
 | public String toString() | 객체 자신의 정보를 문자열로 반환한다. |
