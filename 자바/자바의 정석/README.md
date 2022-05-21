@@ -11,7 +11,7 @@
   - [예외처리(Exception Handling)](https://github.com/Shaa-code/Today-I-Learned/blob/main/%EC%9E%90%EB%B0%94/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC(Exception%20handling).md)
   - [java.lang패키지와 유용한 클래스](https://github.com/Shaa-code/Today-I-Learned/blob/main/%EC%9E%90%EB%B0%94/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D/java.lang%ED%8C%A8%ED%82%A4%EC%A7%80%EC%99%80%20%EC%9C%A0%EC%9A%A9%ED%95%9C%20%ED%81%B4%EB%9E%98%EC%8A%A4.md)
   - [날짜와 시간 & 형식화]
-  - [컬렉션 프레임워크](https://github.com/Shaa-code/Today-I-Learned/blob/main/%EC%9E%90%EB%B0%94/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D/%EC%BB%AC%EB%A0%89%EC%85%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC(Collection%20Framework))
+  - [컬렉션 프레임워크(Collection Framework)](https://github.com/Shaa-code/Today-I-Learned/blob/main/%EC%9E%90%EB%B0%94/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D/%EC%BB%AC%EB%A0%89%EC%85%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC(Collection%20Framework).md)
   - [지네릭스(Generics)](https://github.com/Shaa-code/Today-I-Learned/blob/main/%EC%9E%90%EB%B0%94/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D/%EC%A7%80%EB%84%A4%EB%A6%AD%EC%8A%A4(Generics).md)
   - [열거형(Enums)](https://github.com/Shaa-code/Today-I-Learned/blob/main/%EC%9E%90%EB%B0%94/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D/%EC%97%B4%EA%B1%B0%ED%98%95(Enum).md)
   - [애너테이션(Annotation)](https://github.com/Shaa-code/Today-I-Learned/blob/main/%EC%9E%90%EB%B0%94/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D/%EC%95%A0%EB%84%88%ED%85%8C%EC%9D%B4%EC%85%98(Annotataion).md)
