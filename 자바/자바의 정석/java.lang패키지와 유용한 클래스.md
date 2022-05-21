@@ -706,11 +706,9 @@ String클래스 내에 정의된 생성자와 메서드중 자주 쓰이는것�
 | String(StringBuffer buf) | StringBuffer인스턴스가 갖고 있는 문자열과 같은 내용의 String인스턴스를 생성한다. | StringBuffer sb = new StringBuffer(”Hello”);</br> String s = new String(sb); | s = “Hello” |
 | char charAt(int index) | 지정된 위치(index)에 있는 문자를 알려준다. | String s = “Hello” </br> char c = s.charAt(1); | c = ‘e’ |
 | int compareTo(String str) | 문자열(str)과 사전순서로 비교한다.</br> 같으면 0을, 사전순으로 이전이면 음수를, 이후면 양수를 반환한다. | int i = “aaa”.compareTo(”aaa”); </br> int i2 = “aaa”.compareTo(”bbb”); </br> int i3 = “bbb”.compareTo(”aaa”); | i = 0 </br>i2 = -1 </br> i3 = 1 |
-| String concat(String str) | 문자열(str)을 뒤에 덧붙인다. | String s= “Hello”;
-String s2 = s.concat(” World”); | s2 = “Hello World” |
+| String concat(String str) | 문자열(str)을 뒤에 덧붙인다. | String s= “Hello”; </br> String s2 = s.concat(” World”); | s2 = “Hello World” |
 | boolean contains(CharSequence s) | 지정된 문자열(s)가 포함되었는지 검사한다. | String s = “abcedfg”; </br> boolean b = s.contains(”bc”); | b = true |
-| boolean endsWith(String suffix) | 지정된 문자열(suffix)로 끝나는지 검사한다. | String file = “Hello.txt”;
-</br> boolean b = file.endsWith(”txt”) | b = true |
+| boolean endsWith(String suffix) | 지정된 문자열(suffix)로 끝나는지 검사한다. | String file = “Hello.txt”; </br> boolean b = file.endsWith(”txt”) | b = true |
 | boolean equals(Object obj) | 매개변수로 받은 문자열(obj)과 String인스턴스의 문자열을 비교한다. obj가 String이 아니거나 문자열이 다르면 false를 반환한다. | String s = “Hello”; </br> boolean b = s.equals(”Hello”); </br> boolean b2 = s.equals(”hello”); | b = true </br> b2 = false |
 | boolean equalsIgnoreCase(String str) | 문자열과 String인스턴스의 문자열을 대소문자 구분없이 비교한다. | String s = “Hello”; </br> boolean b = </br> s.equalsIgnoreCase(”HELLO”);</br> boolean b2 = s.equalsIgnoreCase(”heLLo”); | b = true </br> b2  = true |
 | int indexOf(int ch) | 주어진 문자(ch)가 문자열에 존재하는지 확인하여 위치(index)를 알려준다. </br> 못 찾으면 -1을 반환한다. | String s = “Hello”; </br> int idx1 = s.indexOf(’o’); </br> int idx2 = s.indexOf(’k’); | idx1 = 4 </br> idx2 = -1 |
