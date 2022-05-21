@@ -367,8 +367,7 @@ Inner클래스와 Outer클래스의 인스턴스 변수인 this.val과, Outer.th
 | Supplier<T> | T get() → T | 매개변수는 없고 반환값만 있음. |
 | Consumer<T> | T→ void accept(T t) | 매개변수만 있고 반환값은 없음. |
 | Function<T,R> | T→R apply(T t) → R | 일반적인 함수. 하나의 매개변수를 받아서 결과를 반환 |
-| Predicate<T> | T→boolean test(T t) → boolean | 조건식을 표현하는데 사용됨.
-매개변수는 하나, 반환 타입은 boolean |
+| Predicate<T> | T→boolean test(T t) → boolean | 조건식을 표현하는데 사용됨. </br> 매개변수는 하나, 반환 타입은 boolean |
 
 ‘T’는 ‘Type’을, ‘R’은 ‘Return’을 의미한다.
 
@@ -391,8 +390,7 @@ if(isEmptyStr.test(s))
 | 함수형인터페이스 | 메서드 | 설명 |
 | --- | --- | --- |
 | BiConsumer<T,U> | T,U → void accept(T t, U u) | 두개의 매개변수만 있고, 반환값이 없음. |
-| BiPredicate<T,U> | T,U → boolean test(T t, U u) → boolean | 조건식을 표현하는데 사용됨.
-매개변수는 둘, 반환값은 boolean |
+| BiPredicate<T,U> | T,U → boolean test(T t, U u) → boolean | 조건식을 표현하는데 사용됨. </br> 매개변수는 둘, 반환값은 boolean |
 | BiFunction<T,U,R> | T,U → R apply(T t, U u) → R | 두 개의 매개변수를 받아서 하나의 결과를 반환 |
 
 매개변수의 타입으로 보통 ‘T’를 사용하므로, 알파벳에서 ‘T’의 다음 문자인 ‘U’,’V’,’W’를 매개변수의 타입으로 사용 하는 것 일뿐 별다른 의미는 없다.
