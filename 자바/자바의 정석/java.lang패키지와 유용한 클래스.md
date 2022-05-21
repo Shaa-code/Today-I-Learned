@@ -900,18 +900,7 @@ parseint(s, 10)은 parseint(s)와 같다.
 
 | 기본형 → 문자열 | 문자열 → 기본형 |
 | --- | --- |
-| String String.valueOf(boolean b)
-String String.valueOf(char c)
-String String.valueOf(int i)
-String String.valueOf(long l)
-String String.valueOf(float f)
-String String.valueOf(double d) | boolean Boolean.parseBoolean(String s)
-byte Byte.parseByte(String s)
-short Short.parseShort(String s)
-int Integer.parseInt(String s)
-long Long.parseLong(String s)
-float Float.parseFloat(String s)
-double Double.parseDouble(String s) |
+| String String.valueOf(boolean b) </br>String String.valueOf(char c) </br> String String.valueOf(int i) </br> String String.valueOf(long l) </br>String String.valueOf(float f) </br> String String.valueOf(double d) | boolean Boolean.parseBoolean(String s) </br> byte Byte.parseByte(String s) </br>short Short.parseShort(String s) </br> int Integer.parseInt(String s) </br> long Long.parseLong(String s) </br> float Float.parseFloat(String s) </br> double Double.parseDouble(String s) |
 
 byte,short을 문자열로 변경할 때는 String valueOf(int i)를 사용하면 된다.
 
@@ -1161,72 +1150,67 @@ toString()은 오버라이딩 되어 있기에, StringBuffer인스턴스에 toSt
 | StringBuffer() | 16문자를 담을 수 있는 버퍼를 가진 StringBuffer 인스턴스를 생성한다. | StringBuffer sb = new StringBuffer(); | sb = “” |
 | StringBuffer(int length) | 지정된 개수의 문자를 담을 수 있는 버퍼를 가진 StringBuffer인스턴스를 생성한다. | StringBuffer sb = new StringBuffer(10); | sb = “” |
 | StringBuffer(String str) | 지정된 문자열 값(str)을 갖는 StringBuffer 인스턴스를 생성한다. | StringBuffer sb = new StringBuffer(”Hi”); | sb = “Hi” |
-| StringBuffer append(boolean b)
-StringBuffer append(char c)
-StringBuffer append(char[] str)
-StringBuffer append(double d)
-StringBuffer append(float f)
-StringBuffer append(int i)
-StringBuffer append(long l)
-StringBuffer append(Object obj)
-StringBuffer append(String str) | 매개변수로 입력된 값을 문자열로 반환하여 StringBuffer인스턴스가 저장하고 있는 문자열의 뒤에 덧붙인다. | StringBuffer sb= new StringBuffer(”abc”);
-StringBuffer sb2 = sb.append(true);
-sb.append(’d’).append(10.0f);
-StringBuffer sb3 = sb.append(”ABC”).append(123); | sb = “abctrued10.0ABC123”
-sb2 = “abctrued10.0ABC123”
-sb3 = “abctrued10.0ABC123” |
+| StringBuffer append(boolean b) </br>StringBuffer append(char c) </br>StringBuffer append(char[] str) </br>StringBuffer append(double d)
+</br>StringBuffer append(float f)
+</br>StringBuffer append(int i)
+</br>StringBuffer append(long l)
+</br>StringBuffer append(Object obj)
+</br>StringBuffer append(String str) | 매개변수로 입력된 값을 문자열로 반환하여 StringBuffer인스턴스가 저장하고 있는 문자열의 뒤에 덧붙인다. | StringBuffer sb= new StringBuffer(”abc”); </br>StringBuffer sb2 = sb.append(true);
+</br>sb.append(’d’).append(10.0f);
+</br>StringBuffer sb3 = sb.append(”ABC”).append(123); | sb = “abctrued10.0ABC123”
+</br>sb2 = “abctrued10.0ABC123”
+</br>sb3 = “abctrued10.0ABC123” |
 | int capacity() | StringBuffer인스턴스의 버퍼크기를 알려준다.
-length()는 버퍼에 담긴 문자열의 길이를 알려준다. | StringBuffer sb = new StringBuffer(100);
-sb.append(”abcd”);
-int bufferSize = sb.capacity();
-int stringSize = sb.length(); | bufferSize = 100;
-stringSize = 4
-//sb에 담긴 문자열이 “abcd” |
+</br>length()는 버퍼에 담긴 문자열의 길이를 알려준다. | StringBuffer sb = new StringBuffer(100);
+</br>sb.append(”abcd”);
+</br>int bufferSize = sb.capacity();
+</br>int stringSize = sb.length(); | bufferSize = 100;
+</br>stringSize = 4
+</br>//sb에 담긴 문자열이 “abcd” |
 | char charAt(int index) | 지정된 위치(index)에 있는 문자를 반환한다. | StringBuffer sb = new StringBuffer(”abc”);
-char c = sb.charAt(2) | c = ‘c’ |
+</br>char c = sb.charAt(2) | c = ‘c’ |
 | StringBuffer delete(int start, int end) | 시작위치(start)부터 끝 위치(end) 사이에 있는 문자를 제거한다.
-단, 끝 위치의 문자는 제외. | StringBuffer sb = new StringBuffer(”0123456”);
-StringBuffer sb2 = sb.delete(3,6); | sb = “0126”
-sb2 = “0126” |
+</br>단, 끝 위치의 문자는 제외. | StringBuffer sb = new StringBuffer(”0123456”);
+</br>StringBuffer sb2 = sb.delete(3,6); | sb = “0126”
+</br>sb2 = “0126” |
 | StringBuffer deleteCharAt(int index) | 지정된 위치(index)의 문자를 제거한다. | StringBuffer sb = new StringBuffer(”0123456”);
-sb.deleteCharAt(3); | sb = “0123456” |
+</br>sb.deleteCharAt(3); | sb = “0123456” |
 | StringBuffer insert(int pos, boolean b)
-StringBuffer insert(int pos, char c)
-StringBuffer insert(int pos, char[] str)
-StringBuffer insert(int pos. double d)
-StringBuffer insert(int pos, float f)
-StringBuffer insert(int pos, int i)
-StringBuffer insert(int pos, long l)
-StringBuffer insert(int pos, Object obj)
-StringBuffer insert(int pos, String str) | 두번째 매개변수로 받은 값을 문자열로 변환하여 지정된 위치(pos)에 추가한다.
-pos는 0부터 시작 | StringBuffer sb= new StringBuffer(”0123456”);
-sb.insert(4,’.’); | sb = “0123,456” |
+</br>StringBuffer insert(int pos, char c)
+</br>StringBuffer insert(int pos, char[] str)
+</br>StringBuffer insert(int pos. double d)
+</br>StringBuffer insert(int pos, float f)
+</br>StringBuffer insert(int pos, int i)
+</br>StringBuffer insert(int pos, long l)
+</br>StringBuffer insert(int pos, Object obj)
+</br>StringBuffer insert(int pos, String str) | 두번째 매개변수로 받은 값을 문자열로 변환하여 지정된 위치(pos)에 추가한다. </br>pos는 0부터 시작 | StringBuffer sb= new StringBuffer(”0123456”);
+</br>sb.insert(4,’.’); | sb = “0123,456” |
 | int length() | StringBuffer인스턴스에 저장되어 있는 문자열의 길이를 반환한다. | StringBuffer sb = new StringBuffer(”0123456”);
-int length = sb.length(); | length = 7 |
+</br>int length = sb.length(); | length = 7 |
 | StringBuffer replace(int strat, int end, String str) | 지정된 범위(start~end)의 문자들을 주어진 문자열로 바꾼다.
-end위치의 문자는 범위에 포함되지 않음(start≤ x < end) | StringBuffer sb = new StringBuffer(”0123456”);
-sb.replace(3,6,”AB”); | sb = “012AB6” |
+</br>end위치의 문자는 범위에 포함되지 않음(start≤ x < end) | StringBuffer sb = new StringBuffer(”0123456”);
+</br>sb.replace(3,6,”AB”); | sb = “012AB6” |
 | StringBuffer reverse() | StringBuffer인스턴스에 저장되어 있는 문자열의 순서를 거꾸로 나열한다. | StringBuffer sb= new StringBuffer(”0123456”);
-sb.reverse(); | sb = “6543210” |
+</br>sb.reverse(); | sb = “6543210” |
 | void setCharAt(int index, char ch) | 지정된 위치의 문자를 주어진 문자(ch)로 바꾼다. | StringBuffer sb= new StringBuffer(”0123456”);
-sb.setCharAt(5,’o’); | sb = “01234o6” |
+</br>sb.setCharAt(5,’o’); | sb = “01234o6” |
 | void setLength(int newLength) | 지정된 길이로 문자열의 길이를 변경한다.
-길이를 늘리는 경우에 나머지 빈 공간을 널문자 ‘\u0000’로 채운다. | StringBuffer sb= new StringBuffer(”0123456”);
-sb.setLength(5);
+</br>길이를 늘리는 경우에 나머지 빈 공간을 널문자 ‘\u0000’로 채운다. | StringBuffer sb= new StringBuffer(”0123456”);
+</br>sb.setLength(5);
 
-StringBuffer sb2= new StringBuffer(”0123456”);
-sb2.setLength(10);
-String str = sb2.toString().trim(); | sb = “01234”
-sb2 = “0123456    “
-str = “0123456” |
+</br>StringBuffer sb2= new StringBuffer(”0123456”);
+</br>sb2.setLength(10);
+</br>String str = sb2.toString().trim(); | sb = “01234”
+</br>sb2 = “0123456    “
+</br>str = “0123456” |
 | String toString() | StringBuffer인스턴스의 문자열을 String으로 반환 | StringBuffer sb= new StringBuffer(”0123456”);
-String str = sb.toString(); | str = “0123456” |
+</br>String str = sb.toString(); | str = “0123456” |
 | String substring(int start)
-String substring(int start, int end) | 지정된 범위 내의 문자열을 String으로 뽑아서 반환한다.
-시작위치(start)만 지정하면 시작위치부터 문자열 끝까지 뽑아서 반환한다. | StringBuffer sb = new StringBuffer(”0123456”);
-String str = sb.substring(3);
-String str2 = sb.substring(3,5); | str = “3456”
-Str2 = “34” |
+</br>String substring(int start, int end) | 지정된 범위 내의 문자열을 String으로 뽑아서 반환한다.
+</br>시작위치(start)만 지정하면 시작위치부터 문자열 끝까지 뽑아서 반환한다. | StringBuffer sb = new StringBuffer(”0123456”);
+</br>String str = sb.substring(3);
+</br>String str2 = sb.substring(3,5); | str = “3456”
+</br>Str2 = “34” |
 
 ## 자주쓰는 것은 한번만 더 연습해보고 넘어가자.
 
