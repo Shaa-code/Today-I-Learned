@@ -123,35 +123,18 @@ int total = stream.count(); // 요소 개수세기(최종연산)
 | Stream<T> limit(long maxSize) | 스트림의 일부를 잘라낸다. |
 | Stream<T> skip(long n) | 스트림의 일부를 건너뛴다. |
 | Stream<T> peek(Consumer<T> action) | 스트림의 요소에 작업수행 |
-| Stream<T> sorted()
-Stream<T> sorted(Compartor<T> comparator) | 스트림의 요소를 정렬한다. |
-| Stream<R> map(Function<T,R> mapper)
-DoubleStream mapToDouble(ToDoubleFunction<T> mapper)
-IntStream mapToInt (ToIntFunction<T> mapper)
-LongStream mapToInt (ToIntFunction<T> mapper)
-Stream<R> flatMap(Function<T,Stream<R>> mapper)
-DoubleStream flatMapToDouble(Function<T,DoubleStream> m)
-IntStream flatMapToInt(Function<T,IntStream> m)
-LongStream flatMapToLong(Function<T,LongStream> m) | 스트림의 요소를 변환한다. |
+| Stream<T> sorted() </br>Stream<T> sorted(Compartor<T> comparator) | 스트림의 요소를 정렬한다. |
+| Stream<R> map(Function<T,R> mapper) </br>DoubleStream mapToDouble(ToDoubleFunction<T> mapper) </br>IntStream mapToInt (ToIntFunction<T> mapper) </br>LongStream mapToInt (ToIntFunction<T> mapper) </br>Stream<R> flatMap(Function<T,Stream<R>> mapper)</br>DoubleStream flatMapToDouble(Function<T,DoubleStream>  </br>IntStream flatMapToInt(Function<T,IntStream> m) </br>LongStream flatMapToLong(Function<T,LongStream> m) | 스트림의 요소를 변환한다. |
 
 | 최종 연산 | 설명 |
 | --- | --- |
-| void forEach(Consumer<? super T> action
-void forEachOrdered(Consumer<? super T> action | 각 요소에 지정된 작업 수행 |
+| void forEach(Consumer<? super T> action </br> void forEachOrdered(Consumer<? super T> action | 각 요소에 지정된 작업 수행 |
 | long count() | 스트림의 요소의 개수 반환 |
-| Optional<T> findAny() // 아무거나 하나
-Optional<T> findFirst() // 첫번째 요소 | 스트림 요소 하나를 반환 |
-| boolean allMatch(Predicate<T> p) //모두 만족하는지
-boolean anyMatch(Predicate<T> p) // 하나라도 만족하는지
-boolean nonMatch(Predicate<> p) // 모두 만족하지 않는지 | 주어진 조건을 모든 요소가 만족시키는지, 만족시키지 않는지 확인 |
-| Object[] toArray()
-A[] toArray(IntFunction<A[]> generator) | 스트림의 모든 요소를 배열로 반환 |
-| Optional<T> reduce(BinaryOperator<T>accumulator)
-T reduce(T idetity, BinaryOperator<T> accumulator)
-U reduce(U identity, BiFunction<U,T,U> accmulator,BinaryOperator<U> combiner) | 스트림의 요소를 하나씩 줄여가면서(Reduce) 계산한다. |
-| R collect(Collector<T,A,R> collector)
-R collect(Supplier<R> supplier, BiConsumer<R,T> accumulator, BiConsumer<R,R> combiner) | 스트림의 요소를 수집한다.
-주로 요소를 그룹화하거나 분할한 결과를 컬렉션에 담아 반환하는데 사용된다. |
+| Optional<T> findAny() // 아무거나 하나 </br> Optional<T> findFirst() // 첫번째 요소 | 스트림 요소 하나를 반환 |
+| boolean allMatch(Predicate<T> p) //모두 만족하는지 </br> boolean anyMatch(Predicate<T> p) // 하나라도 만족하는지 </br> boolean nonMatch(Predicate<> p) // 모두 만족하지 않는지 | 주어진 조건을 모든 요소가 만족시키는지, 만족시키지 않는지 확인 |
+| Object[] toArray() </br> A[] toArray(IntFunction<A[]> generator) | 스트림의 모든 요소를 배열로 반환 |
+| Optional<T> reduce(BinaryOperator<T>accumulator) </br> T reduce(T idetity, BinaryOperator<T> accumulator)</br> U reduce(U identity, BiFunction<U,T,U> accmulator,BinaryOperator<U> combiner) | 스트림의 요소를 하나씩 줄여가면서(Reduce) 계산한다. |
+| R collect(Collector<T,A,R> collector) </br> R collect(Supplier<R> supplier, BiConsumer<R,T> accumulator, BiConsumer<R,R> combiner) | 스트림의 요소를 수집한다. </br> 주로 요소를 그룹화하거나 분할한 결과를 컬렉션에 담아 반환하는데 사용된다. |
 
 Optional은 일종의 Wrapper Class로 내부에 하나의 객체를 저장할 수 있다.
 
@@ -395,16 +378,11 @@ Comparator를 지정하지 않으면 기본 정렬 기준(Comparable)으로 정�
 
 | 문자열 스트림 정렬 방법 | 출력결과 |
 | --- | --- |
-| strStream.sorted() // 기본정렬
-strStream.sorted(Comparator.naturalOrder()) // 기본정렬
-strStream.sorted((s1,s2)→ s1.compareTo(s2)) // 람다식도 가능
-strStream.sorted(String::compareTo); //위의 문장과 동일 | CCaaabccdd |
-| strStream.osrted(Comparator.reverseOrder()) // 기본 정렬의 역순
-strStream.sorted(Comparator.<String>naturalOrder.reversed()) | ddccbaaaCC |
+| strStream.sorted() // 기본정렬</br>strStream.sorted(Comparator.naturalOrder()) // 기본정렬 </br>strStream.sorted((s1,s2)→ s1.compareTo(s2)) // 람다식도 가능 </br>strStream.sorted(String::compareTo); //위의 문장과 동일 | CCaaabccdd |
+| strStream.osrted(Comparator.reverseOrder()) // 기본 정렬의 역순 </br>strStream.sorted(Comparator.<String>naturalOrder.reversed()) | ddccbaaaCC |
 | strStream.sorted(String.CASE_INSENSITIVE_ORDER))//대소문자 구분안함 | aaabCCccdd |
 | strStream.sorted(String.CASE_INSENSITIVE_ORDER.reversed()) | ddCCccbaaa |
-| strStream.sorted(Comparator.comparing(String::length)) // 길이 순 정렬
-strStream.sorted(Comparator.comparingInt(String::length)) // no오토박싱 | bddCCccaaa |
+| strStream.sorted(Comparator.comparing(String::length)) // 길이 순 정렬 </br> strStream.sorted(Comparator.comparingInt(String::length)) // no오토박싱 | bddCCccaaa |
 | strStream.sorted(Comparator.comparing(String::length).reversed()) | aaaddCCccb |
 
 더 깊은 내용은 다시 책을 찾아보던지, 필요할때 검색을 하도록 하자.
