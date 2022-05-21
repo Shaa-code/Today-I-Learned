@@ -1420,56 +1420,14 @@ OS에 의존적인 계산을 하고있는것이다.
 
 | 메서드 | 설명 | 예제 | 결과 |
 | --- | --- | --- | --- |
-| static double abs(double a)
-static float abs(float f)
-static int abs(int f)
-static long abs(long f) | 주어진 값의 절대값을 반환한다. | int i = Math.abs(-10);
-double d = Math.abs(-10.0); | i = 10
-d = 10.0 |
-| static double ceil(double a) | 주어진 값을 올림하여 반환한다. | double d = Math.ceil(10.1);
-double d2 = Math.ceil(-10.1);
-doubble d3 = Math.ceil(10.000015); | d = 11.0
-d2 =-10.0
-d3 = 11.0 |
-| static double floor(double a) | 주어진 값을 내림하여 반환한다. | double d = Math.floor(10.8);
-double d2 = Math.floor(-10.8); | d = 10.0
-d2 = -11.0 |
-| static double max(double a , double b)
-static float max(float a, float b)
-static int max(int a, int b)
-static long max(long a, long b) | 주어진 두 값을 비교하여 큰 쪽을 반환한다. | double d = Math.max(9.5, 9.50001);
-int i = Math.max(0, -1); | d = 9.50001
-i = 0 |
-| static double min(double a, double b)
-static float min(float a, float b)
-static int min(int a, int b)
-static long min(long a, long b) | 주어진 두 값을 비교하여 작은 쪽을 반환한다. | double d = Math.min(0.5, 9.50001);
-int i = Math.min(0, -1); | d = 9.5
-i = -1 |
-| static double random() | 0.0~1.0 범위의 임의의 double값을 반환한다. (1.0은 범위에 포함되지 않는다.) | double d = Math.random();
-int i = (int)(Math.random() * 10)+1 | 0.0 ≤ d < 1.0
-1 ≤ i < 11 |
-| static double rint(double a) | 주어진 double값과 가장 가까운 정수값을 double형으로 반환한다.
-단, 두 정수의 정가운데 있는 값(1.5, 2.5, 3.5 등)은 짝수를 반환 | double d = Math.rint(1.2);
-double d2 = Math.rint(2.6);
-double d3 = Math.rint(3.5);
-double d4 = Math.rint(4.5); | d = 1.0
-d2 = 3.0
-d3 = 4.0
-d4 = 4.0 |
-| static long round(double a)
-static long round(float a) | 소수점 첫째자리에서 반올림한 정수값(long)을 반환한다.
-매개변수의 값이 음수인 경우, round()와 rint()의 결과가 다르다는 것에 주의하자. | long l = Math.round(1.2);
-long l2 = Math.round(2.6);
-long l3 = Math.round(3.5);
-long l4 = Math.round(4.5);
-double d = 90.7552;
-double d2 = Math.round(d*100)/100.0; | l = 1
-l2 = 3
-l3 = -4
-l4 = -5
-d = 90.7552
-d2 = 90.76 |
+| static double abs(double a) </br>static float abs(float f)</br>static int abs(int f) </br>static long abs(long f) | 주어진 값의 절대값을 반환한다. | int i = Math.abs(-10); </br>double d = Math.abs(-10.0); | i = 10 </br>d = 10.0 |
+| static double ceil(double a) | 주어진 값을 올림하여 반환한다. | double d = Math.ceil(10.1); </br>double d2 = Math.ceil(-10.1); </br>doubble d3 = Math.ceil(10.000015); | d = 11.0 </br>d2 =-10.0 </br>d3 = 11.0 |
+| static double floor(double a) | 주어진 값을 내림하여 반환한다. | double d = Math.floor(10.8); </br>double d2 = Math.floor(-10.8); | d = 10.0 </br>d2 = -11.0 |
+| static double max(double a , double b) </br>static float max(float a, float b) </br>static int max(int a, int b) </br>static long max(long a, long b) | 주어진 두 값을 비교하여 큰 쪽을 반환한다. | double d = Math.max(9.5, 9.50001); </br>int i = Math.max(0, -1); | d = 9.50001 </br>i = 0 |
+| static double min(double a, double b) </br>static float min(float a, float b) </br>static int min(int a, int b) </br>static long min(long a, long b) | 주어진 두 값을 비교하여 작은 쪽을 반환한다. | double d = Math.min(0.5, 9.50001); </br>int i = Math.min(0, -1); | d = 9.5 </br>i = -1 |
+| static double random() | 0.0~1.0 범위의 임의의 double값을 반환한다. (1.0은 범위에 포함되지 않는다.) | double d = Math.random(); </br>int i = (int)(Math.random() * 10)+1 | 0.0 ≤ d < 1.0 </br>1 ≤ i < 11 |
+| static double rint(double a) | 주어진 double값과 가장 가까운 정수값을 double형으로 반환한다. 단, 두 정수의 정가운데 있는 값(1.5, 2.5, 3.5 등)은 짝수를 반환 | double d = Math.rint(1.2); </br>double d2 = Math.rint(2.6); </br>double d3 = Math.rint(3.5); </br>double d4 = Math.rint(4.5); | d = 1.0 </br>d2 = 3.0 </br>d3 = 4.0 </br>d4 = 4.0 |
+| static long round(double a) </br>static long round(float a) | 소수점 첫째자리에서 반올림한 정수값(long)을 반환한다. </br>매개변수의 값이 음수인 경우, round()와 rint()의 결과가 다르다는 것에 주의하자. | long l = Math.round(1.2);</br>long l2 = Math.round(2.6);</br>long l3 = Math.round(3.5);</br>long l4 = Math.round(4.5);</br>double d = 90.7552;</br>double d2 = Math.round(d*100)/100.0; | l = 1</br>l2 = 3</br>l3 = -4</br>l4 = -5</br>d = 90.7552 </br>d2 = 90.76 |
 
 ## 래퍼(warpper) 클래스
 
