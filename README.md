@@ -31,4 +31,5 @@
 
 [DAY18,19](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY19.md) - 심화(Effective)
 
+[DAY20](https://peaceofm1nd.tistory.com/172) - 모의면접
 
