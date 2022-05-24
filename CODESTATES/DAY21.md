@@ -60,7 +60,8 @@ public class Solution {
 }
 ```
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/170063274-8bb97e4b-5d83-476d-8614-9ef1de0df2d4.png)
+
 
 ### 재귀를 이용한 홀수 찾기
 
@@ -80,7 +81,8 @@ public class Solution {
 }
 ```
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/170063289-eadb7380-6d7c-4dd0-b316-9416dd5badf8.png)
+
 
 ### 재귀를 이용한 팩토리얼
 
@@ -94,7 +96,8 @@ public class Solution {
 }
 ```
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/70310271/170063306-10ae3fac-e61f-4fc2-a28d-6e456078a800.png)
+
 
 ### 재귀를 이용한 피보나치
 
@@ -111,7 +114,8 @@ public class Solution {
 
 핵심 아이디어 : 함수가 더해지는 모양이 나오면 아래처럼 두 갈래로 뻗어내려간다는점
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/70310271/170063332-f6c0da18-ba9a-4158-bae6-a46ff8e04bff.png)
+
 
 ### 재귀를 이용한 배열의 합
 
@@ -145,7 +149,8 @@ return arrSum(tail); // head는 return과 따로 더해야한다고 생각했으
 1. if문으로 언제 재귀가 끝이나는지 종료시점에 대해서 생각하지 않았다.
 2. 재귀라는것은 return으로 계속 반복되는 구조를 만들어야 한다.
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%204.png)
+![Untitled 4](https://user-images.githubusercontent.com/70310271/170063355-2346d23a-fef9-4aad-9c21-db814253f707.png)
+
 
 ### 재귀를 이용한 배열의 곱
 
@@ -213,7 +218,7 @@ drop을 재귀로 받기위해서 num을 내려야하는데, 어떻게 내릴것
 
 num을 따로 내려주어야겠다고 생각했으나, 매개변수에서 내리는 방법이 있다는걸 배웠다.
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%205.png)
+![Untitled 5](https://user-images.githubusercontent.com/70310271/170063416-57fadcd8-1f7f-4df6-a22f-65123722865e.png)
 
 ### 재귀를 이용해 배열의 마지막원소 제거
 
@@ -227,7 +232,8 @@ public class Solution {
 }
 ```
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%206.png)
+
+![Untitled 6](https://user-images.githubusercontent.com/70310271/170063437-5eb7be92-798c-4cd4-b795-1c18dfb09f60.png)
 
 ### 재귀를 이용해 논리곱 판단
 
@@ -238,7 +244,8 @@ if(arr.length == 0) return true;
     return and(Arrays.copyOfRange(arr,1,arr.length));
 ```
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%207.png)
+![Untitled 7](https://user-images.githubusercontent.com/70310271/170063451-9a5f816d-6dea-4ad3-8daa-ddbc5ab7a16f.png)
+
 
 ### 재귀를 이용해 논리합 판단
 
@@ -255,7 +262,8 @@ public class Solution {
 }
 ```
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%208.png)
+![Untitled 8](https://user-images.githubusercontent.com/70310271/170063468-46a26b93-20c1-4baf-b920-00cece768684.png)
+
 
 ### 재귀를 이용해 배열 역순
 
@@ -276,4 +284,5 @@ public class Solution {
 }
 ```
 
-![Untitled](DAY20%2008727e9184204af18c3662caca89317f/Untitled%209.png)
+![Untitled 9](https://user-images.githubusercontent.com/70310271/170063506-dc8d1430-43fa-4034-be5f-d815c7339251.png)
+
