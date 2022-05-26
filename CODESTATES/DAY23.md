@@ -57,7 +57,8 @@ public class Solution {
 }
 ```
 
-![Untitled](https://user-images.githubusercontent.com/70310271/170533914-1d701534-4c08-4630-9af8-e79176f95ec5.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/170537129-9f05b2a3-b10e-4ab2-a66d-66812f72c0e2.png)
+
 
 ## Queue란?
 
