@@ -35,4 +35,4 @@
 
 [DAY21](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY21.md) - \[자료구조/알고리즘\] 재귀
 
-[DAY22]() \[자료구조/알고리즘\]자료구조
+[DAY22](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY22.md) - \[자료구조/알고리즘\] 자료구조
