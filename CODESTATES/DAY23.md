@@ -1,14 +1,14 @@
 # DAY23
 
-### 자료구조란?
+## 자료구조란?
 
 여러 데이터의 묶음을 저장하고 사용하는 방법을 정의한것
 
-### Stack이란?
+## Stack이란?
 
 데이터를 순서대로 쌓는 자료구조
 
-### Stack 특징
+## Stack 특징
 
 - LIFO(Last in first Out)
 - 데이터는 하나씩 넣고 뺄 수 있음
@@ -59,17 +59,17 @@ public class Solution {
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/170533914-1d701534-4c08-4630-9af8-e79176f95ec5.png)
 
-### Queue란?
+## Queue란?
 
 줄을 서서 기다리다, 대기행렬
 
-### Queue 특징
+## Queue 특징
 
 1. FIFO(First In First Out) : 먼저 들어간 데이터가 제일 처음에 나옴.
 2. 데이터는 하나씩 넣고 뺼 수 있다.
 3. 두 개의 입출력 방향을 가지고 있다.
 
-### 큐 문제 : 앞에 단위로 자르는 로직
+## 큐 문제 : 뒤의 원소가 앞의 최대값을 넘어야 단위로 자르는 문제
 
 ```java
 public class Solution { 
