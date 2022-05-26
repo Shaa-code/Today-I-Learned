@@ -10,7 +10,7 @@
 
 ## Stack 특징
 
-- LIFO(Last in first Out)
+- LIFO(Last In First Out)
 - 데이터는 하나씩 넣고 뺄 수 있음
 - 하나의 입출력 방향을 가지고 있음.
 
