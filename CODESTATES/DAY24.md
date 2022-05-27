@@ -2,17 +2,17 @@
 
 ## Graph란?
 
+![Untitled](https://user-images.githubusercontent.com/70310271/170724760-6c3c8369-05a4-42f1-b37e-5bd8259887ed.png)
+
 Vertex (정점) : 꼭짓점을 의미한다.
 
 Edge (변,간선) : 변을 의미한다.
 
 Graph (그래프) : Vertex(정점)와 Edge(변)을 서로 연결한것.
 
-![Untitled](https://user-images.githubusercontent.com/70310271/170724760-6c3c8369-05a4-42f1-b37e-5bd8259887ed.png)
+출력 차수(진출 차수) : 정점을 떠나는(Leave) 변의 숫자
 
-정점을 떠나는(Leave) 변의 숫자 : 출력 차수(진출 차수)
-
-정점을 들어가는(Enter) 변의 숫자 : 입력 차수
+입력 차수 : 정점을 들어가는(Enter)
 
 여러개의 점들이 복잡하게 연결되어 있는 관계를 표현한 자료구조.
 
