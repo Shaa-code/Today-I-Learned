@@ -37,4 +37,6 @@
 
 [DAY22](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY22.md) - \[자료구조/알고리즘\] JSON
 
-[DAY23](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY23.md) - \[자료구조/알고리즘\] 자료구조
+[DAY23](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY23.md) - \[자료구조/알고리즘\] 자료구조 (Stack, Queue)
+
+[DAY24](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY24.md) - \[자료구조/알고리즘\] 자료구조 (Graph, Tree, Binary Search Tree)
