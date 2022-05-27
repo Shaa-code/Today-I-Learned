@@ -62,7 +62,7 @@ public class Solution {
 
 ## Queue란?
 
-줄을 서서 기다리다, 대기행렬
+데이터를 줄 세우는 자료구조
 
 ## Queue 특징
 
