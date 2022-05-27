@@ -17,43 +17,46 @@
 ### Stack 문제 : 전 페이지, 현재 페이지, 앞 페이지 문제
 
 ```java
+package com.codestates.coplit; 
+import java.util.*;
+
 public class Solution { 
     public ArrayList<Stack> browserStack(String[] actions, String start) {
+    Stack<String> prevStack = new Stack<>();
+    Stack<String> nextStack = new Stack<>();
+    Stack<String> current = new Stack<>();
+    ArrayList<Stack> result = new ArrayList<>();
+        
+    // TODO:
 
-        Stack<String> prevStack = new Stack<>();
-        Stack<String> nextStack = new Stack<>();
-        Stack<String> current = new Stack<>();
-        ArrayList<Stack> result = new ArrayList<>();
-
-    current.add(start);
-    for(String c : actions){
-
-    if (c.equals("-1") && !prevStack.empty()){
-
-        nextStack.push(current.pop());
-        current.push(prevStack.pop());
-
-    }else if(c.equals("1") && !nextStack.empty()){
-
-        prevStack.push(current.pop());
-        current.push(nextStack.pop());
-
-    }else if(c.equals("1") || c.equals("-1")){//이건 왜필요한거지?
-    
-    }else{
-
-        prevStack.push(current.pop());
-        current.push(c);
-        nextStack.clear();
-      }
+    current.push(start);
+    for(String e : actions){
+        //뒤로가기
+        if(e.equals("-1")){
+            if(!prevStack.empty()) {
+                nextStack.push(current.pop());
+                current.push(prevStack.pop());
+            }
+        //앞으로 가기
+        } else if(e.equals("1")){
+            if(!nextStack.empty()) {
+                prevStack.push(current.pop());
+                current.push(nextStack.pop());
+            }
+        // 새로운 페이지 
+        } else {
+            prevStack.push(current.pop());
+            current.push(e);
+            nextStack.clear();
+        }   
     }
 
     result.add(prevStack);
     result.add(current);
     result.add(nextStack);
     return result;
-
-  }
+    
+    } 
 }
 ```
 
