@@ -394,6 +394,48 @@ java.lang.Exception
 1. 예외가 발생한 메서드 내에서 자체적으로 처리해도 되는 것은 메서드 내에서 try-catch문을 사용해서 처리한다.
 2. 메서드에 호출시 넘겨받아야할 값을 다시 받아야하는 경우(메서드 내에서 자체적으로 해결이 안 되는 경우)에는 예외를 메서드에 선언해서, 호출한 메서드에서 처리해야한다.
 
+### 이해하기 어려워서 내가 직접 설명한다.
+
+우선 개념부터 잘못이해했다.
+
+`throws는 Exception함수로 찾아가서 해결하는게 아니다.`
+
+1. class ExceptionEx12를 확인하자.
+
+throws는 method1()에서 시작된 호출이 method2()를 호출하고 마지막, method2에서 예외를 발생시킨다. 
+
+```java
+static void method2() throws Exception{
+		try{
+    throw new Exception();
+    }catch(Exception){
+        ...
+		}
+}
+```
+
+이때 method2에서 예외처리를 해주는것이 일반적인 상황일것이다 하지만,
+
+method2안에서 예외처리를 하게되면 main에서는 어떤 오류가 발생한지 알 수 없게된다.
+
+그렇기 떄문에, method2에서 발생한 예외를 상위 메서드인 method1로 던져주게되고
+
+method1에서도 throws Exception1이 되어있기때문에 다시 상위메서드인 main으로 예외를 던지게 된다. 이때 마지막으로 main에서 Exception을 처리하게되는데 ExceptionEx14를 확인하면
+
+```java
+public static void main(String[] args){
+    try{
+        method1();
+    }catch(Exception e){
+        System.out.println("method1에서 예외처리");
+        e.printStackTrace();
+}
+```
+
+이렇게 main에서 Exception을 catch해주면 예외처리가 끝나게 되는 로직이다.
+
+
+
 ### finally 블럭
 
 예외의 발생여부에 상관없이 실행되어야할 코드를 포함시킬 목적으로 사용된다.
