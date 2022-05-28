@@ -410,7 +410,7 @@ static void method2() throws Exception{
     throw new Exception();
     }catch(Exception){
         ...
-		}
+    }
 }
 ```
 
