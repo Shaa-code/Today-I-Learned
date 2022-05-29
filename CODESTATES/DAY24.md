@@ -153,9 +153,7 @@ Full Binary Tree라고 한다.
 
 A perfect binary tree is a type of binary tree in which every internal node has exactly two child nodes and all the leaf nodes are at the same level.
 
-자손이 정화가히 2가지 노드로 뻗어나가는 동시에 모든 리프노드가 같은 레벨에 존재할때
-
-Perfect Binary Tree라고 한다.
+자손이 정확히 2가지 노드로 뻗어나가는 동시에 모든 리프노드가 같은 레벨에 존재할때 "Perfect Binary Tree"라고 한다.
 
 ![Untitled 9](https://user-images.githubusercontent.com/70310271/170875830-96eef3e4-dfd5-47b5-9a11-017801c8c634.png)
 
