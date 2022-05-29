@@ -143,9 +143,7 @@ Leaf : 트리구조의 끝지점. (자식노드가 없는 노드)
 
 A perfect binary tree is a type of binary tree in which every internal node has exactly two child nodes and all the leaf nodes are at the same level.
 
-부모노드와 자식노드가 정확히 2가지로만 내려오거나 자손이 없는 경우로만 이루어졌을때,
-
-Full Binary Tree라고 한다.
+부모노드와 자식노드가 정확히 2가지로만 내려오거나 자손이 없는 경우로만 이루어졌을때 "Full Binary Tree"라고 한다.
 
 ![Untitled 8](https://user-images.githubusercontent.com/70310271/170875824-ca851ed1-7c82-4477-96de-6d7faeaad7eb.png)
 
