@@ -1,30 +1,6 @@
 # DAY25
 
-```java
-package com.codestates.coplit; 
-import java.util.*;
-import java.util.Arrays;
-
-public class Solution {
-    public int[][] createMatrix(int[][] edges) {
-        // TODO:
-        int max = Arrays.asList(edges).stream().flatMapToInt(Arrays::stream).max().orElse(0) + 1;
-        int[][] adjM = new int[max][max];
-
-        for(int i = 0 ; i < edges.length ; i++){
-            int from = edges[i][0];
-            int to = edges[i][1];
-            int dir = edges[i][2];
-
-            adjM[from][to] = 1;
-            if(dir==1)
-                adjM[to][from] = 1;
-        }
-        return adjM;
-    }
-}
-```
-![Untitled](https://user-images.githubusercontent.com/70310271/170996013-a69d2267-8f82-40ba-9486-45e9f17c3589.png)
+## Binary Tree와 여러가지 순회
 
 ```java
 // Binary Tree in Java
@@ -191,3 +167,29 @@ class Main{ // 1번 노드
 
 
 트리구조에서 노드를 순차적으로 조회할 때의 순서는 항상 왼쪽부터 오른쪽이다.
+
+```java
+package com.codestates.coplit; 
+import java.util.*;
+import java.util.Arrays;
+
+public class Solution {
+    public int[][] createMatrix(int[][] edges) {
+        // TODO:
+        int max = Arrays.asList(edges).stream().flatMapToInt(Arrays::stream).max().orElse(0) + 1;
+        int[][] adjM = new int[max][max];
+
+        for(int i = 0 ; i < edges.length ; i++){
+            int from = edges[i][0];
+            int to = edges[i][1];
+            int dir = edges[i][2];
+
+            adjM[from][to] = 1;
+            if(dir==1)
+                adjM[to][from] = 1;
+        }
+        return adjM;
+    }
+}
+```
+![Untitled](https://user-images.githubusercontent.com/70310271/170996013-a69d2267-8f82-40ba-9486-45e9f17c3589.png)
