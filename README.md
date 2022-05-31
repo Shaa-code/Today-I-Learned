@@ -42,3 +42,5 @@
 [DAY24](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY24.md) - \[자료구조/알고리즘\] 자료구조 (Graph, Tree, Binary Search Tree)
 
 [DAY25](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY25.md) - \[자료구조/알고리즘\] 자료구조 (Search Algorithm)
+
+[DAY26](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY26.md) - \[자료구조/알고리즘\] 코딩테스트 
