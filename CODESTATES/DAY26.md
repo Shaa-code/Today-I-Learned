@@ -1,3 +1,7 @@
+# DAY26
+
+오늘은 DFS, BFS복습만 했다. 내일 새로 배운것들을 다시 정리할 예정이다.
+
 ### DFS(Depth First Search)
 
 ```java
