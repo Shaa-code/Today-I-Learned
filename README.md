@@ -1,6 +1,6 @@
 # 🏳 Learned From CodeState 
 
-코드스테이츠에서 하루하루 배운것들을 기록합니다.
+코드스테이츠를 진행하며 하루 동안 배운것들을 기록합니다.
 
 
 [DAY1](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY1.md) - BE 개발 학습법
