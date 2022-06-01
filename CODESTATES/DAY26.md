@@ -22,7 +22,6 @@ class Main {
         }
     }
 
-
     public static void main(String[] args) {
         Main T = new Main();
         Scanner kb = new Scanner(System.in);
@@ -41,6 +40,8 @@ class Main {
     }
 }
 ```
+
+![Untitled](https://user-images.githubusercontent.com/70310271/171409178-0ad9d34e-0057-410d-a28a-952bd67e0252.png)
 
 
 ### BFS(Breadth First Search)
@@ -79,3 +80,5 @@ public class Main{
     }
 }
 ```
+
+![Untitled 1](https://user-images.githubusercontent.com/70310271/171409257-1ab519ea-6601-47b6-a6a3-a1b67a9e8e20.png)
