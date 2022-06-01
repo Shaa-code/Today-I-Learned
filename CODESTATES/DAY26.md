@@ -41,7 +41,7 @@ class Main {
 }
 ```
 
-![Untitled](https://user-images.githubusercontent.com/70310271/171409178-0ad9d34e-0057-410d-a28a-952bd67e0252.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/171412871-fff1194d-c283-4e73-aa81-94a35cffc072.png)
 
 
 ### BFS(Breadth First Search)
@@ -81,5 +81,5 @@ public class Main{
 }
 ```
 
-![Untitled 1](https://user-images.githubusercontent.com/70310271/171411875-e4072fd6-b465-41d3-9a5d-4d2de42a3cf7.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/171412885-08433ada-76c2-4069-bd99-46296ebbdf8d.png)
 
