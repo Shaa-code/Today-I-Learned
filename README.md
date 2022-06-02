@@ -43,4 +43,6 @@
 
 [DAY25](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY25.md) - \[자료구조/알고리즘\] 자료구조 (Search Algorithm)
 
-[DAY26](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY26.md) - \[자료구조/알고리즘\] 코딩테스트 (자료구조 복습)
+[DAY26](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY26.md) - \[자료구조/알고리즘\] 코딩테스트 (자료구조 복습)'
+
+[DAY27](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY27.md) - \[자료구조/알고리즘\] 코딩테스트
