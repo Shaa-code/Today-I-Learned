@@ -61,10 +61,10 @@ while (i > 0) {
 
 ```java
 for(int i = 0; i < n; i++) {
-		for(int j = 0; j < n; j++) {
-			...
-		}
-	}
+    for(int j = 0; j < n; j++) {
+    ...
+    }
+}
 ```
 
 ### O(2^n) : 입력값에 따라 n배씩 높아짐
