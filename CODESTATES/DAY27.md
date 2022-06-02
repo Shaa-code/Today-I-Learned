@@ -51,7 +51,7 @@ for(int i = 0 ; i < n ; i++){
 ```java
 int i = n;
 while (i > 0) {
-  i = i / 2;
+    i = i / 2;
 }
 ```
 
