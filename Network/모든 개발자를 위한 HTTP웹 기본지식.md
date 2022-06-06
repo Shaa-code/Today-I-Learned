@@ -191,11 +191,11 @@ Identifier : 다른 항목과 구분하는데 필요한 정보
 
 ![Untitled 1](https://user-images.githubusercontent.com/70310271/172166919-95bd296e-573c-4394-a2d6-643ed6c35229.png)
 
-[Untitled 2](https://user-images.githubusercontent.com/70310271/172166924-fee57ba8-1358-4799-b586-6cf9e4de2fee.png)
+![Untitled 2](https://user-images.githubusercontent.com/70310271/172166924-fee57ba8-1358-4799-b586-6cf9e4de2fee.png)
 
 ### URL(Uniform Resource Locator)이란?
 
-리소스가 있는 위치를 지정한다.!
+리소스가 있는 위치를 지정한다.
 
 ### URN(Unifrom Resource Name)이란?
 
