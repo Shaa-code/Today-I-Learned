@@ -45,4 +45,4 @@
 
 [DAY26,27,28](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY26,27,28.md) - \[자료구조/알고리즘\] 코딩테스트
 
-[DAY29]() \[네트워크\] 브라우저의 작동 원리
+[DAY29](https://github.com/Shaa-code/Today-I-Learned/blob/main/Network/%EB%AA%A8%EB%93%A0%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20HTTP%EC%9B%B9%20%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%8B%9D.md) \[네트워크\] 브라우저의 작동 원리
