@@ -55,4 +55,4 @@ CLI 환경에서는 Curl을 활용하여 실습해보았다.
 
 ![API](https://user-images.githubusercontent.com/70310271/172633213-7b9f80d5-9ae5-421b-9303-85ff55e5deba.png)
 
-다른 웹사이트에서 날씨 API에서 GET요청을 해보았다. 200OK로 잘 나오는것을 확인할 수 있다.
+다른 웹사이트에서 날씨 API에서 GET요청을 해보았다. 200 OK로 잘 나오는것을 확인할 수 있다.
