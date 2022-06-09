@@ -37,7 +37,7 @@ Database → 필터링 외에도 File I/O로 구현이 힘든 관리를 위한 �
 
 
 
-오늘은 쿼리문을 다 실행해보았다.
+오늘은 페어분과 함께 w3schools의 문제를 모두 다 풀어보았다.
 
 https://www.w3schools.com/sql/exercise.asp
 
