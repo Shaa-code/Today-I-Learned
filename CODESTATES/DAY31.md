@@ -32,8 +32,11 @@ File I/O → 원하는데이터만 가져올 수 없고 항상 모든 데이터�
 
 Database → 필터링 외에도 File I/O로 구현이 힘든 관리를 위한 여러 기능들을 가지고 있는 데이터에 특화된 서버
 
-AS Alias -> 찾아보기
+AS Alias -> 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c34455c5-d33f-45e7-be60-a409e05c2edf/Untitled.png)
+오늘은 페어분과 SQL문제를 풀어보는 시간을 가졌다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/57a27454-d656-4fb8-b104-0914bbd716ea/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/172912744-180bb6f3-07d2-4e9f-9e45-a8992661b14c.png)
+
+![Untitled](https://user-images.githubusercontent.com/70310271/172912742-145ca2fc-86fe-43bb-9319-6d6d1e02b723.png)
+
