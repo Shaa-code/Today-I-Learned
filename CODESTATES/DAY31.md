@@ -1,5 +1,3 @@
-# DAY31
-
 SQL이 어떻게 이루어져 있는지 이해한다.
 
 SQL 기본 qurey문을 사용할 줄 안다.
@@ -34,14 +32,8 @@ File I/O → 원하는데이터만 가져올 수 없고 항상 모든 데이터�
 
 Database → 필터링 외에도 File I/O로 구현이 힘든 관리를 위한 여러 기능들을 가지고 있는 데이터에 특화된 서버
 
+AS Alias -> 찾아보기
 
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c34455c5-d33f-45e7-be60-a409e05c2edf/Untitled.png)
 
-
-오늘은 페어분과 함께 w3schools의 문제를 모두 다 풀어보았다.
-
-https://www.w3schools.com/sql/exercise.asp
-
-![Untitled 1](https://user-images.githubusercontent.com/70310271/172911170-a0d91e59-3517-4075-8446-fe6f777b3b62.png)
-
-![Untitled](https://user-images.githubusercontent.com/70310271/172911165-6f67301b-9ef7-4a2e-9aad-535cab1e09ea.png)
-
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/57a27454-d656-4fb8-b104-0914bbd716ea/Untitled.png)
