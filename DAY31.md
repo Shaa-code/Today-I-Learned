@@ -34,6 +34,13 @@ File I/O → 원하는데이터만 가져올 수 없고 항상 모든 데이터�
 
 Database → 필터링 외에도 File I/O로 구현이 힘든 관리를 위한 여러 기능들을 가지고 있는 데이터에 특화된 서버
 
+
+
+
+오늘은 쿼리문을 다 실행해보았다.
+
+https://www.w3schools.com/sql/exercise.asp
+
 ![Untitled 1](https://user-images.githubusercontent.com/70310271/172911170-a0d91e59-3517-4075-8446-fe6f777b3b62.png)
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/172911165-6f67301b-9ef7-4a2e-9aad-535cab1e09ea.png)
