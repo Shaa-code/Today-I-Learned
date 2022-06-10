@@ -48,3 +48,7 @@
 [DAY29](https://github.com/Shaa-code/Today-I-Learned/blob/main/Network/%EB%AA%A8%EB%93%A0%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20HTTP%EC%9B%B9%20%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%8B%9D.md) - \[네트워크\] 브라우저의 작동 원리
 
 [DAY30](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY30.md) - \[네트워크\] HTTP
+
+[DAY31](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY31.md) - 관계형 데이터베이스
+
+[DAY32](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY32.md) - 관계형 데이터베이스
