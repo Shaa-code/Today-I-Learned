@@ -11,11 +11,17 @@
 | Classes | Teacher | Classes |
 |   | Students |  |
 
-각각의 객체를(Teacher, Classes,Students)을 Entity라고 한다.
+### Entity
+각각의 객체
+ex) (Teacher, Classes,Students)
 
-착각하지 말자(위 테이블에서 열은 각 행에 해당한다.) 
 
-각각의 열을 에 해당하는 데이터들을 Record라고 한다.
+### Field각 Entity의 행에 해당하고 하나의 열이 될수 있다.
+착각하지 말자(위 테이블에서 열은 각 행에 해당한다.)
+
+
+### Record
+Field가 열 일때, 각각의 행에 해당하는 데이터들을 Record라고 한다.
 
 ex) Classes[ Name : Cynthia / Department : Music / Classes : Music Theory ]
 
