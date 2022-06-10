@@ -49,4 +49,4 @@
 
 [DAY30](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY30.md) - \[네트워크\] HTTP
 
-[DAY31](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY31,32.md) - 관계형 데이터베이스
+[DAY31,32](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY31,32.md) - 관계형 데이터베이스
