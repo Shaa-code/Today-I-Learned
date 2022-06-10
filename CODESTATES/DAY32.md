@@ -28,8 +28,6 @@ Phonebook의 Phone_number를 User에 넣는게 훨씬 더 좋아 보인다.
 
 보다시피 이런 이유로 1:1 관계는 잘 사용되지 않는다.
 
-자기참조 관계(Self Referencing Relationship)
-
 ### 1:N 관계
 
 한명의 선생님은 여러 클래스를 가르친다.
