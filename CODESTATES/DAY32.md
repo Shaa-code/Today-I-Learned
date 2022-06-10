@@ -16,7 +16,9 @@
 ex) (Teacher, Classes,Students)
 
 
-### Field각 Entity의 행에 해당하고 하나의 열이 될수 있다.
+### Field
+위 테이블에서 각 Entity의 행에 해당한다.
+그리고 각각 하나의 열이 될 수 있다.
 착각하지 말자(위 테이블에서 열은 각 행에 해당한다.)
 
 
