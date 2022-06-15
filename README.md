@@ -51,4 +51,4 @@
 
 [DAY31,32,33](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY31,32,33.md) - 관계형 데이터베이스
 
-[DAY34,35](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY34.md) - Spring 프레임워크의 기본
+[DAY34,35](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY34,35.md) - Spring 프레임워크의 기본
