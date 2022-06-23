@@ -199,7 +199,7 @@ Postman으로 memberId에 1의 값을 넣을필요가 없다.
 
 왜냐하면, PostMapping의 인자, 즉, 주소값으로 넣어준 값을 POST하겠다는 의미이기 때문이다.
 
-RequestParam들 (email,name,phone)은 완전히 별개로 작동한다.
+RequestParam으로 받은 인자들(email,name,phone)은 완전히 별개로 작동한다.
 
 ```java
 return new ResponseEntity<>(HttpStatus.OK)
