@@ -1,4 +1,8 @@
-학습 목표
+# DAY41
+
+Spring MVC [API 계층]
+
+## 학습 목표
 
 Spring MVC가 무엇인지 말로 설명할 수 있다.
 
@@ -178,7 +182,7 @@ member-id에 딱 맞게 들어간다.
 
 @GetMapping에 별도의 URI를 지정해주지 않았기 때문에 클래스 레벨의 URI(”/v1/members”)에 매핑된다.
 
-### 실습
+## 실습
 
 ![Untitled 8](https://user-images.githubusercontent.com/70310271/175284114-c4cff500-af57-47e1-a2b7-56dd2beb7604.png)
 
