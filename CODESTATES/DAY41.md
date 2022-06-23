@@ -46,11 +46,11 @@ Spring Web MVC를 줄여서 Spring MVC라고 부른다.
 
 Thymeleaf,FreeMarker,JSP+JSTL,Tiles가 있다.
 
-1. PDF, Excel등의 문서 형태로 출력
+2. PDF, Excel등의 문서 형태로 출력
 
 Model 데이터를 가공해서 PDF나 Excel문서를 만들어서 클라이언트 측에 전송하는 방식
 
-1. XML,JSON등 특정 형식의 포맷으로의 변환
+3. XML,JSON등 특정 형식의 포맷으로의 변환
 
 Model 데이터를 특정 프로토콜 형태로 변환해서 변환된 데이터를 클라이언트 측에 전송하는 방식
 
@@ -75,18 +75,18 @@ Controller정보에는 해당 Controller안에 있는 Handler메서드 정보를
 
 Handler메서드는 Controller 클래스안에 구현된 요청 처리 메서드를 의미한다.
 
-1. 요청을 처리할 Controller클래스를 찾았으니 이제는 실제로 클라이언트 요청을 처리할 Handler메서드를 찾아서 호출한다.
+4. 요청을 처리할 Controller클래스를 찾았으니 이제는 실제로 클라이언트 요청을 처리할 Handler메서드를 찾아서 호출한다.
 
 DisPatcherVervlet은 Handler메서드를 직접 호출하지 않고, HandlerAdapter에게 Handler 메서드 호출을 위임한다.
 
-1. HandlerAdapter는 DispatcherServlet으로부터 전달 받은 Controller정보를 기반으로 해당 Controller의 Handler 메서드를 호출한다.
-2. Controller의 Handler 메서드는 비즈니스 로직처리후 리턴받은 Model 데이터를 HandlerAdapter에게 전달한다.
-3. HandlerAdapter는 전달 받은 Model데이터와 VIew정보를 다시 DispatcherServlet에게 전달한다.
-4. DispatcherServlet은 전달받은 View정보를 다시 ViewResolver에게 전달해서 View검색을 요청한다.
-5. ViewResolver는 View정보에 해당하는 View를 찾아서 View를 다시 리턴해준다.
-6. DispatcherServlet은 ViewResolver로부터 전달받은 View 객체를통해 Model데이터를 넘겨주면서 클라이언트에게 전달할 응답 데이터를 생성을 요청한다.
-7. View는 응답 데이터를 생성해서 다시 DispatcherServlet에게 전달한다.
-8. DiscpatcherServlet은 View로 부터 전달받은 응답데이터를 최종적으로 클라이언트에게 전달한다.
+5. HandlerAdapter는 DispatcherServlet으로부터 전달 받은 Controller정보를 기반으로 해당 Controller의 Handler 메서드를 호출한다.
+6. Controller의 Handler 메서드는 비즈니스 로직처리후 리턴받은 Model 데이터를 HandlerAdapter에게 전달한다.
+7. HandlerAdapter는 전달 받은 Model데이터와 VIew정보를 다시 DispatcherServlet에게 전달한다.
+8. DispatcherServlet은 전달받은 View정보를 다시 ViewResolver에게 전달해서 View검색을 요청한다.
+9. ViewResolver는 View정보에 해당하는 View를 찾아서 View를 다시 리턴해준다.
+10. DispatcherServlet은 ViewResolver로부터 전달받은 View 객체를통해 Model데이터를 넘겨주면서 클라이언트에게 전달할 응답 데이터를 생성을 요청한다.
+11. View는 응답 데이터를 생성해서 다시 DispatcherServlet에게 전달한다.
+12. DiscpatcherServlet은 View로 부터 전달받은 응답데이터를 최종적으로 클라이언트에게 전달한다.
 
 DispatcherServlet이 애플리케이션의 가장 앞단에 배치되어 다른 구성요소들과 상호작용하면서 클라이언트의 요청을 처리하는 패턴은 Front Controller Pattern이라고한다.
 
