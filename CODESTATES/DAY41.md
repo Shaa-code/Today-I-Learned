@@ -1,4 +1,4 @@
-# DAY41
+# DAY41,42
 
 Spring MVC [API 계층]
 
@@ -207,3 +207,102 @@ return new ResponseEntity<>(HttpStatus.OK)
 return new ResponseEntity<>(map,HttpStatus.OK)
 // map을 넣어주어야만 값이 제대로 반환 되어져서 나온다.
 ```
+
+### DTO란?
+
+Data Transfer Object이다.
+
+```xml
+
+@RestController
+@RequestMapping("/v1/members")
+public class MemberController {
+    @PostMapping
+    public ResponseEntity postMember(@RequestParam("email") String email,
+                                     @RequestParam("name") String name,
+                                     @RequestParam("phone") String phone) {
+        Map<String, String> map = new HashMap<>();
+        map.put("email", email);
+        map.put("name", name);
+        map.put("phone", phone);
+
+        return new ResponseEntity<Map>(map, HttpStatus.CREATED);
+    }
+```
+
+```xml
+@RestController
+@RequestMapping("/v1/members")
+public class MemberController {
+    @PostMapping
+    public ResponseEntity postMember(MemberDto memberDto) {
+        return new ResponseEntity<MemberDto>(memberDto, HttpStatus.CREATED);
+    }
+
+		...
+		...
+}
+```
+
+코드가 간결해진다.
+
+아직 비즈니스 로직은 없지만, Map이 사라지고 MemberDto객체를 클래스의 생성자 파라미터로 전달하도록 바뀌었다.
+
+```java
+public class MemberDto {
+    @Email
+    private String email;
+    private String name;
+    private String phone;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+}
+```
+
+DTO클래스는 이렇게 Getter,Setter로 이루어져있다.
+
+### @RequestBody
+
+JSON형식의 Request Body를 MemberPostDto 클래스의 객체로 변환시켜주는 역할을한다.
+
+### @ResoponseBody
+
+JSON형식의 Response Body를 클라이언트에게 전달하기 위해 DTO 클래스의 객체를 Response Body로 변환하는 역할을 한다.
+
+Spring MVC에서는 핸들러메서드에 @ResponseBody애너테이션이 붙거나 핸들러메서드의 리턴값이 ResponseEntity일 경우, 내부적으로 HttpMessageConverter가 동작하게 되어 응답객체를 JSON형식으로 바꿔준다.
+
+## DTO유효성 검증
+
+프론트 쪽에서 유효성 검사를 진행했다고 하더라도 서버쪽에서 한번더 유효성검사를 진행해야한다.
+
+프론트쪽에서 진행하는 유효성 검사는 사용자 편의성때문에 진행하는것이다.
+
+@PathVariable이 추가된 변수에 유효성 검증이 정상적으로 수행되려면 @Validated 애너테이션을 반드시 붙여주어야한다.
+
+![Untitled](https://user-images.githubusercontent.com/70310271/175541074-f99ceffe-5a28-4e46-a6ac-8e0d24f66609.png)
+
+![Untitled 1](https://user-images.githubusercontent.com/70310271/175541100-985bfda3-c1b3-4104-8282-00b11e033435.png)
+
+지금까지 DTO클래스의 유효성 검증을 위해서 사용한 애너테이션은 Jakarta Bean Validation이라는 유효성 검증을 위한 표준 스펙에서 지원하는 내장 애너테이션들이다.
