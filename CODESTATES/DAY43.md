@@ -1,3 +1,5 @@
+# D
+
 ### Spring MVC 서비스 계층
 
 Controller가 전달받은 클라이언트의 요청을 직접적으로 처리하는 계층.
@@ -219,8 +221,7 @@ public class MemberMapperImpl implements MemberMapper {
             email = member.getEmail();
             name = member.getName();
             phone = member.getPhone();
-            MemberResponseDto memberResponseDto = 
-											     new MemberResponseDto(memberId, email, name, phone);
+            MemberResponseDto memberResponseDto = new MemberResponseDto(memberId, email, name, phone);
             return memberResponseDto;
         }
     }
