@@ -61,4 +61,4 @@
 
 [DAY43](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY43.md) - Spring MVC [서비스 계층]
 
-[DAY44](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY44.md) - Spring MVC []
+[DAY44](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY44.md) - Spring MVC [예외처리]
