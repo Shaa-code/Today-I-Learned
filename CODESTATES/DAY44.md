@@ -116,6 +116,8 @@ public ResponseEntity handleException(MethodArgumentNotValidException e){
         }
     ]
 ```
+보다시피 이렇게 줄여지게 된다.
+
 
 ### ExceptionHandler의 단점
 
