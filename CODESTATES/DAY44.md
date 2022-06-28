@@ -116,8 +116,6 @@ public ResponseEntity handleException(MethodArgumentNotValidException e){
         }
     ]
 ```
-보다시피 이렇게 줄여지게 된다.
-
 
 ### ExceptionHandler의 단점
 
@@ -190,3 +188,56 @@ public class MemberController {
 ```
 
 보다시피 계속해서 ExceptionHandler를 추가해주어야함. 그래서 AOP가 필요하게됨.
+
+### @RestControllerAdvice
+
+Controller 클래스에서 발생하는 예외를 도맡아서 처리하게 된다.
+
+예상하건데, @RestController 애너테이션이 붙은 모든 메서드에 자동으로 적용되는듯하다.
+
+```java
+package com.codestates.advice;
+
+import com.codestates.member.controller.ErrorResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.validation.ConstraintViolationException;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@RestControllerAdvice
+public class GlobalExceptionAdvice {
+    @ExceptionHandler
+    public ResponseEntity handleMethodArgumentNotValidException(
+            MethodArgumentNotValidException e){
+        final List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
+
+        List<ErrorResponse.FieldError> errors =
+                fieldErrors.stream()
+                        .map(error -> new ErrorResponse.FieldError(
+                                error.getField()
+                                ,error.getRejectedValue()
+                                ,error.getDefaultMessage()))
+                        .collect(Collectors.toList());
+
+        return new ResponseEntity<>(new ErrorResponse(errors), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity handleConstranitViolationException(
+            ConstraintViolationException e){
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+}
+```
+
+![Untitled](https://user-images.githubusercontent.com/70310271/176230586-1716e821-766b-457f-a9cd-440774977bcf.png)
+
+![Untitled 1](https://user-images.githubusercontent.com/70310271/176230629-9c2b0c40-de21-41cd-89a8-c0323d8d596d.png)
+
+AOP를 적용하니, 모든 Controller에 예외처리가 되었다.
