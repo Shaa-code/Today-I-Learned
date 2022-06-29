@@ -228,7 +228,7 @@ public class MemberMapperImpl implements MemberMapper {
 }
 ```
 
-왜 역할분리를 하는가?
+### 왜 역할분리를 하는가?
 
 1. 계층별 관심사 분리
 2. 코드 구성은 단순화
