@@ -1,8 +1,11 @@
 # DAY44
 
-### Spring MVC에서의 예외처리
+## Spring MVC에서의 예외처리
 
 클라이언트쪽에서 구체적으로 어떤 예외가 발생했는지를 알리기위해서 사용함.
+
+
+### 예외처리 전달순서
 
 ```java
 @PostMapping
@@ -27,7 +30,8 @@ public ResponseEntity handleException(MethodArgumentNotValidException e){
 5. MethodArgumentNotValidException 객체에서 getBindingResult().getFieldErrors()를 통해 발생한 에러 정보를 확인할 수 있다.
 6. ResponseEnitity를 통해 Response Body로 전달한다.
 
-Request받은 값
+
+요청받은 값
 
 ```java
 {
@@ -65,7 +69,7 @@ Request받은 값
 }
 ```
 
-너무 쓸데없는 정도까지 많이 보내기에 줄여야한다.
+쓸데없는 정보까지 많이 보내기에 의도적으로 오류를 줄여야한다.
 
 ```java
 
@@ -84,7 +88,7 @@ public class ErrorResponse {
 }
 ```
 
-여러 오류가 발생할수 있어서 List로 받고 그중에서 field, rejectedValue, reason만 얻어온다.
+한개의 오류가 아닌 몇 가지 오류가 발생할 수 있어서 List로 오류내용들을 받고 그중에서 field, rejectedValue, reason만 얻어온다.
 
 ```java
 @ExceptionHandler
@@ -119,9 +123,10 @@ public ResponseEntity handleException(MethodArgumentNotValidException e){
 
 ### ExceptionHandler의 단점
 
-1. 각각의 Controller클래스에서 @ExceptionHandler 애너테이션을 사용하여 Request Body에 대한 유효성 검증 실패에 대한 에러처리를 해야되므로 각 Controller크래스마다 코드 중복이 발생한다.
+1. 각각의 Controller클래스에서 @ExceptionHandler 애너테이션을 사용하여 Request Body에 대한 유효성 검증 실패에 대한 에러처리를 해야되므로 각 Controller클래스마다 코드 중복이 발생한다.
 
 2.Controller에서 처리해야되는 예외가 유효성 검증 실패에 대한 예외만 있는것이 아니기 때문에 하나의 Controller클래스네 내에서 @ExceptionHandler를 추가한 에러 처리 핸드러 메서드가 늘어난다.
+
 
 ```java
 @RestController
