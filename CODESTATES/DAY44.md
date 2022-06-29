@@ -240,4 +240,61 @@ public class GlobalExceptionAdvice {
 
 ![Untitled 1](https://user-images.githubusercontent.com/70310271/176230629-9c2b0c40-de21-41cd-89a8-c0323d8d596d.png)
 
+
 AOP를 적용하니, 모든 Controller에 예외처리가 되었다.
+
+### 체크예외(Checked Exception)
+
+발생한 예외를 Catch해서 체크한 후에 해당 예외를 복구하든가 아니면 회피하든가 등의 구체적인 처리를 해야하는 예외이다.
+
+ex) ClassNotFoundException
+
+### 언체크예외(Unchecked Exception)
+
+발생한 예외를 Catch해서 해당 예외에 대한 어떤 처리를 할 필요가 없는 예외를 의미한다.
+
+ex)NullPointerException,ArrayIndexOutofBoundsException
+
+개발자가 코드를 잘못해서 발생하는 오류들은 대부분 RuntimeException을 상속한 예외이다.
+
+### 개발자가 의도적으로 예외를 던지는 상황
+
+- 시스템 내부에서 조회하려는 리소스가 없는경우
+
+## 서비스 계층에서 예외던지기
+
+service/MemberService
+
+![Untitled](https://user-images.githubusercontent.com/70310271/176515547-2937a2c2-4386-4ad8-8da5-71666805b405.png)
+
+이렇게 바로 던질수 있다.
+
+각 코드가 어떻게 흘러 들어가는지는 밑에 이미지들을 보면서 쭉 따라가보자.
+
+### 사용자 정의 예외(Custom Exception) 코드
+
+exception/ExceptionCode
+
+![Untitled 1](https://user-images.githubusercontent.com/70310271/176515566-5f2349a6-c3cc-43f5-a511-f0c707d71c52.png)
+
+미리 열거형을 사용하여 위 처럼 정의해둔다.
+
+response/ErrorResponse
+
+![Untitled 2](https://user-images.githubusercontent.com/70310271/176515589-350f87d2-018f-470b-b26e-19f0e5f193eb.png)
+
+exception/BusinessLogicException
+
+![Untitled 3](https://user-images.githubusercontent.com/70310271/176515606-73386eee-862e-4e14-9057-db1fa48ab8be.png)
+
+advice/GlobalExceptionAdvice
+
+![Untitled 4](https://user-images.githubusercontent.com/70310271/176515628-c337fa83-a88c-46f1-acfe-259b5a027dc0.png)
+
+![Untitled 5](https://user-images.githubusercontent.com/70310271/176515656-57535d9d-9fc1-4bad-9dbe-1751870f1bfd.png)
+
+![Untitled 6](https://user-images.githubusercontent.com/70310271/176515679-c890da6c-00e8-4650-a180-8380cf19f9eb.png)
+
+각 코드를 보며, 어디로 흘러가는지 명확히 이해해보는 연습을 계속해야한다.
+
+위 코드는 AOP에 모든 예외를 추가해서 @RestController가 붙은 각 컨트롤러에 모두 적용시키는 방식을 사용했다.
