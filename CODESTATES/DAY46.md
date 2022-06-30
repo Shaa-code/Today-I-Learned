@@ -70,6 +70,35 @@ JDBC API를 통해 사용된 객체들은 사용 이후에 사용한 순서의 �
 
 ### Spring Data JDBC란?
 
+Spring Data JDBC는 JPA처럼 ORM기술을 사용한다.
+
 난이도 : JPA > Spring Data JDBC
 
 Spring Data JDBC, JPA, Spring Data JPA 3개다 배워야한다.
+
+Sping은 [application.properties](http://application.properties) 또는 application.yml 파일을 통해 Spring에서 사용하는 다양한 설정 정보들을 입력할 수 있다.
+
+.yml파일은 애플리케이션의 설정 정보를 depth 별로 입력할 수 있는 더 나은 방법을 제공하기 때문에 application.proerties의 파일 확장자를 application.yml로 변경한다.
+
+### H2 DB
+
+main/java/resources/application.yml에 설정은 해준다.
+
+1. 콘솔의 접속 URL Context path를 /h2로 설정한다.
+2. JDBC URL이 매번 랜덤하게 바뀌지 않도록’jdbc:h2:mem:test”로 설정한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/448924a9-957b-4117-853f-c46489770f50/Untitled.png)
+
+### @Id
+
+```
+@Getter
+@Setter
+public class Message {  // (1)
+    @Id    // (2)
+    private long messageId;
+    private String message;
+}
+```
+
+@Id애너테이션을 추가한 멤버변수는 해당 엔티티의 고유 식별자 역할을 하고, 이 식별자는 데이터 베이스의 Primary Key로 지정한 Column에 해당된다.
