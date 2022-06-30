@@ -1,7 +1,5 @@
 # DAY46
 
-수정예정
-
 - JDBC가 무엇인지 이해할 수 있다.
 - Java에서 JDBC가 어떤 역할을 하는지 이해할 수 있다.
 - Spring Data JDBC가 무엇인지 이해할 수 있다.
@@ -81,6 +79,8 @@ Sping은 [application.properties](http://application.properties) 또는 applicat
 .yml파일은 애플리케이션의 설정 정보를 depth 별로 입력할 수 있는 더 나은 방법을 제공하기 때문에 application.proerties의 파일 확장자를 application.yml로 변경한다.
 
 ### H2 DB
+
+H2는 In-Memory 데이터베이스라서 껏다키면 사라진다. (테스트 용도)
 
 main/java/resources/application.yml에 설정은 해준다.
 
