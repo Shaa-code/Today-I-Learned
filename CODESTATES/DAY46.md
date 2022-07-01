@@ -16,7 +16,7 @@ Spring Data JDBC나 Spring Data JPA 같은 기술은 데이터베이스와 연�
 
 ### JDBC의 동작흐름
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6af3fe3-66d3-40bb-937f-88a08915c07a/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/176925105-27480d74-8603-43a2-aba3-cc9fecdd253d.png)
 
 JDBC API를 사용하기 위해서는 JDBC드라이버를 먼저 로딩한 후 데이터베이스와 연결한다.
 
@@ -28,7 +28,7 @@ Oracle,MSSQL,MySQL 각 회사에 맞는 JDBC드라이버를 구현해서 제공�
 
 ### JDBC API 사용 흐름
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e5b16fdc-0191-4e6f-992e-6914f95e1da3/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/176925130-66c1d878-1556-4764-87f0-8d22ac744cb5.png)
 
 1. JDBC 드라이버 로딩
 
@@ -58,7 +58,7 @@ JDBC API를 통해 사용된 객체들은 사용 이후에 사용한 순서의 �
 
 ### Connection Pool이란?
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c0fc8ff0-c5dc-4dee-b649-c1c37db940ae/Untitled.png)
+![Untitled 2](https://user-images.githubusercontent.com/70310271/176925147-75090b62-8f4d-4a9e-b9d0-bd5d0743e848.png)
 
 데이터베이스와의 연결을 위한 Conncetion 객체를 생성하는 작업은 비용이 많이 든다.
 
@@ -87,7 +87,7 @@ main/java/resources/application.yml에 설정은 해준다.
 1. 콘솔의 접속 URL Context path를 /h2로 설정한다.
 2. JDBC URL이 매번 랜덤하게 바뀌지 않도록’jdbc:h2:mem:test”로 설정한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/448924a9-957b-4117-853f-c46489770f50/Untitled.png)
+![Untitled 3](https://user-images.githubusercontent.com/70310271/176925168-69b0e9c0-8df5-4882-b712-7d5de08f9a46.png)
 
 ### @Id
 
