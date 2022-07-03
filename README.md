@@ -63,4 +63,6 @@
 
 [DAY44,DAY45](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY44,DAY45.md) - Spring MVC [예외처리]
 
-[DAY46,47](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY46,47.md) - Spring MVC [JDBC기반 데이터엑세스 계층]
+[DAY46](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY46.md) - Spring MVC [JDBC기반 데이터엑세스 계층]
+
+[DAY47](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY47.md) - Spring MVC [Spring Data JDBC 데이터엑세스 계층]
