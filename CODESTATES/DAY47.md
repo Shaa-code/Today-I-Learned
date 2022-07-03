@@ -29,3 +29,31 @@ Aggregate를 대표하는 도메인을 DDD에서는 Aggregate Root라고한다.
 **주문 테이블의 이름이 ‘ORDER’가 아니라 ‘ORDERS’인 이유**
 
 ‘ORDER’는 SQL 쿼리문에서 테이블의 로우(Row)를 정렬하기 위해 사용하는 **‘ORDER BY’**라는 예약어에 사용되기 때문에 테이블이 생성될 때 에러를 발생할 수 있습니다.
+
+### Entity 구현
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bde21ca6-5c8c-4855-85d8-239e4d98ccf0/Untitled.png)
+
+1. memberId를 PK로 만든다. → 멤버변수에 @Id애너테이션을 붙여 식별자로 지정한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d2a5fcb5-7073-4861-b296-943091d0afff/Untitled.png)
+
+`Member클래스는 데이터베이스 테이블에서 MEMBER테이블과 매핑과 매핑된다.`
+
+@Table을 추가하지 않으면 기본적으로 클래스명이 테이블의이름과 매핑이 된다.
+
+Order는 SQL쿼리문에서 사용하는 예약어 이므로, @Table(”ORDERS”)를 사용한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f6169612-8ad7-4c1c-ab77-8b29f6f95294/Untitled.png)
+
+`Order클래스는 ORDERS테이블과 매핑된다.`
+
+Order클래스에 Member클래스를 외래키처럼 추가했다.
+
+AggregateRefernece클래스로 감싸, 직접적인 객체참조가 아닌 ID참조로 되게 만들었따.
+
+`즉, AggregateReference의 용도는 1:N 애그리거트 루트간 ID참조이다.`
+
+@MappedCollection(idColumn = “ORDER_ID”)는 엔티티 클래스간에 연관관계를 맺어주는 정보를 의미한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/98cf7792-93d1-40f6-b665-1c58e3b2bfad/Untitled.png)
