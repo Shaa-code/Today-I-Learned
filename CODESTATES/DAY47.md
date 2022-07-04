@@ -32,11 +32,11 @@ Aggregate를 대표하는 도메인을 DDD에서는 Aggregate Root라고한다.
 
 ### Entity 구현
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bde21ca6-5c8c-4855-85d8-239e4d98ccf0/Untitled.png)
+![Untitled 2](https://user-images.githubusercontent.com/70310271/177170454-a5f58d6c-c5cb-49f8-9fae-a63b153528f4.png)
 
 1. memberId를 PK로 만든다. → 멤버변수에 @Id애너테이션을 붙여 식별자로 지정한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d2a5fcb5-7073-4861-b296-943091d0afff/Untitled.png)
+![Untitled 3](https://user-images.githubusercontent.com/70310271/177170468-ac95db77-8a9c-4b6c-baad-62e9375217be.png)
 
 `Member클래스는 데이터베이스 테이블에서 MEMBER테이블과 매핑과 매핑된다.`
 
@@ -44,7 +44,7 @@ Aggregate를 대표하는 도메인을 DDD에서는 Aggregate Root라고한다.
 
 Order는 SQL쿼리문에서 사용하는 예약어 이므로, @Table(”ORDERS”)를 사용한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f6169612-8ad7-4c1c-ab77-8b29f6f95294/Untitled.png)
+![Untitled 4](https://user-images.githubusercontent.com/70310271/177170480-d350ab9c-b77e-4da8-8ada-ee7d94d4a21e.png)
 
 `Order클래스는 ORDERS테이블과 매핑된다.`
 
@@ -56,4 +56,5 @@ AggregateRefernece클래스로 감싸, 직접적인 객체참조가 아닌 ID참
 
 @MappedCollection(idColumn = “ORDER_ID”)는 엔티티 클래스간에 연관관계를 맺어주는 정보를 의미한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/98cf7792-93d1-40f6-b665-1c58e3b2bfad/Untitled.png)
+![Untitled 5](https://user-images.githubusercontent.com/70310271/177170502-763f385d-de13-42e8-9ff8-2a28c830328c.png)
+
