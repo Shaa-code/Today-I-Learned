@@ -67,4 +67,4 @@
 
 [DAY47](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY47.md) - Spring MVC [Spring Data JDBC 데이터엑세스 계층]
 
-[DAY48,49,50](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY48,49,50.md) - Spring MVC [JPA 기반 데이터 액세스 계층]
+[DAY48,49,50,51](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY48,49,50,51.md) - Spring MVC [JPA 기반 데이터 액세스 계층]
