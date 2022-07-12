@@ -71,3 +71,5 @@
 
 [DAY52,53](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY52,53.md) - Spring MVC [트랜잭션]
 
+[DAY54](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY54.md) - Spring MVC [테스팅]
+
