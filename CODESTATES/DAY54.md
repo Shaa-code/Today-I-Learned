@@ -1,0 +1,269 @@
+# DAY54
+
+## 테스팅
+
+- 테스트를 왜 해야하는지 이해할 수 있다.
+- 단위 테스트가 무엇인지 이해할 수 있다.
+- JUnit의 기본적인 사용법을 이해할 수 있다.
+- 슬라이스 테스트가 무엇인지 이해할 수 있다.
+- Spring에서의 슬라이스 테스트 방법을 알 수 있다.
+- Hemcrest의 기본적인 사용법을 이해할 수 있다.
+- Mockito의 기본적인 사용법을 이해할 수 있다.
+
+### 단위 테스트
+
+앞으로는 Postman으로 HTTP를 전송해서 기대했던 JSON응답 결과가 출력되는지 확인하지 않을것이다.
+
+비즈니스 로직에서 구현한 특정 메서드만 테스트하고 싶을때가 있는데, 이때 애플리케이션 실행, Postman 툴 실행 및 요청을 하는 비효율적인 상황이 발생한다.
+
+이때, Java에서는 메서드 같은 아주 작은 단위를 가지는 기능들을 테스트할 수 있는 방법이 있다.
+
+Spring에서는 계층별로 테스트할 수 있는 테스트 기법 역시 지원해주고 있다.
+
+![Untitled](https://user-images.githubusercontent.com/70310271/178506834-410acc9b-e62d-411c-9e5a-27d2d2b620ab.png)
+
+- 기능 테스트
+
+애플리케이션을 사용하는 사용자 입장에서 애플리케이션이 제공하는 기능이 올바르게 동작하는지 테스트한다.
+
+주체) 테스트전문부서, 외부업체, 프론트엔드 개발자
+
+- 통합 테스트
+
+클라이언트 측 툴 없이 개발자가 짜 놓은 테스트 코드를 실행시켜서 이루어진다.
+
+주체) 애플리케이션을 만든 개발자 또는 개발팀이 테스트의 주체
+
+ex) 개발자가 Controller의 API를 호출하는 테스트 코드를 작성한 후 실행하면, 서비스 계층과 데이터 액세스 계층을 거쳐 DB에 실제로 접속해서 기대했던 대로 동작을 하는지 테스트함.
+
+- 슬라이스 테스트
+
+슬라이스 테스트 역시 해당 계층에서 HTTP 요청이 필요하고, 외부 서비스가 연동되기도 하며, 특히나 데이터 액세스 계층의 경우 여전히 DB와 연동되어 있다.
+
+그래서 단위 테스트보다는 슬라이스 테스트라고 부른다.
+
+슬라이스 테스트는 Mock 객체를 사용해 계층별로 끊어서 테스트를 할 수 있기 때문에 어느정도 테스트 범위를 좁히는것이 가능하다.
+
+- 단위 테스트
+
+단위 테스트 코드는 메서드 단위로 대부분 작성된다.
+
+DB를 사용해도, 데이터베이스의 상태가 테스트 이전과 이후가 동일하게 유지된다면 데이터베이스가 연동된다고 해도 단위 테스트에 포함될 수 는 있다.
+
+하지만, 일반적으로 단위 테스트는 최대한 독립적인 것이 좋고, 최대한 작은 단위인 것이 더 좋다.
+
+### 왜 굳이 단위테스트를 하는거지?
+
+1. 테스트 케이스가 잘 짜여져 있으면 버그가 발생하더라도 심리적 안정감이 조금 더 높아질 가능성이 높다.
+2. 작은 단위 테스트로 미리미리 버그를 찾아 낼 수 있기 때문에 애플리케이션의 덩치가 커진 상태에서 문제의 원인을 찾아내는것이 상대적으로 적은 시간이 걸린다.
+3. 코드가 의도대로 작동하는지 빠르게 확인가능.
+4. Postman으로 요청을 보내는 번거로운 작업을 단순화 가능
+
+### 테스트 케이스란?
+
+테스트를 위한 입력데이터, 실행 조건, 기대 결과를 푷ㄴ하기 위한 명세를 의마하는데, 한마디로 메서드 등 하나의 단위를 테스트하기 위해 작성하는 테스트 코드이다.
+
+### 단위 테스트를 위한 FIRST원칙
+
+일반적으로 작성한 테스트 케이스는 빨라야한다.
+
+작성한 테스트 케이스가 너무 느리다면 테스트 케이스를 돌려보고 싶은 마음이 잘 들지 않는다.
+
+1. Fast : 일반적으로 작성한 테스트 케이스는 빨라야한다.
+2. Independent : 각각의 테스트 케이스는 독립적이어야한다.
+
+어떤 케이스를 먼저 실행 시켜도 실행되는 순서와 상관없이 정상적인 실행이 보장되어야한다.
+
+1. Repeatable : 어떤 환경에서든 반복해서 같은 결과를 확인할 수 있어야한다.
+2. Self-validating : 테스트 스스로 결과가 옳은지 그른지 판단할 수 있어야한다.
+3. Timely : 단위 테스트는 테스트 하려는 기능 구현을 하기 직전에 작성해야한다.
+
+TDD는 기능 구현전에 실패하는 테스트 케이스를 먼저 작성하는 방식이므로 실제로 기능 구현도 하지 않았는데, 테스트 케이스부터 먼저 작성한다는게 쉽지 않은 부분이다. (경험이 많아야한다.)
+
+### Given - When - Then 표현 스타일
+
+BDD(Behavior Driven Development)
+
+- Given
+
+테스트를 위한 준비과정을 명시할 수 있다.
+
+테스트에 필요한 전제조건들이 포함된다.
+
+테스트 대상에 전달되는 입력값(테스트 데이터)는 Given에 포함된다.
+
+- When
+
+테스트 할 동작(대상)을 지정한다.
+
+일반적으로 메서드 호출을 통해 테스트를 진행한다.
+
+- Then
+
+테스트의 결과를 검증하는 영역
+
+Expected와 Actual 값을 비교해서 기대한대로 동작을 수행하는지 검증하는 코드
+
+### JUnit이란?
+
+오픈소스 테스트 프레임워크, Java의 표준 테스트 프레임워크
+
+TestNG라는 JUnit의 강력한 경쟁자가 있다. 하지만, 핵심은 여전히 JUnit이다.
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CryptoCurrency {
+    public static Map<String, String> map = new HashMap<>();
+
+    static {
+        map.put("BTC", "Bitcoin");
+        map.put("ETH", "Ethereum");
+        map.put("ADA", "ADA");
+        map.put("POT", "Polkadot");
+    }
+}
+```
+
+- assertEquals() → 기대하는 값과 실제값이 같은지 검증한다.
+
+```java
+public class HelloJunitTest {
+
+    @Test
+    @DisplayName("Hello Junit Test")
+    void assertionTest() {
+        String expected = "Hello, Junit";
+        String actual = "Hello, Junit";
+
+        Assertions.assertEquals(expected, actual);
+    }
+}
+```
+
+- assertNotNull() → 테스트 대상이 null인지 아닌지 검증한다.
+
+```java
+public class AssertionNotNull(){
+
+    @Test
+    @DisplayName("AssertionNull() Test")
+    void AssertionNull(){
+        String CurrencyName = getCryptoCurrency("ETH");
+        assertNotNull(currencyName, "should be not null");
+    }
+
+    pirvate String getCryptoCurrency(String unit){
+        return CryptoCurrency.map.get(unit);
+    }
+}
+```
+
+assertThrows() → 호출한 메서드의 동작과정중에 예외가 발생하는지 검증한다.
+
+```java
+public class AssertionExceptionTest {
+
+@Test
+@DisplayName("throws NullPointerException when map.get()")
+public void assertionThrowExceptionTest() {
+    Assertions.assertThrows(NullPointerException.class, () -> getCryptoCurrency("XRP"));
+} //첫번째 파라미터에는 발생이 기대되는 예외클래스를 입력한다.
+  //두번째 파라미터에는 테스트 대상 메서드를 호출하면 된다.
+
+private String getCryptoCurrency(String unit) {
+    return CryptoCurrency.map.get(unit).toUpperCase();
+    }
+}
+```
+
+NullPointException > RuntimeException > Exception
+
+예외 클래스의 상속관게를 이해한 상태에서 테스트 실행결과를 예상해야한다는점을 기억하자.
+
+assertThorws()의 두번째 파라미터인 람다 표현식은 JUnit에서 지원하는 Excutable 함수형 인터페이스이다.
+
+Executable 함수형 인터페이스는 void execute() throws Throwable; 메서드 하나만 정의되어 있으며 리턴값이 없다.
+
+Java에서 지원하는 함수형 인터페이스 중에서 리턴값이 없는 Consumer에 해당된다고 보면 된다.
+
+### 테스트 케이스 실행전 전처리
+
+테스트 케이스를 실행하기전에 어떤 객체나 값에 대한 초기화작업등의 전처리 과정을 해야할 경우.
+
+### @BeforeEach
+
+```java
+public class BeforeEachTest {
+
+    @BeforeEach
+    public void init(){System.out.println("Pre-processing before each test case");}
+
+    @Test
+    @DisplayName("BeforeEach Test1")
+    public void beforeEachTest(){}
+
+    @Test
+    @DisplayName("BeforeEach Test2")
+    public void beforeEachTest2(){}
+
+}
+
+```
+
+BeforeEach는 테스트 케이스를 실행한 이후, 각 테스트에 한번 씩 실행된다.
+
+AfterEach는 테스트 케이스를 실행한 이후, 각 테스트에 한번 씩 실행된다.
+
+### @BeforeAll
+
+```java
+public class BeforeEachTest {
+
+    @BeforeAll
+    static void init(){System.out.println("Pre-processing before each test case");}
+
+    @Test
+    @DisplayName("BeforeEach Test1")
+    public void beforeEachTest(){}
+
+    @Test
+    @DisplayName("BeforeEach Test2")
+    public void beforeEachTest2(){}
+
+}
+```
+
+BeforeAll은 static으로 클래스를 초기화할 때 딱 한번만 실행된다.
+
+AfterAll은 테스트 케이스를 실행한 이후, 딱 한번 실행된다.
+
+### @Disabled
+
+```java
+@Disabled
+@Test
+void test(){
+    System.out.println("test()");
+}
+```
+
+이 테스트에만 적용시키지 않는다.
+
+### @Assumption
+
+JUnit5에 추가된 기능
+
+특정환경에만 테스트 케이스가 실행되도록 할 수 있다.
+
+```java
+public class AssumptionTest{
+    @DisplayName("Assumption Test")
+    @Test
+    public void assumptionTest(){
+        assumeTrue(System.getProperty("os.name").startsWith("Windows"));
+        System.out.println("execute?");
+
+}
+```
