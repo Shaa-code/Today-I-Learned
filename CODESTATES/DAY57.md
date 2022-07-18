@@ -119,7 +119,7 @@ fieldWithPath("data.stamp").type(JsonFieldType.NUMBER).description("스탬프 �
 
 스니핏(Snippet)은 일반적으로 코드의 일부 조각을 의마하는 경우가 많은데 여기서는 문서의 일부조각을 의미한다.
 
-```
+```java
 plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -220,7 +220,7 @@ bootJar {
 
 Controller를 테스트하기 위한 전용 애너테이션
 
-```
+```java
 @EnableJpaAuditing
 @SpringBootApplication
 public class Section3Week3RestDocsApplication {
@@ -248,7 +248,7 @@ public class Section3Week3RestDocsApplication {
 
 MemberController가 MemberService 와 MemberMapper의 메서드를 호출하지 않도록 관계를 단절 시킬 필요가 있다.
 
-```
+```java
 @MockBean
 private MemberService memberService;
 
@@ -302,7 +302,7 @@ fieldWithPath("data.stamp").type(JsonFieldType.NUMBER).description("스탬프 �
 
 ex)
 
-```
+```html
  {
         "data": {
             "memberId": 1,            // data.memberId
