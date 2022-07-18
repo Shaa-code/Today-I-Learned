@@ -2,11 +2,11 @@
 
 API 문서화란?
 
-클라이언트가 REST API 백엔드 ㅐ플리케이션에 요청을 전송하기 위해서 알아야 되는 요청 정보를 문서로 잘 정리하는것을 의미한다.
+클라이언트가 REST API 백엔드 애플리케이션에 요청을 전송하기 위해서 알아야 되는 요청 정보를 문서로 잘 정리하는것을 의미한다.
 
 프론트엔드는 이 API문서 또는 API 스펙을 사용하기 때문이다.
 
-API는 수기로 직접 작성하기도 했지만, 너무나 비효율적이어서, 현재는 자동화된 도구가 있다.
+과거 API는 수기로 직접 작성하기도 했지만, 너무나 비효율적이어서, 현재는 자동화된 도구가 있다.
 
 ### Swagger의 API 문서화 방식
 
@@ -215,3 +215,169 @@ bootJar {
     1. (10-1)에서는 `:bootJar` task 실행 전에 `:copyDocument` task가 실행 되도록 의존성을 설정합니다.
     2. (10-2)에서는 Asciidoctor 실행으로 생성되는 index.html 파일을 jar 파일 안에 추가해 줍니다.
     jar 파일에 index.html을 추가해 줌으로써 웹 브라우저에서 접속(`http://localhost:8080/docs/index.html`) 후, API 문서를 확인할 수 있습니다.
+
+### @WebMvcTest
+
+Controller를 테스트하기 위한 전용 애너테이션
+
+```
+@EnableJpaAuditing
+@SpringBootApplication
+public class Section3Week3RestDocsApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Section3Week3RestDocsApplication.class, args);
+	}
+
+}
+```
+
+`@EnableJpaAuditin` 을 xxxxxxApplication 클래스에 추가하게 되면 JPA와 관련된 Bean을 필요로 하기 때문에 `@WebMvcTest`애너테이션을 사용해서 테스트를 진행 할 경우에는 JpaMetamodelMappingContext를 Mock 객체로 주입해 주어야 한다.
+
+### @SpringBootTest
+
+애너테이션은 `@AutoConfigureMockMvc`과 함께 사용되어 Controller를 테스트 할 수 있는데, 프로젝트에서 사용하는 전체 Bean을 ApplicationContext에 등록하여 사용한다.
+
+### @WebMvcTest
+
+애너테이션의 경우 Controller 테스트에 필요한 Bean만 ApplicationContext에 등록하기 때문에 실행 속도는 상대적으로 빠르다.
+
+다만, Controller에서 의존하고 있는 객체가 있다면 해당 객체에 대해서 Mock 객체를 사용하여 의존성을 일일이 제거해 주어야 한다.
+
+결과적으로 `@SpringBootTest` 는 데이터베이스까지 요청 프로세스가 이어지는 통합 테스트에 주로 사용되고, `@WebMvcTest` 는 **Controller를 위한 슬라이스 테스트에 주로 사용한다.**
+
+MemberController가 MemberService 와 MemberMapper의 메서드를 호출하지 않도록 관계를 단절 시킬 필요가 있다.
+
+```
+@MockBean
+private MemberService memberService;
+
+@MockBean
+private MemberMapper mapper;
+```
+
+MemberController가 의존하는 객체와의 관계를 단절하기 위해 MemberService와 MemberMapper의 Mock Bean을 주입 받는다.
+
+```java
+.andDo(document(
+"post-member",
+getRequestPreProcessor(),
+getResponsePreProcessor(),
+requestFields(
+List.of(
+fieldWithPath("email").type(JsonFieldType.STRING).description("이메일"),
+fieldWithPath("name").type(JsonFieldType.STRING).description("이름"),
+fieldWithPath("phone").type(JsonFieldType.STRING).description("휴대폰 번호")
+)),
+responseFields(
+List.of(
+fieldWithPath("data").type(JsonFieldType.OBJECT).description("결과 데이터"),
+fieldWithPath("data.memberId").type(JsonFieldType.NUMBER).description("회원 식별자"),
+fieldWithPath("data.email").type(JsonFieldType.STRING).description("이메일"),
+fieldWithPath("data.name").type(JsonFieldType.STRING).description("이름"),
+fieldWithPath("data.phone").type(JsonFieldType.STRING).description("휴대폰 번호"),
+fieldWithPath("data.memberStatus").type(JsonFieldType.STRING).description("회원 상태"),
+fieldWithPath("data.stamp").type(JsonFieldType.NUMBER).description("스탬프 갯수")
+)
+)
+));
+```
+
+1. `document()`는 API 스펙 정보를 전달받아서 실직적인 문서화 작업을 수행하는 RestDocumentationResultHandler클래스에서 가장 핵심 기능을 하는 메서드이다.
+
+1. document의 첫번째 파라미터인 API 문서 스니핏의 식별자 역할을 한다.
+
+“post-member”로 지정 했으므로 문서 스니핏은 post-member 디렉토리 하위에 생성된다.
+
+1. getRequestPreProcessor(), getResponsepreProcessor()는 request와 response에 해당하는 문서 영역을 전처리하는 역할을 한다. 모든 테스트 케이스에서 재사용 할 수 있도록 한다.
+    
+    사용자지정함수이다. 내부에서는 preprocessRequest(prettyPrint()),preprocessResponse(prettyPrint())을 리턴한다.
+    
+
+1. requestField는 문서로 표현될 request body를 의미한다. List<FieldDescriptor>의 원소인 FieldDescriptor 객체가 request body에 포함된 데이터를 표현한다.
+
+1. responseField 역시 response body를 의미하며, 파라미터로 전달되는 List<FieldDescriptor>의 원소인 FieldDescriptor 객체가 response body에 포함된 데이터를 표현한다.
+
+1. FieldWithPath(”data.memberId”)의 data.memberId는 data 프로퍼티의 하위 프로퍼티를 의미한다.
+
+ex)
+
+```
+ {
+        "data": {
+            "memberId": 1,            // data.memberId
+            "email": "hgd@gmail.com", //data.email
+            "name": "홍길동1",        //data.name
+            "phone": "010-1111-1111", //data.phone
+            "memberStatus": "활동중", //data.memberStatus
+            "stamp": 0
+        }
+    }
+}
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/20e89c96-322e-417d-aa10-727dfed1a6fc/Untitled.png)
+
+테스트 케이스 실행후 생성된 Snippet
+
+src/docs/asciidoc/index.adoc 파일을 직접 생성해주고,
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/15d605ef-a1a3-442d-9bc5-65b34ca18ccc/Untitled.png)
+
+둘중에 하나로 빌드하면 generated-snippets에 있던, Snippet들이 하나로 모여 
+
+### Asciidoc 문법
+
+```
+= 안녕  // = 문서의 제목 ( = , ===)의 갯수에 따라 크기가 작아짐
+:sectnums:               // :sectnum: 목차에서 각 섹션에 넘버링
+:toc: left               // :toc: 목차를 문서의 어느 위치에 구성할 것인지 설정
+:toclevels: 4            // :toclevels: 목차에 표시할 제목의 level (==== 까지만 목차에 표시)
+
+:toc-title: 제목입니다. // :toc-title: 목차의 제목을 지정할 수 있다.
+:source-highlighter: prettify // :source-highlighter: 소스코드의 하이라이터를 설정한다.
+
+image::https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg[spring]
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/398e5965-81be-4a28-b77e-b7561e4f3c37/Untitled.png)
+
+```java
+***
+
+안녕하세요
+
+***
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eca5840b-bcac-4e9d-95a3-ec63b16c2d30/Untitled.png)
+
+## Asciidoctor
+
+AsciiDoctor는 AsciiDoc 포맷의 문서를 파싱해서 HTML5, 매뉴얼 페이지, PDF및 EPUB3 등의 문서를 생성하는 툴 이다.
+
+### 문서 스니핏을 템플릿 문서에 포함시키기
+
+.curl-request에서 “.”은 스니핏 섹션 제목을 표현하기 위해 사용한다.
+
+include는 스니핏을 템플릿 문서에 포함할때 사용하는 Asciidoctor에서 사용하는 매크로 중 하나이며 매크로를 사용하기 위한 표기법이다.
+
+```
+***
+== MemberController
+=== 회원 등록
+.curl-request
+include::{snippets}/post-member/http-request.adoc[]
+
+.request-fields
+include::{snippets}/post-member/request-fields.adoc[]
+
+.http-response
+include::{snippets}/post-member/http-response.adoc[]
+
+.response-fields
+include::{snippets}/post-member/response-fields.adoc[]
+
+...
+...
+```
