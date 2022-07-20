@@ -31,7 +31,7 @@
 
 [DAY18,19](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY19.md) - 심화(Effective)
 
-[DAY20](https://peaceofm1nd.tistory.com/172) - 모의면접
+[DAY20](https://peaceofm1nd.tistory.com/172) - 1차 모의면접
 
 [DAY21](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY21.md) - \[자료구조/알고리즘\] 재귀
 
