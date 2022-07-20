@@ -75,5 +75,5 @@
 
 [DAY57,58](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY57,58.md) - Spring MVC [API 문서화]
 
-[DAY59](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY59.md) - Spring MVC []
+[DAY59](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY59.md) - Spring MVC [어플리케이션 배포]
 
