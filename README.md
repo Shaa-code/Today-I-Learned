@@ -78,3 +78,5 @@
 [DAY59](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY59.md) - Spring MVC [어플리케이션 배포]
 
 [DAY60](https://peaceofm1nd.tistory.com/260?category=1022090) - 3차 모의면접
+
+[DAY61](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY61.md) - [인증/보안] 기초
