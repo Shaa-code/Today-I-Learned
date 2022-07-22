@@ -1,3 +1,5 @@
+# DAY62
+
 ### 스프링 시큐리티란?
 
 Spring Framework기반의 어플리케이션의 인증(Authentication)과 인가(Authorization or 권한부여) 기능을 가진 프레임워크이다.
