@@ -82,3 +82,5 @@
 [DAY61](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY61.md) - [인증/보안] 기초
 
 [DAY62,63,64](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY62,63,64.md) - Spring Security [보안]
+
+[DAY65](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY65.md) - Spring Security [보안]
