@@ -137,3 +137,127 @@ Payload는 base64로 인코딩 되어있다. 그러므로 Payload에는 중요�
 토큰이 탈취된 경우 토큰의 기한이 만료될 때까지 대처가 불가능하다. 만료시간을 너무 길게 설정해서는 안되는 이유이다.
 
 1. 토큰은 어딘가에 저장되어야한다.
+
+```java
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .formLogin().disable()
+                .httpBasic().disable()
+                .authorizeRequests()
+                .antMatchers("/api/v1/user/**")
+                .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/api/v1/manager/**")
+                .access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/api/v1/admin/**")
+                .access("hasRole('ROLE_ADMIN')")
+                .anyRequest().permitAll();
+        return http.build();
+    }
+}
+```
+
+1. `http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)`
+    
+    Web은 기본적으로 stateless인데, session이나 cookie를 사용할 수 있다.
+    
+    session / cookie를 만들지 않고 STATELESS로 진행하겠다는 의미.
+    
+2. `formLogin().disable()`
+    
+    form Login을 사용하지 않는다.
+    
+3. `httpBasic().disable()`
+    
+    http 통신을 할 때 headers에 Authorization 값을 ID, Password를 입력하는 방식
+    
+    https를 사용하면 ID와 Password가 암호화되어 전달된다.
+    
+    http 로그인 방식을 사용하지 않는다.
+    
+
+```
+@Configuration
+public class CorsConfig {
+
+    @Bean
+    public CorsFilter corsFilter(){
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/api/**",config);
+
+        return new CorsFilter(source);
+    }
+}
+```
+
+1. `setAllowCredentials()`
+
+서버가 응답할 때 json을 자바스크립트에서 처리할 수 있게 설정
+
+1. `addAllowedOrigin(”*”)`
+
+모든 ip에 응답 허용
+
+1. `addAllowedHeader(”*”)`
+
+모든 header에 응답 허용
+
+1. `addAllowedMethod(”*”)`
+
+모든 post,get,patch,delete 요청 허용
+
+### Session & Cookie 인증방식
+
+사용자가 로그인 요청을 보내면 사용자를 확인 후 Session ID를 발급한다.
+
+발급한 ID를 이용해 다른 요청과 응답을 처리하는 방식
+
+### Token 인증방식
+
+저장소의 필요 없이 로그인 시 토큰을 발급하고 데이터 요청시에 발급받은 토큰을 헤더를 통해 전달하여 응답하는 방식
+
+### 장점
+
+- 토큰 기반 인증은 쿠키나 세션을 이용한 인증보다 보안성이 강하고 효율적인 인증방법이다.
+- 쿠키 인증은 쿠키에 사용자 정보를 담아 서버로 보내게 되는데 HTTP 방식 통신을 사용하는 경우 정보가 유출되기 쉽다.
+- 세션 인증은 세션ID를 보내므로 쿠키에 비해 보안성이 높으나 서버에서 처리를 해야하기 때문에 추가적인 데이터베이스 공간이 필요하므로 점점 커지면 부담이 될 수 있다.
+- 토큰은 데이터가 인코딩 되어있지만 누구나 디코딩하여 데이터가 유출될 수 있지만 서명 필드가 헤더와 페이로드를 통해 만들어져 데이터 변조후 재전송을 막을 수 있다.
+- stateless 서버를 만들 수 있다.
+- 인증정보를 OAuth로 이용할 수 있다.
+
+일반적으로 토큰은 요청 헤더의 Authorization 필드에 담겨져 보내지게 된다.
+
+```java
+Authorization: <type> <credentials>
+```
+
+### HttpServletRequest
+
+ServletRequest를 상속한다.
+
+Http프로토콜의 request 정보를 서블릿에 전달하기 위한 목적으로 사용
+
+Header 정보, Parameter, cookie, URI, URL등의 정보를 읽어들이는 메서드를 가진 클래스
+
+Body의 Stream을 읽어들이는 메서드를 가지고 있다.
+
+### HttpServletResponse
+
+ServletResponse를 상속한다.
+
+Servlet이 HttpServletResponse 객체에 Content Type, 응답코드, 응답 메세지 등을 담아서 전송한다.
+
+HttpServletRequest, HttpServletResponse는 http요청을 할때 요청 정보가 해당 객체에 있기 떄문에 가능하다.
