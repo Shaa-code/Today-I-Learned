@@ -1,3 +1,5 @@
+# DAY67
+
 - OAuth2의 인증 방식 설명
 - Authrization Code와 Access Token의 차이에 대해 이해할 수 있다.
 - Authorization 서버와 REsource서버의 차이에 대해 이해할 수 있다.
@@ -9,7 +11,7 @@
 
 ### OAuth2.0이란?
 
-인증을 위한 표준 프로토콜의 한종류이다.
+인증을 위한 표준 프로토콜의 한 종류이다.
 
 보안된 리소스에 엑세스하기 위해 클라이언트에게 권한을 제공(Authroization)하는 프로세스를 단순화하는 프로토콜 중 한 방법이다.
 
@@ -45,9 +47,9 @@ Client에서 lcient-secret을 공유하고 액세스 토큰을 가지고 오는 
 
 Client에서는 authorization code만 받아오고 Server에서 Access token 요청을 진행한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cbe7b9d6-2ce7-411a-bc26-71d6b99020eb/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/70310271/182036270-8b621154-0b15-4fd2-9055-cd3b0fd83395.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6190104d-d0c4-40be-bbe2-46b7aa878164/Untitled.png)
+![Untitled 1](https://user-images.githubusercontent.com/70310271/182036279-917d0f3e-be92-4d37-9772-9e90510e2269.png)
 
 - Implicit Grant Type
 - Client Credentials Grant Type
@@ -60,8 +62,48 @@ Access token보다 Refresh token의 유효 시간이 대체로 조금 더 길게
 
 server마다 Refresh token에 대한 정책이 다 다르기 때문에 Refresh token을 사용하기 위해서는 사용하고자 하는 server의 정책을 살펴볼 필요가 있다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b4f7cc2f-0255-4926-a98a-90d2f8825bba/Untitled.png)
+![Untitled 2](https://user-images.githubusercontent.com/70310271/182036286-06f2bec7-2ae4-4642-882c-d15d1cfc79e1.png)
 
 ### OAuth2의 동작방식
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b20a5253-b421-4b07-9379-3de79fc91a56/Untitled.png)
+![Untitled 3](https://user-images.githubusercontent.com/70310271/182036298-c8b96aa8-2505-4954-bd44-5d746afd279c.png)
+
+### 권한 부여 방식에 따른 프로토콜
+
+1. Authorization Code Grant: 권한 부여 승인 코드 방식
+
+Authorization Code Grant는 권한 부여 승인을 위해 자체 생성한 Authorization Code를 전달하는 방식으로, 가장 많이 쓰이고 기본이 되는 방식
+
+권한 부여 승인 요청시 응답 타입(response_type)을 code로 지정한다.
+
+![Untitled 4](https://user-images.githubusercontent.com/70310271/182036305-cf087f87-efbc-4979-8fec-f811d533906b.png)
+
+1. Client Credentials Grant : 클라이언트 자격 증명 승인 방식
+
+클라이언트 자신이 관리하는 리소스 혹은 권한 서버에 해당 클라이언트를 위한
+ 제한된 리소스 접근 권한이 설정되어있는 경우 사용이 가능하다.
+
+(리프레시 토큰의 사용은 불가능하다.)
+
+![Untitled 5](https://user-images.githubusercontent.com/70310271/182036311-b0a49aac-8b07-4e77-a76a-e5c929e3b426.png)
+
+1. Implicit Grant : 암묵적 승인 방식
+
+별도의 권한 부여 승인 코드 없이 바로 액세스 토큰을 발급하는 방식
+
+자격증명을 안전하게 저장하기 힘든 클라이언트(자바 스크립드 등의 스크립트언어를 사용하는 브라우저)에게 최적화된 방식이다.
+
+리프레시 토큰 사용이 불가능하며, 이 방식에서 Authorization Server는 Client Secret을 통해 클라이언트 인증과정을 생략한다.
+
+권한 부여 승인 요청시 응답 타입을(response_type)을 token으로 지정한다.
+
+![Untitled 6](https://user-images.githubusercontent.com/70310271/182036318-9aefe121-47c5-4b9d-a157-52ddefba490a.png)
+
+1. Resource Owner Password Credential Grant : 자원 소유자 자격 증명 승인 방식
+
+간단하게 로그인시 필요한 정보로 액세스 토큰을 발급받는 방식
+
+자신의 서비스에서 제공하는 애플리케이션의 경우에만 사용되는 인증방식(리프레시 토큰 사용가능)
+
+![Untitled 7](https://user-images.githubusercontent.com/70310271/182036323-b388e383-f749-48d6-9acb-0e7878c3619a.png)
+
