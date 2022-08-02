@@ -84,3 +84,7 @@
 [DAY62,63,64](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY62,63,64.md) - Spring Security [보안]
 
 [DAY65,66](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY65,66.md) - Spring Security [Json Web Token]
+
+[DAY67](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY67.md) - Spring Security [OAuth2]
+
+[DAY68](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY68.md) - Spring Security [Cloud 운영환경구성]
