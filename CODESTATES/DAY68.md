@@ -42,8 +42,6 @@ Cloud와 Deployment의 의미를 각각 알고, 내 코드를 남에게 배포�
 
 SaaS laaS, PaaS
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a56b6662-66e7-4359-a90f-5bc44a5d69d2/Untitled.png)
-
 ### SaaS(Software as a Service)
 
 클라우드 제공자가 당장 사용가능한 소프트웨어를 제공하는 경우 대부분 SaaS에 해당한다.
