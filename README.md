@@ -87,6 +87,6 @@
 
 [DAY67,68](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY67,68.md) - Spring Security [OAuth2]
 
-[DAY69,70](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY69,70.md) - AWS [Cloud 운영환경구성]
+[DAY69,70](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY69,70.md) - [Cloud] 운영환경구성
 
-[DAY71](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY69,70.md) - Docker
+[DAY71](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY69,70.md) - [Cloud] 배포 컨테이너
