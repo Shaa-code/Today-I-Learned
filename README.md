@@ -89,4 +89,4 @@
 
 [DAY69,70](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY69,70.md) - [Cloud] 운영환경구성
 
-[DAY71](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY69,70.md) - [Cloud] 배포 컨테이너
+[DAY71](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY71.md) - [Cloud] 배포 컨테이너
