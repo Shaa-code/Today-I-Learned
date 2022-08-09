@@ -92,3 +92,5 @@
 [DAY71](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY71.md) - [Cloud] 배포 컨테이너
 
 [DAY72](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY72.md) - [Cloud] 배포 자동화
+
+[DAY73](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY73.md) - [Cloud] 운영 방법
