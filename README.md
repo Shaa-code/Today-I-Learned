@@ -95,8 +95,8 @@
 
 [DAY73](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY73.md) - [Cloud] 운영 
 
-[DAY74](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY74.md) - [Cloud] 운영 
+[DAY74](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY74.md) - [Cloud] 리액티브 프로그래밍
 
-[DAY75](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY75.md) - [Cloud] 운영 
+[DAY75](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY75.md) - [Cloud] Reactor
 
-[DAY76](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY76.md) - [Cloud] 운영 
+[DAY76](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY76.md) - [Cloud] Spring WebFlux
