@@ -94,3 +94,9 @@
 [DAY72](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY72.md) - [Cloud] 배포 자동화
 
 [DAY73](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY73.md) - [Cloud] 운영 
+
+[DAY74](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY74.md) - [Cloud] 운영 
+
+[DAY75](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY75.md) - [Cloud] 운영 
+
+[DAY76](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY76.md) - [Cloud] 운영 
