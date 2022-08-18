@@ -100,3 +100,5 @@
 [DAY75](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY75.md) - [Cloud] Reactor
 
 [DAY76](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY76.md) - [Cloud] Spring WebFlux
+
+[DAY77](https://github.com/Shaa-code/solo-project) - Solo Project 설계
