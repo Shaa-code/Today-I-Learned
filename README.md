@@ -101,6 +101,6 @@
 
 [DAY76](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY76.md) - [Cloud] Spring WebFlux
 
-[DAY77](https://github.com/Shaa-code/solo-project) - Solo Project 설계
+[DAY77,78](https://github.com/Shaa-code/solo-project) - Solo Project 설계
 
-[DAY78](https://peaceofm1nd.tistory.com/297) - 4차 모의면접
+[DAY79](https://peaceofm1nd.tistory.com/297) - 4차 모의면접
