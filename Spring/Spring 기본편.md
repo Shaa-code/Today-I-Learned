@@ -1362,3 +1362,99 @@ but found 2: fixDiscountPolicy,rateDiscountPolicy
 하위 타입으로 지정할 수 도 있지만, 하위 타입으로 지정하는것은 DIP에 위배하고 유연성이 떨어진다. 그리고 이름만 다르고, 완전히 똑같은 타입의 스프링 빈이 2개 있을 때 해결이 안된다.
 
 이제 해결하는 여러 방법들을 알아보도록 하자.
+
+### @Autowired 필드명, @Qualifier, @Primary
+
+@Autowired 타입 매칭을 시도하고, 이때 여러 빈이 있으면 필드 이름,파라미터 이름으로 빈 이름을 추가 매칭한다.
+
+예를들어, DiscountPolicy가 처음에 rateDiscuntPolicy밖에 없다면
+
+Autowired가 하나의 타입 매칭을 시도하고 하나밖에없으니 주입해준다.
+
+하지만 rateDiscountPolicy와 fixDiscountPolicy 2개가 있다면,
+
+DiscountPolicy가 타입매칭을 시도하고 2개가 있다고 나오니 추가적으로 필드이름, 파라미터이름으로 빈을 추가 매칭한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/54db53f7-593b-48e3-99b3-73a8e2cb8b0a/Untitled.png)
+
+이 경우는 필드이름 rateDiscountPolicy가 같으니까, Discount
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aee81da5-9f0f-4932-a811-73e31bd3f815/Untitled.png)
+
+이 경우는 DisocuntPolicy와 파라미터 이름이 같으니까 rateDiscountPolicy를 채택한다.
+
+### @Quilifier 사용
+
+@Quilifier는 추가 구분자를 붙여주는 방법이다.
+
+주입시 추가적인 방법을 제공하는것이지 빈 이름을 변경하는것은 아니다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b4e10749-a144-47a3-b163-aa09e1044037/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1025690b-bacf-46ae-8df0-aa445b690322/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b33eb77d-3b5f-44d5-afce-a5a212e329f5/Untitled.png)
+
+각 변수 타입에 애너테이션을 달아주면 된다.
+
+이때 @Qualifier(”mainDiscountPolicy”)가 없어서 못찾가 된다면, mainDiscountPolicy라는 이름의 스프링 빈을 추가로 찾게된다ㅏ.
+
+하지만 @Qualifier는 @Qualifier를 찾는 용도로만 사용하는게 명확하고 좋다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dacba396-a801-468d-b6e1-c3dbb918bd2c/Untitled.png)
+
+이렇게 직접 빈을 등록할때도 @Qualifier를 사용할 수 있다.
+
+즉, @Qualifier끼리 매칭해보고 없으면 Bean이름으로 매칭한다. 또 없다면 NoSuchBeanDefinitionException예외가 발생한다.
+
+### @Primary
+
+@Primary는 우선순위를 정하는 방법이다.
+
+@Autowired시에 여러 빈이 매칭되면 “@Primary”가 우선권을 가진다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b4d658da-65bf-4d0b-b2f4-03e073f571f7/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e83919da-6227-492d-b6f2-eb9a329da4e9/Untitled.png)
+
+- 무엇을 쓰면 좋을까?
+
+Quilifier는 주입받을 때 다음과 같이 모든 코드에 @Qualifier를 붙여주어야한다는 단점이 있다.
+
+반면에 @Primary를 사용하면 @Qualifier를 붙일 필요가 없다.
+
+스프링은 자동보다 수동이, 넓은 범위의 선택권 보다는 좁은 범위의 선택권이 우선 순위가 높다. 따라서 여기서도 Quilifier가 우선권이 높다.
+
+### 애노테이션 직접 만들기
+
+@Qualifier(”mainDiscountPolicy”) 이렇게 문자를 적으면 컴파일시 타입 체크가 안된다.
+
+예를들어, Qualifier(”mainnDiscountPolicy”)이라고 오타가 들어가도, 동작해버린다. 이러면 오류를 찾아내기가 엄청 어려워 지므로 Annotation을 직접만드는게 좋다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cd6b9676-338b-4fcc-8a98-f89a5fbc0139/Untitled.png)
+
+@Qualifier에 있는 애너테이션 내용을 복사해서 넣고 @Qualifier(”mainDiscountPolicy”)도 추가시켜준다.
+
+이렇게 되면
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fedec0bf-8aae-4dd6-88d1-8ba3c351cf0c/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/12058247-a14d-4076-98e7-4e0e5e5bd6d3/Untitled.png)
+
+Annotation에는 상속이라는 개념이 없다. 이렇게 여러
+
+Annotation을 모아서 사용하는 기능은 스프링이 지원해주는 기능이다.
+
+@Qualifier 뿐만아니라 다른 Annotation도 함께 조합해서 사용할 수 있다. 단적으로 @Autowired도 재정의 할 수 있다. 물론 스프링이 제고오하는 기능을 ㄹ뚜렷한 목적없이 무분별하게 재정의하는것은 유지보수에 더 혼란만 가중할 수 있다.
+
+### 조회한 빈이 모두 필요할때, List, Map
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a8cb8de8-60e6-4e6f-9071-ee501fb73af2/Untitled.png)
+
+DiuscountService는 Map으로 모든 DiscountPolicy를 주입받는다. 이때 fixDiscountPolicy, rateDiscountPolicy가 주입된다.
+
+discount() 메서드는 discountCode로 fixDiscountPolicy가 넘어오면 map에서 fixDiscountPolicy 스프링빈을 찾아서 실행한다.
+
+Q1. fixDiscountPolicy와 rateDiscountPolicy의 값을 넣어주지 않았는데, discount 함수에서 값을 찾을 수 있는 이유가 무엇일까?
+
+의존관계 자동 주입시 주입 대상이 Map이면, Map에 지정된 특정 타입에 해당하는 빈을 다 조회하여 넣어주게 된다.
