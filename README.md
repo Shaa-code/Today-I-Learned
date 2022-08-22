@@ -104,3 +104,5 @@
 [DAY77,78](https://github.com/Shaa-code/solo-project) - Solo Project 설계
 
 [DAY79](https://peaceofm1nd.tistory.com/297) - 4차 모의면접
+
+[DAY80,81](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY80,81.md) - 프로젝트 사전준비 
