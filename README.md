@@ -105,4 +105,6 @@
 
 [DAY79](https://peaceofm1nd.tistory.com/297) - 4차 모의면접
 
-[DAY80,81](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY80,81.md) - 프로젝트 사전준비 
+[DAY80,81](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY80,81.md) - 프로젝트 사전준비
+
+[DAY82](https://github.com/Shaa-code/Today-I-Learned/blob/main/CODESTATES/DAY80,81.md) - 소프트웨어 개발 
