@@ -1,3 +1,5 @@
+## AWS EC2 (Ubuntu)로 SpringBoot 서버 배포하기
+
 1. 상단에 EC2를 검색한다.
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/188684637-6ea7caef-4631-4245-8e43-86bba1c30321.png)
@@ -199,6 +201,8 @@ HDD에 할당하기 때문에 RAM과 비교해서 속도가 느리다.
 
 잘 실행되고 빌드까지 마무리가 잘되는것을 볼 수 있다.
 
+17. jar파일 실행시키기
+
 ![Untitled 38](https://user-images.githubusercontent.com/70310271/188685631-a81ddf75-bcda-4021-85ef-a9b28157869f.png)
 
 SpringBoot 파일의 build/libs경로에 있는 “server-0.0.11-SNAPSHOT.jar”파일을 볼수 있는데 이를 “java -jar server-0.0.1-SNAPSHOT.jar”로 실행시키면 된다.
@@ -206,6 +210,8 @@ SpringBoot 파일의 build/libs경로에 있는 “server-0.0.11-SNAPSHOT.jar”
 ![Untitled 39](https://user-images.githubusercontent.com/70310271/188685662-36e1994a-4451-4407-abb8-48cc1c51bbc2.png)
 
 이렇게 잘 배포 되는것을 확인할 수 있고
+
+18. 배포 된것 확인하기
 
 ![Untitled 40](https://user-images.githubusercontent.com/70310271/188685677-d53b2ba3-b4ce-400c-a630-633a875bc581.png)
 
