@@ -2,29 +2,29 @@
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/188684637-6ea7caef-4631-4245-8e43-86bba1c30321.png)
 
-1. 인스턴스 시작 버튼을 누른다.
+2. 인스턴스 시작 버튼을 누른다.
 
 ![Untitled 1](https://user-images.githubusercontent.com/70310271/188684680-0b849fd5-ff41-45ec-a926-8be7de124f7a.png)
 
-1. 운영체제를 선택한다.
+3. 운영체제를 선택한다.
 
 ![Untitled 2](https://user-images.githubusercontent.com/70310271/188684705-58c60714-de87-441c-8552-d49b158899d2.png)
 
 Ubuntu 22.04 LTS(최신)으로 설정한다.
 
-1. 인스턴스 유형 선택
+4. 인스턴스 유형 선택
 
 ![Untitled 3](https://user-images.githubusercontent.com/70310271/188684723-45a67121-3e0f-4a42-b06c-985f13a1c492.png)
 
 프리티어를 사용하기위해서 t2.micro로 설정
 
-1. 키페어 설정
+5. 키페어 설정
     
 ![Untitled 4](https://user-images.githubusercontent.com/70310271/188684758-cf389fa1-09ba-4c91-b45a-fead760ba0a3.png)
 
 키페어 이름에 이름을 넣는다 그리고 Putty를 사용할것이기 때문에 키페어 ppk로 설정한다.
 
-1. 보안 그룹 규칙 추가
+6. 보안 그룹 규칙 추가
 
 ![Untitled 5](https://user-images.githubusercontent.com/70310271/188684831-0b8e5763-e5b3-4ee5-8ed8-6df626a9c9dd.png)
 
@@ -36,13 +36,13 @@ Putty SSH 사용을 위해 22포트, HTTP를 위해 80, HTTPS를 위해 443 , To
 
 ![Untitled 7](https://user-images.githubusercontent.com/70310271/188684877-da27ff03-0e9c-414d-a574-5bc05ae5f82b.png)
 
-1. 설정을 끝마치고 인스턴스 시작 버튼을 누른다.
+7. 설정을 끝마치고 인스턴스 시작 버튼을 누른다.
 
 ![Untitled 8](https://user-images.githubusercontent.com/70310271/188684897-3b1c2ebc-499a-4303-a91e-cf66182c7e19.png)
 
 ![Untitled 9](https://user-images.githubusercontent.com/70310271/188684923-871670ba-2fb5-4e71-b8e4-ede42caee3aa.png)
 
-1. 새로 생긴 EC2 인스턴스 ID 클릭
+8. 새로 생긴 EC2 인스턴스 ID 클릭
 
 ![Untitled 10](https://user-images.githubusercontent.com/70310271/188684951-b7a1751c-d0e6-42c1-b1d5-9b78b8d9cc14.png)
 
@@ -50,23 +50,23 @@ Putty SSH 사용을 위해 22포트, HTTP를 위해 80, HTTPS를 위해 443 , To
 
 연결을 눌러서 들어감 SSH 클라이언트를 눌러 그대로 따라하면된다.
 
-1. Host Name에 EC2를 생성하며 부여받은 EC2 Public DNS 넣기
+9. Host Name에 EC2를 생성하며 부여받은 EC2 Public DNS 넣기
 
 ![Untitled 12](https://user-images.githubusercontent.com/70310271/188684983-73ae9210-e373-49e3-ae07-77dd3255a870.png)
 
-1. Putty Category중 Connection - SSH - Auth에 있는 Private key file for authentication에 SSH아까 받아두었던 .ppk 파일을 삽입한다.
+10. Putty Category중 Connection - SSH - Auth에 있는 Private key file for authentication에 SSH아까 받아두었던 .ppk 파일을 삽입한다.
 
 ![Untitled 13](https://user-images.githubusercontent.com/70310271/188685004-c5cd3671-adc7-4f13-a868-a9741cb5ee41.png)
 
-1. Open 클릭후 이 컴퓨터를 보증된 컴퓨터로 만들기 위해 Accept누른다.
+11. Open 클릭후 이 컴퓨터를 보증된 컴퓨터로 만들기 위해 Accept누른다.
     
 ![Untitled 14](https://user-images.githubusercontent.com/70310271/188685056-5fee0f3e-2657-4250-aea6-135ac508a9fc.png)
 
-1. Putty로 AWS EC2에 잘 접속된 화면이다.
+12. Putty로 AWS EC2에 잘 접속된 화면이다.
     
 ![Untitled 15](https://user-images.githubusercontent.com/70310271/188685093-f0a975eb-090b-402f-8bdc-b95f39b4e952.png)
 
-1. 클론 해올때 Username for 문제 해결하기
+13. 클론 해올때 Username for 문제 해결하기
 
 ![Untitled 16](https://user-images.githubusercontent.com/70310271/188685117-773fc642-c276-4429-b010-09c8e5d03756.png)
 
@@ -76,7 +76,7 @@ github의 아이디가 이메일이라면, Password 입력란에 이메일이 [h
 
 ![Untitled 17](https://user-images.githubusercontent.com/70310271/188685134-a02757f5-bece-4c40-8b31-3bffe487965f.png)
 
-1. 클론 해올때 Password for 문제 해결하기
+14. 클론 해올때 Password for 문제 해결하기
 
 원인 ) 아이디의 비밀번호와 토큰 비밀 번호의 착각 비밀번호를 입력하는데 설명이 없어 꽤나 고생했다.
 
@@ -94,7 +94,7 @@ Clone을 잘 받아오는것을 확인할 수 있다.
 
 ![Untitled 21](https://user-images.githubusercontent.com/70310271/188685306-a8518511-ac34-4932-abf9-b300a74458a0.png)
 
-1. Java SpringBoot 파일로 가서 build하기 
+15. Java SpringBoot 파일로 가서 build하기 
 
 ![Untitled 22](https://user-images.githubusercontent.com/70310271/188685328-5d58e11a-2b7f-4919-b47a-9543bc1b70f6.png)
 
