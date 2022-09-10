@@ -282,3 +282,5 @@ public class Group {
 [[JPA] 다대일 관계 양방향 매핑 과 연관 관계 주인, 연관관계 편의 메소드](https://velog.io/@gillog/JPA-%EC%96%91%EB%B0%A9%ED%96%A5-%EB%A7%A4%ED%95%91%EA%B3%BC-%EC%97%B0%EA%B4%80-%EA%B4%80%EA%B3%84-%EC%A3%BC%EC%9D%B8)
 
 김영한님 강의 참고할것.
+
+그냥 Set을 해도되는 이유는 PK로 들어가기 때문이다.
