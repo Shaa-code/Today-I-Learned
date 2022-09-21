@@ -87,3 +87,23 @@ SecurityHolder에 의해 흡수 되었고, 현재 인증되고 유저의 인증�
 ### JwtTokenProvider
 
 토큰을 생성하고 발행하거나 토큰을 파싱하고 유효한지 실제로 검사하는 클래스
+
+### HTTP Only Cookies란?
+
+브라우저에서 쿠키에 접근할 수 없도록 제한하는 것입니다. 이러한 역할을 하는 것이 바로 HTTP Only Cookie입니다.
+
+```java
+Set-Cookie : 쿠키명 = 쿠키값; path=/; HttpOnly
+```
+
+### Secure Cookies란?
+
+HTTP Only Cookie를 사용하면 Client에서 Javascript를 통한 쿠키 탈취문제를 예방할 수 있었다.
+
+하지만, 네트워크를 직접 감청해서 쿠키를 가로챌 수 있는데, 일반적으로 HTTPS 프로토콜을 사용하여 데이터를 암호화한다.
+
+HTTPS는 쿠키또한 암호화되어 전송되기 때문에 제3자는 내용을 알 수 없다.
+
+```java
+Set-Cookie : 쿠키명 = 쿠키값; path=/; secure
+```
