@@ -107,3 +107,13 @@ HTTPS는 쿠키또한 암호화되어 전송되기 때문에 제3자는 내용�
 ```java
 Set-Cookie : 쿠키명 = 쿠키값; path=/; secure
 ```
+
+### **AuthenticationEntryPoint란?**
+
+/auth API에 대해 스프링 시큐리티 컨텍스트 내에 존재하는 인증절차를 거쳐 통과해야한다.
+
+인증과정에서 실패하거나 인증헤더 Authorization을 보내지 않게 되는 경우 401이라는 응답값을 받게된다.
+
+이를 처리해주는 로직이 바로 AuthenticationEntryPoint이다.
+
+Response에 4014이 떨어질만한 에러가 발생할 경우 해당 로직을 타게되어, commence메소드를 실행하게 된다.
