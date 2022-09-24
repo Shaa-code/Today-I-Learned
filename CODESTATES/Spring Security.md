@@ -52,6 +52,37 @@ AuthenticationManager는 스프링 시큐리티 필터들이 인증을 이행하
 
 만약 스프링 필터들을 통합하지 않고 있다면, SecurityContextHolder를 직접 지정하고 AuthenticationManger는 필요없을 수 있다.
 
+### AuthenticationManager란?
+
+AuthenticationManager는 Provider들중 인증이 가능한 Provider들을 for문을 통해 얻어낸 후 인증한다.
+
+```
+@Override
+	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+		Class<? extends Authentication> toTest = authentication.getClass();
+		AuthenticationException lastException = null;
+		AuthenticationException parentException = null;
+		Authentication result = null;
+		Authentication parentResult = null;
+		int currentPosition = 0;
+		int size = this.providers.size();
+		for (AuthenticationProvider provider : getProviders()) {
+			if (!provider.supports(toTest)) {
+				continue;
+			}
+			if (logger.isTraceEnabled()) {
+				logger.trace(LogMessage.format("Authenticating request with %s (%d/%d)",
+						provider.getClass().getSimpleName(), ++currentPosition, size));
+			}
+			try {
+				result = provider.authenticate(authentication);
+				if (result != null) {
+					copyDetails(authentication, result);
+					break;
+				}
+			}
+```
+
 ### ProviderManager의 기능은 무엇일까?
 
 AutenticationManager를 구현하는데 주로 사용된다.
