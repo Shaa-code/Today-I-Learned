@@ -148,3 +148,52 @@ Set-Cookie : 쿠키명 = 쿠키값; path=/; secure
 이를 처리해주는 로직이 바로 AuthenticationEntryPoint이다.
 
 Response에 4014이 떨어질만한 에러가 발생할 경우 해당 로직을 타게되어, commence메소드를 실행하게 된다.
+
+### AuthenticationProvider란?
+
+An AuthenticationProvider implementation that retrieves user details from a UserDetailsService.
+
+```
+@Override
+protected final UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)
+      throws AuthenticationException {
+   prepareTimingAttackProtection();
+   try {
+      UserDetails loadedUser = this.getUserDetailsService().loadUserByUsername(username);
+      if (loadedUser == null) {
+         throw new InternalAuthenticationServiceException(
+               "UserDetailsService returned null, which is an interface contract violation");
+      }
+      return loadedUser;
+   }
+   catch (UsernameNotFoundException ex) {
+      mitigateAgainstTimingAttack(authentication);
+      throw ex;
+   }
+   catch (InternalAuthenticationServiceException ex) {
+      throw ex;
+   }
+   catch (Exception ex) {
+      throw new InternalAuthenticationServiceException(ex.getMessage(), ex);
+   }
+}
+```
+
+Provider가 하는일은 첫번째로 UserDetailsService로 부터 유저정보를 받아오는것
+
+이를 이행하기 위해서는 UserDetails를 구현한 구현체를 Member와 미리 연결시켜야한다.
+
+```
+@Override
+protected Authentication createSuccessAuthentication(Object principal, Authentication authentication,
+      UserDetails user) {
+   boolean upgradeEncoding = this.userDetailsPasswordService != null
+         && this.passwordEncoder.upgradeEncoding(user.getPassword());
+   if (upgradeEncoding) {
+      String presentedPassword = authentication.getCredentials().toString();
+      String newPassword = this.passwordEncoder.encode(presentedPassword);
+      user = this.userDetailsPasswordService.updatePassword(user, newPassword);
+   }
+   return super.createSuccessAuthentication(principal, authentication, user);
+}
+```
