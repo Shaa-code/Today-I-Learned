@@ -216,3 +216,11 @@ SpringBoot 파일의 build/libs경로에 있는 “server-0.0.11-SNAPSHOT.jar”
 ![Untitled 40](https://user-images.githubusercontent.com/70310271/188685677-d53b2ba3-b4ce-400c-a630-633a875bc581.png)
 
 SpringBoot 내장 톰캣의 기본포트인 8080포트로도 잘 접속이 되는것을 확인 할 수 있다.
+
+### 원하는 Profile로 실행시키고 싶을때.
+
+./gradlew bootRun --args='--spring.profiles.active=dev'
+
+### 서버환경 변수 설정
+
+RDS와 함께 AWS Parameter Store를 사용하면 된다.
