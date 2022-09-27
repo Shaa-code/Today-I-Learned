@@ -197,3 +197,12 @@ protected Authentication createSuccessAuthentication(Object principal, Authentic
    return super.createSuccessAuthentication(principal, authentication, user);
 }
 ```
+
+### OAuth2 이해
+
+가장 중요한 용어
+
+1. Resource Owner : Google 서비스를 이용하는 일반 사용자 (내 서비스를 이용하고자 하는 일반인)
+2. Client : Spring Boot Server를 사용하는 나 (서버가 된다.)
+3. Resource Server : 구글 회원정보 서버 (회원정보, 이메일, 프로필 사진 을 가지고 있는 구글 서버)
+4. Authorization Server : Client가 Resource Server에 접근 할 수 있도록 하는 서버 ( 구글에서 인가를 해주는 서버 )
