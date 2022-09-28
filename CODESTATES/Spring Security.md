@@ -206,3 +206,28 @@ protected Authentication createSuccessAuthentication(Object principal, Authentic
 2. Client : Spring Boot Server를 사용하는 나 (서버가 된다.)
 3. Resource Server : 구글 회원정보 서버 (회원정보, 이메일, 프로필 사진 을 가지고 있는 구글 서버)
 4. Authorization Server : Client가 Resource Server에 접근 할 수 있도록 하는 서버 ( 구글에서 인가를 해주는 서버 )
+
+`OAuth2LoginAuthenticationProvider`
+
+```
+public String getName() {
+   if (this.getPrincipal() instanceof UserDetails) {
+      return ((UserDetails) this.getPrincipal()).getUsername();
+   }
+```
+
+get.Name()이 아니라 getUsername()을 하는구나..
+
+4시간 디버깅 끝에 알아냄.
+
+```java
+http://localhost:8080/login/oauth2/code/google?access-token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqd3QtYWNjZXNzLXRva2VuIiwiaWQiOjMsImV4cCI6MTY2NDUxOTA4NH0.cHRf33BkCEXLI1yDaGeZWyO7zfDzu8xIt3z06BUgz-3lATZwBQRv7K1QB5Z6LaJuk7Plu9hkUzFxp-NB4DJG9g&member-id=3
+```
+
+Location에 이 값이 들어가는게 정상인지 확인해보자.
+
+• `invalid_request` – The request is missing a parameter so the server can’t proceed with the request. This may also be returned if the request includes an unsupported parameter or repeats a parameter.
+
+오류로 나오긴하지만, redirect parameter로 모든 값을 잘 보내준 후에 Error로 진입하는것을 확인했다.
+
+디버깅 해보니 신기하게도 successHandler와 failureHandler가 같이 작동한다. 이상하다..
