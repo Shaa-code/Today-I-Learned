@@ -221,6 +221,16 @@ SpringBoot 내장 톰캣의 기본포트인 8080포트로도 잘 접속이 되�
 
 ./gradlew bootRun --args='--spring.profiles.active=dev'
 
+### AWS를 계속 켜두는방법
+
+nohup 옵션을 붙여준다.
+
+nohup.out 을 만들지 않는 방법 : nohup command >/dev/null 2> &1
+
+nohup ./gradlew bootRun --args='--spring.profiles.active=prod' >/dev/null 2>&1
+
 ### 서버환경 변수 설정
 
 RDS와 함께 AWS Parameter Store를 사용하면 된다.
+
+
