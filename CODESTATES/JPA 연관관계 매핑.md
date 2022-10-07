@@ -284,3 +284,11 @@ public class Group {
 김영한님 강의 참고할것.
 
 그냥 Set을 해도되는 이유는 PK로 들어가기 때문이다.
+
+### 왜 NoArgsConstructor에 “access = AccessLevel.PROTECTED”를 사용하는가?
+
+기본 생성자(NoArgsConstructor)의 접근 제어를 PROCTECTED 로 설정하면 아무런 값도 갖지 않는 의미 없는 객체의 생성을 막게 됩니다.
+
+**즉, 무분별한 객체 생성에 대해 한번 더 체크할 수 있습니다.**
+
+의미있는 객체를 생성하기 위해서 @Builder를 사용하자
