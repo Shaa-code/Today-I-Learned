@@ -1593,3 +1593,11 @@ call : null message = 초기화 연결 메시지
 @PostConstruct, @PreDestory 애노테이션 지원
 
 ### 인터페이스 InitalizingBean, DisposableBean
+ 
+초기화 소멸 인터페이스의 단점
+
+스프링 전용 인터페이스 이므로, 해당 코드가 스프링 전용 인터페이스에 의존한다.
+
+초기화, 소멸 메서드의 이름을 변경할 수 없다.
+
+내가 코드를 고칠 수 없는 외부 라이브러리에 적용할 수 없다.
