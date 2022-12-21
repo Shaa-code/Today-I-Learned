@@ -189,9 +189,7 @@ sudo apt-get install openjdk-17-jre
 
 ![Untitled 36](https://user-images.githubusercontent.com/70310271/188685604-ac11e3e1-af37-4c15-ad18-8bf959d2c5bb.png)
 
-`주의할 점!` 
-
-HDD에 할당하기 때문에 RAM과 비교해서 속도가 느리다.
+`주의할 점!`
 
 프리티어에서는 멈추는걸 방지하기 위해 거의 필수적인 설정이 될 수 있다.
 
