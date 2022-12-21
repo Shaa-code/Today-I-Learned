@@ -1,6 +1,6 @@
 # Debuging
 
-### 서론
+## 시작
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/195103904-23a6c536-ad34-4f61-aea6-adf81d629b21.png)
 
