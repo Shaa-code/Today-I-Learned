@@ -20,7 +20,7 @@ SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: coul
 
 
 ## 원인 탐색
-이후로는 원인을 직접 찾아보고자 했습니다.
+이후로는 원인을 직접 찾아보고자 했다.
 
 ### *의문1. Local에서는 H2, MySQL 데이터베이스 둘 다 너무 잘 작동하는데, 왜 EC2에서만 작동하지 않는걸까?*
 
@@ -54,7 +54,7 @@ Linux에서의 MySQL은 Column을 인식할때, 대소문자를 구분한다.
 
 ### 더 어려운 난관에 봉착..
 
-해결방법은 MySQL 설정 config에 “lower_case_table_names = 1” 을 넣어주면 끝이었습니다.
+해결방법은 MySQL 설정 config에 “lower_case_table_names = 1” 을 넣어주면 끝이었다.
 
 원인을 찾아서 이제 해결할 만하다고 생각했지만, 그 이후가 더 난이도가 높아졌다.
 
