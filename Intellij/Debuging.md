@@ -1,7 +1,5 @@
 # Debuging
 
-## 시작
-
 ![Untitled](https://user-images.githubusercontent.com/70310271/195103904-23a6c536-ad34-4f61-aea6-adf81d629b21.png)
 
 ![디버깅0](https://user-images.githubusercontent.com/70310271/195103592-716515bb-ed86-49c0-b1d9-74169307150b.jpg)
