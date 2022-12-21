@@ -1,4 +1,6 @@
-### Debuging
+# Debuging
+
+### 서론
 
 ![Untitled](https://user-images.githubusercontent.com/70310271/195103904-23a6c536-ad34-4f61-aea6-adf81d629b21.png)
 
@@ -12,11 +14,11 @@
 
 특히 Spring Security 에서 인증 처리를 할 때 많은 오류들이 발생했는데, Security 내부 로직들을 한줄 씩 타고 들어가면서 결국 로그인 구현을 하는데 큰 도움을 준 디버깅 기능 세가지를 알아보자.
 
+### 첫번째 기능 Resume
+
 ![디버깅 1](https://user-images.githubusercontent.com/70310271/195103625-0a28c311-ad4a-4f47-94e4-ea91c7975906.jpg)
 
 ![디버깅2](https://user-images.githubusercontent.com/70310271/195103651-fe57afc5-1373-4692-add9-5b4371dedaa5.jpg)
-
-첫번째 기능은 Resume 이다.
 
 Resume의 기능은 다음 Break Point 까지 이동하는데
 
@@ -30,7 +32,7 @@ Resume의 기능은 다음 Break Point 까지 이동하는데
 
 ![디버깅4](https://user-images.githubusercontent.com/70310271/195104252-8bf29abc-ff2b-4a7c-abf1-1196bcddba6f.png)
 
-두번째 기능은 Step Over입니다.
+### 두번째 기능 Step Over
 
 아래 화면을 보면 첫번째 BreakPoint에서 바로 다음 라인으로 이동하는걸 확인할 수 있다.
 
@@ -40,7 +42,7 @@ Resume의 기능은 다음 Break Point 까지 이동하는데
 
 ![디버깅6](https://user-images.githubusercontent.com/70310271/195104350-6c015b08-4e55-4dc9-8267-7452f15d10a5.png)
 
-세번째 기능은 Step Into입니다.
+### 세번째 기능은 Step Into
 
 Step Into는 현재 Break된 라인에서 현재 실행하고 있는 메소드로 이동한다.
 
