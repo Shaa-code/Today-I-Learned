@@ -3,4 +3,4 @@
 ### 책
 혼자 공부하는 컴퓨터구조 + 운영체제 책을 읽고 공부했던 내용을 기록합니다.
 
-![image](https://user-images.githubusercontent.com/70310271/209162134-e4bdf443-837b-4add-9374-7ae1cf14712b.png = 252 x 344.81)
+![image](https://user-images.githubusercontent.com/70310271/209162134-e4bdf443-837b-4add-9374-7ae1cf14712b.png =252x344.81)
