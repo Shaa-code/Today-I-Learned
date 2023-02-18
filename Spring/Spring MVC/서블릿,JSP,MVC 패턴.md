@@ -121,3 +121,42 @@ JSP코드도 비즈니스 로직 코드가 JSP에 있어야하고 뷰에 해당�
 서블릿보다는 나은거 같긴한데, 여전히 굉장히 지저분하다.
 
 그래서 MVC 패턴이 만들어지게 된다.
+
+### MVC패턴
+
+하나의 서블릿 또는 JSP로 처리하던 시각적 영역과 비즈니스 로직 영역을,
+
+Controller과 View 라는 영역으로 역할을 서로 나눈것이다.
+
+MVC모델이란,
+
+Controller에서 비즈니스 로직을 처리한후 Model에 데이터를 전달한다.
+
+View는 또 Model에 있는 데이터를 참조해서 값을 반영한다.
+
+Controller는 HTTP 요청을 받아서 파라미터를 검증하고, 비즈니스 로직을 실행한다. 그리고 View에 전달할 결과 데이터를 조회해서 Model에 담는다.
+
+Model은 View에 출력할 데이터를 담아둔다. 그래서 View가 필요한 데이터를 모두 모델에 담아서 전달해주기 때문에 View는 화면을 렌더링하는 일에 집중할 수 있다.
+
+View는 모델에 담겨있는 데이터를 사용해서 화면을 그리는 일에 집중한다.
+
+꼭 HTML 말고도 XML , Excel같은 파일로 만들수도 있지만 가장 많이 사용하는건 HTML이다.
+
+### Model은 어떻게 다루는가?
+
+서블릿을 컨트롤러로 사용하고, JSP를 뷰로 사용해서 MVC패턴을 적용한다.
+
+Model은 HttpServletRequest 객체를 사용한다.
+
+request는 내부에 데이터 자장소를 가지고 있는데,
+
+request.setAttribute(), request.getAttribute()를 사용하면 데이터를 보관하고 조회할 수 있다.
+
+### HTML에서 Form을 사용할때 주의할점
+
+```java
+<form action="save" method="post"> //상대경로이다. 현재 폴더에서 ./save로 이동한다.
+<form action="/save" method="post"> //절대경로이다. /save로 이동한다.
+```
+
+보통은 절대경로로 설정한다.
