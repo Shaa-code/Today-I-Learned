@@ -4,7 +4,7 @@
 
 싱글톤으로 만들때는 외부에서 호출하지 못하게 private로 생성자를 막아주어 아무나 생성을 할 수 없도록 만들어야한다.
 
-```
+```java
 public class Singleton {
 
     private static Singleton instance = new Singleton();
@@ -160,3 +160,18 @@ request.setAttribute(), request.getAttribute()를 사용하면 데이터를 보�
 ```
 
 보통은 절대경로로 설정한다.
+
+### WEB-INF와 일반 디렉토리의 차이
+
+일반 디렉토리에 담겨있는 jsp는”localhost:8080/jsp/members/new-form.jsp”를 호출하면 불러와진다.
+
+즉, 외부에서 자원에 접근할 수 있다.
+
+WEB-INF안에 있는 파일들은 서버에서만 호출할 수 있고 외부(ex : 브라우저)에서는 호출할 수 없다.
+
+![image](https://user-images.githubusercontent.com/70310271/219955282-5975c4f1-f24c-4e14-bd6e-b37722aa2eb0.png)
+
+경로에는 존재하지만 보다시피 404에러가 난다.
+
+WEB-INF는 “webapp/WEB-INF”의 경로를 사용한다.
+
