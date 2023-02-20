@@ -175,3 +175,16 @@ WEB-INF안에 있는 파일들은 서버에서만 호출할 수 있고 외부(ex
 
 WEB-INF는 “webapp/WEB-INF”의 경로를 사용한다.
 
+### redirect와 forward의 차이
+
+redirect는 실제 클라이언트(웹 브라우저)에 응답이 나갔다가 302면, 클라이언트가 redirect 경로로 다시 요청한다.
+
+따라서 클라이언트가 인지할 수 있고, URL 경로도 실제로 변경된다.
+
+웹브라우저 서버로 호출이 2번 된다
+
+![image](https://user-images.githubusercontent.com/70310271/220139339-ea1e387e-9fcf-4b48-bf88-a8a4da7d46d0.png)
+
+![image](https://user-images.githubusercontent.com/70310271/220139556-57546fe8-a4e0-48bd-a63c-f1db07a2b35b.png)
+
+“forward”는 클라이언트가 서버에 요청을 하면 서버 내부에서 호출이 일어나 처리해 URL을 반환하기 때문에 클라이언트가 전혀 인지할 수 없다.
