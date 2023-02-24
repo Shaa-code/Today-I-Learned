@@ -188,3 +188,35 @@ redirect는 실제 클라이언트(웹 브라우저)에 응답이 나갔다가 3
 ![image](https://user-images.githubusercontent.com/70310271/220139556-57546fe8-a4e0-48bd-a63c-f1db07a2b35b.png)
 
 “forward”는 클라이언트가 서버에 요청을 하면 서버 내부에서 호출이 일어나 처리해 URL을 반환하기 때문에 클라이언트가 전혀 인지할 수 없다.
+
+### JSP에서 request와
+
+```java
+<ul>
+    <li>id=<%=((Member)req.getAttribute("member")).getId()%></li>
+    <li>username=<%=((Member)req.getAttribute("member")).getUsername()%></li>
+    <li>age=<%=((Member)req.getAttribute("member")).getAge()%></li>
+</ul>
+```
+
+위 코드는 작동하지 않는다.
+
+Controller에서는 변수명을 req,resp라고 사용해도 상관없지만 jsp에서는 그렇게 사용할 수 없다.
+
+```java
+<%@ page import="hello.servlet.domain.member.Member" %> //import 필수
+
+...
+
+<ul>
+    <li>id=<%=((Member)request.getAttribute("member")).getId()%></li>
+    <li>username=<%=((Member)request.getAttribute("member")).getUsername()%></li>
+    <li>age=<%=((Member)request.getAttribute("member")).getAge()%></li>
+</ul>
+```
+
+첫줄처럼 import를 해와야함은 물론이고 이렇게 반드시 request라고 적어줘야만 작동한다.
+
+JSP에서 저런식으로 받아올수도 있지만, Model에 내용을 바로 받아오는 표현식인 “${}”을 사용하면 훨씬 간단하다.
+
+원리는 req에서 getAttribute()를 하는 과정과 같다.
