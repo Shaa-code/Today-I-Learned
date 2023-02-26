@@ -21,3 +21,9 @@ ex) viewPath 설정, forward 실행
 ![image](https://user-images.githubusercontent.com/70310271/221359995-29278a97-e489-47b9-b2bd-e01e5be1de7b.png)
 
 초기 구조이다. 매핑정보를 토대로 컨트롤러를 호출한다.
+
+## V2
+
+![image](https://user-images.githubusercontent.com/70310271/221418508-bd80e8b7-d465-41b3-844b-f69f22e584ff.png)
+
+FrontController는 요청하고자 하는 컨트롤러를 getRequestURI()를 통해 호출한다. 이후 서비스를 처리한 후 forward 하고자하는 주소를 넣은체 View를 반환한다. 이제 FrontController에서 render(req,resp)를 호출하면 forward(req,resp)되고 여기서 기억할것은, req에 forward할 주소와, 반환할 Model이 들어있다는 점이다.
