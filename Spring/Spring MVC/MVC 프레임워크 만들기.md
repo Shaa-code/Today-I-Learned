@@ -27,3 +27,11 @@ ex) viewPath 설정, forward 실행
 ![image](https://user-images.githubusercontent.com/70310271/221418508-bd80e8b7-d465-41b3-844b-f69f22e584ff.png)
 
 FrontController는 요청하고자 하는 컨트롤러를 getRequestURI()를 통해 호출한다. 이후 서비스를 처리한 후 forward 하고자하는 주소를 넣은체 View를 반환한다. 이제 FrontController에서 render(req,resp)를 호출하면 forward(req,resp)되고 여기서 기억할것은, req에 forward할 주소와, 반환할 Model이 들어있다는 점이다.
+
+## V3(서블릿 종속성 제거, ViewPath → ViewName으로)
+
+![image](https://user-images.githubusercontent.com/70310271/222165687-d4a94415-6967-4756-b7f8-5bbb9350c0f0.png)
+
+서블릿 종속성을 제거하기 위해서, 매번 컨트롤러를 호출할때마다, 새로 paramMap을 만들고 req에 있는 모든 파라미터들을 paramMap에 담는 방식을 사용하기 때문에 앞으로 컨트롤러에서 서블릿을 사용할 필요가 없어진다.
+
+이제는 paramMap을 가지고 비즈니스로직을 작성할 수 있게 되었다.
