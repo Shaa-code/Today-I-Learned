@@ -35,3 +35,14 @@ FrontController는 요청하고자 하는 컨트롤러를 getRequestURI()를 통
 서블릿 종속성을 제거하기 위해서, 매번 컨트롤러를 호출할때마다, 새로 paramMap을 만들고 req에 있는 모든 파라미터들을 paramMap에 담는 방식을 사용하기 때문에 앞으로 컨트롤러에서 서블릿을 사용할 필요가 없어진다.
 
 이제는 paramMap을 가지고 비즈니스로직을 작성할 수 있게 되었다.
+
+디테일한 로직을 작성하는 경우에는 메서드로 뽑는것이 좋다.
+
+```java
+MyView myView = new MyView("/WEB-INF/views" + viewName + ".jsp");
+
+```
+
+이 부분도 명확히 역할을 알아보기 어려우면, 메서드로 빼주는것이다.
+
+옵션 + 커맨드 + M
