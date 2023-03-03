@@ -46,3 +46,15 @@ MyView myView = new MyView("/WEB-INF/views" + viewName + ".jsp");
 이 부분도 명확히 역할을 알아보기 어려우면, 메서드로 빼주는것이다.
 
 옵션 + 커맨드 + M
+
+### 실제로 언제 오버로딩을 쓰는가?
+
+```java
+Object model = mv.getModel().get(viewName); -> X
+req.setAttribute(viewName,model); -> X
+myView.render(req,resp);
+```
+
+render를 하고 싶은데, render를 할때, model을 넣어줘야한다.
+
+이때 기존의 render()가 있는데, 오버라이딩 해주면 좋다.
