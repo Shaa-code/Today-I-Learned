@@ -58,3 +58,16 @@ myView.render(req,resp);
 render를 하고 싶은데, render를 할때, model을 넣어줘야한다.
 
 이때 기존의 render()가 있는데, 오버라이딩 해주면 좋다.
+
+### 왠만하면 빼서 쓰자.
+
+```java
+public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    model.forEach((key, value) -> request.setAttribute(key,value));
+//  modelToAttribute(model, request)로 빼주면 가독성이 늘어난다.
+    RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+    dispatcher.forward(request,response);
+}
+```
+
+모델을 request에 넣을때 setAttribute를 사용하지만, 템플릿 엔진마다 다르다. (JSP는 setAttribute를 사용)
