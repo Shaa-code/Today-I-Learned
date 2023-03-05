@@ -71,3 +71,11 @@ public void render(Map<String, Object> model, HttpServletRequest request, HttpSe
 ```
 
 모델을 request에 넣을때 setAttribute를 사용하지만, 템플릿 엔진마다 다르다. (JSP는 setAttribute를 사용)
+
+paramMap은 request를 사용하지 않기 위해서, 미리 requestParameter들을 모두 받아놓기 위해서 만든다.
+
+viewModel은 뷰 파일의 이름만으로 접근하도록 만들고, 모델을 저장해놓기 위해서 사용한다.
+
+viewResolver는 저장한 모델들을, request에 모두 저장하는 역할을 하고 viewPath에 forward하는 역할을 한다.
+
+핵심 아이디어 → 종속성을 제거하기 위해서는 request안에 있는 모든 데이터를 컨트롤러를 호출할때마다 어딘가에 저장해두면 된다.
