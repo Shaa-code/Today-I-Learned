@@ -32,7 +32,7 @@ View는 실제로 렌더링하고 forward하는 용도로 사용한다.
 
 ex) 스프링 빈의 이름으로 핸들러를 찾을 수 있는 핸들러 매핑이 필요하다.
 
-1. HandlerAdapter
+2. HandlerAdapter
 
 핸들러 매핑을 통해서 찾은 핸들러를 실행할 수 있는 핸들러 어댑터가 필요하다.
 
@@ -110,21 +110,21 @@ ex) 엑셀 파일 생성 기능에 사용한다.
 
 핸들러 어댑터를 통해 new-form이라는 논리 뷰 이름을 얻는다.
 
-1. ViewResolver 호출
+2. ViewResolver 호출
 
 BeanNameViewResolver는 new-form이라는 이름의 스프링 빈으로 등록된 뷰를 찾아야하는데 없다.
 
 InternalResourceViewResolver가 호출된다.
 
-1. InternalResourceViewResolver
+3. InternalResourceViewResolver
 
 이 뷰 리졸버는 InternalResourceView를 반환한다.
 
-1. InternalResourceView
+4. InternalResourceView
 
 JSP처럼 forward()를 호출해서 처리할 수 있는 경우에 사용.
 
-1. view.render()
+5. view.render()
 
 view.render() 가 호출되고 InternalResourceView는 forward()를 사용해서 JSP를 실행한다.
 
