@@ -14,8 +14,6 @@ FrameworkServlet.service()를 시작으로 여러 메서드가 호출되면서 D
 
 핵심 로직은 doDispatch()에 있다.
 
-누가 언제 어디서 무엇을 어떻게 왜
-
 ## 동작 순서
 
 핸들러 조회 → 핸들러 어댑터 조회 → 핸들러 어댑터 실행 → 핸들러 실행 → ModelAndView 반환 → viewResolver 호출 → View 반환 → View Rendering
