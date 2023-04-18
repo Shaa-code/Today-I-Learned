@@ -22,4 +22,4 @@ a.jsp에서 b.jsp로 처리를 요청하고 b.jsp에서 처리한 결과 내용�
 
 하지만 RequestDispatcher는 서블릿이 속해 있는 웹 어플리케이션 범위 내에서만 요청을 제어할 수 있다.
 
-https://dololak.tistory.com/502
+출처 : https://dololak.tistory.com/502
