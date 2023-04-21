@@ -124,3 +124,70 @@ ex) <span th:text=”’Welcome to our application, ‘ + ${user.name} + ‘!’
 다음과 같이 리터럴 대체 문법을 사용하면, 더하기 없이 편리하게 사용할 수 있다.
 
 ex) <span th:text=”Welcome to our application, ${user.name}!|”>
+    
+### @ModelAttribute란?
+
+기존 코드
+
+```java
+@PostMapping("/add")
+public String save(@RequestParam String itemName,
+                   @RequestParam int price,
+                   @RequestParam Integer quantity,
+                   Model model){
+
+    Item item = new Item();
+    item.setItemName(itemName);
+    item.setPrice(price);
+    item.setQuantity(quantity);
+
+    itemRepository.save(item);
+
+    model.addAttribute("item",item);
+    return "basic/item";
+
+}
+```
+
+여기서 만약에 @ModelAttribute를 쓰면, 자동으로 객체를 만들어주고, 초기화까지 자동으로 수행하는데, 파라미터로 들어오는 매개변수도 사용한다.
+
+이때 model.addAttribute()에다가 이름도 자동으로 추가해준다.
+
+즉, 요청파라미터를 처리하고, Model을 추가해서 
+
+```java
+@PostMapping("/add")
+public String addItem2(@ModelAttribute("item") Item item){
+
+    itemRepository.save(item);
+
+    return "basic/item";
+
+}
+```
+
+여기서 만약에 ModelAttribute의 매개변수를 빼줘도 객체명을 소문자로 바꾸어 만들어준다.
+
+```
+@PostMapping("/add")
+public String addItem2(@ModelAttribute Item item){
+
+    itemRepository.save(item);
+    return "basic/item";
+
+}
+```
+    
+### 리다이렉트
+
+스프링에서는 “redirect:/…”로 편리하게 리다이렉트를 지원한다.
+
+컨트롤러에 매핑된 @PathVariable의 값은 redirect에도 사용 가능하다.
+    
+참고로 HTML Form에는 PUT, PATCH를 지원하지 않는다.
+
+GET, POST만 지원한다.
+
+PUT, PATCH는 오직 HTTP API전송에서만 가능하다.
+
+스프링에서 히든 필드로 PUT, PATCH를 매핑하는 방법은 있지만, 사실상 HTTP POST요청으로 받는다.
