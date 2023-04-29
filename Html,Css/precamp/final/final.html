@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title>Document</title>
+    <link href="./final.css" rel="stylesheet">
+    <script src="./final.js"></script>
+</head>
+<body>
+    <div class="background">
+        <div class="background_join">
+            <div class="join">
+                <div class="join_title">회원가입</div>
+                <div class="join_contents">
+
+                    <div><input class="email" type="text" placeholder="이메일을 입력해 주세요."></input></div>
+                    <div><input class="name" type="text" placeholder="이름을 입력해 주세요."></input></div>
+                    <div><input class="pw1" type="text" placeholder="비밀번호를 입력해 주세요."></input></div>
+                    <div><input class="pw2" type="text" placeholder="비밀번호를 다시 입력해 주세요."></input></div>
+                    <div class="phone"><input id="ph1" type="text" maxlength="3"><span></span><input id="ph2" type="text" maxlength="4"><span></span><input id="ph3" type="text" maxlength="4"></div>
+
+                    <div class="auth_send"><span>000000</span><button onclick="authSend()">인증번호 전송</button></div>
+
+                    <div class="auth_done"><span>3:00</span><button>인증 완료</button></div>
+
+                    <div>
+                        <select class="location_select">
+                            <option>지역을 선택하세요.</option>
+                            <option>서울</option>
+                        </select>
+                    </div>
+
+                    <div class="gender_select">
+                        <span><input type="radio" name="gender">여성</span>
+                        <span><input type="radio" name="gender">남성</span>
+                    </div>
+
+                    <div class="divide_line"></div>
+
+                <div class="join_end">
+                    <button class="join_button">가입하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

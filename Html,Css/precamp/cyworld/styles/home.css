@@ -23,7 +23,6 @@ html, body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: tan;
 }
 
 .wrapper_body{
@@ -41,9 +40,9 @@ html, body{
 }
 
 .title{
-    color: #55B2E4;
     font-size: 13px;
     font-weight: 700;
+    color: #55B2E4;
 }
 
 .subtitle{
