@@ -51,7 +51,7 @@
 
 }
 
-.email{
+#email{
     width: 380px;
     height: 60px;
     font-size: 16px;
@@ -61,7 +61,7 @@
     border-radius : 7px;
 }
 
-.name{
+#name{
     width: 380px;
     height: 60px;
     font-size: 16px;
@@ -71,7 +71,7 @@
     border-radius : 7px;
 }
 
-.pw1{
+#pw1{
     width: 380px;
     height: 60px;
     font-size: 16px;
@@ -81,7 +81,7 @@
     border-radius : 7px;
 }
 
-.pw2{
+#pw2{
     width: 380px;
     height: 60px;
     font-size: 16px;
