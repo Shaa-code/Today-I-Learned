@@ -32,5 +32,15 @@ const authDone = () => {
 }
 
 const changeFocus1 = () =>{
-    document.getElementById("")
+    var ph1 = document.getElementById("ph1").value;
+    if(ph1.length === 3){
+        document.getElementById("ph2").focus();
+    }
+}
+
+const changeFocus2 = () =>{
+    var ph1 = document.getElementById("ph2").value;
+    if(ph1.length === 4){
+        document.getElementById("ph3").focus();
+    }
 }
