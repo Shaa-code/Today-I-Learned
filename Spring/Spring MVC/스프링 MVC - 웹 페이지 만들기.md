@@ -191,3 +191,51 @@ GET, POST만 지원한다.
 PUT, PATCH는 오직 HTTP API전송에서만 가능하다.
 
 스프링에서 히든 필드로 PUT, PATCH를 매핑하는 방법은 있지만, 사실상 HTTP POST요청으로 받는다.
+    
+### PRG → Post / Redirect / Get
+
+원래 구조는 GET /add로 상품 등록 폼을 가져오고, 거기서 POST /add를 해서 상품을 저장하면 상품상세 화면으로 간다.
+
+이때 새로고침을 하면 POST /add가 재실행 되는 문제가 발생한다.
+
+`웹 브라우저의 새로고침은 마지막에 서버에 전송한 데이터를 다시 전송한다.`
+
+- 어떻게 해결하지?
+
+POST /add로 데이터를 저장한후 items/{id}로 리다이렉트 해준다.
+
+웹 브라우저는 새롭게 요청을 하게 되기 때문에 새로고침을 해도 GET /items/{id}가 된다.
+
+이런 문제 해결 방식을 PRG POST/Redirect/Get 이라 한다.
+
+### RedirectAttributes
+
+RedirectAttributes는 왜 사용하는가?
+
+바로 Redirect를 했을때, 비즈니스 로직이 잘 처리 되었는지 확인할 방법이 없다.
+
+이때, 정보를 더 알려주기 위해 사용한다.
+
+URL 인코딩도 해주고, PathVariable, 쿼리파라미터 까지 처리해준다.
+
+```java
+@PostMapping("/{itemId}/edit")
+public String addItem6(Item item, RedirectAttributes redirectAttributes){
+    Item savedItem = itemRepository.save(item);
+    redirectAttributes.addAttribute("itemId",savedItem.getId());
+    redirectAttributes.addAttribute("status",true);
+    return "redirect:/basic/items/{itemId}";
+}
+```
+
+이때, itemId는 파라미터로 직접 넣어 줘서 문제가 없다.
+
+하지만, status 같은 경우는 따로 지정을 안해줘서, ?status=true로 넘어간다.
+
+```java
+<h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+```
+
+이때 Html에 코드를 추가해주면 , status=true일때, 저장완료라는 문구가 나오게 된다.
+
+`이 HTML 코드는 Web Browser에서는 확인이 안된다!`
