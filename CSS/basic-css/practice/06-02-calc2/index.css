@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.sidebar{
+    width: 170px;
+    background: red;
+    padding: 5px 15px;
+}
+
+.sidebar ul{
+    width: 100%;
+    padding: 0;
+}
+
+.sidebar ul li{
+    list-style: none;
+    padding: 5px 0;
+    color: #ffffff;
+    border-bottom: 1px dashed rgba(255,255,255,0.3);
+}
+
+.contents{
+    width: calc(100% - 170px);
+    background: orange;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.item{
+    width: 24%;
+    height: 180px;
+    background-image: url("../img/portrait.png");
+    background-size: cover;
+    margin-bottom: 10px;
+}
