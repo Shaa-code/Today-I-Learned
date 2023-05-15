@@ -1,0 +1,13 @@
+.box1{
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.box1:after{
+    content: "나는 가상 요소 입니다.";
+    display: block;
+    background: blue;
+}
