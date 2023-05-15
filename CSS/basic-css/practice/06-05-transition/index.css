@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
+.item{
+    width: 190px;
+    color: white;
+    background-color: #123ecf;
+    transition: width 0.2s ease-in-out 0.2s,
+                background-color 0.2s ease-in-out 0.2s;
+}
+
+.item:hover{
+    width: 300px;
+    background-color: #002398;
+}
