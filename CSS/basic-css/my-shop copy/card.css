@@ -1,0 +1,180 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+}
+
+.nav{
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+}
+.category{
+    height: 180px;
+    background-color: orange;
+    border-radius: 10px;
+    color: white;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.enroll_item{
+    margin: 10px 0px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    padding: 3px 0px 0px 10px;
+    
+}
+
+.body{
+    margin: 20px;
+}
+
+.itemWrap{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0px 25px;
+}
+
+.item{
+    width: calc(25% - 7px);
+    aspect-ratio: 6 / 5; /*calc를 사용했을때, height가 고정되어있으면 비율이 이상하게 늘어난다. 이때 aspect-ratio로 비율을 고정시킬 수 있다.*/
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /*overflow: hidden은 전체를 먹고있는 요소에 적용시켜야한다.*/
+    margin-bottom: 10px;
+}
+
+
+.imgBox{
+    width: 100%;
+    height: 100%;
+}
+
+.imgBox img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.textBox{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 20px;
+    z-index: 3;
+}
+
+.textBox p {
+    color: white;
+    margin: 1px;
+}
+
+.textBox__name{
+    font-size: 22px;
+    font-weight: 500;
+    opacity: 0; /*기본을 opacity: 0을 주고 시작해야한다.*/
+    transform: translateY(50px);
+}
+
+.textBox__price{
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.item:after{
+    content: "";
+    display: block;
+    background: rgba(0,0,0,0.2);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+/*item 위에 마우스를 올렸을때, after 가상선택자에 적용할 속성*/
+.item:hover:after,
+.item:hover .textBox__name,
+.item:hover .textBox__price{
+    opacity: 1;
+}
+
+.item:hover .textBox__name,
+.item:hover .textBox__price{
+    transform: translateY(0);
+}
+
+/* 튀어나가는건 최상위 박스 요소에 overflow: hidden 으로 잡아준다. */
+.item:hover .imgBox img{
+    transform: scale(1.1);
+    filter: blur(0.6px);
+}
+
+.item:after,
+.item .imgBox img,
+.item .textBox__name,
+.item .textBox__price{
+    transition: all 0.2s ease-in-out;
+}
+
+.mainBanner{
+    width: 100%;
+    height: 280px;
+    background-image: url("./img/banner.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+    font-size: 50px;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+    animation: titleText 1s ease-in-out;
+}
+
+@keyframes titleText{
+    0%{
+        transform: translateY(70px);
+        opacity: 0;
+    }
+
+    92%{
+        transform: translateY(-3px);
+    }
+
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
