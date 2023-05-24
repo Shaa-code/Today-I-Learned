@@ -1,0 +1,409 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+} 
+/* 기본적으로 밑줄이 그어지기 때문에 넣어두는게 좋다. */
+
+.mainBanner{
+    width: 100%;
+    height: 280px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.wrapper{
+    width: 100%;
+    max-width: 1320px;
+    display: flex;
+    justify-content: space-between ;
+    align-items: flex-start;
+    padding: 0 10px;
+}
+
+.sidebar{
+    width: 170px;
+}
+
+.mainMenu{
+    background: orange;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.mainMenu ul{
+    display: block;
+    padding: 0;
+}
+
+.mainMenu ul li{
+    display: block;
+    list-style: none;
+}
+
+.mainMenu ul li a{
+    display: block;
+    padding: 10px;
+    color: white;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.writeBtn{
+    width: 100%;
+    background: #000000;
+    border: 1px solid #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.writeBtnBox{
+    margin-top: 10px;
+}
+
+
+.writeBtn .arrow{
+    display: inline-block;
+    padding-left: 10px;
+    transition: all 0.3s ease-in-out; 
+}
+
+
+.itemWrap{
+    width: calc(100% - 170px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-left: 10px;
+}
+
+.item{
+    width: calc(25% - 7px);
+    aspect-ratio: 6 / 5; /*calc를 사용했을때, height가 고정되어있으면 비율이 이상하게 늘어난다. 이때 aspect-ratio로 비율을 고정시킬 수 있다.*/
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /*overflow: hidden은 전체를 먹고있는 요소에 적용시켜야한다.*/
+    margin-bottom: 10px;
+}
+
+
+.imgBox{
+    width: 100%;
+    height: 100%;
+}
+
+.imgBox img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.textBox{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 20px;
+    z-index: 3;
+}
+
+.textBox p {
+    color: white;
+    margin: 1px;
+}
+
+.textBox__name{
+    font-size: 22px;
+    font-weight: 500;
+    opacity: 0; /*기본을 opacity: 0을 주고 시작해야한다.*/
+    transform: translateY(50px);
+}
+
+.textBox__price{
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.item:after{
+    content: "";
+    display: block;
+    background: rgba(0,0,0,0.2);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+.item:after,
+.item .imgBox img,
+.item .textBox__name,
+.item .textBox__price{
+    transition: all 0.2s ease-in-out;
+}
+
+.mainBanner{
+    width: 100%;
+    height: 280px;
+    background-image: url("./img/banner.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+    font-size: 50px;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+    animation: titleText 1s ease-in-out;
+}
+
+@keyframes titleText{
+    0%{
+        transform: translateY(70px);
+        opacity: 0;
+    }
+
+    92%{
+        transform: translateY(-3px);
+    }
+
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 767px){
+    /* mobile */
+
+    .mainBanner{
+        height: 160px;
+        margin-bottom: 0;
+        
+    }
+
+    .mainBanner .text{
+        font-size: 26px;
+    }
+
+    .wrapper{
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .sidebar{
+        width: 100%;
+    }
+  
+    .mainMenu{
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .mainMenu ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .mainMenu ul li a{
+        font-size: 14px;
+        padding: 12px 10px;
+    }
+
+    .writeBtnBox{
+        display: none;
+    }
+
+    .itemWrap{
+        width: 100%;
+        margin-top: 12px;
+        padding: 0 10px;
+    }
+
+
+    .item{
+        width: calc(50% - px);  
+        aspect-ratio: unset;
+        height: auto; 
+        overflow: hidden;
+        border: 1px solid #dddddd;
+    }
+
+    .item:after{
+        display: none;
+    }
+
+    .textBox{
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .textBox p{
+        color: black;
+    }
+
+    .textBox__name{
+        font-size: 22px;
+        font-weight: 500;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .textBox__price{
+        font-size: 16px;
+        font-weight: 400;
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+    .mainBanner{
+        height: 160px;
+        margin-bottom: 0;
+    }
+
+    .mainBanner .text{
+        font-size: 26px;
+    }
+
+    .mainMenu{
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .mainMenu ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .mainMenu ul li a{
+        font-size: 14px;
+        padding: 15px 10px;
+    }
+
+    .wrapper{
+        flex-direction: column;
+    }
+
+    .sidebar{
+        width: 100%;
+    }
+
+    .itemWrap{
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .item{
+        overflow: visible;
+        border: 1px solid #dddddd;
+    }
+
+    .textBox{
+        position: relative;
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .textBox p{
+        color: black;
+    }
+
+    .textBox__name{
+        font-size: 22px;
+        font-weight: 500;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .textBox__price{
+        font-size: 16px;
+        font-weight: 400;
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    .writeBtnBox{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1024px){
+        /*item 위에 마우스를 올렸을때, after 가상선택자에 적용할 속성*/
+    .item:hover:after,
+    .item:hover .textBox__name,
+    .item:hover .textBox__price{
+        opacity: 1;
+    }
+
+    .item:hover .textBox__name,
+    .item:hover .textBox__price{
+        transform: translateY(0);
+    }
+
+    /* 튀어나가는건 최상위 박스 요소에 overflow: hidden 으로 잡아준다. */
+    .item:hover .imgBox img{
+        transform: scale(1.1);
+        filter: blur(0.6px);
+    }
+
+    .writeBtn:hover .arrow{
+        transform: translateX(50px);
+    }
+    
+    .writeBtn:hover{
+        background: #ffffff;
+        color: #333333;
+    }
+
+    .mainMenu ul li a:hover{
+        background: rgb(255,145, 0);
+        padding-left: 20px;
+    }
+    
+}
