@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
     <script src="./index.js"></script>
     <title>Document</title>
-</head>
-<body>
-    <input type="text" id="target-year-input" class="target-input">
-    <input type="text" id="target-month-input" class="target-input">
-    <input type="text" id="target-date-input" class="target-input">
-    <button class="btn" onclick="counterMaker()">버튼</button>
-</body>
+  </head>
+  <body>
+    <h1>D-Day</h1>
+
+    <div id="d-day-counter">
+      <div class="d-day-child-container">
+        <span id="days">0</span><span>일</span>
+      </div>
+      <div class="d-day-child-container">
+        <span id="hours">0</span><span>시간</span>
+      </div>
+      <div class="d-day-child-container">
+        <span id="min">0</span><span>분</span>
+      </div>
+      <div class="d-day-child-container">
+        <span id="sec">0</span><span>초</span>
+      </div>
+    </div>
+
+    <div id="target-selector">
+      <input type="text" id="target-year-input" class="target-input" size="5" />
+      -
+      <input
+        type="text"
+        id="target-month-input"
+        class="target-input"
+        size="5"
+      />
+      -
+      <input type="text" id="target-date-input" class="target-input" size="5" />
+    </div>
+
+    <button class="btn" onclick="counterMaker()" id="start-btn">
+      카운트 다운 시작
+    </button>
+  </body>
 </html>
