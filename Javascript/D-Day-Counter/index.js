@@ -67,3 +67,10 @@ const setClearInterval = function () {
   messageContainer.InnerHTML = "<h2>D-Day를 입력해 주세요.</h2>";
   messageContainer.style.display = "flex";
 };
+
+const resetTimer = function () {
+  counter.style.display = "none";
+  messageContainer.innerHTML = "<h3>D-Day를 입력해 주세요</h3>";
+  messageContainer.style.display = "flex";
+  setClearInterval();
+};
