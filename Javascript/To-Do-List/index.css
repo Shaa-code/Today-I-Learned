@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.todo-container {
+  max-width: 100%;
+  width: 400px;
+}
+
+#todo-input {
+  background-color: snow;
+  list-style-type: none;
+  border: none;
+  display: block;
+  font-size: 2rem;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  width: 100%;
+}
