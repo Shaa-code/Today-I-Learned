@@ -11,11 +11,16 @@
   <body>
     <div class="todo-container">
       <h1>Todo</h1>
-      <input type="text" id="todo-input" onkeydown="checkInput()" />
-      <ul id="todo-list">
-        <li>손 흔들기</li>
-        <li>인사하기</li>
-      </ul>
+      <input
+        class="todo-input"
+        type="text"
+        id="todo-input"
+        onkeydown="createTodo()"
+      />
+      <ul id="todo-list"></ul>
+      <div class="delete-btn-wrapper">
+        <button onclick="deleteAll()">전체 삭제</button>
+      </div>
     </div>
   </body>
 </html>
