@@ -76,3 +76,48 @@ if (savedTodoList) {
     createTodo(savedTodoList[i]);
   }
 }
+
+const askForLocation = function () {
+  navigator.geolocation.getCurrentPosition(accessToGeo, (err) => {
+    console.log(err);
+  });
+};
+
+const weatherSearch = function (position) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=419c399cda692250000b76339fa7e466`
+  )
+    .then((res) => {
+      console.log(res);
+      return res.json();
+    })
+    .then((json) => {
+      console.log(json.name, json.weather[0].description);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+const accessToGeo = function (position) {
+  const positionObj = {
+    latitude: position.coords.latitude,
+    longitude: position.coords.longitude,
+  };
+
+  weatherSearch(positionObj);
+};
+
+askForLocation();
+
+const promiseTest = function () {
+  return new Promise((resolver, reject) => {
+    setTimeout(() => {
+      resolver("success");
+    }, 1000);
+  });
+};
+
+promiseTest().then((res) => {
+  console.log(res);
+});
