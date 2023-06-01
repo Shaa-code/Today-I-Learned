@@ -37,7 +37,7 @@ const createTodo = function (storageData) {
 };
 
 const checkInput = function () {
-  if (window.event.keyCode === 13 && todoInput.value !== "") {
+  if (window.event.keyCode === 13 && todoInput.value.trim() !== "") {
     createTodo();
   }
 };
@@ -83,26 +83,59 @@ const askForLocation = function () {
   });
 };
 
-const weatherSearch = function (position) {
+const weatherDataActive = function ({ location, weather }) {
+  const weatherMainList = [
+    "Clear",
+    "Clouds",
+    "Drizzle",
+    "Rain",
+    "Snow",
+    "Thunderstorm",
+  ];
+  weather = weatherMainList.includes(weather) ? weather : "Fog";
+
+  const locationNameTag = document.getElementById("location-name-tag");
+  locationNameTag.textContent = location;
+  document.body.style.backgroundImage = `url(./img/${weather}.jpg)`;
+
+  if (
+    !savedWeatherData ||
+    savedWeatherData.location !== location ||
+    savedWeatherData.weather !== weather
+  ) {
+    localStorage.setItem(
+      "saved-weather",
+      JSON.stringify({ location, weather })
+    );
+  }
+};
+
+const weatherSearch = function ({ latitude, longitude }) {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=419c399cda692250000b76339fa7e466`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=419c399cda692250000b76339fa7e466`
   )
     .then((res) => {
       console.log(res);
       return res.json();
     })
     .then((json) => {
-      console.log(json.name, json.weather[0].description);
+      const weatherData = {
+        location: json.name,
+        weather: json.weather[0].main,
+      };
+      weatherDataActive(weatherData);
     })
     .catch((err) => {
       console.error(err);
     });
 };
 
-const accessToGeo = function (position) {
+const accessToGeo = function ({ coords }) {
+  const { latitude, longitude } = coords;
+  //Shorthand Property
   const positionObj = {
-    latitude: position.coords.latitude,
-    longitude: position.coords.longitude,
+    latitude,
+    longitude,
   };
 
   weatherSearch(positionObj);
@@ -121,3 +154,6 @@ const promiseTest = function () {
 promiseTest().then((res) => {
   console.log(res);
 });
+
+let arr = [1, 2, 3, 4, 5];
+console.log(...arr);
