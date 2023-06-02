@@ -130,6 +130,40 @@ class OperatorEx8 {
 
 한쪽에 L과 같은 접미사를 붙여서 연산시키는것도 방법이된다.
 
+### 시간 테스트
+
+```java
+public class Test2 {
+    static int a;
+    static int b;
+
+    public static void main(String arg[]) {
+        Test2 T = new Test2();
+        T.check1();
+        T.check2();
+    }
+
+    public void check1() {
+        long beforeTime = System.currentTimeMillis();
+        a = 1_000_000;
+        long afterTime = System.currentTimeMillis();
+        System.out.println(afterTime - beforeTime / 1000);
+    }
+
+    public void check2(){
+        long beforeTime = System.currentTimeMillis();
+        b = 1000000;
+        long afterTime = System.currentTimeMillis();
+        System.out.println(afterTime - beforeTime / 1000);
+    }
+}
+
+// 결과값
+// 1684027049895
+// 1684027049895
+```
+둘다 완전히 같은 속도가 나온다.
+
 ### ‘a’+1의 연산
 
 상수 또는 리터럴 간의 연산은 실행과정동안 변하는 값이 아니기 때문에, 컴파일 시에 컴파일러가 계산해서 그 결과로 대체함으로써 코드를 보다 효율적으로 만든다.
