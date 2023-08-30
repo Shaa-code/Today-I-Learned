@@ -1,4 +1,4 @@
-![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/12af0036-ac3f-42b3-8d51-2f653a38534e)# 데이터 타입과 연산자
+# 데이터 타입과 연산자
 
 ## 기본 타입
 
