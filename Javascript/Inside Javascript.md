@@ -2722,3 +2722,190 @@ console.log(var2); // 2
 func()을 실행 시켰을 때의 과정을 알아보자.
 
 함수를 실행하였으므로 새로운 컨텍스트가 만들어진다. 이 컨텍스트를 편의상 func 컨텍스트라고 한다.
+
+`func 컨텍스트의 스코프 체인은 실행된 함수의 [[scope]] 프로퍼티를 그대로 복사한 후, 현재 생성된 변수 객체를 복사한 스코프 체인의 맨 앞에 추가한다.` 
+
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/19044069-4cb0-451d-9a39-a3d5e10a7ea1)
+
+// 지금보니, Scope Chain은 List 형식으로 구현한 Stack이다.
+
+스코프 체인에서 var1과 var2는 func 변수 객체를 먼저 탐색하고 없으면, 전역 객체를 탐색한다.
+
+func() 함수 객체의 [[scope]] 프로퍼티가 전역 객체 하나만을 가지고 있었으므로, func 실행 컨텍스트의 스코프 체인은 그림과 같이 func 변수 객체 → 전역 객체가 된다.
+
+- 스코프 체인 정리
+1. 각 함수 객체는 [[scope]] 프로퍼티로 현재 컨텍스트의 스코프 체인을 참조한다.
+2. 한 함수가 실행되면 새로운 실행 컨텍스트가 만들어지는데, 이 새로운 실행 컨텍스트는 자신이 사용할 스코프 체인을 다음과 같은 방법으로 만든다.
+
+`현재 실행되는 함수 객체의 [[scope]] 프로퍼티를 복사하고, 새롭게 생성된 변수 객체를 해당 체인의 제일 앞에 추가한다.`
+
+1. 스코프 체인 = 현재 실행 컨텍스트의 변수 객체 + 상위 컨텍스트의 스코프 체인
+
+// 한마디로 정리해서 스코프 체인은 변수나 메서드를 사용할 수 있는 유효 범위를 알려준다. 이때, 유효 범위는 Activation Object이다.
+
+ex) 브라우저에서 최상위 객체인 window(Activation Object)에서 func() 함수를 실행하면,
+
+func() Execution Context가 만들어지는데, 이 함수 내에서 사용할 수 있는 유효 범위가 또 func의 Activation Object(아래 사진에 보이는 func객체 자체가 Activation Object이다.)가 유효 범위로 지정된다.
+
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/bf09dfc9-89d0-42ce-af5e-29728669ddcc)
+
+```jsx
+var value = "value1";
+
+function printFunc() {
+    var value = "value2";
+
+    function printValue() {
+        return value;
+    }
+
+    console.log(printValue());
+}
+
+printFunc();
+```
+
+이 코드도 위에 그린 그림처럼 처리된다.
+
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/579335aa-9dc2-4450-b31c-098ea1a63a4e)
+
+// 이때 value는 printFunc 변수 객체에서 찾는데, 없으므로, 스코프 체이닝을 통해 상위 컨텍스트에 있는 value2를 결과 값으로 반환하게 된다.
+
+```jsx
+var value = "value1";
+
+function printValue() {
+    return value;
+}
+
+function printFunc(func) {
+    var value = "value2";
+    console.log(func());
+}
+
+printFunc(printValue);
+```
+
+- `// 내 생각과 다르게 동작한다.`
+    
+    value2가 결과값으로 출력될거라고 생각했다.
+    
+    그 이유가 스코프 체인이 그대로 쌓일 줄 알았는데, 그렇지 않다.
+    
+    func(printValue)를 호출할 때,  printFunc()에서 호출하기 때문에 printFunc에 있는 value를 사용할 것이라고 생각했지만, 사실 코드를 보면 전역 활성 객체에 printValue와 printFunc()이 있다.
+    
+    그래서 printFunc(printValue())을 호출할 때, printValue()의 스코프 체인은 
+    
+    전역객체 → printValue 변수 객체의 순서이다.
+    
+    그래서 value 값을 찾을 때, printValue에 없으면, 전역객체에서 값을 찾게 된다.
+    
+    `그래서 반환값은 결국 value 1이된다.`
+    
+
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/36eae4a4-a03f-463d-a169-2c653806bbba)
+
+- 식별자 인식 (Identifier Resolution)
+
+이렇게 만들어진 스코프 체인으로 식별자 인식이 이루어진다.
+
+식별자 인식은 스코프 체인의 첫 번째 변수 객체부터 시작한다.
+
+`식별자와 대응되는 이름을 가진 프로퍼티가 있는지를 확인한다.`
+
+함수를 호출할 때 스코프 체인의 가장 앞에 있는 객체가 변수 객체이므로, 이 객체에 있는 공식 인자, 내부 함수, 지역 변수에 대응되는지 먼저 확인한다.
+
+첫번째 객체에 대응되는 프로퍼티를 발견하지 못하면, 다음 객체로 이동하여 찾는다.
+
+이런식으로 대응되는 이름의 프로퍼티를 찾을 때까지 계속된다.
+
+여기서 this는 식별자가 아닌 키워드로 분류되므로, 스코프 체인의 참조 없이 접근할 수 있음을 기억하자.
+
+참고) Javascript에는 스코프 체인을 사용자가 임의로 수정하는 키워드가 있는데, 이것이 with이다.
+
+with는 eval과 함께, 성능을 높이고자 하는 Javascript 프로그래머에게는 사용하지 말아야 할 키워드이다.
+
+Javascript 성능 최적화를 집피한 니콜라스 자카스는 with 구문을 두고 “pure javascript evil”이라고까지 하였다.
+
+with 구문은 표현식을 실행하는데, 표현식이 객체이면 객체는 현재 실행 컨텍스트의 스코프 체인에 추가된다. (활성화 객체의 바로 앞에)
+
+with 구문은 다른 구문(블록 구문일 수도 있음)을 실행하고 실행 컨텍스트의 스코프 체인을 전에 있던 곳에 저장한다.
+
+```jsx
+var y = { x : 5 };
+
+function withExamFunc() {
+    var x = 10;
+    var z;
+
+    with(y) {
+        z = function(){
+            console.log(x); // 5 // y객체의 x가 출력된다.
+        }
+    }
+    z();
+}
+withExamFunc();
+```
+
+withExamFunc() 함수가 호출되면 실행 컨텍스트는 전역 변수 객체와 현재 실행 컨텍스트의 변수 객체를 포함하는 스코프 체인이 있다.
+
+여기에, with 구문의 실행으로 전역 변수 y에 의해 참조되는 객체를 함수 표현식이 실행되는 동안 스코프 체인의 맨 앞에 추가한다.
+
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/f6a73ea1-0379-4367-a8af-7a26d315dfea)
+
+- 호이스팅
+
+여기까지 이해했으면 함수 호이스팅에서 소개된 호이스팅의 원인을 이해할 수 있어야 한다.
+
+```jsx
+foo();
+bar();
+
+var foo = function() {
+    console.log("foo and x = " + x);
+};
+
+function bar() {
+    console.log("bar and x = " + x);
+}
+
+var x = 1;
+```
+
+위 코드는 아래와 같다.
+
+```jsx
+var foo;
+
+function bar() {
+    console.log("bar and x = " + x);
+}
+
+var x ;
+
+foo(); // TypeError
+bar();
+
+foo = function() {
+    console.log("foo and x = " + x);
+};
+
+x = 1;
+```
+
+함수 생성과정에서 변수 foo. 함수 객체 bar, 변수 x를 차례로 생성한다.
+
+foo와 x에는 undefined가 할당된다.
+
+실행이 시작되면 foo(), bar()를 연속해서 호출하고 foo에 함수 객체의 참조가 할당되며, 변수 x에 1이 할당된다.
+
+결국, foo()에서 “TypeError” 에러가 발생한다.
+
+foo가 선언되어 있기는 하지만 함수가 아니기 때문이다.
+
+foo()를 커멘트 처리한 후 실행하면 bar()에서는 “bar and x=undefined”가 출력된다.
+
+x에 1이 할당되기 전에 실행했기 때문이다.
+
+// 쉽게 생각해서 호이스팅은 할당이 일어나지 않았기 때문이다.
