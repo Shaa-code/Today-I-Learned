@@ -2909,3 +2909,521 @@ foo()를 커멘트 처리한 후 실행하면 bar()에서는 “bar and x=undefi
 x에 1이 할당되기 전에 실행했기 때문이다.
 
 // 쉽게 생각해서 호이스팅은 할당이 일어나지 않았기 때문이다.
+
+## 클로저
+
+### 클로저의 개념
+
+```jsx
+function outerFunc() {
+    var x = 10;
+    var innerFunc = function() { console.log(x) }
+    return innerFunc;
+}
+
+var inner = outerFunc();
+inner(); // 10
+```
+
+![image-83.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8262f71f-01dc-40d7-9a7a-6e823fd3259b/image-83.jpg)
+
+앞서 배운 그림과 크게 다르지 않다.
+
+innerFunc()의 [[scope]]은 outerFunc 변수 객체와 전역 객체를 가진다.
+
+그런데 여기서 혼란스러운 부분이 있다.
+
+위 코드에서 innerFunc()은 outerFunc()의 실행이 끝난 후 실행된다.
+
+그렇다면 outerFunc 실행 컨텍스트가 사라진 이후에 innerFunc 실행 컨텍스트가 생성되는 것인데, innerFunc()의 스코프 체인은 outerFunc 변수 객체를 여전히 참조할 수 있을까?
+
+outerFunc 실행 컨텍스트는 사라졌지만, outerFunc 변수 객체는 여전히 남아있고, innerFunc의 스코프 체인으로 참조되고 있다.
+
+`이것이 바로 Javascript에서 구현한 클로저 라는 개념이다.`
+
+앞서 보았듯이 Javascript에서 함수는 일급 객체로 취급된다.
+
+이는 함수를 다른 함수의 인자로 넘길 수 있고, return으로 함수를 통째로 반환 받을 수도 있음을 의미한다.
+
+이러한 기능으로 앞에서 본 것과 같은 코드가 가능하다.
+
+여기서 최종 반환되는 함수가 외부 함수의 지역변수에 접근하고 있다는 것이 중요하다.
+
+이 지역변수에 접근하려면, 함수가 종료되어 외부 함수의 컨텍스트가 반환되더라도 변수 객체는 반환되는 내부 함수의 스코프 체인에 그대로 남아있어야만 접근할 수 있다.
+
+이것이 바로 클로저다.
+
+클로저는 이미 많은곳에서 정의 내리고 있지만, 그 정의만 보고는 쉽게 이해하기 어렵다.
+
+그 정의만 보고는 쉽게 이해하기 어렵다.
+
+여기서는 조금 쉽게 풀어서 정의하겠다.
+
+`이미 생명 주기가 끝난 외부 함수의 변수를 참조하는 함수를 클로저라고 한다.`
+
+따라서 앞의 코드에서는 outerFunc에서 선언된 x를 참조하는 innerFunc가 클로저가 된다.
+
+그리고 클로저로 참조되는 외부 변수 즉, outerFunc의 x와 같은 변수를 자유 변수(Free Variable)라고 한다.
+
+Closure라는 이름은 “함수가 자유변수에 대해 닫혀있다.(closed, bound)”는 의미다.
+
+우리말로 의역하면, 자유 변수에 엮여있는 함수 라는 표현이 맞을 듯 하다.
+
+```jsx
+function oterFunc(){
+    var x = 1; //Free Variable
+    return function() { // Closure
+        // x와 arguments를 활용한 로직 
+    }
+}
+
+var new_func = outerFunc();
+
+new_func();
+```
+
+위 코드는 Javascript로 클로저를 구현하는 전형적인 패턴이다.
+
+코드에서 보이듯이 외부함수의 호출이 이루어지고, 이 외부함수에서 새로운 함수가 반환된다.
+
+반환된 함수가 클로저이고 이 클로저는 자유변수를 묶고 있다.
+
+반환된 클로저는 새로운 함수로 사용된다.
+
+대부분의 클로저를 활용하는 코드가 이와 같은 형식을 유지한다.
+
+이러한 특성을 바탕으로 Javascript를 이용한 함수형 프로그래밍이 가능하다.
+
+참고)
+
+클로저는 Javascript에만 있는 개념은 아니고, 여러 언어에서 차용되고 있는 특성이다.
+
+특히 함수를 일급 객체로 취급하는 언어 (보통 이를 함수형 언어 Functional Language 라고 한다.)에서 주요하게 사용되는 특성이다.
+
+Javascript 뿐만 아니라, 여러가지 함수형 언어를 배워보고자하는 독자라면 이 클로저라는 개념을 반드시 이해해야 한다.
+
+```jsx
+function outerFunc(arg1, arg2){
+    var local = 8;
+    function innerFunc(innerArg){
+        console.log((arg1 + arg2) / (innerArg + local));
+    }
+    return innerFunc();
+}
+
+var exam1 = outerFunc(2, 4);
+exam1(2);
+```
+
+outerFunc() 함수를 호출하고 반환되는 함수 객체인 innerFunc()가 exam1으로 참조된다.
+
+이것은 exam1(n)의 형태로 실행될 수 있다.
+
+여기서 outerFunc()가 실행되면서 생성되는 변수 객체가 스코프 체인에 들어가게 되고 이 스코프 체인은 innerFunc의 스코프 체인으로 참조된다.
+
+`즉, outerFunc() 함수가 종료되었지만, 여전히 내부 함수(innerFunc())의 [[scope]]로 참조되므로 가비지 컬렉션의 대상이 되지 않고, 여전히 접근 가능하게 살아있다.`
+
+따라서 이후에 exam1(n)을 호출하여도, innerFunc()에서 참조하고자 하는 변수 local에 접근할 수 있다.
+
+클로저는 이렇게 만들어진다.
+
+이 outerFunc 변수 객체의 프로퍼티 값은 여전히 (심지어 실행 컨텍스트가 끝났음에도) 읽기 및 쓰기까지 가능하다.
+
+![image-85.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3cd7f2fb-b0b7-4503-8210-9d7c528a1ed7/image-85.jpg)
+
+따라서 exam1(2)를 호출하면, arg1, arg2, local 값은 outerFunc 변수 객체에서 찾고, innerArg는 innerFunc 변수 객체에서 찾는다.
+
+결과는 ((2 + 4) / (2 + 8))가 된다.
+
+innerFunc()에서 접근하는 변수 대두분이 스코프 체인의 첫번째 객체가 아닌 그 이후의 객체에 존재한다.
+
+이는 성능 문제를 유발시킬 수 있는 여지가 있다. 대부분의 클로저에서는 스코프 체인에서 뒤쪽에 있는 객체에 자주 접근하므로, 성능을 저하시키는 이유로 지목되기도 한다.
+
+게다가 앞에서 알아본 대로 클로저를 사용한 코드가 그렇지 않은 코드보다 메모리 부담이 많아진다.
+
+그렇다고 클로저를 쓰지 않는 것은 Javascript의 강력한 기능 하나를 무시하고 사용하는 것과 다름이 없다.
+
+따라서 클로저를 영리하게 사용하는 지혜가 필요하며, 이를 위해선 많은 프로그래밍 경험을 쌓아야 한다.
+
+### 클로저의 활용
+
+클로저는 성능적인 면과 자원적인 면에서 약간 손해를 볼 수 있으므로 무차별적으로 사용해서는 안된다.
+
+사실 클로저를 잘 활용하려면 경험이 가장 중요하게 작용한다.
+
+여기서 아주 전형적인 클로저의 예제 코드를 소개한다.
+
+어느 정도 클로저의 감각만이라도 얻어갈 수 있기를 바란다.
+
+그리고 이후에 “함수형 프로그래밍 (7장)” 에서 소개할 대부분의 예제가 클로저를 활용한 것이므로 참고하길 바란다.
+
+하지만 진정 좋은 Javascript 프로그래머가 되려면 많은 개발 경험을 쌓는 것이 가장 좋은 방법이다.
+
+- 특정 함수에 사용자가 정의한 객체의 메서드 연결하기
+
+```jsx
+function HelloFunc(func) {
+    this.greeting = "hello";
+}
+
+HelloFunc.prototype.call = function(func) {
+    func ? func(this.greeting) : this.func(this.greeting);
+    //함수가 있으면 실행을 시키고, 없으면 HelloFunc 객체의 function을 실행시키는 것이다.
+}
+
+var userFunc = function(greeting) {
+    console.log(greeting);
+}
+
+var objHello = new HelloFunc();
+objHello.func = userFunc;
+objHello.call(); // hello
+```
+
+`//아무리 봐도 뭐하는건지 모르겠다..`
+
+- 왜 이해를 못했는가?
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad2aa0f9-537e-4b9e-a7c2-db0580e5eea6/Untitled.png)
+    
+    내가 생각한 코드는 위 처럼 전개 된다.
+    
+    그런데 위에서 보여준 예시는 삼항 연산자의 false 부분에 값이 들어가는 경우가 값으로 반환되는 상황을 보여주고 있었다.
+    
+    ```jsx
+    HelloFunc.prototype.call = function(func) {
+        func ? func(this.greeting) : userFunc(this.greeting);
+        // 위의 코드에서 보면 책에서 제시하는 삼항연산자의 
+        // false에 해당하는 함수가 userFunc으로 해석되는거다.
+    }
+    ```
+    
+
+함수 HelloFunc는 greeting 변수가 있고, func 프로퍼티로 참조되는 함수를 call() 함수로 호출한다.
+
+사용자는 func 프로퍼티에 자신이 정의한 함수를 참조시켜 호출할 수 있다.
+
+다만, HelloFunc.prototype.call()을 보면 알 수 있듯이 자신의 지역변수인 greeting만을 인자로 사용자가 정의한 함수에 넘긴다.
+
+앞 예제에서 사용자는 userFunc() 함수를 정의하여 HelloFunc.func()에 참조시킨 뒤, HelloFunc()의 지역변수인 greeting을 화면에 출력 시킨다.
+
+이 예제에서 HelloFunc()은 greeting만을 인자로 넣어 사용자가 인자로 넘긴 함수를 실행시킨다.
+
+그래서 사용자가 정의한 함수도 한 개의 인자를 받는 함수를 정의할 수 밖에 없다.
+
+사용자가 원하는 인자를 더 넣어서 HelloFunc()을 이용하여 호출하려면 어떻게 해야 할까?
+
+```jsx
+function saySomething(obj, methodName, name) {
+    return (function(greeting) {
+        return obj[methodName](greeting, name);
+    });
+}
+
+function newObj(obj, name) {
+    obj.func = saySomething(this, "who", name);
+    return obj;
+}
+
+newObj.prototype.who = function(greeting, name){
+    console.log(greeting + " " + (name || "everyone") );
+}
+```
+
+newObj() 함수는 HelloFunc()의 객체를 좀 더 자유롭게 활용하려고 정의한 함수이다.
+
+첫 번째 인자로 받는 obj는 HelloFunc()의 객체가 되고, 두 번째 인자는 사용자가 출력을 원하는 사람 이름이 된다.
+
+```jsx
+var obj1 = new newObj(objHello, "zzoon");
+// 실행 결과
+
+objHello.func = saySomething(this, "who", "zzoon");
+return objHello;
+// 실행결과
+
+return (function(greeting) {
+    return objHello["who"](greeting, "zzoon");
+});
+
+```
+
+첫번째 인자 obj의 func 프로퍼티에 saySomething() 함수에서 반환되는 함수를 참조하고, 반환한다.
+
+결국 obj1은 인자로 넘겼던 objHello 객체에서 func 프로퍼티에 참조된 함수만 바뀐 객체가 된다.
+
+따라서 다음과 같이 호출할 수 있다.
+
+```jsx
+obj1.call();
+```
+
+이 코드의 실행결과, newObj.prototype.who 함수가 호출되어 사용자가 원하는 결과인 “hello zzoon”을 출력한다.
+
+```jsx
+function HelloFunc(func) {
+    this.greeting = "hello";
+}
+
+HelloFunc.prototype.call = function(func) {
+    func ? func(this.greeting) : this.func(this.greeting);
+}
+
+var userFunc = function(greeting) {
+    console.log(greeting);
+}
+
+var objHello = new HelloFunc();
+objHello.func = userFunc;
+objHello.call();
+
+function saySomething(obj, methodName, name) {
+    return (function(greeting) {
+        return obj[methodName](greeting, name);
+    });// 이게 클로저가 된다.
+}
+
+function newObj(obj, name) {
+    obj.func = saySomething(this, "who", name);
+    return obj;
+}
+
+newObj.prototype.who = function(greeting, name) {
+    console.log(greeting + " " + (name || "everyone"));
+}
+
+var obj1 = new newObj(objHello, "zzoon");
+obj1.call() // hello zzoon
+```
+
+이렇게 반환되는 함수가 HelloFunc이 원하는 function(greeting) {} 형식의 함수가 되는데, 이것이 HelloFunc 객체의 func로 참조된다.
+
+obj1.call()로 실행되는 것은 실질적으로 newFunc.prototype.who()가 된다.
+
+이와 같은 방식으로 사용자는 자신의 객체 메서드인 who 함수를 HelloFunc에 연결시킬 수 있다.
+
+여기서 클로저는 saySomething()에서 반환되는 function(greeting){}이 되고,
+
+이 클로저는 자유 변수 obj, methodName, name을 참조한다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/17404372-4306-4fea-993b-7732d4311e2a/Untitled.png)
+
+new newObj(objHello, “zzoon”) 생성자 함수를 호출할 때,
+
+생성자 함수에 있는 property 객체가 obj1의 [[Prototype]]에 링크 된다.
+
+이 property에는 위에서 본 코드처럼, newObj.prototype.who에 함수를 넣어줘서 함수가 들어가 있는 상태이다.
+
+이때,obj1.call()을 호출하면 objHello[”who”](greeting, name);
+
+// 코드를 이해하기 어려운 이유가, 이전에 내가 배워온 모든 언어들과 해석방식이 달라서 그렇다.
+
+// 함수형 프로그래밍 형식으로, 함수에 다른 함수를 제어하는 함수를 또 넣는다는게, 너무 어색하게 느껴진다.
+
+`//내가 이해하지 못했던, event의 전달방식`
+
+앞 예제는 정해진 형식의 함수를 콜백해주는 라이브러리가 있을 경우, 그 정해진 형식과는 다른 형식의 사용자 정의 함수를 호출할 떄 유용하게 사용된다.
+
+ex) 브라우저에서는 onclick, onmouseover와 같은 프로퍼티에 해당 이벤트 핸들러를 사용자가 정의해 놓을수가 있는데, 이 이벤트 핸들러의 형식은 function(event) {} 이다.
+
+이를 통해 브라우저는 발생한 이벤트를 event 인자로 사용자에게 넘겨주는 방식이다.
+
+여기에 event외의 원하는 인자를 더 추가한 이벤트 핸들러를 사용하고 싶을 때, 앞과 같은 방식으로 클로저를 적절히 활용해 줄 수 있다.
+
+### 함수의 캡슐화
+
+I am XXX, I live in XXX, I’m XX Years old라는 문장을 출력하는데, XX 부분은 사용자에게 인자로 입력받아 출력하는 함수라고한다면,
+
+가장 먼저 생각할 수 있는 것은 앞 문장 템플릿을 전역 변수에 저장하고, 사용자의 입력을 받은 후 , 이 전역 변수에 접근하여 완성된 문장을 출력하는 방식으로 함수를 작성하는 것이다.
+
+```jsx
+var buffAr = [
+    'I am ',
+    '',
+    '. I live in ',
+    '',
+    '. I\'am ',
+    ' years old.',
+];
+
+function getCompletedStr(name, city, age) {
+    buffAr[1] = name;
+    buffAr[3] = city;
+    buffAr[5] = age;
+    return buffAr.join('');
+}
+
+var str = getCompletedStr('zzoon', 'seoul', 16);
+console.log(str);
+```
+
+이 방법에는 단점이 있다.
+
+buffAr이라는 배열은 전역 변수로서, 외부에 노출되어 있다는 점이다.
+
+이는 다른 함수에서 이 배열에 쉽게 접근하여 값을 바꿀 수도 있고, 실수로 같은 이름의 변수를 만들어 버그가 생길 수도 있다.
+
+이는 특히 다른 코드와의 통합 혹은 이 코드를 라이브러리로 만들려고 할 때, 까다로운 문제를 발생시킬 가능성이 있다.
+
+실제로 다른 사람이 사용할 라이브러리를 만들려고하는 개발자는 이러한 충돌 가능성을 충분히 대비해서 라이브러리를 작성해야만 한다.
+
+클로저를 활용해여 bufffAr을 추가적인 스코프에 넣고 사용하게 되면, 이 문제를 해결할 수 있다.
+
+```jsx
+var getCompletedStr = (function () {
+    var buffAr = [
+    'I am ',
+    '',
+    '. I live in ',
+    '',
+    '. I\'am ',
+    ' years old.',
+    ];
+
+    return (function(name, city, age) {
+        buffAr[1] = name;
+        buffAr[3] = city;
+        buffAr[5] = age;
+        return buffAr.join('');
+    });
+})();
+
+var str = getCompletedStr('zzoon', 'seoul', 16);
+console.log(str);
+```
+
+가장 먼저 주의해서 봐야할 점은 변수 getCompletedStr에 익명의 함수를 즉시 실행시켜 반환되는 함수를 할당하는 것이다.
+
+이 반환되는 함수가 클로저가 되고, 이 클로저는 자유변수 buffAr을 스코프 체인에서 참조할 수 있다.
+
+`// 변수 이름의 충돌 가능성이 있을 때, 클로저를 사용해서 한번에 처리한다.`
+
+![image-86.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4cbabed4-5904-49a7-9104-825787811033/image-86.jpg)
+
+### setTimeout()에 지정되는 함수의 사용자 정의
+
+setTimeout 함수는 웹 브라우저에서 제공하는 함수인데, 첫번째 인자로 넘겨지는 함수 실행의 스케쥴링을 할 수 있다.
+
+setTimeout()으로 자신의 코드를 호출하고 싶다면 첫 번째 인자로 해당 함수 객체의 참조를 넘겨주면 되지만, 이것으로는 실제 실행될 때 함수에 인자를 줄 수 없다.
+
+그렇다면 자신이 정의한 함수에 인자를 넣어줄 수 있게 하려면 어떻게 해야할까?
+
+```jsx
+function callLater(obj, a, b) {
+    return (function) {
+        obj["sum"] = a + b;
+            console.log(obj["sum"]);
+    }
+}
+
+var sumObj = {
+    sum : 0
+}
+
+var func = callLater(sumObj, 1, 2);
+setTimeout(func, 500);
+```
+
+사용자가 정의한 함수 callLater를 setTimeout 함수로 호출하려면, 변수 func에 함수를 반환받아 setTimeout() 함수의 첫 번째 인자로 넣어주면 된다.
+
+`// setTimeout()을 사용할 때, 내가 만든 함수에 인자를 넣어 줄 수 있는 방법으로 클로저를 사용한다.`
+
+### 클로저를 활용할 때 주의사항
+
+클로저는 Javascript의 강력한 기능이지만, 너무 남발하여 사용하면 안된다.
+
+- 클로저의 프로퍼티값이 쓰기 가능하므로 그 값이 여러 번 호출로 항상 변할 수 있음에 유의해야 한다.
+
+```jsx
+function outerFunc(argNum) {
+    var num = argNum;
+    return function(x) {
+        num += x;
+        console.log('num : ' + num);
+    }
+}
+
+var exam = outerFunc(40);
+exam(5); // num : 45
+exam(-10); // num : 35
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d47b7e27-18e6-42a6-9778-884e74ac3f16/Untitled.png)
+
+`// 내 예상과 다르게 동작한다.`
+
+`자유 변수 num의 값은 계속해서 남아있어서, 계속해서 변화한다.`
+
+약간, static 으로 남아있는 느낌이다.
+
+- 하나의 클로저가 여러 함수 객체의 스코프 체인에 들어가 있는 경우도 있다.
+
+```jsx
+function func() {
+    var x = 1;
+    return {
+        func1 : function() { console.log( ++x ); },
+        func2 : function() { console.log( -x ); }
+    };
+};
+
+var exam = func();
+exam.func1(); // 2
+exam.func2(); // -2
+```
+
+사실상 위에서 본 예제와 같은 주의사항이다.
+
+반환되는 객체에는 두 개의 함수가 정의되어 있는데, 두 함수 모두 자유변수 x를 참조하고
+각각의 함수가 호출 될 때 마다 x 값이 변화하므로 유의해야 한다.
+
+- 루프 안에서 클로저를 활용할 때는 주의하자.
+
+```jsx
+function countSeconds(howMany) {
+    for( var i = 1; i <= howMany ; i++ ) {
+        setTimeout(function () {
+            console.log(i);
+        }, i * 1000);
+    }
+};
+
+countSeconds(3);
+```
+
+`// 내 생각과 다르게 동작한다.`
+
+`// 이유는 setTimeout 함수를 몰라서 였다.`
+
+setTimeout 함수는 for문 안에서 바로 실행되지 않고 지정된 시간 이후에 실행된다.
+
+즉, for문이 모두 반복된 후에 setTimeout에 지정해둔 함수가 실행되는데, for문이 다 돌면 지정된 함수가 자신의 상위 스코프의 i변수를 살펴볼 때, 이미 값은 4가 되어있기 때문에 4가 출력된다.
+
+1,2,3을 1초 간격으로 출력한다.
+
+하지만 결과는 4가 연속으로 3번 1초 간격으로 출력된다.
+
+setTimeout 함수의 인자로 들어가는 함수는 자유 변수 i를 참조한다.
+
+하지만 setTimeout이 실행되는 시점은 countSeconds() 함수의 실행이 종료된 이후이고, i 값은 이미 4가된 상태이다.
+
+```jsx
+function countSeconds(howMany) {
+    for (var i = 1; i <= howMany; i++) {
+        (function (currentI) {
+            setTimeout(function () {
+                console.log(currentI);
+            }, currentI * 1000);
+            }(i));
+        }
+    }
+};
+
+countSeconds(3);
+```
+
+i가 돌 때마다, 즉시 실행함수를 실행시켜서, 오류를 방지하게끔 만들어 두었다.
+
+`우리가 Javascript 라이브러리를 만들고자 할 때 이에 대한 지식 없이 만든다면 이름 충돌, 성능 저하, 비효율적 자원 활용 등의 문제가 틀림없이 발생할 것이고, 이는 좋은 라이브러리라고 할 수 없다.`
+
+`반드시 지식을 갖춘 후 개발하자.`
