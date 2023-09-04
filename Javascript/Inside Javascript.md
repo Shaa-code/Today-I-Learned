@@ -4448,3 +4448,784 @@ person 함수 객체는 name의 정보를 캡슐화시킨 객체를 반환받는
 객체지향 프로그래밍 자체가 재사용성 및 유지보수의 용이성을 높이려고 끊임없이 연구되어 왔다.
 
 Javascript 역시 이러한 목적을 달성하려는 Javascript만의 특성이 있으므로 이를 잘 활용하여 기존의 틀에 얽매이지 않는다면 보다 효율적인 프로그래밍을 할 수 있다.
+
+# 함수형 프로그래밍
+
+함수형 프로그래밍은 오랫동안 학문적으로 연구되었고 함수형 프로그래밍 언어 역시 역사가 깊다.
+
+Javascript로 함수형 프로그래밍에서 제시하는 방법론 중 일부는 구현 가능하지만 순수한 함수형 프로그래밍 언어라고 말하지는 않는다. (Haskell 이나 Lisp 같은 언어를 찾아보자.)
+
+## 함수형 프로그래밍의 개념
+
+함수형 프로그래밍은 함수의 조합으로 작업을 수행함을 의미한다.
+
+중요한 것은 이 작업이 이루어지는 동안 작업에 필요한 데이터와 상태는 변하지 않는다는 점이다.
+
+변할 수 있는건 오로지 함수 뿐이다.
+
+이 함수가 바로 연산의 대상이 된다.
+
+기존 프로그래밍 방식에 익숙한 독자라면 이를 이해하기란 쉽지 않다.
+
+ex)
+
+```jsx
+f1 = encrypt1;
+f2 = encrypt2;
+f3 = encrypt3;
+
+```
+
+여기서 f1, f2, f3는 입력값이 정해지지 않고, 서로 다른 암호화 알고리즘만 있다.
+
+```jsx
+pure_value = 'zzoon';
+encrypted_value = get_encrypted(x);
+```
+
+pure_value는 암호화할 문자열이고, encrypted_value는 암호화된 문자열이다.
+
+get_encrypted()는 암호화 함수를 받아서 입력받은 함수로 pure_value를 암호화한 후 반환한다.
+
+```jsx
+encrypted_value = get_encrypted(f1);
+encrypted_value = get_encrypted(f2);
+encrypted_value = get_encrypted(f3);
+```
+
+![image-97.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/0075b6ee-ab3e-4b03-b64d-91e29137f1e6/image-97.jpg)
+
+여기서 pure_value는 작업에 필요한 데이터고 작업이 수행되는 동안 변하지 않는다.
+
+get_encrypted()가 작업하는 동안 변할 수 있는 것은 오로지 입력으로 들어오는 함수 뿐이다.
+
+이를 반대로 이야기하면 f1, f2, f3는 외부에 (여기서는 zzoon이라는 변수)에 아무런 영향을 미치지 않는 함수라고 할 수 있다.
+
+`이를 순수 함수 Pure function라고 정의한다.`
+
+외부에 영향을 미치지 않으므로 이미 작성된 순수 함수로 다른 작업에 활용해도 문제가 없다.
+
+또, get_encrypted() 함수도 주목해야 한다.
+
+get_encrypted 함수는 인자로서 f1, f2, f3함수를 받는다. 
+
+그리고 이 예에서는 결과값이 encrypted_value라는 값이지만 결과 값을 또 다른 형태의 함수로서 반환할 수도 있다.
+
+`이렇게 함수를 또 하나의 값으로 간주하여 함수의 인자 혹은 반환 값으로 사용할 수 있는 함수를 고계함수(Higher-order Function)이라고 정의한다.`
+
+이 예시에서 프로그래머는 입력으로 넣을 암호화 함수를 새롭게 만드는 방식으로 암호화 방법을 개선할 수 있다.
+
+이와 같이 내부 데이터 및 상태는 그대로 둔 채 제어할 함수를 변경 및 조합함으로써 원하는 결과를 얻어내는 것이 함수형 프로그래밍의 중요한 특성이다.
+
+`이 특성은 높은 수준의 모듈화가 가능하다는 점에서 큰 장점이 된다.`
+
+`순수 함수의 조건을 충족하는 함수구현으로 모듈 집약적인 프로그래밍이 가능하다.`
+
+참고)
+
+함수형 프로그래밍의 반대되는 개념을 명령형 프로그래밍(Imperative Programming) 이라고 한다.
+
+우리가 C등의 언어로 구현했던 방식이 대부분 이 프로그래밍 방식이다.
+
+명령형 프로그래밍의 함수는 함수형 프로그래밍 언어 함수 처럼 입력값을 받고 출력값을 계산하는 순수한 의미의 함수도 있지만, 특정 작업을 수행하는 여러가지 명령이 기술되어 있는 함수도 있다.
+
+이러한 종류의 함수를 프로시저(Procedure)라고 정의한다.
+
+프로시저는 함수형 프로그래밍의 순수 함수와는 목적 자체가 다르다.
+
+ex)
+
+```jsx
+int ret = printf("print this to screen \n");
+```
+
+printf 함수 역시 입력값과 결과값(반환값)이 있다.
+
+`하지만 중요한 것은 결과값이 아니라, printf 함수가 실행되면서 입력값을 화면에 출력하는 동작이 중요하다.`
+
+결과값은 이 동작이 제대로 수행되었는지를 알려주는 보조적인 역할을 한다.
+
+`실제로 printf 결과값을 받아서 처리하는 코드 자체가 없는 경우도 많다.`
+
+명령형 프로그래밍 함수는 이처럼 특정 작업의 순차적인 명령을 기술하는 데 중점을 둔다.
+
+이러한 개념은 함수형 프로그래밍에서 말하는 순수 함수와는 거리가 멀다.
+
+앞서 설명한 대로 `함수형 프로그래밍 함수는 순수 함수로서 외부에 아무런 영향을 주지 않는 선에서 자신의 로직을 처리하여 결과를 반환하는 역할을 한다.`
+
+`이 결과값을 얻는 것이 이 함수를 호출한 목적이고, 결과값으로 또 다른 작업을 처리하게 된다.`
+
+## Javascript에서의 함수형 프로그래밍
+
+Javascript에서도 함수형 프로그래밍이 가능하다.
+
+그 이유는 Javascript가 일급 객체로서의 함수와 클로저를 지원하기 때문이다.
+
+```jsx
+var f1 = function(input) {
+    var result;
+    /* 암호화 작업 수행 */
+    result = 1;
+    return result;
+}
+
+var f2 = function(input) {
+    var result;
+    /* 암호화 작업 수행 */
+    result = 2;
+    return result;
+}
+
+var f3 = function(input) {
+    var result;
+    reuslt = 3;
+    return result;
+}
+
+var get_encrypted = function(func) {
+    var str = 'zzoon';
+    return function() {
+        return func.call(null, str);
+    }
+}
+
+var encrypted_value = get_encrypted(f1)();
+console.log(encrypted_value);
+
+var encrytped_value = get_encrypted(f2)();
+console.log(encrypted_value);
+
+var encrytped_value = get_encrypted(f2)();
+console.log(encrypted_value);
+```
+
+pseudo 코드를 구현할 수 있다.
+
+이것이 가능한 이유는 앞서 언급한 대로 함수가 일급 객체로 취급되기 때문이다.
+
+그래서 함수의 인자로 함수를 넘기고, 결과로 함수를 반환할 수도 있다.
+
+게다가 변수 str 값이 영향을 받지 않게 하려고 클로저를 사용하였다.
+
+위 코드에서 get_encrypted() 함수에서 반환하는 익명함수가 클로저이다.
+
+`이 클로저에서 접근하는 변수 str은 외부에서는 접근할 수 없으므로 클로저로 함수형 프로그래밍의 개념을 정확히 구현해낼 수 있다.`
+
+Javascript를 이용해서 간단한 수학 문제를 함수형 프로그래밍 방식으로 코드를 작성하는 방법을 알아보자.
+
+### 배열의 각 원소 총합 구하기
+
+```jsx
+function sum(arr) {
+    var len = arr.length;
+    var i = 0, sum = 0;
+    for (; i < len; i++){
+        sum += arr[i];
+    }
+
+    return sum;
+}
+
+var arr = [1,2,3,4];
+console.log(sum(arr));
+```
+
+곱하기를 하고 싶다면?
+
+```jsx
+function multiply(arr) {
+    var len = arr.length;
+    var i = 0, result = 1;
+
+    for (; i < len ; i++) {
+        result *= arr[i];
+    }
+
+    return result;
+}
+
+var arr = [1, 2, 3, 4];
+
+console.log(multiply(arr)); // 24
+```
+
+위는 Javascript 명령형 프로그래밍 방식으로 작성된 코드이다.
+
+문제 하나하나를 각각의 함수를 구현하여 문제를 풀고 있다.
+
+배열의 각 원소를 또 다른 방식으로 산술하여 결과값을 얻으려면 새로운 함수를 다시 구현해야 한다.
+
+하지만 함수형 프로그래밍을 이용하면 이러한 수고를 덜 수 있다.
+
+```jsx
+function reduce(func, arr, memo) {
+    var len = arr.length,
+        i = 0,
+        accum = memo;
+
+    for (; i < len; i++) {
+        accum = func(accum, arr[i])
+    }
+
+    return accum;
+}
+```
+
+reduce() 함수는 함수와 배열을 인자로 넘겨받고 루프를 돌면서 함수를 실행시킨다.
+
+함수를 실행시킨 후 얻은 결과값은 변수 accum에 계속해서 저장한다.
+
+이 작업을 배열의 원소 개수만큼 루프를 돌면서 수행한다.
+
+사용자는 reduce() 함수의 인자로 들어가는 함수를 직접 정의할 수 있다.
+
+```jsx
+var arr = [1,2,3,4];
+
+var sum = function(x, y) {
+    return x+y;
+};
+
+var mulitply = function(x, y) {
+    return x*y;
+};
+
+console.log(reduce(sum, arr, 0));
+console.log(reduce(multiply, arr, 1));
+```
+
+![image-98.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/1c9833e7-9581-41c6-94fa-8a37e47cd9b7/image-98.jpg)
+
+위에서 보는 바와 같이 함수형 프로그래밍을 이용하여 코드를 훨씬 간결하게 작성할 수 있다.
+
+또한 다른 문제가 나오더라도 사용자가 해당 연산을 하는 함수를 작성하여 reduce() 함수로 결과를 얻을 수도 있다. 
+
+앞에 소개된 reduce()함수는 Javascript에서 범용적으로 사용되는 함수로서 각 배열ㄹ의 요소를 처음부터 하나씩 뽑아서 연산에 사용하여 최종 결과값을 도출하는 함수이다.
+
+- 팩토리얼
+
+- 명령형 프로그래밍 방식
+
+```jsx
+function fact(num) {
+    var val = 1;
+    for (var i = 2; i <= num; i++)
+        val = val * i;
+    return val;
+}
+
+console.log(fact(100));
+```
+
+- 재귀 호출 방식
+
+```jsx
+function fact(num) {
+    if ( num == 0 ) return 1;
+    else return num * fact(num - 1);
+}
+
+console.log(fact(100));
+```
+
+```jsx
+var fact = function() {
+    var cache = {'0' : 1};
+    var func = function(n) {
+        var result = 0;
+
+        if (typeof(cache[n])  === 'number') {
+            result = cache[n];
+        } else {
+            result = cache[n] = n * func(n-1);
+        }
+
+        return result;
+    }
+
+    return func;
+}();
+
+console.log(fact(10));
+console.log(fact(20));
+```
+
+fact는 cache에 접근할 수 있는 클로저를 반환받는다.
+
+클로저로 숨겨지는 cache에는 팩토리얼을 연산한 값을 저장하고 있다.
+
+연산을 수행하는 과정에서 캐시에 저장된 값이 있으면 곧바로 그 값을 반환하는 방식이다.
+
+이렇게 하면 한 번 연산된 값을 캐시에 저장하고 있으므로, 중복된 연산을 피하여 보다 나은 성능의 함수를 구현할 수 있다.
+
+### 메모이제이션 패턴
+
+```jsx
+function Calculate(key, input, func) {
+    Calculate.data = Calculate.data || {};
+    if (!Calculate.data[key]) {
+        var result;
+        result = func(input);
+        Calculate.data[key] = result;
+    }
+
+    return Calculate.data[key];
+}
+
+var result = Calculate(1, 5, function(input) {
+    return input * input;
+});
+
+console.log(result);
+
+result = Calculate(2, 5, function(input) {
+    return input * input / 4;
+});
+
+console.log(result);
+
+console.log(Calculate(1));
+console.log(Calculate(2));
+```
+
+예제에서 보는 바와 같이 함수 Calculate() 프로퍼티에 data 프로퍼티를 만들어 객체를 할당하였다.
+
+이곳에 사용자는 자신이 원하는 값을 원하는 키로 저장해 놓을 수 있다.
+
+일단 한번 계산이 된 값이 들어가면 그 이후에는 해당 키로 저장해놓을 수 있다.
+
+일단 한 번 계산된 값이 들어가면 그 이후에는 해당 키로 저장해 놓은 값을 받아서 사용할 수 있다.
+
+일종의 캐시 역할을 한다.
+
+jQuery에서는 data()라는 메서드로 이 메모이제이션 패턴을 사용하였다.
+
+```jsx
+data : function( elem, name, data ) {
+    var id = elem[expando];
+}
+
+if ( name && !jQuery.cache[id])
+    jQuery.cache[id] = {};
+if ( data != undefined )
+    jQuery.cache[id][name] = data;
+    return name ? jQuery.cache[id][name] : id;
+},
+```
+
+```jsx
+Function.prototype.memoization = function(key) {
+    var arg = Array.prototype.slice.call( arguments, 1);
+    this.data = this.data || {};
+
+    return this.data[key] !== undefined ?
+        this.data[key] : this.data[key] = this.apply(this, arg);
+}
+
+function myCalculate1(input) {
+    return input * input;
+}
+
+function myCalcualte2(input) {
+    return input * input / 4;
+}
+
+myCalculate1.memoization(1, 5);
+myCalculate1.memoization(2, 4);
+myCalculate2.memoization(1, 6);
+myCalculate2.memoization(2, 7);
+
+console.log(myCalculate1.memoization(1)); // equal to
+console.log(myCalculate1.data[1]);
+
+console.log(myCalculate1.memoization(2)); // equal to
+console.log(myCalculate1.data[2]);
+
+console.log(myCalculate1.memoization(2)); // equal to
+console.log(myCalculate1.data[2]);
+
+console.log(myCalculate1.memoization(2)); // equal to
+console.log(myCalculate1.data[2]);
+```
+
+Functino.prototype에 메서드를 정의해 놓으면 특정 값을 리턴하는 모든 함수에서 유용하게 사용될 수 있다.
+
+주의할 점은 한번 값이 들어간 경우 계속 유지되므로 이를 초기화하는 방법 역시 제공돼야 한다는 것이다.
+
+jQuery에서는 cleanData라는 메서드를 제공하여 이 같은 작업을 수행한다.
+
+### 피보나치 수열
+
+```jsx
+var fibo = function() {
+    var cache = {'0' : 0, '1' : 1};
+
+    var func = function(n) {
+        if (typeof(cache[n]) === 'number') {
+            result = cache[n];
+        } else {
+            result = cache[n] = func(n-1) + func(n-2);
+        }
+        
+        return result;
+    }
+
+    return func;
+}();
+
+console.log(fibo(10));
+```
+
+클로저를 이용하여 cache를 캐시로 활용한다는 것이 똑같다.
+
+다른 점은 cache의 초깃값과 함수를 재귀 호출할 때 산술식이 다르다는 것이다.
+
+```jsx
+var cacher = function(cache, func) {
+    var calculate = function(n) {
+        if (typeof(cache[n]) === 'number') {
+            result = cache[n];
+        } else {
+            result = cache[n] = func(n-1) + func(n-2);
+        }
+
+        return result;
+    }
+
+    return calculate;
+};
+```
+
+```jsx
+var fact = cacher({'0': 1}, function(func, n) {
+    return n * func(n-1);
+});
+
+var fibo = cacher({'0':0, '1':1}, function(func, n){
+    return func(n-1) + func(n-2);
+});
+
+console.log(fact(10));
+console.log(fibo(10));
+```
+
+함수형 프로그래밍이 수학에서 출발한 문제 해결 방법론이므로 이러한 수학 문제를 프로그래밍으로 해결하는데 있어서 상당한 이득을 볼 수 있다.
+
+## Javascript에서 함수형 프로그래밍을 활용한 주요 함수.
+
+함수형 프로그래밍 언어로 개발한다고 하더라도, 함수형 프로그래밍의 장점을 극대화하는 구현을 해내기는 쉽지 않다.
+
+그것은 이미 기존 프로그래밍 방식에 물들어져 있기 때문 일 것이다.
+
+### 함수 적용
+
+앞서 Function.prototype.apply 함수로 함수 호출을 수행할 수 있음을 배웠다.
+
+그런데 왜 이름이 apply일까?
+
+함수를 호출할 때 call이라는 용어만을 주로 사용해 온 개발자에겐 다소 생소하게 느껴질 수 있다.
+
+함수 적용 Applying Functions는 함수형 프로그래밍에서 사용되는 용어다.
+
+함수형 프로그래밍에서는 특정 데이터를 여러가지 함수를 적용시키는 방식으로 작업을 수행한다.
+
+`여기서 함수는 단순히 입력을 넣고 출력을 받는 기능을 수행하는 것 뿐만 아니라, 인자 혹은 반환값으로 전달된 함수를 특정 데이터에 적용시키는 개념으로 이해해야 한다.`
+
+그래서 Javascript에서도 함수를 호출하는 역할을 하는 메서드를 Apply라고 이름 짓게 된 것이다.
+
+`따라서 func.apply(Obj, Args)와 같은 함수 호출을 func 함수를 “Obj객체와 Args에 적용시킨다”라고 표현할 수 있다.`
+
+### 커링
+
+커링이란 특정 함수에서 정의된 인자의 일부를 넣어 고정시키고, 나머지를 인자로 받는 새로운 함수를 만드는 것을 의미한다.
+
+```jsx
+function calculate(a, b, c) {
+    return a * b + c;
+}
+
+function curry(func) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return function() {
+        return func.apply(null, args.concat(Array.prototype.slice.call(arguments)));
+    }
+}
+
+var new_func1 = curry(calculate, 1);
+console.log(new_func1(2,3)); // 5 // 1 * 2 + 3 = 5
+var new_func2 = curry(calculate, 1, 3);
+console.log(new_func2(3)); // 6
+```
+
+![image-99.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/52958453-666b-46dd-8c04-d535f8c1c472/image-99.jpg)
+
+- 커링 활용 예제
+    
+    ```jsx
+    function add(num1, num2) {
+        console.log(num1 + num2);
+    }
+    
+    add(5, 8); // 13
+    ```
+    
+    ```jsx
+    function add(num1, num2) {
+        return num1 + num2;
+    }
+    
+    // add() 함수를 return 하는 또 다른 함수를 return
+    function addPlus(num1) {
+        return function(num2) {
+            console.log(add(num1, num2))
+        }
+    }
+    ```
+    
+    ```jsx
+    // 화살표 함수로 표현
+    addPlus = num1 => num2 => console.log(add(num1, num2));
+    
+    // 출력 (파라미터를 하나씩)
+    addPlus(5)(4);
+    ```
+    
+    ```jsx
+    function phoneNum(first, tel) {
+        console.log(first + tel);
+    }
+    
+    phoneNum(01001230505); // 01001230505
+    phoneNum(01005253433); // 01005253433
+    ```
+    
+    ```jsx
+    function phoneNum(first, tel) {
+        console.log(first + tel);
+    }
+    
+    const phoneNumber = first => number => phoneNum(first, number);
+    const phoneNumber010 = phoneNumber('010');
+    
+    phoneNumber010(01230505); // 01001230505
+    phoneNumber010(05253433); // 01005253433
+    ```
+    
+
+- 첫번째 인자와 세번째 인자를 고정하고 싶다면?
+
+```jsx
+function calculate(a, b, c) {
+    return a * b + c;
+}
+
+function curry2(func) {
+    var args = Array.prototype.slice.call(arguments, 1);
+
+    return function() {
+        var arg_idx = 0;
+        for(var i = 0; i < args.length && arg_idx < arguments.length; i++)
+            if( args[i] === undefined )
+                args[i] = arguments[arg_idx++];
+        return func.apply(null, args);
+    }
+}
+
+var new_func = curry2(calculate, 1, undefined, 4);
+console.log(new_func(3));
+```
+
+주의점은 curry2를 호출할 때 calculate() 함수가 원하는 인자를 전부 넣어야 한다.
+
+그중에서 고정시키지 않을 인자를 undefined로 넘기면 된다.
+
+curry2()에서는 curry2()를 호출할 때 넘어온 인자로 루프를 돌면서 undefined인 요소를 새로운 함수를 호출할 때 넘어온 인자로 대체한다.
+
+이와 같이 함수를 부분적으로 적용하여 새로운 함수를 반환받는 방식을 함수의 부분 적용(Partially Applying Functions) 라고 한다.
+
+그리고 함수의 부분 적용을 가장 잘 구현한 예제가 curry() 메서드이다.
+
+### bind
+
+```jsx
+Function.prototype.bind = function(thisArg) {
+    var fn = this,
+    slice = Array.prototype.slice,
+    args = slice.call(arguments, 1);
+    return function () {
+        return fn.apply(thisArg, args.concat(slice.call(arguments)));
+    };
+}
+```
+
+//인자도 모두 옮겨지는 함수이다.
+
+bind 함수 또한 커링 기법을 활용한 함수이다.
+
+커링을 이해했다면, bind() 함수역시 이해하기 쉬울 것이다.
+
+커링과 같이 사용자가 고정시키고자 하는 인자를 bind() 함수를 호출할 때 인자로 넘겨주고 반환받은 함수를 호출흐면서 나머지 가변인자를 넣어줄 수 있다.
+
+curry() 함수와 다른 점은 함수를 호출할 때 this에 바인딩 시킬 객체를 사용자가 넣어줄 수 있다는 점이다.
+
+curry() 함수가 Javascript 엔진에 내장되지 않은 것도 이 bind() 함수로 충분히 커버가능하기 떄문일 것이다.
+
+```jsx
+var print_all = function(arg) {
+    for (var i in this) console.log(i + " : " + this[i]);
+    for (var i in arguments) console.log(i + " : " + arguments[i]);
+}
+
+var myobj = { name : "zzoon"};
+
+var myfunc = print_all.bind(myobj);
+myfunc(); // "name : zzoon"
+
+var myfunc1 = print_all.bind(myobj, "iamhjoo", "others");
+myfunc1("insidejs");
+
+/*
+name : zzoon
+```
+
+![image-101.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/b12cb5a8-adba-40b1-8ec6-c052a93876da/image-101.jpg)
+
+myfunc() 함수는 myobj 객체를 this에 바인딩시켜 print_all() 함수를 실행하는 새로운 함수이다.
+
+한발 더 나아가서 my-func1()을 실행하면 인자도 bind() 함수에 모두 넘겨진다.
+
+`bind() 함수로 반환받은 함수는 바인딩한 함수를 상속하는 기능까지 제공한다.`
+
+자세한건 Function.prototype.bind함수를 찾아보자.
+
+### 래퍼 (Wrapper)
+
+특정 함수를 자신의 함수로 덮어쓰는 것을 말한다.
+
+사용자는 원래 함수 기능을 잃어버리지 않은 상태로 자신의 로직을 수행할 수 있어야 한다.
+
+객체지향 프로그래밍에서 다형성의 특성을 살리려면 오버라이드를 지원하는데, 이와 상당히 유사하다고 보면 된다.
+
+```jsx
+function wrap(object, method, wrapper) {
+    var fn = object[method];
+    return object[method] = function() {
+        return wrapper.apply(this, [fn].concat(Array.prototype.slice.call(arguments)));
+    };
+}
+
+Function.prototype.original = function(value) {
+    this.value = value;
+    console.log("value : " + this.value);
+}
+
+var mywrap = wrap(Function.prototype, "original",function(orig_func, value) {
+    this.value = 20;
+    orig.func(value);
+    console.log("wrapper value :  " + this.value);
+});
+
+mywrap("zzoon");
+```
+
+//뭐라는지 모르겠다. 나중에 다시오자. [fn]이 클로저를 절묘하게 사용한거라는데, 그냥 fn을 해도되지 않나 생각이든다. 뭐라는지 잘 모르겠다. 나중에 다시오자.
+
+래퍼는 기존에 제공되는 함수에서 사용자가 원하는 로직을 추가하고 싶다거나, 기존에 있는 버그를 피해가고자 할 때 많이 사용된다.
+
+특히, 특정 플랫폼에서 버그를 발생시키는 함수가 있을 경우 이를 컨트롤 할 수 있으므로 상당히 용이하다.
+
+### 반복함수
+
+Javascript에서는 함수형 프로그래밍 특성을 활용하여 매우 유용하게 사용될 수 있으므로 잘 기억해두자.
+
+each()함수는 배열의 각 요소 혹은 객체의 각 프로퍼티를 하나씩 꺼내서 차례대로 특정 함수에 인자로 넣어 실행시키는 역할을 한다.
+
+대부분 라이브러리에 기본적으로 구현되어 있는 함수이다.
+
+보통 each, forEach라는 이름으로 제공된다.
+
+```jsx
+function each( obj, fn , arg ) {
+    if (obj.length == undefined)
+        for ( var i in obj )
+            fn.apply( obj[i], args || [i, obj[i]]);
+    else
+        for ( var i = 0; i < obj.length; i++ )
+            fn.apply( obj[i], args || [i, obj[i]]);
+    return obj;
+};
+
+each([1,2,3], function(idx, num) {
+    console.log(idx + " : " + num)
+});
+
+var zzoon = {
+    name : "zzoon",
+    age : 30,
+    sex : "Male"
+};
+
+each(zzoon, function(idx, value) {
+    console.log(idx + " : " + value);
+});
+```
+
+obj에 length가 있는 경우(보통 배열)와 없는 경우(보통의 경우 객체)로 나누어서, 루프를 돌면서 요소를 인자로하여 차례대로 함수를 호출한다.
+
+Javascript에서도 앞과 같은 방법으로 정의하여 사용될 수 있음을 알아두자.
+
+다만, each() 함수에서 사용자 함수를 호출할 때 넘기는 인자의 순서나 구성이 라이브러리에 따라 다를 수 있으므로 이점만 주의하자.
+
+### map
+
+map()은 주로 배열에 많이 사용되는 함수이다.
+
+배열의 각 요소를 꺼내서 사용자 정의 함수를 적용시켜 새로운 값을 얻은 후, 새로운 배열에 넣는다.
+
+```jsx
+Array.prototype.map = function(callback) {
+    var obj = this;
+    var value, mapped_value;
+    var A = new Array(obj.length);
+
+    for( var i = 0; i < obj.length ; i++ ) {
+        value = obj[i];
+        mapped_value = callback.call(null, value);
+        A[i] = mapped_value;
+    }
+
+    return A;
+}
+
+var arr = [1,2,3];
+var new_arr = arr.map(function(value) {
+    return value * value;
+}
+```
+
+### reduce
+
+reduce()는 배열의 각 요소를 하나씩 꺼내서 사용자의 함수를 적용시킨 뒤, 그값을 계속해서 누적시키는 함수이다.
+
+```jsx
+Array.prototype.reduce = function(callback, memo) {
+    var obj = this;
+    var value, accumulated_value = 0;
+
+    for( var i = 0; i < obj.length; i++ ) {
+        value = obj[i];
+        accumulated_value = callback.call(null, accumulated_value, value);
+    }
+
+    return accumulated_value;
+    };
+
+var arr = [1,2,3];
+var accmulated_val = arr.reduce(function(a, b)) {
+    return a + b * b;
+});
+}
+
+console.log(accumulated_val); // 1*1 + 2*2 + 3*3 = 14
+
+```
