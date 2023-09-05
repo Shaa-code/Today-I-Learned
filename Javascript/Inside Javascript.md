@@ -5229,3 +5229,213 @@ var accmulated_val = arr.reduce(function(a, b)) {
 console.log(accumulated_val); // 1*1 + 2*2 + 3*3 = 14
 
 ```
+
+# jQuery 소스 코드 분석
+
+오픈소스를 제대로 분석하려면 무엇보다 전체적인 구조를 잘 파악할 필요가 있다.
+
+그래서 대략적인 모듈과 모듈 간 인터페이스 등을 어느 정도 파악하는 것이 결국엔 소스의 정확한 소스 동작 원리를 파악할 수 있게 하는 밑거름이 된다.
+
+## jQuery 함수 객체
+
+```jsx
+function jQuery(a, c) {
+    if ( a && a.constructor == Function && jQuery.fn.ready )
+        return jQuery(document).ready(a);
+
+    a = a || jQuery.context || document;
+
+    if ( a.jquery )
+        return $( jQuery.merge( a, [] ) );
+
+    if ( c && c.jquery )
+        return $( c ).find(a);
+
+    if (window == this )
+        return new jQuery(a,c);
+
+    var m = /^[^<]&(<.+>)[^>]*$/.exec(a);
+    if ( m ) a = jQuery.clean( [ m[1] ] );
+    
+    this.get( a.constructor == Array || a.length && !a.nodeType && a[0] != undefined && a[0].nodeType ?
+    jQuery.merge(a, []  :
+    jQuery. find(a, c) );
+
+    var fn = arguments[arguments.length - 1];
+
+    if (fn && fn.constructor == Function )
+        this.each(fn);
+}
+```
+
+### 변수 $를 jQuery() 함수로 매핑
+
+일반적으로 개발자들이 jQuery를 사용할 때 jQuery() 함수를 직접 호출하기보다는
+
+$()와 같은 형태로 jQuery의 기능을 호출하는 것이 대부분이다.
+
+이것이 가능한 이유가 다음과 같이 바로 jQuery 함수를 $ 변수에 매핑시켰기 때문이다.
+
+```jsx
+var $ = jQuery;
+```
+
+### jQuery.prototype 객체 변경
+
+prototype 프로퍼티에서 설명했든 모든 함수 객체는 prototype 프로퍼티가 있다.
+
+특히, prototype 프로퍼티가 가리키는 프로토타입 객체는 함수가 생성자로 동작할 때, 이를 통해 새로 생성된 객체의 부모 역할을 한다.
+
+![1.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/bf58a0ed-b2ea-493e-b9c5-0d0dc80834ab/1.jpg)
+
+그림과 같이 new 연산자로 jQuery()생성자 함수를 호출할 경우 생성된 jQuery객체는 [[Prototype]] 링크로 자신의 프로토타입인 jQuery.rptotype 객체에 접근 가능하다.
+
+때문에 모든 jQuery 객체 인스턴스는 자신의 프로토타입인 jQuery.prototype 객체의 프로퍼티를 공유할 수 있다.
+
+jQuery는 함수 정의 후 다음 예제처럼 jQuery.prototype 디폴트 객체를 객체 리터럴 형식의 다른 객체로 변경하고 이 변경된 jQuery의 프로토타입을 jQuery.fn 프로퍼티가 참조하게 한다.
+
+이제 이후에 생성된 jQuery 객체 인스턴스는 변경된 프로토타입 객체에 정의된 다양한 메서드를 프로토타입 체이닝으로 사용할 수 있다.
+
+이러한 프로토타입 객체 변경은  앞의 “디폴트 프로토타입은 다른 객체로 변경이 가능하다.”에서 알아보았다.
+
+```jsx
+jQuery.fn = jQuery.prototype = {
+    jquery: "$Rev$",
+    size: function() {
+        return this.length;
+    },
+    ...
+}
+```
+
+![2.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/438855aa-f237-41ad-ba2e-eec9a89209f6/2.jpg)
+
+### 객체 확장 - extend() 메서드
+
+jQuery 소스코드에서는 다음의 코드와 같이 다른 객체의 프로퍼티나 메서드 복사등으로 객체의 기능을 추가하는데 사용 가능한 extend() 메서드를 제공한다.
+
+jQuery 소스코드에서는 이 메서드로 jQuery 객체 및 jQuery.rprototype 객체를 확장하는 부분을 jQuery 소스 코드 곳곳에서 볼 수 있다.
+
+이 exnted() 메서드는 객체지향 프래그래밍에서 상속받은 객체를 확장시키는 개념을 설명할 때 이미 소개한 바 있으니 참고 바란다.
+
+```jsx
+jQuery.extend = jQuery.fn.extend = function(obj, prop) {
+    if ( !prop ) { prop = obj; obj = this; }
+    for ( var i in prop ) obj[i] = prop[i];
+    return obj; 
+}
+```
+
+![3.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/9a0e498f-c75a-46b0-87f3-6727d68495f6/3.jpg)
+
+여기서 함수 호출 패턴에 따라, 함수 호출 extend() 메서드가 어디서 호출되는지에 따라서 다르게 바인딩된다.
+
+이전 코드처럼 jQuery 함수 객체에서 extend()메서드가 호출될 경우 this는 jQuery 함수 객체로 바인딩
+
+바로 위 코드 처럼 jQuery.prototype 객체에서 extend() 메서드가 호출될 경우 this는 jQuery.prototype 객체로 바인딩된다.
+
+for in 문으로 prop 인자의 모든 프로퍼티를 obj 인자로 복사하는 코드다.
+
+결국 obj 객체에 prop 객체의 프로퍼티가 추가된다.
+
+`정리하면 extend() 메서드는 extend라는 함수명 그대로 객체의 기능을 추가하는 것이다.`
+
+obj, prop 두 개의 인자를 받는 경우, 첫번째 인자로 전달된 obj 객체에 두번째 인자로 전달된 prop 객체의 모든 프로퍼티를 추가한다.
+
+여기서 주의 할 것은 이 메서드가 obj 인자 하나만으로 호출될 경우다.
+
+이때는 위에서 살펴봤듯 if문 이하가 실행되며 이 메서드를 호출한 객체의 this가 obj가 된다.
+
+그리고 prop 인자가 원래 obj로 전달한 객체를 가리킨다.
+
+결국, 메서드를 호출한 객체(this)에다 obj 인자로 넘긴 객체를 복사하는 결과가 된다.
+
+이해를 돕기 위해 실제로 extend() 메서드가 호출된 부분을 살펴보자.
+
+다음은 jQuery.extend() 메서드를 호출하는 jQuery 소스코드다.
+
+이 코드에서는 extend() 메서드를 호출할 때 객체 리터럴 방식으로 생성한 객체 하나만을 obj 인자로 넘겼다.
+
+따라서 앞서 설명한 것처럼 이 코드의 기능은 이 메서드를 호출한 jQuery 함수 객체(this)에 obj 인자로 넘긴 객체의 프로퍼티를 복사하는것이다.
+
+```jsx
+jQuery.extend({
+    init: function(){
+        jQuery.initDone = true;
+
+    ...
+    },
+
+    each: function( obj, fn, args ) {
+        if ( obj.length == undefined )
+            for ( var i in obj )
+                fn.apply( obj[i], args || [i, obj[i]]);
+        else
+            for ( var i = 0; i < obj.length; i++ )
+                fn.apply( obj[i], args || [i, obj[i]]);
+        return obj;
+    },
+    ...
+});
+```
+
+위 코드는 jQuery.fn.extend() 메서드를 호출하는 jQuery 코드다.
+
+앞에서 살펴본 jQuery.extend() 메서드 호출 예제와 같이 이 코드에서도 jQuery.fn.extend() 메서드를 하나의 객체 인자만으로 호출했다ㅏ.
+
+이것은 이 메서드를 호출한 jQuery.fn 객체에 obj 인자로 넘겨진 객체의 프로퍼티를 복사하는 코드가 된다.
+
+```jsx
+jQuery.fn.extend({
+    _toggle: jQuery.fn.toggle,
+    toggle: function(a, b) {
+        ...
+    }
+));
+```
+
+![4.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/a5a794d5-eab0-473c-bca7-b2fd3e228949/4.jpg)
+
+이를 정리하면 위의 그림과 같다.
+
+### jQuery 소스코드의 기본 구성 요소
+
+- jQuery 함수 객체
+- jQuery.prototype 객체
+- jQuery 객체 인스턴스
+
+![5.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/0c887581-67a2-4cf9-b176-a1fc7e6194b6/5.jpg)
+
+jQuery() 함수의 가장 기본적인 역할은 new 연산자로 jQuery 객체를 생성하는 것이다.
+
+이렇게 생성된 jQuery 객체는 프로토타입 체이닝으로 jQuery.prototype 객체에 포함된 프로토타입 메서드를 호출할 수 있다.
+
+또한, 여기서 주목할 점은 jQuery 함수 객체 자신이 메서드를 포함하고 있다는 것이다.
+
+이러한 jQuery 함수 객체의 메서드는 각각 생성된 jQuery 인스턴스 객체에 특화ㅏ되지 않고 범용적으로 사용되는 jQuery 코어 메서드로 구성된다.
+
+## jQuery의 id 셀렉터 동작 분석
+
+Javascript에서 /는 정규표현식 리터럴을 만드는 기호다.
+
+/로 둘러싸인 부분은 정규표현식 객체로 생성된다.
+
+딱히, 적을 필요는 없어보인다.
+
+## jQuery 이벤트 핸들러 분석
+
+```jsx
+new function() {
+    var e = ("blur, focus, load, resize, scroll, unload, click, dblclick," +
+        "mousedown, mouseup, mousemove, mouseover, mouseout, change, reset" + "select, submit, keydown, keypress, keyup, error").split(",");
+
+for ( var i = 0 ; i < e.length; i++ ) new function() { 
+        var o = e[i];
+        jQuery.fn[o] = function(f) {
+            return f ? this.bind(o, f) : this.trigger(o);
+        };
+    };
+};
+```
+
+![15.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/29542c44-0118-4ebe-8b92-52c2ca350ba5/15.jpg)
