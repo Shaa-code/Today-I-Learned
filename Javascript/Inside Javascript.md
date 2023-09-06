@@ -5439,3 +5439,164 @@ for ( var i = 0 ; i < e.length; i++ ) new function() {
 ```
 
 ![15.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/29542c44-0118-4ebe-8b92-52c2ca350ba5/15.jpg)
+
+### click() 메서드 처리 과정
+
+```jsx
+//click() 메서드 실행
+$('#clickDiv').click(function() {
+   alert('Mouse Click');
+}
+
+// click() 메서드 정의
+function click(f) {
+    return f ? this.bind('click', f) : this.trigger('click');
+};
+
+//bind() 메서드 정의
+
+jQuery.fn["bind"] = function() {
+    return this.each(n, arguments);
+}
+
+//bind() 메서드의 매개변수 n으로 전달된 익명 함수
+function( type, fn ) {
+    if ( fn.constructor == String )
+        fn = new Functino("e", ( !fn.indexOf(".") ? "$(this)" : "return ") + fn);
+    jQuery.event.add(this, type, fn );
+}
+```
+
+click() 메서드를 호출할 때 매개변수 f로 익명 함수가 전달됐으므로 결국 this.bind(’click’, f) 메서드가 호출된다.
+
+여기서 .click() 메서드를 호출한 객체는 $(’#clickDiv’)이므로 메서드 호출 패턴 때문에 .click()메서드 내에서 사용되는 this는 $(’#clickDiv’).bind(’click’, f)가 호출되는 것과 같다.
+
+$(’#clickDiv’).bind(’click’, f) 메서드가 호출될 경우 $(’#clickDiv’).bind() 메서드 분석에서 살펴본.bind() 메서드가 호출되고 결국 다음 코드가 수행된다.
+
+![17.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/0c2785f3-8e4a-4beb-bad3-ea95ee4e48c1/17.jpg)
+
+this.each(n, arguements);
+
+여기서 this는 메서드 호출 패턴으로 $(’#clickDiv’) 객체에 바인딩된다.
+
+그리고 each() 메서드의 첫번째 인자 n에는 익명함수가 할당된다.
+
+그리고 두번째 인자인 arguments에는 bind() 메서드를 호출할 때 전달한 인자가 배열 형태로 저장된 유사 배열 객체다.
+
+bind(’click’, f)와 같이 bind() 메서드를 호출했으므로 arguments 객체 값은 arguments[0] = ‘click’.arguments[1] = f와 같다.
+
+f에는 1에서 click() 메서드를 호출할 때 전달된 익명함수가 들어있다.
+
+![18.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/0433ea8b-a9f4-40d5-bca3-78d5aa8ff37b/18.jpg)
+
+$(’#clickDiv’).each() 메서드는 $(’#clickDiv’)으로 생성된 jQuery 객체에 포함된 DOM 요소 배열을 this로 명시적 바인딩하고 fn 함수를 호출한다.
+
+그리고 이때 fn 함수의 인자로는 args 배열 값을 넘긴다.
+
+![19.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/b304b943-5bc0-4fe6-a4e3-0b5c63c0e14f/19.jpg)
+
+여기서 fn은 문자열이 아닌 함수이므로 if문은 수행되지 않는다.
+
+jQuery.event.add() 메서드를 호출한다.
+
+여기서 첫 번째 인자로 넘겨진 this는 apply() 메서드로 $(’#clickDiv’) 객체에 포함된 <div id=’clickDiv’>인 DOM 객체로 명시적으로 바인딩 된다.
+
+### jQuery.event.add(this,type,fn) 메서드 호출 분석
+
+jQuery.event 객체는 jQuery에서 실제로 이벤트 핸들러를 처리하는 역할을 담당한다.
+
+jQuery.event 객체에는 이벤트 핸들러를 등록하고, 삭제하는 add(), remove() 메서드, 특정 이벤트가 발생할 때 이에 해당하는 이벤트 핸들러를 수행하는 handle() 메서드 등이 정의되어 있다.
+
+- jQuery.event 객체
+
+```jsx
+event : {
+    function(element, type, handler) {
+        ...
+        if (!handler.guid)
+            handler.guid = this.guid++;
+        
+        if (!element.events)
+            element.events = {};
+
+        var handlers = element.events[type];
+
+        if (!handlers) {
+            handlers = element.events[type] = {};
+
+            if (element["on" + type])
+                handler[0] = element["on" + type];
+        }
+
+        handlers[handler.guid] = handler;
+        
+        element["on" + type] = this.handle;
+        ...
+    },
+    guid: 1,
+    ...
+}
+,
+```
+
+![20.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/e7dfda38-691e-4220-8342-c2cdc638c650/20.jpg)
+
+add() 메서드는 element, type, handler 3개의 인자를 받는다.
+
+이들 세 인자 모두 앞의 $(’#clickDiv’).each() 메서드의 실행과정에서 전달된다.
+
+element인자 - click 이벤트 핸들러를 등록할 DOM 객체
+
+type인자 - ‘click’ 이벤트 핸들러를 등록할 DOM 객체
+
+handler 인자 - function() {alert(’Mouse Click’);}
+
+jQuery 없이 이벤트 핸들러를 구현하고 싶다면, 바로 DOM 객체의 onclick 프로퍼티에 직접 콜백 함수를 등록하면 된다.
+
+이에 반해 jQuery에서는 이미 설명했듯이 onclick, onmousedown 등과 같은 DOM 이벤트 핸들러를 jQuery.event.handle() 메서드로 변경하고, 이 메서드로 하여금 사용자가 등록한 실제 이벤트 핸들러를 처리하고 있다.
+
+```jsx
+handle : function(event) {
+    ...
+    var returnValue = true;
+    var c = this.events[event.type];
+    for( var j in c ) {
+        if ( c[j].apply(this, [event] ) === false ) {
+            event.preventDefault();
+            event.stopPropagation();
+            returnValue = false;
+        }
+    }
+}
+```
+
+![21.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/ee0bbcdc-3f9e-4cac-9a83-8a3db578122a/21.jpg)
+
+![22.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/94cc7a43-f02c-41e3-8b3e-66d7edf0d7c1/22.jpg)
+
+jQuery의 이벤트 핸들러 처리는 onclick 프로퍼티 같은 DOM 이벤트 핸들러를 직접 사용하지 않고, DOM 객체 내에 자체 이벤트 관련 프로퍼티(events 객체)를 생성하고 각 이벤트 타입별로 여러 개의 이벤트 핸들러를 동시에 등록할 수 있다.
+
+때문에 jQuery에서는 여러 개의 이벤트 핸들러가 동시에 수행될 수 있는 장점이 있다.
+
+```jsx
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery.lite.js"></script>
+</head>
+<body>
+<div id="clickDiv" onclick="alert('Mouse Click1')">Click Here</div>
+<script>
+    $('#clickDiv').click(function() {
+        alert('Mouse Click2');
+    });
+    $('#clickDiv').click(function() {
+        alert('Mouse Click3');
+    });
+)
+</script>
+</body>
+</html>
+```
+
+![23.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/440c756f-5c3e-4b05-8781-a86f52e8c1c0/56d9adc1-c76e-4db5-8334-876bd29bdf41/23.jpg)
