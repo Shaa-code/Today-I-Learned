@@ -52,11 +52,11 @@ JPA를 사용하면 SQL도 JPA가 대신 작성하고 처리해준다.
 
 자바 객체를 SQL로 바꾸고 SQL을 자바 객체로 바꾸고..
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a505e6c4-633c-427e-b7f3-7145422b3743/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/6252d154-7a64-4613-b220-4603718fbba4)
 
 위 사진 처럼 2개만 사용하다가, 필드 하나가 더 추가되면
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/789d8d2c-88a4-4104-a747-b90b4da4a350/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/b3d85f96-f479-4f90-9633-501a65c1d165)
 
 모든 SQL문에 또 필드를 하나 씩 다 추가해줘야 한다.
 
@@ -80,7 +80,7 @@ SQL에 의존적인 개발을 피하기 어렵다.
 
 ### 상속
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f99a9b6-5aa5-4ff1-99c4-bbd2c4ed7411/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/a3606962-e9f0-44af-adea-03cbae1e8858)
 
 테이블은 원칙적으로 상속 관계가 없다.
 
@@ -118,7 +118,7 @@ Item item = list.get(albumId);
 
 테이블은 외래 키를 사용한다. → JOIN ON M.TEAM_ID = T.TEAM_ID
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/754fbea0-5112-4a1b-8435-1ec65169d849/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/5b981f26-1422-411d-bdbb-2f9935e5ddbe)
 
 그래서 객체를 테이블에 맞추어 모델링을 한다.
 
@@ -139,7 +139,7 @@ class Team {
 
 이렇게 테이블에 맞게 설계해두면, 아래처럼 깔끔하게 SQL을 작성할 수 있다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fe52494e-a123-4502-a639-40f87b64ddc1/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/7a503e45-7c8b-43de-bf31-15030e08220b)
 
 그런데 객체다운 모델링은 아래의 코드처럼 작성되는게 더 좋다.
 
@@ -160,7 +160,7 @@ class Team{
 }
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/397ec142-c889-4f59-971c-f497c51bc80a/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/5d6090c6-4e09-4983-a425-b9e8f3735b10)
 
 객체다운 모델링을 하면 member.getTeam().getId()를 해서 넣어줄 수 있다.
 
@@ -203,7 +203,7 @@ Team team = member.getTeam();
 
 위의 그림 처럼 객체에 연관관게가 매핑되어있는 상태를 “객체 그래프”로 표현할 수 있다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/82f6e380-40e3-4cd9-8ee6-531eee4392b5/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/3d88b305-695a-4804-ae62-52cfa0463ee5)
 
 이때, 객체는 자유롭게 객체 그래프를 탐색할 수 있어야 한다.
 
@@ -314,7 +314,7 @@ ORM 프레임워크가 중간에서 매핑
 
 JPA는 애플리케이션과 JDBC 사이에서 동작한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/00267294-cb66-494f-9c3d-c0045c4503b9/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/7e0c2b52-28ce-4798-92c3-4ecf0067a923)
 
 Java 애플리케이션이 JDBC API를 직접 사용하는 것이 아니라,
 
@@ -322,11 +322,11 @@ Java 애플리케이션이 JPA를 거쳐서 JDBC API와 통신한다.
 
 ### JPA 동작 - 저장
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7dc6846a-6fa6-41de-93e0-3a4d0161ce17/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/888784cf-c8fa-42c1-8975-d7400d279a7e)
 
 ### JPA 동작 - 조회
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a814ea4c-6859-40d2-839c-6d493a9b7a93/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/40541c08-3b73-414e-8507-febf2389813d)
 
 옛날에도 Java 진영에도 ORM 기술이 있었다. 그게 EJB - 엔티티 빈이라는 자바 표준이 있었는데
 
@@ -344,7 +344,7 @@ JPA 2.1 표준 명세를 구현한 3가지 구현체
 
 Hibernate, EclipseLink, DataNucleus
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a40b864a-7767-4c6c-b3c9-a78da6d53029/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/97c7a15f-f597-411b-85f3-a92a3d4324b1)
 
 ### JPA 버전
 
@@ -372,7 +372,7 @@ SQL 중심적인 개발에서 객체 중심으로 개발을 할 수 있다.
 
 - 유지보수
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cf3d21c5-6ffa-4165-857e-698aa68ec7b3/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/06bb3354-dab9-465e-a8f0-7ceda4f28c3b)
 
 기존에는 필드 변경시 모든 SQL을 수정해야만 했다.
 
@@ -387,7 +387,7 @@ JPA를 사용하면 필드만 추가하면 모든게 끝이난다.
 
 JPA에서 → INSERT INTO ITEM… , INSERT INTO ALBUM… 쿼리를 자동으로 2번 날려 처리해준다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7fbb0d36-1950-4166-91dd-8089519c732b/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/b9c838d2-814b-482f-8b02-e8fe94352c7d)
 
 - 조회
 
@@ -501,7 +501,7 @@ bussinessLogic(); //비즈니스 로직 수행 동안 DB로우 락이 걸리지 
 - 지연 로딩 : 객체가 실제 사용될 때 로딩
 - 즉시 로딩 : JOIN SQL로 한번에 연관된 객체 까지 미리 조회
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c0dd858-b1f8-4ecc-8203-163619226cfa/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/9fa5687a-58f1-46e0-bc56-34fd3e54d7dc)
 
 멤버를 불러왔을 때 상황에 따라서 너무 많이 달라지네?
 
@@ -901,7 +901,7 @@ JPA는 PersistenceException과 그 하위 예외를 발생시킨다.
 
 비밀은 바로 @Repository에 있다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/65989735-c18c-4384-ae5e-395b3ed4427c/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/158bc789-f1d8-4bc9-8d09-c531fb93f860)
 
 - @Repository의 기능
 
@@ -914,7 +914,7 @@ JPA는 PersistenceException과 그 하위 예외를 발생시킨다.
 
 ~~서비스 계층에 넣는 @Service는 깡통이다. 컴포넌트 스캔 대상만 해당된다.~~
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c5439269-136a-4243-9334-97252f7849d3/Untitled.png)
+![image](https://github.com/Shaa-code/Today-I-Learned/assets/70310271/7f7fa22c-0432-4af2-91f9-1883fefc9bd7)
 
 결과적으로 리포지토리에 @Repository 애노테이션만 있으면 스프링이 예외변환을 처리하는 AOP를 만들어 준다.
 
