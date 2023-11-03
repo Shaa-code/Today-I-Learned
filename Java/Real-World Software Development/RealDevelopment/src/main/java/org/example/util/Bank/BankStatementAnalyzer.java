@@ -8,26 +8,45 @@ import java.time.Month;
 import java.util.List;
 
 public class BankStatementAnalyzer {
-
-    private static final BankStatementCSVParser bankStatementCSVParser = new BankStatementCSVParser();
     private static final String RESOURCES = "src/main/resources/";
 
-    public static void main(final String... args) throws IOException {
+    private final BankStatementParser bankStatementParser = new BankStatementCSVParser();
 
-        final String fileName = args[0];
-        final Path path = Paths.get(RESOURCES + fileName);
-        final List<String> lines = Files.readAllLines(path);
+    public void analyze(final String fileName) throws IOException{
+        final Path readPath = Paths.get(RESOURCES + fileName + ".csv");
+        final Path writePath = Paths.get(RESOURCES + fileName.replace(".csv",".txt"));
+        final List<String> lines = Files.readAllLines(readPath);
 
-        final List<BankTransaction> bankTransactions = bankStatementCSVParser.parseLinesFromCSV(lines);
+        final List<BankTransaction> bankTransactions = bankStatementParser.parseLinesFrom(lines);
         final BankStatementProcessor bankStatementProcessor = new BankStatementProcessor(bankTransactions);
 
-        collectSummary(bankStatementProcessor);
-
+        Files.writeString(writePath,collectSummaryForText(bankStatementProcessor));
     }
 
     public static void collectSummary(final BankStatementProcessor bankStatementProcessor){
         System.out.println(bankStatementProcessor.calculateTotalAmount());
         System.out.println(bankStatementProcessor.selectInMonth(Month.JANUARY));
         System.out.println(bankStatementProcessor.calculateTotalForCategory("Salary"));
+        System.out.println(bankStatementProcessor.selectWithCriteria("Salary"));
+        try {
+            System.out.println(bankStatementProcessor.selectWithCriteria(Month.SEPTEMBER,Month.MARCH));
+        }catch (Exception e){
+            e.getStackTrace();
+        }
     }
+
+    public static CharSequence collectSummaryForText(final BankStatementProcessor bankStatementProcessor){
+        double amount = bankStatementProcessor.calculateTotalAmount();
+        List<BankTransaction> bankTransactions = bankStatementProcessor.selectInMonth(Month.JANUARY);
+        double salary = bankStatementProcessor.calculateTotalForCategory("Salary");
+        List<Double> salary1 = bankStatementProcessor.selectWithCriteria("Salary");
+        try {
+            List<BankTransaction> bankTransactions1 = bankStatementProcessor.selectWithCriteria(Month.SEPTEMBER, Month.MARCH);
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+        return String.format("%,.1f", amount,salary);
+    }
+
 }
+
