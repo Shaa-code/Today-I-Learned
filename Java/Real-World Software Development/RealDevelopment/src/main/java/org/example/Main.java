@@ -10,6 +10,7 @@ public class Main {
 
         try {
             bankStatementAnalyzer.analyze("History.csv");
+
         } catch (IOException e) {
             e.getStackTrace();
         }
