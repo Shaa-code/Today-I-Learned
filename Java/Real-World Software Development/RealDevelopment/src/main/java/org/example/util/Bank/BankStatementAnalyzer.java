@@ -20,9 +20,9 @@ public class BankStatementAnalyzer {
         final List<BankTransaction> bankTransactions = bankStatementParser.parseLinesFrom(lines);
         final BankStatementProcessor bankStatementProcessor = new BankStatementProcessor(bankTransactions);
 
-        Files.writeString(writePath,collectSummaryForText(bankStatementProcessor));
+//        Files.writeString(writePath,collectSummaryForText(bankStatementProcessor));
 
-        final List<BankTransaction> transactions = bankStatementProcessor.findTransaction(new BankTransactionIsInFebruaryAndExpensive());
+//        final List<BankTransaction> transactions = bankStatementProcessor.findTransaction(new BankTransactionIsInFebruaryAndExpensive());
         final List<BankTransaction> transactions1 = bankStatementProcessor.findTransaction(bankTransaction ->
                 bankTransaction.getDate().getMonth() == Month.FEBRUARY &&
                 bankTransaction.getAmount() >= 1000
@@ -30,29 +30,29 @@ public class BankStatementAnalyzer {
     }
 
     public static void collectSummary(final BankStatementProcessor bankStatementProcessor){
-        System.out.println(bankStatementProcessor.calculateTotalAmount());
-        System.out.println(bankStatementProcessor.selectInMonth(Month.JANUARY));
-        System.out.println(bankStatementProcessor.calculateTotalForCategory("Salary"));
-        System.out.println(bankStatementProcessor.selectWithCriteria("Salary"));
-        try {
-            System.out.println(bankStatementProcessor.selectWithCriteria(Month.SEPTEMBER,Month.MARCH));
-        }catch (Exception e){
-            e.getStackTrace();
-        }
+//        System.out.println(bankStatementProcessor.calculateTotalAmount());
+//        System.out.println(bankStatementProcessor.selectInMonth(Month.JANUARY));
+//        System.out.println(bankStatementProcessor.calculateTotalForCategory("Salary"));
+//        System.out.println(bankStatementProcessor.selectWithCriteria("Salary"));
+//        try {
+//            System.out.println(bankStatementProcessor.selectWithCriteria(Month.SEPTEMBER,Month.MARCH));
+//        }catch (Exception e){
+//            e.getStackTrace();
+//        }
     }
 
-    public static CharSequence collectSummaryForText(final BankStatementProcessor bankStatementProcessor){
-        double amount = bankStatementProcessor.calculateTotalAmount();
-        List<BankTransaction> bankTransactions = bankStatementProcessor.selectInMonth(Month.JANUARY);
-        double salary = bankStatementProcessor.calculateTotalForCategory("Salary");
-        List<Double> salary1 = bankStatementProcessor.selectWithCriteria("Salary");
-        try {
-            List<BankTransaction> bankTransactions1 = bankStatementProcessor.selectWithCriteria(Month.SEPTEMBER, Month.MARCH);
-        }catch (Exception e){
-            e.getStackTrace();
-        }
-        return String.format("%,.1f", amount,salary);
-    }
+//    public static CharSequence collectSummaryForText(final BankStatementProcessor bankStatementProcessor){
+////        double amount = bankStatementProcessor.calculateTotalAmount();
+////        List<BankTransaction> bankTransactions = bankStatementProcessor.selectInMonth(Month.JANUARY);
+////        double salary = bankStatementProcessor.calculateTotalForCategory("Salary");
+////        List<Double> salary1 = bankStatementProcessor.selectWithCriteria("Salary");
+////        try {
+////            List<BankTransaction> bankTransactions1 = bankStatementProcessor.selectWithCriteria(Month.SEPTEMBER, Month.MARCH);
+////        }catch (Exception e){
+////            e.getStackTrace();
+////        }
+//        return String.format("%,.1f", amount,salary);
+//    }
 
 }
 
