@@ -15,7 +15,7 @@ public class BankStatementCSVParser implements BankStatementParser{
         final String[] columns = line.split(",");
 
         if(columns.length < EXPECTED_ATTRIBUTE_LENGTH){
-            throw new CSVSyntaxException();
+//            throw new CSVSyntaxException();
         }
 
         final LocalDate date = LocalDate.parse(columns[0],DATE_PATTERN);
