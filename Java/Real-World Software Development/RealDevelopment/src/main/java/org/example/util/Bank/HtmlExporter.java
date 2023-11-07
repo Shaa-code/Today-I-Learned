@@ -1,7 +1,5 @@
 package org.example.util.Bank;
 
-import org.example.util.SummaryStatistics;
-
 public class HtmlExporter implements Exporter{
     @Override
     public String export(SummaryStatistics summaryStatistics) {

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.util.Bank;
 
 import org.example.util.Bank.BankStatementAnalyzer;
 import java.io.IOException;
