@@ -5,13 +5,13 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement{
     private float temperature;
     private float humidity;
     private WeatherData weatherData;
-    // êµ³ì´ ì™œ Subjectë¥¼ ì €ì¥í•˜ëŠ”ê±°ì§€?
-    // ì•„ë˜ì—ì„œ ì‚¬ìš©í•˜ë“¯ì´ update()ì— ì¸ìë¥¼ ë„£ì§€ ì•Šê³ , weatherData
-    // ë‚˜ì¤‘ì— Observer ëª©ë¡ì—ì„œ ì œê±°í•  ë•Œ ìœ ìš©í•˜ê²Œ ì¨ë¨¹ì„ ìˆ˜ ìˆë‹¤ê³  í•œë‹¤.
+    // ±»ÀÌ ¿Ö Subject¸¦ ÀúÀåÇÏ´Â°ÅÁö?
+    // ¾Æ·¡¿¡¼­ »ç¿ëÇÏµíÀÌ update()¿¡ ÀÎÀÚ¸¦ ³ÖÁö ¾Ê°í, weatherData
+    // ³ªÁß¿¡ Observer ¸ñ·Ï¿¡¼­ Á¦°ÅÇÒ ¶§ À¯¿ëÇÏ°Ô ½á¸ÔÀ» ¼ö ÀÖ´Ù°í ÇÑ´Ù.
 
 
     public CurrentConditionsDisplay(WeatherData weatherData){
-        //Subjectë¥¼ ìƒì„±ìë¡œ ê°€ì ¸ì™€ì„œ ì´ˆê¸°í™” ì‹œì¼œì¤€ë‹¤.
+        //Subject¸¦ »ı¼ºÀÚ·Î °¡Á®¿Í¼­ ÃÊ±âÈ­ ½ÃÄÑÁØ´Ù.
         this.weatherData = weatherData;
         weatherData.registerObserver(this);
     }
