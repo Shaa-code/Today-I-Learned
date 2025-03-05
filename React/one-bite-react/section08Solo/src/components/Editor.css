@@ -1,0 +1,20 @@
+.Editor {
+  display: flex;
+  gap: 10px;
+}
+
+.Editor input {
+  flex: 1; /*부모 요소에서 벗어나지 않는 최대의 크기로 늘어난다.*/
+  padding: 15px;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 5px;
+}
+
+.Editor button {
+  cursor: pointer; /*버튼에 닿으면 손가락 모양으로 변함*/
+  width: 80px;
+  border: none;
+  background-color: rgb(37, 147, 255);
+  color: white;
+  border-radius: 5px;
+}
