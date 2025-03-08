@@ -1,0 +1,21 @@
+.diaryList {
+  display: flex;
+  flex-direction: column;
+}
+
+.diaryList > .menu_bar {
+  display: flex;
+  gap: 10px;
+  margin: 2% 0px;
+}
+
+.diaryList > .menu_bar > select {
+  border: none;
+  background-color: rgb(236, 236, 236);
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.diaryList > .menu_bar > .Button {
+  width: 100%;
+}
