@@ -1,0 +1,41 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+}
+
+.editor > section {
+  margin-bottom: 40px;
+}
+
+.editor > section > h4 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.editor > .date_section > input,
+textarea {
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  padding: 10px 20px;
+}
+
+.editor > .content_section > textarea {
+  padding: 20px;
+  min-height: 200px;
+  width: 100%;
+  resize: vertical; /*상하좌우로 사용자가 textarea 사이즈를 조절하지 못하게 막을 수 있다.*/
+  box-sizing: border-box; /*box가 바깥으로 빠져나가지 않게끔. 만들기*/
+}
+
+.editor > .emotion_section > .emotion_list_wrapper {
+  display: flex;
+  gap: 2%;
+  justify-content: space-around;
+}
+
+.editor > .button_section {
+  display: flex;
+  justify-content: space-between;
+}

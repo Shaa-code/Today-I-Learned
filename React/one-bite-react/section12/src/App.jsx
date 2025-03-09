@@ -47,12 +47,10 @@ function reducer(state, action) {
       return;
     case "EDIT":
       return state.map((diary) =>
-        String(diary.id) === String(action.targetId) ? action.data : diary
+        String(diary.id) === String(action.id) ? action.data : diary
       );
     case "DELETE":
-      return state.filter(
-        (diary) => String(diary.id) !== String(action.targetId)
-      );
+      return state.filter((diary) => String(diary.id) !== String(action.id));
   }
 }
 
@@ -63,12 +61,12 @@ function App() {
   const [data, dispatch] = useReducer(reducer, mockData);
   const idRef = useRef(3);
 
-  const onCreate = (content, emotionId) => {
+  const onCreate = (createdDate, emotionId, content) => {
     dispatch({
       type: "CREATE",
       data: {
         id: idRef.current++,
-        createdDate: new Date().getTime(),
+        createdDate: createdDate,
         emotionId: emotionId,
         content: content,
       },
@@ -87,10 +85,10 @@ function App() {
     });
   };
 
-  const onDelete = (targetId) => {
+  const onDelete = (id) => {
     dispatch({
       type: "DELETE",
-      id: targetId,
+      id,
     });
   };
 
