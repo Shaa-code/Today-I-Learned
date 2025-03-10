@@ -2,18 +2,18 @@ import Header from "../src/components/Header";
 import Button from "../src/components/Button";
 import Editor from "../src/components/Editor";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DiaryDispatchContext, DiaryStateContext } from "../src/App";
 import { useParams } from "react-router-dom";
 
 const Edit = () => {
-  const { onCreate, onDelete } = useContext(DiaryDispatchContext);
+  const { onDelete, onUpdate } = useContext(DiaryDispatchContext);
   const data = useContext(DiaryStateContext);
   const nav = useNavigate();
   const params = useParams();
-  const selectedData = data.filter((diary) => diary.id === params.id);
+  const [curDiaryItem, setCurDiaryItem] = useState();
 
-  const getCurrentDiaryItem = () => {
+  useEffect(() => {
     const currentDiaryItem = data.find(
       (data) => String(data.id) === String(params.id)
     );
@@ -23,11 +23,17 @@ const Edit = () => {
       nav("/", { replace: true });
     }
 
-    return currentDiaryItem;
-  };
+    setCurDiaryItem(currentDiaryItem);
+  }, [params.id]);
 
   const onSubmit = (input) => {
-    onCreate(input.createdDate.getTime(), input.emotionId, input.content);
+    if (window.confirm("일기를 정말 수정할까요?"))
+      onUpdate(
+        params.id,
+        input.createdDate.getTime(),
+        input.emotionId,
+        input.content
+      );
     nav("/", { replace: true });
   };
 
@@ -54,7 +60,7 @@ const Edit = () => {
           <Button onClick={onClickDelete} text={"삭제하기"} type={"NEGATIVE"} />
         }
       />
-      <Editor onSubmit={onSubmit} selectedData={selectedData} />
+      <Editor onSubmit={onSubmit} initData={curDiaryItem} />
     </>
   );
 };

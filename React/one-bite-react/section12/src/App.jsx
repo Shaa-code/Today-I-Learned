@@ -47,7 +47,7 @@ function reducer(state, action) {
       return;
     case "EDIT":
       return state.map((diary) =>
-        String(diary.id) === String(action.id) ? action.data : diary
+        String(diary.id) === String(action.targetId) ? action.data : diary
       );
     case "DELETE":
       return state.filter((diary) => String(diary.id) !== String(action.id));
@@ -73,14 +73,14 @@ function App() {
     });
   };
 
-  const onEdit = (targetId, previousDate, content, emotionId) => {
+  const onUpdate = (id, createdDate, emotionId, content) => {
     dispatch({
-      type: "EDIT",
+      type: "UPDATE",
       data: {
-        id: targetId,
-        createdDate: previousDate,
-        emotionId: emotionId,
-        content: content,
+        id,
+        createdDate,
+        emotionId,
+        content,
       },
     });
   };
@@ -93,7 +93,7 @@ function App() {
   };
 
   const memoizedDispatch = useMemo(() => {
-    return { onCreate, onEdit, onDelete };
+    return { onCreate, onUpdate, onDelete };
   }, []);
 
   return (
