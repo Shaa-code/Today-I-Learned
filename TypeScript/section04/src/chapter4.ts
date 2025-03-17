@@ -10,8 +10,3 @@ type Person = {
 
 type Union = Dog | Person;
 type InterSection = Dog & Person;
-
-let Union: InterSection = {
-  name: "",
-  color: "",
-};
