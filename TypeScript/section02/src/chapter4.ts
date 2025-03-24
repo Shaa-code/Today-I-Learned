@@ -20,7 +20,7 @@ let user2: User = {
   id: 2,
   name: "이정환",
   nickname: "Nick",
-  birth: "1997.01.01",
+  birth: "1997.01.01", 
   bio: "bio",
   location: "부천시",
 };

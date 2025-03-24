@@ -19,5 +19,5 @@ const post: Post = {
   author: {
       id: 1,
       name: "신승윤",
-  }
+  } 
 }
