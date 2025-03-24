@@ -1,0 +1,4870 @@
+# 한 입 크기로 잘라 먹는 리액트
+
+# Javascript 기본
+
+Javascript는 “Javascript 엔진에 의해 실행된다.”
+
+Javascript Engine은 브라우저에 기본 탑재되어있다.
+
+그래서 웹브라우저를 이용하면 Javascript가 작동하는 것이다.
+
+### VSCode Shortcut
+
+설정 → Ctrl+,
+
+옵션 → Ctrl+Shift+P
+
+## Javascript 복습
+
+### 변수 재선언
+
+let은 재선언이 되지 않는다.
+
+```jsx
+console.log(age);
+```
+
+![image.png](image.png)
+
+에러가 발생하고 `밑에 코드들은 실행되지 않는다`는점을 기억하자.
+
+```jsx
+let age;
+console.log(age);
+
+// 결과
+undefined -> 데이터가 담겨 있지 않으면, undefined로 뜬다는걸 꼭 알고 있자.
+```
+
+```jsx
+age = 30;
+console.log(age);
+
+// 결과
+30
+```
+
+상수는 데이터가 안변하는거다.
+
+`선언은 한번 선언하면 재선언이 안된다는걸 알고 있자.`
+
+### Javascript 네이밍 규칙
+
+$, _ 를 제외한 기호는 사용할 수 없다.
+
+- 변수 명명 가이드
+
+## Data Type
+
+![image.png](image%201.png)
+
+### Number
+
+Java처럼 엄격하지 않아 Int, Float, Double 등의 자료형을 전부 Number로 사용한다.
+
+```jsx
+let inf = Infinity;
+let mInf = -Infinity;
+
+let nan = NaN; //NaN은 숫자 연산에 실패하면 나오는 것이다. ex) 1 * "hello" -> NaN
+```
+
+### String
+
+Java에서는 + 연산자로 문자열을 합칠 수는 있지만, 알고리즘 자체가 메모리가 낭비하는 구조라 딱히 쓰지는 않는다.
+
+이게 Javascript에서도 마찬가지로 지원한다.
+
+- ‘’와 “”의 차이
+
+```jsx
+let quote1 = "It's a nice day";  // No need to escape the apostrophe
+let quote2 = 'He said, "Hello"'; // No need to escape the double quotes
+```
+
+이렇게 서로 번갈아가면서 에러가 나지 않도록 쉽게 코딩이 가능하다. 
+
+필요하면 직접 escape도 가능하다.
+
+```jsx
+let escape1 = 'It\'s a nice day';
+let escape2 = "He said, \"Hello\"";
+```
+
+- Template Literals
+
+```jsx
+let introduceText = `${myName}`
+```
+
+작은 따옴표가 아니라, ~로 표시하는 `(backtick)을 사용하면 동적으로 데이터를 집어넣을 수 있다.
+
+### null vs undefined
+
+```jsx
+let empty = null;
+```
+
+의미가 겹치는것 아닌가 라고 질문할 수 있다.
+
+`null은 아무것도 없다는걸 우리가 직접 명시적으로 넣어줘야 한다.`
+
+하지만, undefined는 값을 초기화하지 못했거나, 존재하지 않는 값을 불러오려고 할 때 발생한다.
+
+## Type Casting
+
+### 묵시적 형 변환
+
+Javascript 엔진이 형변환을 자동으로 수행함.
+
+```jsx
+let num = 10;
+let str = "20";
+
+const result = num + str;
+console.log(result);
+```
+
+### 명시적 형 변환
+
+개발자가 직접 함수등을 이용해 형 변환을 일으킴.
+
+```jsx
+let str1 = "10";
+let strToNum1 = Number(str1);
+
+console.log(10 + strtToNum1) -> 20
+```
+
+```jsx
+let str2 = "10개"
+let strToNum = Number(str2);
+console.log(strToNum) -> NaN
+
+// 조금이라도 다른 값이 들어가면 오류값을 뱉는다.
+
+// 다만, parseInt를 사용하면 기호가 나오기 전까지의 숫자값만 뽑는다. ex)10개12 -> 10
+let strToNum2 = parseInt(str2);
+console.log(strToNum2); -> 10;
+```
+
+## 연산자
+
+### 중요! 증감,감소 연산자
+
+```jsx
+1) console.log(num++); // 이걸 실행하면, 증감은 2)로 옮겨갈때 num이 증가한다.
+2)
+```
+
+```jsx
+1) let num8 = 10;
+2) console.log(--num8); -> 9 // 10에서 먼저 뺏기 떄문
+3) console.log(num8--); -> 9 // 2)에서 --num8이 수행된 상태 그대로 남아있기에 9
+4) console.log(num8); -> 8 // 3)에서 4)로 바뀔때 num8--가 작동해서 8이된다.
+
+// 4**) 가 중요하다 아직 3)번 줄에서는 num8의 값이 변하지 않았다가, 4)가 되어야 변한다.**
+```
+
+- 비교 연산자
+    
+    ```jsx
+    let comp1 = 1 === "1"; // if we use 1 == '1' -> true
+    let comp2 = 1 !== 2;
+    console.log(comp1, comp2);
+    ```
+    
+    비교를 수행할 때, 자료형까지 비교하려면 ===을 써야한다.
+    
+    엄격한게 좋으므로 그냥 ===를 계속 쓰자.
+    
+- null 병합 연산자
+    
+    ```jsx
+    let var1;
+    let var2 = 10;
+    let var3 = 20;
+    let var4 = var1 ?? var2; -> 10
+    ```
+    
+    ??는 null이나 undefined가 아닌 값을 찾아서 반환해준다.
+    
+    ```jsx
+     let var6 = var2 ?? var3 -> 20
+    ```
+    
+    var2를 하면 처음에 되었던 데이터가 그냥 들어가게 된다.
+    
+    - 언제 쓰는가?
+    
+    만약 이름과 닉네임 둘중에 하나를 보여주고 싶을 때,
+    
+    이름이 없다면, 닉네임을 보여주자.
+    
+    ```jsx
+    let userName = "신승윤";
+    let userNickName = "Shaa";
+    
+    let displayName = userName ?? userNickName;
+    ```
+    
+- typeof 연산자
+    
+    값의 타입을 문자열로 반환하는 기능을 하는 연산자.
+    
+    ```jsx
+    let var7 = 1;
+    var7 = "hello";
+    
+    let t1 = typeof var7;
+    
+    conosle.log(t1) -> string
+    ```
+    
+    string이라고 문자열로 반환해준다.
+    
+- switch
+    
+    ```jsx
+    let animal = "cat";
+    
+    switch(animal){
+        case "cat":{
+            console.log("고양이");
+            break;
+        }
+        case "dog":{
+            console.log("개");
+            break;
+        }
+        default:{
+    		    console.log("없음");
+        }
+    }
+    ```
+    
+    Java는 case “cat”: 이후 ‘{’ braceket을 사용하지 않는다.
+    
+    그런데, 여기는 사용하네? 
+    
+
+## 함수
+
+Javascript는 함수 안에 함수를 선언할 수 있다.
+
+```jsx
+function getArea(widht, height){
+    function another(){
+         console.log("another");
+    }
+    
+    another();
+    
+    let area = width * height;
+    return area;
+}
+
+getArea(120,200)
+
+//결과값
+600
+another
+```
+
+- 호이스팅(Hoisting)
+
+호이스팅이란 javascript와 같은 일부 언어에서 변수 선언이나 함수 선언을 해당 스코프의 최상단으로 끌어올리는 동작으로 정의한다.
+
+함수를 아래에 선언해도 잘 동작한다.
+
+Java나 C처럼 반드시 아래에 작성해야하는건 아니다.
+
+`함수를 아래쪽에 작성해도, Javascript는 알아서 함수와 변수를 가장 윗단으로 올려서 작동하게 끔 만든다.`
+
+### `함수 표현식과 화살표 함수`
+
+```jsx
+function codeA(){
+    console.log("codeA");
+}
+
+let a = codeA();
+```
+
+내 생각과 다르게 작동한다.
+
+`a에 함수가 저장되어 있을거라 생각했지만 그렇지 않다.`
+
+()로 변수에 담으려고 하면, codeA()가 즉시 실행되고, codeA()의 결과값이 a에 담기게 된다. 하지만, console.log(”codeA”);의 return 값은 없기 때문에 a에 들어가는 값은 없다.
+
+함수를 담기 위해서는 아래와 같이 해야한다. 
+
+```jsx
+function codeA(){
+    console.log("codeA");
+}
+
+let a = codeA;
+a()
+```
+
+위 처럼 함수를 작성하고 변수에 이름 그대로 넣어두면 그 변수명으로 코드가 잘 작동한다.
+
+함수를 그대로 변수에 담을 수도 있다.
+
+```jsx
+let a = function codeA(){
+    console.log("codeA");
+}
+
+a();
+```
+
+이렇게 해도 똑같이 작동한다.
+
+대신 선언된 것이 아니기 때문에, codeA()라고 실행하면 오류가 발생한다.
+
+위 코드에서 생각해보면 
+
+`어차피 codeA()로 함수를 호출할 수 없기 때문에 codeA라는 이름을 붙여줄 필요가 없다. 그러므로 아래처럼 이름없는 익명함수가 되는 것이다.`
+
+```jsx
+let a = function (){
+    console.log("funcB");
+}
+```
+
+이렇게 사용해도 된다.
+
+`이렇게 만든 함수는 선언된 함수가 아니라서 Hoisting이 작동하지 않는다.`
+
+즉, 호이스팅의 대상이 아니다.
+
+- 화살표 함수
+
+위의 function도 길다고 느껴져서 나온 방식이다.
+
+function이라는 영문 대신 ⇒ 기호로 기능을 대신한다.
+
+```jsx
+let a = () => {
+    return 1;
+}
+
+let a = () => 1 // 더 축약해서 1을 반환하는 함수를 이렇게 만들 수 있다.
+let b = (value) => {console.log(value)};
+let b = (value) => value + 1;
+
+```
+
+### 콜백 함수 (Callback Function)
+
+자신이 아닌 다른 함수에, 인수로써 전달된 함수로 정의한다.
+
+```jsx
+function main(value){
+    value();
+}
+
+function sub(){
+    console.log("sub");
+}
+
+main(sub); -> // 실행결과 : sub
+```
+
+여기서 인자로 들어간 sub()라는 함수는 Callback 함수에 해당한다.
+
+프로그래밍에서 콜백(callback) 또는 콜백 함수(callback function)는 ”***다른 코드의 인수로서 넘겨주는 실행 가능한 코드” 라는 정의를 가진다.***
+
+함수를 위처럼 사용해도된다. 하지만 인자 안에 그대로 넣어서 써도된다.
+
+```jsx
+function main(value){
+    value();
+}
+
+main(function sub(){
+    console.log("sub");
+})
+```
+
+여기서 더 나아가 sub()은 선언한 함수가 아니기 때문에 밖에서 호출할 수 없기 때문에 그냥 화살표 함수로 만드는게 가장 깔끔하다.
+
+```jsx
+main(() => {
+    console.log("sub");
+})
+```
+
+그럼 main안의 화살표 함수가 main의 인자이므로 main함수의 콜백함수로 전달되었다고 이해하면된다.
+
+- `Callback 함수의 활용`
+
+```jsx
+function repeat(count){
+    for(let idx = 1 ; idx <= count ; idx++){
+        console.log(idx);
+    }
+}
+
+function repeatDouble(count){
+    for(let idx = 1 ; idx <= count ; idx++){
+        console.log(idx*2);
+    }
+}
+
+function repeatTriple(count){
+    for(let idx = 1 ; idx <= count ; idx++){
+        console.log(idx*3);
+    }
+}
+```
+
+위 처럼 비슷한 구조의 함수인데 매번 똑같이 정의하는건 낭비이다.
+
+이때 콜백함수를 활용하면 코드를 크게 개선할 수 있다.
+
+```jsx
+function repeat(count, callback){
+    for(let idx = 1 ; idx <= count ; idx++){
+        callback(idx);
+    }
+}
+
+repeat(5,(idx) => {console.log(idx * 1)})
+repeat(5,(idx) => {console.log(idx * 2)})
+repeat(5,(idx) => {console.log(idx * 3)})
+```
+
+`이런식으로 함수 1개로 여러 코드를 잘 작성할 수 있다.`
+
+### 스코프
+
+함수 선언식에서 선언된 함수는 지역 스코프로 설정돼 외부에서 호출할 수 없다.
+
+```jsx
+function funcA(){
+    ...
+    function funcB(){
+        ...
+    }
+}
+
+funcB() -> Error
+```
+
+예외적으로, if문이나, for문과 같은 곳에서는 전역 스코프로 인식된다.
+
+```jsx
+for(let idx = 1 ; idx <= count ; idx++){
+    let a = 1;
+    function funcB() {};
+}
+```
+
+하지만, for문이나, if문 안에 함수를 선언하는 경우는 거의 없기 때문에 무시해도 된다.
+
+## 객체
+
+### 객체 생성
+
+```jsx
+let obj1 = new Object(); // 객체 생성자
+let obj2 = {}; //객체 리터럴 (대부분 사용)
+```
+
+```jsx
+let person = {
+    name : "이정환",
+    age: 27,
+    hobby: "테니스",
+    "like cat": true,
+};
+```
+
+객체 프로퍼티로 띄어쓰기로 된것을 사용하고자 한다면, “”를 붙여야한다.
+
+- 객체 접근법
+1. 점 접근법
+
+```jsx
+let name = person.name;
+```
+
+`이때, 데이터 만약 객체에 없는 key를 지정하면, undefined가 뜬다.`
+
+ex) person.name2 → undefined
+
+나중에 undefined가 나오면 없는 프로퍼티를 불러왔나? 하는 생각을 해볼 수 있다.
+
+1. 괄호 표기법
+
+```jsx
+let age = person["age"];
+console.log(age);
+```
+
+꼭 조심해야할 게 “”쌍따옴표를 붙여서 작성해야한다는 점이다.
+
+- 프로퍼티 추가법
+
+```jsx
+person.job = "fe developer";
+person["job"] = "fe developer";
+```
+
+- 프로퍼티 수정법
+
+그냥 덮어쓰기라서, 추가법과 똑같은 방식을 사용하면된다.
+
+- 프로퍼티 삭제법
+
+```jsx
+delete person.job;
+delete person["job"];
+```
+
+프로퍼티를 삭제하는데에는 독특하게도, delete 연산자를 사용한다.
+
+- 프로퍼티의 존재 유무를 확인하는 방법 (in 연산자)
+
+```jsx
+let result1 = "age" in person;
+let result2 = "cat" in person;
+```
+
+key가 있는지 확인해서 데이터를 뽑아낸다.
+
+### 상수 객체
+
+```jsx
+const animal = {
+     type: "고양이",
+     name: "나비",
+     color: "black",
+}
+
+animal.age = 1; //추가 -> O
+animal.name = "까망이"; // 수정 -> O
+delete animal.color; // 삭제 -> O
+
+animal = {} // 오류 ! -> X
+```
+
+상수 객체는 객체를 상수로 선언한것이다.
+
+`기존의 생각과는 다르게 작동한다.`	
+
+상수 객체의 내용또한 바뀌지 않을 거라 생각했지만, 내용은 바뀐다.
+
+다만, 새로 객체를 초기화하는것은 불가능하다.
+
+### 메서드
+
+```jsx
+const animal = {
+    name : "까망이",
+	  sayHi : function() {
+	      console.log("안녕");
+	  }
+} // 기본 선언
+
+const animal = {
+    name : "까망이",
+	  sayHi : () => {
+	      console.log("안녕");
+	  }
+} // 화살표 함수로도 가능
+
+const animal = {
+    name : "까망이",
+	  sayHi() {
+	      console.log("안녕");
+	  }
+} //이렇게도 표현이 가능하다. -> 메서드 선언이라고 정의함.
+
+animal.sayHi();
+animal["sayHi"](); // 이렇게도 된다.
+```
+
+### 배열
+
+```jsx
+let arr = new Array(); // 배열 생성자
+let arr = []; // 배열 리터럴
+```
+
+# Javascript 심화
+
+## Truthy와 Falsy
+
+참을 나타내지 않는 값이라도, True로 평가되고
+
+거짓을 의미하지 않는데 False로 평가되는 값을 Falsy라고 정의한다.
+
+- Truthy
+
+```jsx
+if (123) {
+    console.log("123 is true");
+} else {
+    console.log("123 is false");
+}
+
+let t1 = "hello";
+let t2 = 123;
+let t3 = [];
+let t4 = {};
+let t5 = () => {};
+```
+
+- Falsy
+
+```jsx
+if (undefined) {
+    console.log("undefined is true");
+} else {
+    console.log("undefined is false");
+}
+
+let f1 = undefined;
+let f2 = null;
+let f3 = 0;
+let f4 = -0;
+let f5 = NaN;
+let f6 = ""; //이게 중요한듯 하다.
+let f7 = 0n; //Big Integer이다.
+```
+
+```jsx
+function printName(person) {
+    console.log(person.name);
+}
+
+let person = {name : "Seung"}
+```
+
+만약 개발을 하다가 person에 데이터가 잘못 초기화 되는경우가 발생하면?
+
+```jsx
+function printName(person) {
+    console.log(person.name); // Error 가 발생할 것이다.
+}
+
+let person = {}
+```
+
+그래서 if문을 넣어준다.
+
+```jsx
+function printName(person) {
+    if(person.name === undefined){
+        console.log("person.name 값이 없음."); // Error 가 발생할 것이다.
+    }
+    console.log(person.name);
+}
+
+let person = {}
+```
+
+이렇게 해도 undefined로 정의하면 이제, null, 0,-0;NaN처럼 다른 값이 오면 전부다 저렇게 하나씩 또는 OR 조건으로 선언을 해줘야하는데, 너무 귀찮다.
+
+이때, Truthy와 Falsy를 활용하면 크게 개선할 수 있다.
+
+```jsx
+function printName(person){
+    if(!person){
+        console.log("person.name의 값이 없습니다.");
+    }
+    console.log(person.name);
+}
+```
+
+## 단락평가 (Short-Circuit Evaluation)
+
+```jsx
+let varA = false;
+let varB = true;
+
+console.log(varA && varB); // varA에서 false가 나와서 뒤에 varB는 볼 필요도 없다.
+console.log(varA || varB); // varA에서 false가 나와서 뒤에 varB는 볼 필요도 없다.
+```
+
+여기서 앞에 변수만 보고 뒤에 변수는 판단하지 않아도되는 이 기능을 단락평가라고 한다.
+
+만약 나중에 함수를 2개 호출하려고 했을때,  
+
+```jsx
+function returnFalse() {
+    console.log("False 함수");
+    return false;
+}
+
+function returnTrue(){
+    console.log("True 함수");
+    return true;
+}
+
+console.log(returnFalse() && returnTrue());
+```
+
+```jsx
+function returnFalse() {
+    console.log("False 함수");
+    return false;
+}
+
+function returnTrue(){
+    console.log("True 함수");
+    return 10;
+*}*
+
+console.log(returnFalse() && returnTrue());
+// 결과값 : 10을 반환한다.
+```
+
+- 활용사례
+
+```jsx
+function printName(person){
+    if (!person){
+        console.log("person에 값이 없음");
+        return;
+    }
+    console.log();
+}
+```
+
+```jsx
+function printName(person){
+    const name = person && person.name; //person이 없으면 person.name이 실행되지 않음.
+    console.log(name || "person의 값이 없음");
+}
+
+printName();
+printName({name : "Seung Yun"})
+```
+
+&& 연산자는 첫 번째 값이 truthy일 경우 두 번째 값을 반환하기 때문에, person && person.name은 person.name (즉, “Seung Yun")을 반환합니다.
+
+```jsx
+function printName(person){
+    const name = person.name && person; //person이 없으면 person.name이 실행되지 않음.
+    console.log(name || "person의 값이 없음");
+}
+
+printName({name : "Seung Yun"});
+
+// 결과
+// {name: 'Seung Yun'}
+```
+
+만약 person.name과 person의 and 연산에서의 순서를 바꾸면?
+
+## 구조분해할당(D**estructuring Assignment)**
+
+구조 분해 할당이 뭘까? → `변수에 개별적으로 넣어주기`
+
+우변에 불러올 배열이나, 객체를 두고, 좌변에는 두 자료형 안에 변수를 넣고 순서대로 받아내는 방식이다.
+
+- 배열의 구조 분해 할당
+
+```jsx
+// 일반적인 배열값 불러오기.
+let arr = [0,1,2];
+
+let one = arr[0];
+let two = arr[1];
+let three = arr[2];
+
+//구조 분해 할당
+let [one,two,three] = arr;
+
+let [one,two] = arr;
+// 1 2
+
+let [one, two, three, four] = arr;
+// 1 2 3 undefined
+
+let [one, two, three, four = 4] = arr;
+// 1 2 3 4
+```
+
+- 객체의 구조 분해 할당
+
+```jsx
+let person = {
+    name : "신승윤",
+    age : 29,
+    hobby : "tennis",
+};
+
+let {name, age, hobby} = person;
+// 신승윤 29 tennis
+let {name, age, hobby, extra = "hello"} = person;
+// 신승윤 29 tennis hello
+
+let person = {
+    name : "신승윤",
+    age : myAge, // 이렇게 하면 person의 age값을 myAge에 저장하게 된다.
+    hobby : "tennis",
+} = person;
+
+```
+
+- `객체 구조 분해 할당을 이용한 함수의 매개변수 받기`
+
+```jsx
+let person = {
+    name : "Seung Yun",
+    age : 29,
+    hobby: "tennis",
+};
+
+const func = ({name, age, hobby, extra = 4}) => {
+    console.log(name, age, hobby, extra);
+};
+
+func(person);
+```
+
+## Spread 연산자
+
+- 배열 Spread 연산자
+
+배열안에 데이터를 하나씩 넣어주고 싶다.
+
+이때, 아래처럼 코드를 작성하면 배열안에 배열이 들어간다.
+
+```jsx
+let arr1 = [1,2,3];
+let arr2 = [4, arr1, 5, 6];
+// [4, [1,2,3], 5, 6]
+
+let arr2 = [4, ...arr1, 5, 6];
+// [4, 1, 2, 3, 5, 6]
+이렇게 들어간다.
+```
+
+- 객체 Spread 연산자
+
+```jsx
+let obj1 = {
+    a : 1,
+    b : 2
+};
+
+let obj2 = {
+    a : obj1.a;
+    b : obj1.b;
+    c : 3,
+    d : 4
+};
+
+let obj2 = {
+    ...obj1
+    c : 3,
+    d : 4
+};
+```
+
+- 만약 객체내에 key의 이름이 같으면 어떻게 돼?
+
+```jsx
+let obj1 = {
+    a : 1,
+    b : 2
+};
+
+let obj2 = {
+    ...obj1,
+    a : 3,
+    b : 4
+};
+
+// 결과
+{a: 3, b: 4} -> 그냥 값으로 나온다.
+```
+
+```jsx
+function funcA(p1,p2,p3){
+    console.log(p1, p2, p3);
+}
+
+funcA(...arr1);
+```
+
+## Rest 연산자
+
+Spread와 …이라는 연산자는 같지만, 함수의 매개변수에 정의되는 …은 Rest 연산자로 완전히 다른 기능을 수행한다는걸 알아야한다.
+
+```jsx
+let arr1 = [1,2,3]
+
+function funcB(...rest) {
+    console.log(rest);
+}
+
+funcB(...arr1)
+// 결과
+// [1, 2, 3]
+```
+
+만약 첫번째 매개변수는 다른것으로 받고싶다고하면, 아래처럼 작성하면 된다.
+
+```jsx
+let arr1 = [1,2,3]
+
+function funcB(one, ...rest) {
+    console.log(rest);
+}
+
+funcB(...arr1)
+// 결과
+// [2, 3]
+```
+
+Rest매개변수 뒤에는 어떤 변수도 올 수 없다.
+
+의미적으로도 모든 변수를 다담는게 Rest인데, 그 뒤에 뭔가 오면 오류가 발생하는게 당연하다.
+
+```jsx
+ex) function funcB(one, two, ...rest, **four**){...}
+-> 여기서 four는 오류가 발생한다.
+```
+
+그리고 rest 매개변수에는 이름만 붙이면 되는거라서, 이름은 마음대로 설정해도 된다.
+
+`가장 많이 쓰는게, …args이다.`
+
+## 원시타입 VS 객체타입
+
+왜 원시와 객체는 나뉘는 걸까?
+
+1. 원시타입은 값 자체로써 변수에 저장되고 복사된다.
+    
+    Immutable 이들은 Immutable이라고 정의한다.
+    
+    그럼 왜 Immutable 인가?
+    
+    ```jsx
+    let p1 = 1; //메모리에 1이 저장되고, p1은 1이 저장된 메모리 주소를 가리킨다.
+    let p2 = p1; //p1의 값을 복사하고 메모리에 p1의 값을 넣는다. 즉, 메모리에 1이 저장된다.
+    p2 = 2; // 메모리에 2를 저장한다. p2의 주소를 2가 저장된 주소로 변경한다.
+    ```
+    
+    이때, 메모리의 실제값은 제거되지 않는다.
+    
+    `여기서 메모리에 이미 저장된 원시타입 값은 변경될 수 없어서 Immutable하다고 표현하는것이다.`
+    
+    ![image.png](image%202.png)
+    
+2. 객체타입은 참조값을 통해 변수에 저장되고 복사된다.
+    - 얕은 복사
+    
+    ```jsx
+    let o1 = {name : "이정환"};
+    let o2 = o1;
+    
+    o2.name = "홍길동";
+    ```
+    
+    ![image.png](image%203.png)
+    
+    메모리에 이미 저장된 객체타입의 값을 변경하기 때문에 mutable이라고 한다.
+    
+    ### 객체 타입 주의사항
+    
+    의도치 않게 값이 수정될 수 있다는 점.
+    
+    - 깊은 복사
+    
+    `만약 그대로 값을 복사하고 싶다면?`
+    
+    ```jsx
+    let o1 = { name : "이정환" };
+    let o2 = { ...o1 };
+    ```
+    
+    이렇게 하면 새로운 객체를 생성하면서 프로퍼티만 따로 복사하기에, 원본 객체가 수정될 일이 없어 안전하다.
+    
+    ### 객체간의 비교는 기본적으로 참조값을 기준으로 한다.
+    
+    ```jsx
+    let o1 = { name : "이정환" };
+    let o2 = o1;
+    let o3 = { ...o1 };
+    
+    console.log(o1 === o2); // 참조값으로 구분하기 때문에 True
+    console.log(o1 === o3); // False 가 나온다.
+    ```
+    
+    ![image.png](image%204.png)
+    
+    - 만약 깊은 복사를 했는데, 내용이 같은지 비교하고 싶다면 어떻게 해야하나?
+    
+    ```jsx
+    JSON.stringify(o1) === JSON.stringify(o2);
+    ```
+    
+    ### 배열과 함수도 사실 객체이다.
+    
+    함수에 추가된 기능은 호출, 선언과 같은 것들이 있다.
+    
+    배열의 추가된 기능에는 순차 저장, 순회와 같은 것들이 있다.
+    
+
+## 반복문으로 배열과 객체 순회하기
+
+배열, 객체에 저장된 여러개의 값에 순서대로 하나씩 접근하는것을 말한다.
+
+- 배열 순회
+
+`배열에는 of만 가능하다.`
+
+```jsx
+let numbers = [1, 2, 3];
+
+let person = {
+    name : "이정환",
+    age: 27,
+    hobby: "tennis",
+};
+
+// 일반적인 방식
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+}
+
+// python 처럼 뽑는 방식 of
+for (let item of numbers){
+    console.log(item);
+}
+```
+
+- 객체 순회
+
+`객체 순회에는 in만 가능하다.`
+
+```jsx
+let person = {
+    name : "이정환",
+    age: 27,
+    hobby: "테니스",
+};
+
+// Object.keys를 사용
+// 객체에서 key값들만 뽑아서 새로운 배열로 반환.
+let keys = Object.keys(person);
+
+//결과값
+['name', 'age', 'hobby']
+
+//만약 Value값까지 같이 보고 싶다면?
+for (let key of Object.keys(person)){
+    console.log(key, person[key])
+}
+// 위 처럼 작업하면 된다.
+// 다만 조금 지저분하게 느껴지므로
+
+for key of Object.keys(person){
+    const value = person[key];
+    console.log(key, value);
+}
+
+// Object.values
+let values = Object.values(person);
+
+for (let value of values) {
+    console.log(value);
+}
+
+// 
+```
+
+## 배열 메서드
+
+### 요소 조작
+
+- push
+
+push 메서드는 배열의 가장 끝에 데이터를 추가하는 역할을 한다.
+
+```jsx
+let arr = [1, 2, 3];
+arr1.push(4);
+
+//결과
+[1, 2, 3, 4]
+
+arr1.push(5,6,7,8);
+//결과
+[1, 2, 3, 4, 5, 6, 7, 8]
+
+const newLength = arr1.push(9);
+//결과
+9
+```
+
+push 메서드의 반환값은, 새로 추가된 배열의 길이이다.
+
+- pop
+
+배열의 맨 뒤에 있는 요소를 제거하고 반환한다.
+
+- shift
+
+배열의 맨 앞에 있는 요소를 제거하고 반환한다.
+
+```jsx
+let arr1 = [1, 2, 3];
+
+const newData = arr1.shift();
+console.log(newData, arr1);
+//결과
+1, [2, 3];
+```
+
+- unshift
+
+배열의 맨 앞에 새로운 요소를 추가하는 메서드
+
+```jsx
+let arr4 = [1, 2, 3];
+const newLength2 = arr4.unshift(0);
+console.log(newLength2, arr4)
+
+//결과
+const newLength2 = arr4.unshift(0);
+console.log(arr4);
+```
+
+`(다만 shift, unshift는 속도가 느리다.)는 점을 알고 있자.`
+
+- slice
+
+```jsx
+let arr5 = [1,2,3,4,5];
+let sliced = arr5.slice(2, 5); // 항상 +1을 해서 지정해줘야한다는 사실을 기억하자.
+let sliced2 = arr5.slice(2); // 이러면 알아서 처음부터 끝까지 잘라낸다.
+let sliced3 = arr5.slice(-1); // 5 -> 뒤에서 부터 자르려면 이렇게 쓰면 된다.
+let sliced4 = arr5.slice(-3)
+console.log(sliced);
+```
+
+- concat
+
+두개의 서로 다른 배열을 이어 붙여서 새로운 배열을 반환
+
+```jsx
+let arr6 = [1, 2];
+let arr7 = [3, 4];
+
+let concattedArr = arr6.concat(arr7);
+arr6.push(...arr7); //물론 이렇게 해도된다.
+```
+
+### 순회와 탐색
+
+5가지 요소 순회 및 탐색 메서드
+
+- forEach
+    
+    모든 요소를 순회하면서, 각각의 요소에 특정 동작을 수행시키는 메서드?
+    
+    ```jsx
+    let arr1 = [1, 2, 3];
+    arr1.forEach(function (item, idx, arr) {} );
+    ```
+    
+    - forEach 함수의 내부 동작
+    
+    목표 : 각 원소에 함수를 적용시키고 싶다.
+    
+    ```jsx
+    Array.prototype.myForEach = function(callback) {
+        //Array에 myForEach 함수를 만들거다.
+        //각 원소들을 우선 하나하나씩 순회를 해야한다. 그래서 for문을 쓴다.
+        for (let i = 0; i < this.length; i++) {
+            // 각 원소들에게 함수를 어떻게 적용시키지?
+            // callback 함수를 사용하면 된다.
+            callback(this[index]);
+            // 이렇게 하면 각 원소들마다, 콜백함수가 계속해서 실행된다.
+        }
+    };
+    ```
+    
+    ```jsx
+    let arr = [1, 2, 3];
+    
+    arr.forEach((item, index, array) => console.log(item * 2));
+    ```
+    
+- includes
+    
+    배열에 특정 요소가 있는지 확인하는 메서드
+    
+    ```jsx
+    let arr = [1, 2, 3];
+    
+    arr.includes(2); -> true;
+    ```
+    
+- indexOf
+    
+    특정 요소의 index를 찾아서 반환하는 메서드
+    
+    ```jsx
+    let arr = [1, 2, 3];
+    let index = arr3.indexOf(2); -> 1 (1번 index에 있다.)
+    
+    let arr1 = [1, 1, 1];
+    // 같으면 왼쪽부터 탐색하기에, 첫번째 index만 반환.
+    ```
+    
+    찾는값 없으면 -1 반환
+    
+- findIndex
+    
+    모든 요소를 순회하면서, 콜백함수를 만족하는 특정 요소의 index를 반환하는 메서드.
+    
+    ```jsx
+    let arr4 = [1, 2, 3];
+    const findedIndex = arr4.findIndex((item) => {
+        if (item === 2) return true;
+    }) // 얘도 왼쪽부터 탐색하기 때문에, 첫번째 index만 반환.
+    
+    // 코드를 더 줄일 수 있다.
+    let arr4 = [1, 2, 3];
+    const findedIndex = arr4.findIndex((item) => item === 2)
+    ```
+    
+    - 왜 indexOf와 findIndex는 나누어져 있는가?
+    
+    ```jsx
+    let objectArr = [
+        { name : "이정환"},
+        { name : "홍길동"}
+    ];
+    
+    console.log(objectArr.indexOf({name : "이정환"}));
+    ```
+    
+    indexOf는 얕은 복사(=== 비교)라서 즉, 주소로 찾는게 아니라서 못찾는다.
+    
+    ```jsx
+    console.log(
+        objectArr.findIndex(
+            (item) => item.name === "이정환"
+        )
+    );
+    ```
+    
+    findIndex는 깊은 복사를 하기 때문에, index의 정확한 위치를 찾아낼 수 있다.
+    
+- find
+    
+    모든 요소를 순회하면서 콜백함수를 만족하는 요소를 찾는데, `요소를 그대로 반환한다.(findIndex는 index만 반환)`
+    
+
+### 배열 변형
+
+- filter
+    
+    기존 배열에서 조건을 만족하는 요소들만 필터링하여 새로운 배여로 반환
+    
+    ```jsx
+    let arr1 = [
+        { name: "이정환", hobby: "테니스" },
+        { name: "김효빈", hobby: "테니스" },
+        { name: "홍길동", hobby: "독서" },
+    ];
+    
+    const tennisPeople = arr1.filter((item) => item.hobby === "테니스");
+    
+    console.log(tennisPeople);
+    ```
+    
+    ![image.png](image%205.png)
+    
+    거의 필수적으로 사용되는 기능이라 잘 배워두면 좋다.
+    
+
+- map
+    
+    배열의 모든 요소를 순회하면서, 각각 콜백함수를 실행하고 그 결과값들을모아서 새로운 배열로 반환 
+    
+    ```jsx
+    let arr = [1, 2, 3];
+    
+    const mapResult = arr.map((item) => item * 2)
+    
+    console.log(mapResult);
+    
+    let arr1 = [
+        { name: "이정환", hobby: "테니스" },
+        { name: "김효빈", hobby: "테니스" },
+        { name: "홍길동", hobby: "독서" },
+    ];
+    
+    let names = arr1.map(item => item.name);
+    ```
+    
+    ![image.png](image%206.png)
+    
+- sort
+    
+    //배열을 사전순으로 정렬하는 메서드
+    
+    ```jsx
+    let arr3 = ["b", "a", "c"];
+    arr3.sort();
+    console.log(arr3); // ['a','b','c']
+    
+    let arr3 = [10, 3, 5]; // 작동하지 않음.
+    arr3.sort(); 
+    
+    arr3.sort(() => {
+        if (a > b) {
+            return 1;
+        } else if ( a < b ){
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+    
+    console.log(arr3);
+    ```
+    
+    컴퓨터 프로그래밍에서 비교는 `항상 작은게 앞에 온다고 기억하자.`
+    
+    즉, a - b가 양수면 a 가 크므로 a가 뒤에 간다.
+    
+    a - b 가 음수면 a가 작으므로 a가 앞으로 온다.
+    
+- toSorted
+    
+    기존에것은 두고 정렬된 새로운 배열을 반환하는 메서드
+    
+    ```jsx
+    let arr5 = ["c", "a", "b"];
+    const sorted = arr5.toSorted();
+    
+    console.log(arr5);
+    console.log(sorted);
+    ```
+    
+- join
+    
+    배열의 모든 요소를 하나의 문자열로 합쳐서 반환하는 메서드
+    
+    ```jsx
+    let arr6 = ["hi", "im", "seungyun"]
+    const joined = arr6.join("-"); -> //hi-im-seungyun
+    console.log(joined);
+    ```
+    
+
+### Date 객체와 날짜
+
+- Date 객체를 생성하는 방법
+    
+    ```jsx
+    let date1 = new Date();
+    let date1 = new Date("1997/01/07/10:10:10"); // 년 월 일 시 이렇게 넣어도됨
+    let date1 = new Date(1997,1,7,23,59,59); //년 월 일 시 분 초로 들어감
+    ```
+    
+- TimeStamp
+    
+    정의 : 
+    
+    특정 시간이 “1970.01.01 00시 00분 00초”로 부터 몇 ms가 지났는지를 의 미하는 숫자값.
+    
+    이때, `“1970.01.01 00시 00분 00초”` 를 협정세계시 (Universal Time Coordinated, UTC)라고 정의한다.
+    
+    즉, `시간이 시작되는 지점`을 의미한다.
+    
+    ```jsx
+    let ts1 = date1.getTime(); //
+    let date4 = new Date(ts1);
+    ```
+    
+    - getTime()
+    
+    객체 안에 들어있는 시간의 TimeStamp를 반환한다.
+    
+
+- 시간 요소들을 추출하는 방법
+    
+    ```jsx
+    let year = date1.getFullYear();
+    let month = date1.getMonth();
+    let date = date1.getDate();
+    
+    let hour = date1.getHours();
+    let minute = date1.getMinutes();
+    ```
+    
+
+이때 꼭 기억해야할 게, getMonth()를 해서 나오는 달의 값은 0부터 시작한다는 점이다! 
+
+- 시간 수정하기
+    
+    ```jsx
+    date1.setFullYear(2023);
+    date1.setMonth(2);
+    date1.setDate(30);
+    date1.setHours(23);
+    date1.setMinutes(59);
+    date1.setSeconds(59);
+    ```
+    
+- 시간을 여러 포맷으로 출력하기
+    
+    ```jsx
+    date1.toDateString(); -> // Thu Mar 30 2023
+    date1.toLocaleString(); -> //2023. 3. 30. 오후 11:59:59
+    ```
+    
+- 원하는 데이터 타입으로 만들기
+    
+    ```jsx
+    toLocaleString() -> 3/9/2025, 4:47:57 AM
+    ```
+    
+    toLocaleString()으로 뽑으면 3/9/2025, 4:47:57 AM 라고 나온다.
+    
+    이때, 아래처럼 코드를 작성해주면 2025-03-09이렇게 나온다.
+    
+    ```jsx
+    const getStringedDate = (targetDate) => {
+      // 날짜 -> YYYY-MM-DD
+      let year = targetDate.getFullYear();
+      let month = targetDate.getFullYear() + 1;
+      let date = targetDate.getDate();
+    
+      if (month < 10) {
+        month = `0${month}`;
+      }
+    
+      if (date < 10) {
+        date = `0${date}`;
+      }
+    
+      return `${year}-${month}-${date}`;
+    };
+    ```
+    
+
+## 동기와 비동기
+
+### 동기
+
+- 동기란?
+
+정의 : 작업을 순차적으로 진행되는 것을 의미한다.
+
+기존의 지식에 “동시에 발생하는 것” 이라는 표상이 있었는데 이와 새로운 지식이 일치하지 않아 혼란이 발생했다.
+
+프로그래밍에서의 동기는 새로운 정의가 발생한다.
+
+작업을 순차적으로 진행되는 것을 의미한다.
+
+어떤 함수나 명령어를 호출하면 그 결과가 반환될 때 까지 다음 코드가 실행되지 않고 기다리게 된다.
+
+Javascript는 동기적으로 작동한다.
+
+```jsx
+console.log("1");
+console.log("2");
+console.log("3");
+
+//결과
+1
+2
+3
+
+function task() {
+    console.log("2");
+}
+
+console.log("1");
+task();
+console.log("3");
+
+//결과
+1
+2
+3
+```
+
+`Javascript 엔진에는 쓰레드가 1개 밖에 없다.`
+
+### 비동기
+
+그럼 Javascript에서는 어떻게 비동기를 제어해야 하는가?
+
+```jsx
+console.log("1");
+
+setTimeout(){
+    () => {console.log("2")}
+,3000}
+
+console.log("3");
+```
+
+이렇게 setTimeout 함수와 같이 몇 초뒤에 실행되게끔 만들어서 가능하게 하는 방식이 있다. (Event Loop)라고 불림. 
+
+- 의문점
+    
+    그런데, 이해가 안되는데, 이러면 결국 setTimeout 함수가 호출되면 시간을 계속 세야하는데, 그럼 결국에 3을 출력하는 동시에 2를 출력하기 위한 setTimeout의 시간을 계산하고 있어야된다는 소리이다.
+    
+    - Cooperative Multitasking
+    
+    이건 Cooperative Multitasking(협력적 멀티테스킹)을 사용해서 해결 할 수 있다.
+    
+    정의 : CPU가 여러 작업을 번갈아 가면서 실행하지만, 각 작업이 자발적으로 실행을 넘겨주는 방식
+    
+    ```jsx
+    function task1() {
+        console.log("Task 1 실행");
+        setTimeout(task2, 1000); // task2로 실행 흐름을 넘김
+    }
+    
+    function task2() {
+        console.log("Task 2 실행");
+        setTimeout(task1, 1000); // task1로 실행 흐름을 넘김
+    }
+    
+    task1();
+    ```
+    
+    - Coroutine
+    
+    일반적인 함수와 달리, 중간에 실행을 멈췄다가 다시 이어서 실행할 수 있는 함수.
+    
+    ```jsx
+    function* task1() {
+        while (true) {
+            console.log("Task 1 실행");
+            yield;
+        }
+    }
+    
+    function* task2() {
+        while (true) {
+            console.log("Task 2 실행");
+            yield;
+        }
+    }
+    
+    const t1 = task1();
+    const t2 = task2();
+    
+    setInterval(() => {
+        t1.next();
+        t2.next();
+    }, 1000);
+    ```
+    
+    이런식으로 코드를 작성해서 해결할 수 도 있다.
+    
+    내부에서 이런 코드가 작동있다고 생각하면 된다.
+    
+
+setTimeout 함수는 비동기 함수이다.
+
+`Javascript에서 비동기 함수는 Javascript 엔진이 실행시키는게 아니다.`
+
+Web APIs라는 웹 브라우저가 직접 관리하는 별도의 영역이 있다.
+
+`이 영역에서 Javascript의 비동기 함수가 실행된다.`
+
+- `실제로 일어나는 과정` (중요) // 제대로 이해안되면 영상다시 보고 복습할것 이미지 안 넣어둠
+
+Javascript 엔진은 코드를 위에서 아래로 쭉 실행하다가 setTimeout과 같은 비동기 함수를 만나면 비동기 작업을 Web APIs에게 위임한다.
+
+이때, setTimeout 타이머와, 이후 실행될 Callback 함수까지 같이 넘겨준다.
+
+이후 console.log(”3”)을 출력하고,
+
+Web APIs 영역에서 setTimeout 함수의 타이머가 끝나면, WebAPIs 영역에 위임한 Callback 함수를 Javascript에게 반환한다.
+
+그러면 Javascript Engine은 WebAPIs 영역에서 반환받은 Callback 함수를 그제서야 실행시킨다.
+
+## 비동기 작업 처리하기
+
+### 콜백함수
+
+```jsx
+function add(a, b, callback) {
+    setTimeout(() => {
+         const sum = a + b;
+         callback(sum);
+    },3000)
+}
+
+add(a, b, (value) => {
+    console.log(value);
+})
+```
+
+```jsx
+function orderFood(food, callback){
+    setTimeout(() => {
+        const food;
+        callback(food);//그냥 return 해주면 되는것 아닌가? 왜 callback 쓰지?
+    }, 3000)
+}
+
+function coolDownFood(food,callback){
+    setTimeout(() => {
+        const coolDownedFood = `식은 ${food}입니다.`
+        callback(coolDownedFood);
+    }, 2000)
+}
+
+function freezeFood(food,callback) {
+    setTimeout(() => {
+        const freezedFood = `얼린 ${food}입니다.`
+        callback(freezedFood);
+    }, 1000)
+}
+
+orderFood("떡볶이", (food) => {
+    console.log(food);
+    coolDownFood(food, (coolDownedfood) => {
+        console.log(coolDownedfood)
+            freezeFood(coolDownedFood, (freezedFood) => {console.log(freezedFood)});
+    });
+});
+```
+
+이렇게 코드를 쭉 내려써도 되긴한데, 보다시피 코드가 길어지면 길어질수록 지저분해진다. 이를 “콜백 지옥”이라고 프로그래머들이 부른다.
+
+이를 해결하기 위해, Promise라는 객체를 활용한다.
+
+### Promise
+
+비동기 작업을 효율적으로 처리할 수 있도록 도와주는 Javascript 내장 객체
+
+- Promise의 3가지 상태
+
+![image.png](image%207.png)
+
+- 성공시
+
+```jsx
+const promise = new Promise((resolve, reject) => {
+    //비동기 작업을 실행하는 이 화살표 함수를 Executor라고 정의한다.
+    setTimeout(() => {
+        console.log("안녕");
+        resolve(); // fullfilled 상태로 전환됨.
+	      // 만약 이때, resolve("안녕")을 넣으면 안녕이라는 값이 잘 나오는 것을
+	      // 확인할 수 있다.
+    },2000);
+});
+
+setTimeout(() => {
+    console.log(promise);
+},3000);
+```
+
+- 실패시
+
+```jsx
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log("안녕");
+        reject("왜 실패했는지 알려드림");
+    },3000)
+});
+
+setTimeout(() => {
+    console.log(promise);
+},2000)
+```
+
+- reject 함수는 어떻게 실행되는거지?
+
+```jsx
+Promise.reject = function(reason) {
+  return new this(function(resolve, reject) {
+    reject(reason);
+  });
+};
+```
+
+- then
+
+```jsx
+const promise = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+    const num = 10;
+    if(typeof num === 'number'){
+        resolve(num + 10);
+    }else{
+        reject("num이 숫자가 아닙니다.");
+    }
+
+    },3000)
+});
+
+promise.then((value) => {
+    console.log(value);
+});
+//promise에서 resolve에 성공한 값을 매개변수로 전달해준다.
+
+```
+
+- catch
+
+실패했을 때, 코드를 반환한다.
+
+```jsx
+const promise = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+    const num = 10;
+    if(typeof num === 'number'){
+        resolve(num + 10);
+    }else{
+        reject("num이 숫자가 아닙니다.");
+    }
+    },3000)
+});
+
+promise.catch((error) => {
+    console.log(error);
+});
+```
+
+- Promise Chaining
+
+```jsx
+promise.then((value) => {
+    console.log(value);
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+```jsx
+function add10(num){
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(typeof num === 'number'){
+                resolve(num + 10);
+            }else{
+                reject("num이 숫자가 아닙니다.");
+            }
+        },3000);
+    });
+    return promise;
+});
+
+const p = add10(0);
+p.then((result) => {
+    console.log(result);
+    const newP = add(result);
+        newP.then((result) => {
+        console.log(result);
+    });
+});
+```
+
+위 코드처럼 콜백 지옥을 형성하는건 좋지 않다고 배웠다.
+
+Promise를 활용하면 아래 처럼 코드가 작성가능하다.
+
+```jsx
+add10(0)
+    .then((result) => {
+        console.log(result);
+        return add10(result);
+    })
+    .then((result) => {
+        console.log(result);
+        return add10(result);
+    })
+    .then((result) => {
+        console.log(result);
+    });
+    .catch((error) => {
+        console.log(error);
+    })
+```
+
+이렇게 Callback함수에서 벗어나게 된다.
+
+직접 Promise를 구현해보자 아직 내가 완전히 자유자재로 사용할 수는 없다.
+
+[[JS] 자바스크립트 Promise 객체 직접 구현해보기](https://velog.io/@turtle601/JS-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Promise-%EA%B0%9D%EC%B2%B4-%EC%A7%81%EC%A0%91-%EA%B5%AC%ED%98%84%ED%95%B4%EB%B3%B4%EA%B8%B0)
+
+[https://github.com/turtle601/promise-object-myself](https://github.com/turtle601/promise-object-myself)
+
+### Async / Await
+
+- async
+
+어떤 함수를 비동기 함수로 만들어주는 예약어
+
+`즉, 함수가 프로미스를 반환하도록 변환해주는 예약어`
+
+```jsx
+async function getData(){
+    return {
+        name: "이정환",
+        id: "winterlood",
+    };
+}
+
+console.log(getData()) // Promise 객체로 반환됨.
+```
+
+```jsx
+async function getData(){
+    return new Promise(resolve, reject){
+       setTimeout(() => {
+           resolve(
+               {
+               name : "신승윤",
+               age : 27
+               }
+           );
+       }, 1500);
+    });
+}
+
+console.log(getData());
+//이렇게 처음부터 Promise를 반환하는 함수에서는 async가 작동은 하지만
+```
+
+- await
+
+async 함수 내에서만 사용이 가능한 예약어
+
+비동기 함수가 다 처리되기를 기다리는 역할.
+
+```jsx
+function printData(){
+    getData().then((result) => {
+        console.log(result);
+    })
+}
+
+printData();
+```
+
+원래는 위 코드 처럼 작성해줘야 했다.
+
+await 예약어를 사용하면, 그렇게 할 필요가 없다.
+
+비동기 함수가 다 처리되기를 기다린 후 결과값을 반환해준다.
+
+```jsx
+async function printData(){
+    const data = await getData();
+    console.log(data);
+}
+```
+
+async가 붙어있지 않으면 에러가 발생한다.
+
+# Node.Js 기초
+
+React.js, Next.js, Vue.js, Svelte 등의 기술들은 Node.js를 기반으로 작동하는 기술이다.
+
+- Node.Js란?
+
+Node.Js는 웹브라우저가 아닌 환경에서도 Javascript 코드를 실행시켜주는 실행 환경(구동기)이다.
+
+처음엔 웹브라우저에서만 사용되다가, 사람들이 언어를 좋아하고 Web이외에서도 사용하고 싶어해서 2009년에 별도로 나오게됨.
+
+- NPM(Node Package Manager)
+
+Node.Js의 Project 단위인 Package를 관리하는 도구이다.
+
+새로운 패키지, 외부 라이브러리 설치, 삭제를 돕는 유용한 도구이다.
+
+- Node.js 사용하기
+    - 프로젝트
+    
+    정의 : 특정 목적을 갖는 프로그램의 단위
+    
+    일반적으로, 우리는 쇼핑몰 프로젝트, 웹 포털 프로젝트를 한다. 혹은 만든다. 라고 표현한다.
+    
+    - 패키지
+    
+    Node.js에서는 프로젝트를 패키지라고 명명한다.
+    
+    Node.js에서 사용하는 프로그램의 단위이다.
+    
+    즉, 쇼핑몰 패키지, 웹 포털 패키지라고 부른다.
+    
+    ```jsx
+    npm init -> 프로젝트 설정
+    
+    이후 
+    
+    {
+      "name": "section03",
+      "version": "1.0.0",
+      "main": "index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "author": "",
+      "license": "ISC",
+      "description": ""
+    }
+    
+    ```
+    
+    처럼 하나하나씩 패키지(프로젝트) 이름 부터 시작해서 모두 설정해준다.
+    
+    패키지 안에 계속해서 파일들이 늘어나면 실행경로가 계속해서 복잡해 질 수 있다.
+    
+    이때, Package Script를 활용해서 미리 지정해둘 수 있다.
+    
+    ```jsx
+    {
+      "name": "section03",
+      "version": "1.0.0",
+      "main": "index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node src/index.js"
+      },
+      "author": "",
+      "license": "ISC",
+      "description": ""
+    }
+    ```
+    
+    이렇게 “start”로 경로를 설정해두면 npm run start로 바로 실행할 수있다.
+    
+
+### 모듈
+
+기능단위로 나눠서 관리한다.
+
+ex) 회원관리기능 → user.js
+
+ex) 장바구니 기능 → cart.js
+
+ex) 결제 기능 → payment.js
+
+- 모듈 시스템
+
+모듈을 생성하고, 불러오고, 사용하는 등의 모듈을 다루는 다양한 기능을 제공하는 시스템
+
+Javascript 에는 여러 모듈 시스템들이 존재한다.
+
+ex) Common JS(CJS), ES Module(ESM), AMD, UMD …
+
+- Common JS
+
+```jsx
+function add(a, b){
+    return a + b;
+}
+
+function sub(a, b){
+    return a - b;
+}
+
+//Common JS (CJS);
+module.exports = {
+    add : add, // add 프로퍼티에 add 함수 매핑
+    sub : sub, // sub 프로퍼티에 sub 함수 매핑
+}
+
+-> 
+
+module.exports = {
+    add // add 프로퍼티에 add 함수 매핑
+    sub // sub 프로퍼티에 sub 함수 매핑
+}
+
+이때, 프로퍼티와 매개변수의 이름이 같다면 위 처럼 그냥 작성해도된다.
+```
+
+```jsx
+const mouduleData = require("./math");
+
+console.log(mouduleData.add(1,2)); -> 3
+console.log(mouduleData.sub(1,2)); -> -1
+```
+
+이렇게 require 함수로 경로를 작성하면, math.js에 있는 모듈을module.exports = {add, sub} 라는 Common JS 모듈 시스템이 각 함수들을 반환해줘서 쓸 수 있게된다.
+
+```jsx
+const {add, sub} = require("./math");
+
+console.log(add(1,2)); -> 3
+console.log(sub(1,2)); -> -1
+```
+
+구조분해할당을 사용해서 이렇게 사용해도된다.
+
+- ES Module 시스템을 사용하는 방법
+
+```jsx
+{
+  "name": "section03",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": module // 이 문장을 추가해주면 ES Module을 사용한다.
+}
+```
+
+```jsx
+function add(a, b){
+    return a + b;
+}
+
+function sub(a, b){
+    return a - b;
+}
+
+export{add, sub};
+```
+
+위처럼 해도된다.
+
+```jsx
+import {add, sub} from "./math.js";
+
+console.log(add(1,2));
+console.log(sub(1,2));
+```
+
+ES Module은 확장자까지 작성해줘야 한다는 점을 알고있자.
+
+```jsx
+export function add(a, b){
+    return a + b;
+}
+
+export function sub(a, b){
+    return a - b;
+}
+
+export default function multiply(a,b){
+    return a * b;
+}
+```
+
+export default는 math.js의 모듈을 대표하는 기본값으로 지정된다.
+
+```jsx
+import mul from "./math.js"; // default는 이렇게 불러올 수 있다.
+import {add, sub} from "./math.js";
+
+console.log(add(1,2));
+console.log(sub(1,2));
+console.log(mul(2,3));
+```
+
+```jsx
+import mul,{add, sub} from "./math.js";
+
+console.log(add(1,2));
+console.log(sub(1,2));
+console.log(mul(2,3));
+```
+
+이렇게 합쳐서 사용할 수도 있다.
+
+### 라이브러리
+
+프로그램을 개발할 때 필요한 다양한 기능들을 미리 만들어 모듈화 해 놓은 것
+
+[npmjs.com](http://npmjs.com) → 여기에 Javascript에 필요한 모든 라이브러리가 있다.
+
+npm으로 패키지를 설치하면 어떤 일이 발생하는가?
+
+- node_modules
+
+내가 설치한 라이브러리가 실제로 저장되는 곳
+
+- package-lock.json
+
+훨씬 자세한 라이브러리 정보를 제공한다.
+
+기존에 제공하던 package.json의 denpendencies들의 앞에 붙는 “^0.6.2”의 ’^‘ 표시는 Version Range라고 해서 대략적인 버전이 표기되어있는데, 최신버전을 설치하겠다는 의미이다.
+
+```jsx
+import randomColor from "randomcolor";
+
+const color = randomColor();
+console.log(color);
+```
+
+이렇게 라이브러리로 불러올때는 .js 확장자를 붙여줄 필요가 없다.
+
+만약 node_module, package-lock.json이 제거되었을때, 실행이 안되면 다시 설치해주면된다.
+
+```jsx
+npm i
+npm install
+```
+
+둘 중에 하나만 선택하면 dependencies를 보고 다시 설치해주니 걱정할 필요가없다.
+
+github에 업로드할 때, 용량이 큰 node_module은 올리지말자.
+
+어차피 npm install을 하면 어디서든 받을 수 있다.
+
+# React.js 개론
+
+## React.js 소개
+
+1. 기술적인 특징
+
+컴포넌트를 기반으로 UI를 표현한다.
+
+![image.png](image%208.png)
+
+.js 파일 내부에 컴포넌트 단위로 나눠서 관리한다.
+
+1. 화면 업데이트 구현이 쉽다.
+
+사용자의 행동(클릭, 드래그)에 따라 웹 페이지가 스스로 모습을 바꿔 상호작용 하는 것.
+
+React는 선언형 프로그래밍 방식이다.
+
+각각의 Component에는 State라는 현재의 상태를 저장하는 특수한 변수가 있다.
+
+State 변수의 값이 바뀌면 렌더링 결과가 달라지게끔 설계가 된다.
+
+![image.png](image%209.png)
+
+1. 화면 업데이트가 빠르게 처리된다.
+
+![image.png](image%2010.png)
+
+1. 각각 HTML은 DOM, CSS는 CSSOM으로 변환하게 된다.
+
+DOM이란 브라우저가 더 이해하기 쉬운방식으로 변환한 객체이다.
+
+![image.png](image%2011.png)
+
+DOM에는 요소들의 위치, 배치, 모양에 관한 모든 정보가 저장된다.
+
+CSSOM에는 요소들의 스타일과 관련된 모든 정보가 저장된다.
+
+Render Tree에는 웹 페이지의 청사진들이 포함되어 있다.
+
+![image.png](image%2012.png)
+
+Layout → 요소의 배치를 잡는 작업
+
+Painting → 실제로 화면에 그려내는 작업
+
+### Update는 어떻게 이루어 지는 걸까?
+
+`Javascript가 DOM을 수정하게 되면 발생하게 된다.`
+
+Critical Rendering Path의 전체과정을 다시 진행한다.
+
+`그런데, 여기서 Layout<Reflow>과 Painting<Repaint> 작업은 매우 오래 걸리는 작업이다.`
+
+```jsx
+<script>
+    function onClick(){
+        const $ul = document.getElementById("ul");
+        for (let i = 0; i < 3000; i++){
+            $ul.innerHTML += `<li>${i}</li>`; //DOM을 3000번 수정한다.
+        }
+    }
+</script>
+
+<body>
+    <button onclick="onClick()">리스트 추가하기</button>
+    <ul id="ul"></ul>
+</body>
+```
+
+4.5초 정도 수행한다.
+
+위 코드 처럼 작성하면 안되고 아래 코드 처럼 DOM을 건드리지 않게끔 작성해야 한다.
+
+```jsx
+<script>
+    function onClick(){
+        const $ul = document.getElementById("ul");
+        for (let i = 0; i < 3000; i++){
+            list += `<li>${i}</li>`; //DOM을 3000번 수정한다.
+            $ul.innerHTML = list;
+        }
+    }
+</script>
+
+<body>
+    <button onclick="onClick()">리스트 추가하기</button>
+    <ul id="ul"></ul>
+</body>
+```
+
+0.25초 정도 만에 가능 약 22배 개선
+
+즉, 마치 Batch 처리하는것 처럼 처리하면 된다.
+
+![image.png](image%2013.png)
+
+하지만 서비스의 규모가 커질수록 하나씩 이렇게 작업하는게 어려워진다.
+
+이때 React는 이 과정을 Virtual DOM을 활용해서 자동으로 진행해준다.
+
+![image.png](image%2014.png)
+
+원래는 실제 DOM을 건드려서 매번 수정이 되겠지만, React는 Virtual DOM을 만들어서 Update가 일어나더라도 Virtual DOM의 내용을 수정하다가 모든 Update가 모이면 한번에 반영한다.
+
+![image.png](image%2015.png)
+
+## React App
+
+React는 npm의 라이브러리이기 때문에, Node.js 패키지를 생성하고 React 라이브러리를 설치하고 기타 도구 설치 및 설정을 해주어야 한다.
+
+다만, 기타 도구 설치 및 설정이 난이도가 매우 높다.
+
+그래서 Vite라는 차세대 프론트엔드 개발툴인 기본 설정이 적용된 React App을 생성한다.
+
+```jsx
+npm create vite@latest //생성
+```
+
+```jsx
+{
+  "name": "section04",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module", //ES Module을 사용한다는 사실을 알 수 있다.
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": { //라이브러리들이다.
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": { //개발 도구들이다.
+    "@eslint/js": "^9.19.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "vite": "^6.1.0"
+  }
+}
+
+```
+
+아직 설치되어 있지 않으므로 npm i 로 설치해줘야한다.
+
+생성된 public 폴더는 정적 이미지와 같은 파일들이 있는 곳이다.
+
+React App 구동원리
+
+리액트 내부에는 Web Server가 존재한다.
+
+# React.js 입문
+
+## React 컴포넌트
+
+React에서는 함수로 컴포넌트를 가장 많이 표현한다.
+
+클래스로도 가능은 하나, 코드의 양이 너무 많아 진다.
+
+`컴포넌트의 첫글자는 반드시 대문자가 되어야 한다.`
+
+```jsx
+const Header = () => {
+    return (
+        <header>
+            <h1>
+                header
+            </h1>
+        </header>
+    )
+}
+```
+
+컴포넌트는 .jsx와 같은 확장자를 쓰지 않아줘도 된다.
+
+```jsx
+import "./App.css";
+import Header from "./components/Header";
+import Main from "./components/Footer";
+import Footer from "./components/Main"
+```
+
+```jsx
+//./components/Footer.jsx
+const Footer = () => {
+  return (
+    <footer>
+      <h1>Footer</h1>
+    </footer>
+  );
+};
+
+export default Footer;
+
+```
+
+### JSX로 UI 표현하기
+
+```jsx
+function Footer() {
+    return (
+        <footer>
+            <h1>footer</h1>
+        </footer>
+    );
+}
+```
+
+Javascript에서는 원래 HTML을 반환할 수 없다.
+
+문법적인 오류로 판단한다.
+
+![image.png](image%2016.png)
+
+`그런데, React.js에서는 JSX라는 문법을 사용하므로 적법하다고 판단한다.`
+
+Javascript Extenstion(확장된 Javascript 문법 이라는 뜻)
+
+![image.png](image%2017.png)
+
+위 처럼 ``Template Literal을 사용하지 않고도 그대로 값을 넣어줄 수 있다.
+
+### JSX 주의 사항
+
+1. 중괄호 내부에는 Javascript 표현식 만 넣을 수 있다.
+
+```
+const Main = () => {
+  const number = 10;
+
+  return (
+    <main>
+      <h1>Main</h1>
+      <h2>{number + 10}</h2> // 10도 된다.
+      <h2>{number % 2 === 0 ? "짝수" : "홀수"}</h2> //삼항연산자도 된다.
+    </main>
+  );
+  
+};
+
+export default Main;
+```
+
+1. 숫자, 문자열, 배열 값만 렌더링 된다.
+
+```jsx
+const Main = () => {
+    return (
+      {123}//123
+      {number} // 10
+      {[1,2,3]} // 123
+      {true} //렌더링 안되서 화면에 안보여짐
+      {null} //렌더링 안되서 화면에 안보여짐
+      {undefined} //렌더링 안되서 화면에 안보여짐
+      {obj} // 객체가 들어가면 전체 오류가 발생해서 화면이 먹통이 된다.
+      {obj.a} //객체의 값은 가능하다. 렌더링이 된다.
+    )
+}
+```
+
+1. 모든 태그는 닫혀야한다.
+
+`html에서는 <img>같은 태그는 닫지 않아도 상관없었는데, JSX에서는 반드시 닫아줘야한다.`
+
+```jsx
+const Main = () => {
+    return (
+        <img></img> 이렇게 닫거나
+        </img> 이렇게 닫아줘야 한다.
+    )
+}
+```
+
+1. 최상위 태그는 반드시 1개 여야한다.
+
+```jsx
+const Main = () => {
+     return (
+     <div></div>
+     <main></main> //이렇게 최상위 태그가 2개면 오류가 발생한다.
+     )
+}
+```
+
+![image.png](image%2018.png)
+
+최상위로 묶을만한 마땅한 태그가 없다면, 빈태그로 묶어주면 된다.
+
+이 빈태그는 무슨 의미지? 했던게 이런 오류가 발생하는걸 막기위한 의미였다.
+
+- 스타일 주는 법
+
+기존에 사용하던 CSS문법이 아니라, background-color → backgroundColor 이렇게 사용한다.
+
+```jsx
+ const Main = () => {
+  const user = {
+    name: "이정환",
+    isLogin: true,
+  };
+
+  return (
+    <>
+      {user.isLogin ? (
+        <div
+          style={{
+            backgroundColor: "red",
+            borderBottom: "5px solid blue",
+          }}
+        >
+          로그아웃
+        </div>
+      ) : (
+        <div>로그인</div>
+      )}
+    </>
+  );
+};
+```
+
+이렇게 넣어줘도 된다.
+
+하지만, 보다시피 너무 불편해 보인다.
+
+그래서 아래처럼 따로 분리해주면 된다.
+
+```css
+//Main.css
+.logout {
+  background-color: red;
+  border-bottom: 5px green;
+}
+
+```
+
+```jsx
+import "./Main.css";
+
+const Main = () => {
+  const user = {
+    name: "이정환",
+    isLogin: true,
+  };
+
+  return (
+    <>
+      {user.isLogin ? (
+        <div className="logout">로그아웃</div>
+      ) : (
+        <div>로그인</div>
+      )}
+    </>
+  );
+};
+
+export default Main;
+
+```
+
+원래 HTML에서는 <div class=”logout”>만 사용했었는데, JSX에서는 className이라고 작성해서 사용한다는 점을 알고 있어야한다.
+
+### Props
+
+부모 컴포넌트에서 자식 컴포넌트에게 값을 넘겨주는 방식
+
+```jsx
+function App() {
+    return (
+        <>
+            <Button text={"메일"} img={"mail.png"} />
+            <Button text={"카페"} img={"cafe.png"} />
+            <Button text={"블로그"} img={"blog.png"} />
+        </>
+    )
+}
+```
+
+React는 부모 Component가 자식 Component에게 함수에 인수를 전달하듯이 원하는 값을 전달할 수 있다.
+
+`이때, Component에 전달된 값을 Props라고 정의한다.`
+
+Properties라고 생각하면 된다.
+
+![image.png](image%2019.png)
+
+```jsx
+import "./App.css";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
+import Button from "./components/Button";
+
+function App() {
+  return (
+    <>
+      <Button text={"메일"} />
+      <Button text={"카페"} />
+      <Button text={"블로그"} />
+    </>
+  );
+}
+
+export default App;
+```
+
+```jsx
+
+function App(){
+        const Button = (props) => {
+        console.log(props);
+        return <button>클릭</button>;
+    };
+}
+export default Button;
+
+```
+
+![image.png](image%2020.png)
+
+위 코드처럼 App.jsx에서 Button Component의 text로 props를 전달해주면 자식 컴포넌트 Button의 매개변수로 들어간다는 점을 기억해야 한다.
+
+```jsx
+const Button = (props) => {
+  return <button style={{ color: props.color }}>{props.text}</button>;
+};
+
+export default Button;
+```
+
+```jsx
+</Button text={"메일"} color={"red"}>
+```
+
+```jsx
+const Button = (props) => {
+  return (
+    <button style={{ color: props.color }}>
+      {props.text}-{props.color.UpperCase()}
+    </button>
+  );
+};
+
+Button.defaultProps = {
+    color: "black"
+}
+
+export default Button;
+```
+
+만약 이런식으로 color property가 항상 있을거라고 확신하고 코드를 작성하면, UpperCase()와 같은 함수를 만났을때, 오류가 발생한다.
+
+이런 경우를 해결하기 위해서, React 18버전 에서는 Button.defaultProps를 사용했다.
+
+25년도 이후에 React19에서는 구조분해할당으로 이를 수행한다.
+
+```jsx
+const Button = ({text, color = "black"}) => {
+  return (
+    <button style={{ color: color }}>
+      {text}-{color.UpperCase()}
+    </button>
+  );
+};
+
+export default Button;
+```
+
+- 만약 Props가 많다면?
+
+```jsx
+</Button text={"메일"} color={"red"} a={1}>
+```
+
+```jsx
+const buttonProps = {
+    text: "메일",
+    color: "red",
+    a: 1,
+    b: 2,
+    c: 3,
+}
+
+return <Button {...buttonProps} />
+// 이렇게 작성하면 된다.
+```
+
+- Props에는 일반적인 Javascript 값만 아니라, React Component와 HTML 요소도 넣을 수 있다.
+
+```jsx
+return (
+    <>
+        <Button {...buttonProps} />
+        <Button text={"카페"} />
+        <Button text={"블로그"} >
+	          <div>자식 요소</div>
+	          //<Header />
+        </Button>
+    </>
+);
+```
+
+```jsx
+const Button = ({children, text, color = "black"}) => {
+  return (
+    <button style={{ color: color }}>
+      {text}-{color.UpperCase()}
+    </button>
+    {children}
+  );
+};
+
+export default Button;
+```
+
+Button에 props로 div를 넣게되면 Button에 자동으로 children이라는 이름으로 값을 받을 수 있게 된다.
+
+![image.png](image%2021.png)
+
+### Event Handling
+
+- Event
+
+웹 내부에서 발생하는 사용자의 행동
+
+ex) 버튼 클릭, 메세지 입력, 스크롤 등등
+
+- Event Handling
+
+이벤트가 발생했을 때, 그것을 처리하는것
+
+ex) 버튼 클릭시 경고창 노출
+
+```jsx
+onClick={() => {
+  console.log(text);
+}}
+```
+
+클릭 했을때, 함수의 내용을 처리해 주기 때문에 이것을 Event Handler라고 표현한다.
+
+이또한 내용이 길어지면
+
+```jsx
+const Button = ({ text, color = "black" }) => {
+  const onClickButton = () => {
+    console.log(text);
+  };
+
+  return (
+    <button onClick={onClickButton} style={{ color: color }} onMouseEnter={onClickButton}>
+      {text}-{color}
+    </button>
+  );
+};
+
+export default Button;
+```
+
+이런식으로 작성해도된다.
+
+```jsx
+<button onClick={onClickButton} style={{ color: color }}> -> O
+<button onClick={onClickButton()} style={{ color: color }}> -> X
+```
+
+위와 같은 모든 컴포넌트에 onClick, onMouseEnter와 같은 이벤트는 Event Handler 함수를 호출하면서 이벤트 객체를 제공한다.
+
+```jsx
+const onClickButton = (e) => {
+    console.log(e);
+    console.log(text);
+}
+```
+
+- 합성 이벤트란?
+
+### Synthetic Base Event
+
+모든 웹 브라우저의 이벤트 객체를 하나로 통일한 형태
+
+웹 브라우저들은 동작이 모두 조금씩 다르다.
+
+ex) 크롬에서는 Event가 발생한 대상인 target 객체가 있는데, Safari에서는 ETarget이라고 정의한다.
+
+여기서, 브라우저 별 스펙이 달라서 발생하는 문제를 Cross Browsing Issue라고 부른다.
+
+이때, 모든 브라우저에서의 이벤트 객체를 하나로 통일한 형태를 `합성 이벤트라고 정의한다.`
+
+### State
+
+[State: A Component's Memory – React](https://react.dev/learn/state-a-components-memory)
+
+Components need to “remember” things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called `*state*.`
+
+ `컴포넌트 특화 메모리를 State라고 정의한다.`
+
+- React는 Component가 상태를 저장할 수 있다.
+
+현재 가지고 있는 형태나 모양을 정의 변화할 수 있는 동적인 값
+
+```jsx
+function App(){
+    const state = useState(0);
+    console.log(state);
+    return <></>;
+}
+```
+
+usestate는 2개의 값을 담은 배열을 반환한다.
+
+배열의 첫번째 요소는 새롭게 생성된 State의 값이다.
+
+배열의 두번째 요소는 State를 변경시키는 상태변환 함수이다.
+
+그래서 아래처럼 구조분해 할당으로 받는게 일반적이다. 
+
+```jsx
+function App(){
+    const [state, setState] = useState(0); // 이렇게 받는게 일반적이다.
+        
+    return (
+        <>
+            <h1>{state}</h1>
+            <button onClick={()=>{
+                setState(state + 1);
+            }}>+</button>
+        </>
+    );
+}
+
+export default App;
+```
+
+Component내에 새로운 State를 생성하고 button과 같이 Event Handling을 해주면 리액트가 내부적으로 App Component의 State가 변경되었다는 것을 감지해서 이 Component를 다시 랜더링 해준다.
+
+- 왜 변수로 굳이 useState를 쓰지? let으로 쓰면 안되고?
+
+```jsx
+import "./App.css";
+import { useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+  const [light, setLight] = useState("OFF");
+
+  return (
+    <>
+      <div>
+        <h1>{light}</h1>
+        <button
+          onClick={() => {
+            if (light === "OFF") {
+              setLight("ON");
+            } else {
+              setLight("OFF");
+            }
+            // setLight(light === "ON" ? "OFF" : "ON")
+          }}
+        >
+          전구 끄기/켜기 //{light === "ON" ? "끄기" : "켜기"}
+        </button>
+      </div>
+      <div>
+        <h1>{count}</h1>
+        <button
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
+          +
+        </button>
+      </div>
+    </>
+  );
+}
+```
+
+let으로 정의해보면 안다.
+
+```jsx
+let light = "OFF"
+
+<button onClick={() => {
+    light = light === "OFF" ? "ON" : "OFF";
+}}>
+    {light === "ON" ? "끄기" : "켜기"}
+</button>
+```
+
+이렇게 정의하고 눌러보면, 전혀 Re-Render가 발생하지 않는다는걸 확인할 수 있다.
+
+React에서는 State 값들이 변화했을 때만, Re-Render가 발생한다.
+
+### Props를 State로 전달하기 (자원 관리)
+
+- State를 Props를 이용해서 자식 Component에게 전달하는 방법
+
+기존의 코드는 부모로 부터 받은 Props의 상태에 따라서 Re-Render된다.
+
+그런데, 이상하게도 아래에 +버튼을 눌렀을 떄도, Bulb가 Re-Render된다.
+
+이는 자원 낭비가 될 수 있다.
+
+그래서 언제 Re-Render가 발생하는지 알고있어야 한다.
+
+- React에서는 딱 3가지 상황에서만 Re-Render가 발생한다.
+1. 자신(컴포넌트)이 관리하는 State 값이 변경되었을 때, Re-Rendering이 진행된다.
+2. 자신(컴포넌트)이 제공받는 Props의 값이 변경되었을 때,  Re-Rendering이 진행된다.
+3. 부모 Component가 Re-Rendering되면 자식 Component도 Re-Rendering된다.
+
+현재 +버튼을 누르면 1번 경우처럼, App 컴포넌트의 State 값이 변경되기 때문에, App 컴포넌트 전체가 Re-Redner 된다.
+
+그래서 이러한 경우를 방지하기 위해서, 관련없는 컴포넌트를 분리해줘야 한다.
+
+```jsx
+import "./App.css";
+import { useState } from "react";
+
+const Bulb = () => {
+  const [light, setLight] = useState("OFF");
+
+  return (
+    <>
+      <div>
+        {light === "ON" ? (
+          <h1 style={{ backgroundColor: "orange" }}>ON</h1>
+        ) : (
+          <h1 style={{ backgroundColor: "gray" }}>OFF</h1>
+        )}
+      </div>
+      <button onClick={() => setLight(light === "ON" ? "OFF" : "ON")}>
+        켜기 //{light === "ON" ? "끄기" : "켜기"}
+      </button>
+    </>
+  );
+};
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <>
+      <Bulb />
+      <Counter />
+    </>
+  );
+}
+
+export default App;
+```
+
+그래서 위 코드처럼 컴포넌트를 분리해주면, 더 이상 한꺼번에 Re-Render가 발생하지 않는다. `(매우매우 중요하다.)`
+
+그리고, 마지막으로 여러 jsx들로 모두 나눠주면 된다.
+
+Bulb.jsx, Counter.jsx, Register.jsx
+
+### State로 사용자 입력 관리하기
+
+```jsx
+import {useState} from 'react';
+
+const onChangeName = (e) => {
+    setName(e.target.value);
+}
+
+const Register = () => {
+    const [name, setName] = useState("이름");
+    const [birth, setBirth] = useState("");
+    
+    return (
+	      <>
+            <input value={name} onChange={onChangeName} placeholder={이름}/>
+            {name}
+        </>
+    )
+}
+
+export default Register;
+```
+
+![image.png](image%2022.png)
+
+value는 input 태그의 초기값이다.
+
+- 코드 정리
+
+```jsx
+import { useState } from "react";
+
+const Register = () => {
+  const [name, setName] = useState("이름");
+  const [birth, setBirth] = useState("");
+  const [country, setCountry] = useState("");
+  const [bio, setBio] = useState("");
+
+  const onChangeName = (e) => {
+    setName(e.target.value);
+  };
+
+  const onChangeBirth = (e) => {
+    setBirth(e.target.value);
+  };
+
+  const onChangeCountry = (e) => {
+    setCountry(e.target.value);
+  };
+
+  const onChangeBio = (e) => {
+    setBio(e.target.value);
+  };
+
+  return (
+    <>
+      <div>
+        <input value={name} onChange={onChangeName} placeholder={"이름"} />
+        {name}
+      </div>
+
+      <div>
+        <input value={birth} onChange={onChangeBirth} type="date" />
+        {birth}
+      </div>
+
+      <div>
+        <select value={country} onChange={onChangeCountry}>
+          <option value=""></option>
+          <option value="kr">한국</option>
+          <option value="us">미국</option>
+          <option value="jp">일본</option>
+        </select>
+        {country}
+      </div>
+
+      <div>
+        <textarea value={bio} onChange={onChangeBio} /> {bio}
+      </div>
+    </>
+  );
+};
+
+export default Register;
+
+```
+
+코드가 반복해서 보이는데 이를 깔끔하게 정리하는 방법에 대해서 알아보자.
+
+- 정답 (위 코드 그대로 복사해서 수정하면서 왜 그렇게 될 수 밖에 없는지 설명할 것)
+    
+    ```jsx
+    import { useState } from "react";
+    
+    const Register = () => {
+      const [input, setInput] = useState({
+        name: "이름",
+        birth: "",
+        country: "",
+        bio: "",
+      });
+    
+      const onChange = (e) => {
+        setInput({
+          ...input,
+          [e.target.name]: e.target.value,
+        });
+      };
+    
+      return (
+        <>
+          <div>
+            <input
+              name="name"
+              value={input.name}
+              onChange={onChange}
+              placeholder={"이름"}
+            />
+            {input.name}
+          </div>
+    
+          <div>
+            <input
+              name="birth"
+              value={input.birth}
+              onChange={onChange}
+              type="date"
+            />
+            {input.birth}
+          </div>
+    
+          <div>
+            <select name="country" value={input.country} onChange={onChange}>
+              <option value=""></option>
+              <option value="kr">한국</option>
+              <option value="us">미국</option>
+              <option value="jp">일본</option>
+            </select>
+            {input.country}
+          </div>
+    
+          <div>
+            <textarea name="bio" value={input.bio} onChange={onChange} />{" "}
+            {input.bio}
+          </div>
+        </>
+      );
+    };
+    
+    export default Register;
+    ```
+    
+    - [e.target.name]의 의미를 알아보자
+    
+    ```jsx
+    const obj = {name : "John"};
+    // In Javascript object literals, properties are usually defined using static keys
+    
+    const key = "age";
+    const obj = {[key]: 25};
+    
+    // However, when you need a dynamic key, you can use computed property names, which are enclosed in square brackets
+    
+    setInput({
+        ...input,
+        username: "Alice", //[e.target.name] becomes 'username'
+    })
+    
+    ```
+    
+    즉 우리가 html element로 보내주는 props들은
+    
+
+### useRef
+
+새로운 Reference 객체를 생성하는 기능
+
+```jsx
+const refObject = useRef();
+```
+
+refObject는 컴포넌트 내부의 변수이다.
+
+useState와 같이 생성된 변수처럼 보이기도 하는데,
+
+useState는 값이 변경되면 컴포넌트를 Re-Render한다.
+
+useRef는 어떤 경우에도 Re-Render를 유발하지 않는다.
+
+```jsx
+const refObject = useRef(0);
+console.log(refObject.current);
+```
+
+특정 DOM 요소에 접근 할 수 있다. 그러므로 해당 요소를 조작하는 것도 가능하다.
+
+![image.png](image%2023.png)
+
+- Re-Render가 유발되지 않음을 확인해보자.
+
+```jsx
+const Register = () => {
+  const refObj = useRef(0);
+  console.log("Register 렌더링");
+  
+  const [input, setInput] = useState({
+    name: "이름",
+    birth: "",
+    country: "",
+    bio: "",
+  });
+
+  return (
+    <>
+      <div>
+        <button
+          onClick={() => {
+            refObj.current++;
+            console.log(refObj);
+          }}
+        ></button>
+      </div>
+    </>
+  );
+};
+  
+export default Register;
+
+```
+
+위 코드에서 console.log가 2번이 모두 실행되어야 하는데, 버튼을 클릭해 보아도, 컴포넌트 자체가 Re-Render가 진행되지 않아, return 에 있는 한번의 console.log만 계속해서 진행되는걸 볼 수 있다.
+
+- 언제 사용하는가?
+
+위에서 살펴봤듯이 useRef는 Re-Render가 유발되지 않아야하는 변수가 필요할 때 사용한다.
+
+- 어차피 Re-Render 안할것이면 let으로 쓰면 되지 않나?
+
+useState는 let 으로 사용하면 어차피 Re-Render가 진행되지 않기 때문에 목적상 필요하다.
+
+그렇다면 useRef는 애초에 Re-Render를 사용하지 않기 위함인데 그냥 let을 사용하면 되는것 아닌가?
+
+```jsx
+import { useState, useRef } from "react";
+
+const Register = () => {
+  const refObj = useRef(0);
+  const inputRef = useRef();
+  console.log("레지스터 렌더링");
+
+  let count = 0;
+
+  const [input, setInput] = useState({
+    name: "이름",
+    birth: "",
+    country: "",
+    bio: "",
+  });
+
+  const onChange = (e) => {
+    count++;
+    console.log(count);
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
+```
+
+위 코드처럼, 우리가 어떤 값을 변경하게 되었을 때, setInput이 일어난다.
+
+이때, 상태변경이 일어나면, Register 컴포넌트 자체가 Re-Render가 일어난다.
+
+그렇게 되면, 계속해서 count = 0로 다시 초기화 되기 때문에, let을 사용할 수 없는 것이다.
+
+`즉, State에 의한 상태변화에 Re-Render가 진행되더라도, useRef로 지정된 변수값은 다시 초기화가 되지 않기 때문이다.`
+
+### React Hooks
+
+클래스 컴포넌트에서만 사용할 수있는 기능들을 함수 컴포넌트에서도 이용할 수 있도록 도와주는 메서드들
+
+2017년도 이전의 React.js는 Class로만 Component를 만들었다.
+
+ex) Class는 State, Ref와 같은 모든 기능을 이용할 수 있다.
+
+2017년 이전의 Function의 Component는 UI 렌더링만 할 수 있었다.
+
+다만 클래스는 문법이 복잡했다.
+
+그래서 함수와 같은 간단한 코드에서 Hook을 이용한 기능들을 끌어오고자하는 생각들이 많았다.
+
+공감을 많이 얻어, React 개발팀과 OpenSource Contributer들은 협업하여 Hooks라는 기능을 개발한다.
+
+앞에서 사용한 useState, useRef와 같은 기능들은 모두 Hooks들 중 하나이다.
+
+Hooks들은 이름앞에 동일한 접두사 use가 붙는다.
+
+ex) useState, useRef 각각의 메서드들은 Hook이라 부른다.
+
+다양한 훅들이 존재하는데, 약 20개 정도의 Hook이 존재한다.
+
+`React Hook은 함수 컴포넌트 내부에서만 호출 가능하다.` 
+
+`조건문, 반복문 내부에서는 호출이 불가하다.`
+
+use를 사용해서 나만의 Custom Hook을 제작할 수도 있다.
+
+### 3가지 Hook 관련 팁
+
+1. Hook은 함수 컴포넌트이거나 커스텀 훅 내부에서만 호출이 가능하다.
+2. 조건부로 호출될 수는 없다. (훅의 호출순서가 엉망이된다.)
+3. Custom Hook은 use를 붙여주면 알아서 Custom Hook으로 인식된다.
+    
+    ```jsx
+    import { useState } from "react";
+    
+    const HookExam = () => {
+      const [input, setInput] = useState("");
+    
+      const onChange = (e) => {
+        setInput(e.target.value);
+      };
+    
+      return (
+        <div>
+          <input value={input} onChange={onChange} />
+          {input}
+        </div>
+      );
+    };
+    
+    export default HookExam;
+    
+    ```
+    
+    위와 같은 코드를 짜놓고 매번 Input을 넣어주려고 할때마다, 위와 같은 코드를 반복해서 작성해야하면 낭비이다.
+    
+    ```jsx
+    import { useState } from "react";
+    
+    const useInput = () => {
+      const [input, setInput] = useState("");
+    
+      const onChange = (e) => {
+        setInput(e.target.value);
+      };
+    
+      return [input, setInput];
+    };
+    
+    const HookExam = () => {
+      const [input, onChange] = useInput();
+      const [input2, onChange2] = useInput();
+    
+      return (
+        <div>
+          <input value={input} onChange={onChange} />
+          {input}
+        </div>
+      );
+    };
+    
+    export default HookExam;
+    ```
+    
+    그땐 이렇게 Custom훅을 만들어서 함수로 빼서 관리하면 코드가 훨씬 간결해진다.
+    
+    그리고 Hook은 또한 코드로 따로 관리하는게 좋다.
+    
+    ```jsx
+    //./hook/useInput.jsx
+    import { useState } from "react";
+    
+    const useInput = () => {
+      const [input, setInput] = useState("");
+    
+      const onChange = (e) => {
+        setInput(e.target.value);
+      };
+    
+      return [input, onChange];
+    };
+    
+    export default useInput;
+    ```
+    
+
+```jsx
+//./HookExam.jsx
+import useInput from "./hooks/useInput";
+
+const HookExam = () => {
+  const [input, onChange] = useInput();
+  const [input2, onChange2] = useInput();
+
+  return (
+    <div>
+      <input value={input} onChange={onChange} />
+      {input}
+    </div>
+  );
+};
+
+export default HookExam;
+```
+
+# Counter 앱
+
+이 Counter를 만들면서 핵심 문제는 서로 분리된 컴포넌트에서 서로 변수를 사용해야 하는데 상태를 어떻게 관리해주지? 에 관한 문제였다.
+
+React에서는 필연적으로 부모 컴포넌트에서 자식 컴포넌트 방향으로 변수를 제어할 수 밖에 없어서 State와 같은 변수는 모든 컴포넌트를 관리할 수 있는 부모 컴포넌트에서 사용해줘야한다.
+
+이렇게 모든 변수들을 공유할 수 있도록 부모 컴포넌트로 끌어올리는 방법을 React에서는 State Lifting이라고 정의한다.
+
+`이를 React.js에서는 위에서 아래로만 흐르기에 '단방향 데이터 흐름' 이라고 정의한다.`
+
+아무리 복잡한 어플리케이션을 설계하더라도 데이터를 보다 더 쉽게 직관적으로 관리할 수 있다는 장점이 있다.
+
+그리고 Props로 각 컴포넌트에 전달해주는게 핵심이다.
+
+아래화면 처럼 말이다.
+
+```jsx
+import "./App.css";
+import Viewer from "./components/Viewer";
+import Controller from "./components/Controller";
+import { useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const onClickButton = (value) => {
+    setCount(count + value);
+  };
+
+  return (
+    <>
+      <div className="App">
+        <h1>Simple Counter</h1>
+        <section>
+          <Viewer count={count} />
+        </section>
+        <section>
+          <Controller onClickButton={onClickButton} />
+        </section>
+      </div>
+    </>
+  );
+}
+
+export default App;
+```
+
+```jsx
+import { useState } from "react";
+
+const Viewer = ({ count }) => {
+  return (
+    <>
+      <div>현재 카운트:</div>
+      <div>
+        <h1>{count}</h1>
+      </div>
+    </>
+  );
+};
+
+export default Viewer;
+
+```
+
+```jsx
+const Controller = ({ onClickButton }) => {
+  return (
+    <>
+      <button
+        onClick={() => {
+          onClickButton(-1);
+        }}
+      >
+        -1
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(-10);
+        }}
+      >
+        -10
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(-100);
+        }}
+      >
+        -100
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(100);
+        }}
+      >
+        +100
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(10);
+        }}
+      >
+        +10
+      </button>
+      <button
+        onClick={() => {
+          onClickButton(1);
+        }}
+      >
+        +1
+      </button>
+    </>
+  );
+};
+
+export default Controller;
+
+```
+
+# Life Cycle
+
+## Mount
+
+컴포넌트가 탄생하는 순간
+
+화면에 처음 렌더링 되는 순간
+
+⇒ A 컴포넌트가 Mount 되었다!
+
+⇒ A 컴포넌트가 화면에 처음으로 렌더링 되었다.
+
+## Update
+
+컴포넌트가 다시 렌더링 되는 순간
+
+리렌더링 될 때를 의미.
+
+⇒  A 컴포넌트가 업데이트 되었다.
+
+⇒ A 컴포넌트가 리렌더링 되었다.
+
+## UnMount
+
+컴포넌트가 화면에서 사라지는 순간
+
+렌더링에서 제외되는 순간을 의미한다.
+
+⇒ A 컴포넌트가 언마운트 되었다.
+
+⇒ A 컴포넌트가 화면에서 사라졌다.
+
+## UseEffect
+
+리액트 컴포넌트의 사이드 이펙트를 제어하는 새로운 React Hook
+
+리액트에서는 “부수적인 효과”, “파생되는 효과” 정도로 해석 가능하다.
+
+ex) 과식을 하면 `살이 찐다.`
+
+- React 컴포넌트의 사이드 이펙트
+
+컴포넌트 내부의 값 변경 → 콘솔에 변경된 값 출력
+
+컴포넌트 마운트 → 콘솔에 “Mount”라고 출력
+
+컴포넌트 업데이트(Re-Render) → 콘솔에 “Update”라고 출력
+
+컴포넌트 언마운트 → 콘솔에 “Unmount”라고 출력
+
+UseEffect를 사용하면, Side Effect를 새롭게 만들거나, 제어할 수 있다.
+
+```jsx
+function App() {
+  const [count, setCount] = useState(0);
+  const [input, setInput] = useState("");
+  useEffect(() => {console.log(`count : ${count} / input : ${input}`)}, [count, input])
+}
+```
+
+위 코드는 count 상태값이 변경되면 useEffect 내부의 콜백함수가 변경된다.
+
+`useEffect의 2번째 매개변수는 ‘의존성 배열’, Dependency Array라고 정의한다. 줄여서 deps`
+
+- 그냥 useState로 생성된 함수를 실행한뒤에 console.log로 출력해주면 되는거 아니야?
+
+왜 굳이 useEffect를 사용해야 하는 거지?
+
+```jsx
+const onClickButton = (value) => {
+    setCount(count + value);
+    console.log(count);
+};
+```
+
+`아쉽게도 이렇게는 작동하지 않는다.` 
+
+Javascript는 비동기적으로 작동해서 함수를 호출은 하지만, 끝내지 않은 상태 console.log 함수를 실행한다.
+
+그래서 +100을 누르면 화면상에는 100이 보이지만, console에는 0으로 찍힌다.
+
+그리고 한번 더 +100을 누르면 console은 200, console에는 100이 찍힌다.
+
+- Life Cycle
+
+```jsx
+// 1. Mount [] 상태변수가 비어있어서 렌더가 되는 처음에만 작동한다.
+useEffect(() => {
+    console.log("mount");
+}, []);
+
+// 2. Update : 변화, 리렌더링
+useEffect(() => {
+    console.log("update");
+});
+
+// 3. Unmount : 죽음
+```
+
+```jsx
+// 1. Mount [] 상태변수가 비어있어서 렌더가 되는 처음에만 작동한다.
+useEffect(() => {
+    console.log("mount");
+}, []);
+
+// 2. Update : 변화, 리렌더링
+useEffect(() => {
+    console.log("update");
+});
+```
+
+이렇게 코드를 작성해두면, console에 mount와 update가 같이 일어난다.
+
+- 만약 mount만 실행시키고 싶다면?
+
+useRef를 사용해서 1번만 변화할 수 있게 코드를 작성하면 된다.
+
+```jsx
+function App() {
+  
+  const isMount = useRef(false);
+
+  useEffect(() => {
+    console.log("mount");
+  }, []);
+
+  useEffect(() => {
+    if (!isMount.current) {
+      isMount.current = true;
+      return;
+    }
+    console.log("update");
+  });
+  
+}
+```
+
+위 처럼 코드를 작성하면, 바로 return 으로 반환해서 최초 1회 mount가 될 때, update가 발생하지 않는다.
+
+- Unmount
+
+컴포넌트를 소멸 시킬 때 정리되는 함수를 사용할 수 있다. 
+
+```jsx
+const Even () => {
+    useEffect(() => {
+        return () => {
+            console.log("unmount")
+        }
+    },[])
+
+    return (<div>짝수 입니다.</div>)
+}
+```
+
+useEffect에서 return으로 콜백함수를 넘겨주면 그 콜백함수가 실행되는데,
+
+`이때 콜백함수를 Clean Up Function, 혹은 정리 함수라고 정의한다.`
+
+# Todo List
+
+```jsx
+.App {
+  width: 500px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+```
+
+퍼블리싱 강의를 언젠가는 들어야겠다는 생각이 드는게, 그냥 위아래는 칸이 맞으니, margin이나 padding 으로 맞추면 되겠다고 생각했지만,
+
+위 처럼 코드를 작성해서 맞춘다.
+
+기존에 알던 HTML과 Javascript만을 활용한 방식과 활용이 조금 달라서 어려웠다.
+
+1. input에 데이터를 가져와서 submit 해주려면, input에 id를 만들고 document.getElementById()를 통해서 아이디를 가져와 dom의 내용을 봐야했다.
+
+- React에서는?
+
+input의 내용은 getElementById로 받지 않는다.
+
+onChange를 통해서 브라우저에 입력된 값을 (synthetic base event의 e.target.value값)을 그대로
+
+useState로 받아온 setInputValue에 e → setInputValue(e.target.value)로 넣어줘야한다.
+
+### 어떻게 만드는가?
+
+css를 세부적인것 부터 시작해서 큰쪽으로 이동하며 만든다.
+
+ex) .List > input, .List >input:focus, .List .todos_wrapper → .List
+
+### 신경써야할 UX
+
+1. button 누르면 풀리는데, 다시 input으로 focus해주기
+2. 엔터누르면 자동으로 되게끔. (13번 enter)
+
+### 각 컴포넌트에 key값을 알아서 잘 부여한다.
+
+```jsx
+todos.map((todos) => {
+    return <TodoItem key={todo.id} {...todo} />
+})
+```
+
+이렇게 하면 순서대로 알아서 key값대로 순서가 붙는다.
+
+### 안보고 직접 만들기
+
+1. 우선에 toLocaleString()으로 변환하려면 날짜변수가 필요하다.
+
+그래서 useState를 사용한다.
+
+1. JSX에서 변수를 사용하는 방법에는 {date}처럼 사용해야한다.
+
+- checked와 내용을 구분하자.
+
+```jsx
+<input type="checkbox">{isDone}</input> -> X
+<input type="checkbox" checked={isDone}/> -> O
+```
+
+- todos 배열안에 든 여러 객체들을 하나씩 풀어서 생성(return)하는 코드
+
+```jsx
+<div className="todos_wrapper">
+    {todos.map((todo) => {
+        return (<div>todo.id</div>
+                <div>todo.content</div>
+                <div>todo.date</div>)
+    })}
+</div>
+```
+
+- 필요할 때 한번만 보내면 useRef(””)로 써도되는거 아닌가?
+
+`useRef가 const로 선언되는 순간 변경이 절대로 불가능하다.`
+
+어떤 이유에서든 변수가 변경되어야한다면, ex) input으로 값이 들어오는데 그걸 내보내야함.
+
+그래서 그 값을 한번에 수정해주는건 불가능한가? (불가능하다.) → 계속 Change로 받아야한다.
+
+- 컴포넌트를 return으로 올리는게 아니다.
+
+```jsx
+  const onCreate = () => {
+    setTodos(<TodoItem/>,...todos)
+  };
+```
+
+- setTodos 배열로 할 때 조심할것.
+
+```jsx
+setTodos(newTodo, ...todos); -> X
+setTodos([newTodo, ...todos]); -> O
+```
+
+- React에서 일반적으로 함수의 매개변수를 정의하는 실수를 많이한다.
+
+```jsx
+const onSubmit = (content) => {
+    onCreate(content);
+}; -> X
+
+const onSubmit = () => {
+    onCreate(content);
+};
+```
+
+- useRef 왜 안돼?
+
+```jsx
+const coundId = useRef();
+
+  const onCreate = (content) => {
+    const newTodo = {
+      id: countId++, // 'countId' is constant
+      isDone: false,
+      content: content,
+      date: new Date().getTime(),
+    };
+
+    setTodos([newTodo, ...todos]);
+  };
+```
+
+useRef로 받아온 변수는 상수(constant)면 어떻게 해야해?
+
+`원래 그래.. 그래서 current를 쓰는거야.`
+
+```jsx
+const coundId = useRef();
+
+  const onCreate = (content) => {
+    const newTodo = {
+      id: countId.current++,
+      isDone: false,
+      content: content,
+      date: new Date().getTime(),
+    };
+
+    setTodos([newTodo, ...todos]);
+  };
+```
+
+- 왜 작동안해?
+
+```jsx
+import "./List.css";
+import "./TodoItem.css";
+
+import TodoItem from "./TodoItem";
+
+const List = ({ todos }) => {
+  const onChangeUpdate = (content) => {
+    return todos.map((todo) => {
+      todo.content.includes(content);
+    });
+  };
+
+  return (
+    <div className="List">
+      <div>Todo List🌿</div>
+      <input onChange={onChangeUpdate} placeholder="검색어를 입력하세요" />
+      <div className="todo_wrapper">
+        {todos.map((todo) => {
+          return <TodoItem key={todo.id} {...todo} onUpdate={onChangeUpdate} />;
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default List;
+```
+
+onChange에 반응할 Value가 없기 때문이다.
+
+- 왜 setFilteredData는 작동하지 않아?
+
+```jsx
+const FilteredData = getFilteredData(); -> O
+setFilteredData(getFilteredData()); -> X
+```
+
+useState의 set은 비동기적으로 작동한다. 그래서 내가 원하는 작업을 하기전에 아직까지 작동하고 있지 않기 때문이다.
+
+- 왜 onDelete가 작동을 안하지?
+
+```jsx
+const onDelete = (targetId) => {
+  setTodos(todos.filter((todo) => todo.id !== targetId));
+};
+
+const onClickDeleteButton = () => {
+  onDelete(id);
+};
+```
+
+id가 없기 때문이야.
+
+자식 컴포넌트에 prop로 onDelete와 id를 넘겨줘야해.
+
+# useReducer
+
+컴포넌트 내부에 새로운 State를 생성하는 React Hook
+
+모든 useState는 useReducer로 대체 가능하다.
+
+```jsx
+function App() {
+  const [todos, setTodos] = useState(mockData);
+  const countId = useRef(4);
+
+  const onCreate = (content) => {
+    const newTodo = {
+      id: countId.current++,
+      isDone: false,
+      content: content,
+      date: new Date().getTime(),
+    };
+
+    setTodos([newTodo, ...todos]);
+  }; //이렇게 useState를 사용해 컴포넌트 내부에서 State를 관리하는 코드들을 작성했다.
+```
+
+```jsx
+function reducer(){
+    // ...
+} //컴포넌트 외부에 상태 관리 코드를 분리할 수 있다.
+
+function App(){
+    const [todos, dispatch] = useReducer(reducer);
+    // ...
+}
+```
+
+```jsx
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "CREATE":
+      return [action.data, ...state];
+    case "UPDATE":
+      return state.map((todo) =>
+        todo.id === action.targetId ? { ...todo, isDone: !todo.isDone } : todo
+      );
+  }
+};
+```
+
+```
+function App() {
+  const [todos, dispatch] = useReducer(useReducer, mockData);
+  const idRef = useRef(4);
+
+  const onCreate = (content) => {
+    dispatch({
+      type: "CREATE",
+      data: {
+        id: idRef.current++,
+        isDone: false,
+        content: content,
+        date: new Date().getTime(),
+      },
+    });
+  };
+
+  const onUpdate = (targetId) => {
+    dispatch({
+      type: "UPDATE",
+      targetId: targetId,
+    });
+  };
+```
+
+코드의 흐름을 보니, dispatch 안에 있는 객체는 action이 된다.
+
+그리고 type을 확인하고 들어가는게 중요해 보인다.
+
+`배열안에 객체가 들어가는 코드들은 보통 useReducer를 사용해서 가독성을 높이는 작성을 해주는게 좋다.`
+
+`Counter 앱처럼 간단한 상태변수만 가지면 useState를 써도 충분하다.`
+
+- 혼자 분석해보는 useReducer
+
+useReducer는 컴포넌트안에 모든 함수가 정의될 때 내용까지 포함되면, 지저분하게 느껴질 수 있다고 판단될 때, 컴포넌트 밖으로 함수를 빼낼 때 사용한다.
+
+- What is Action?
+
+action은 component안에 정의된 사용자 지정 함수의 내부에서 실행된 dispatch(`{}`)함수 안의 객체를 의미한다.
+
+- What is Dispatching?
+
+dispatching means `sending an action object.`
+
+- What is Reducer?
+
+The reducer decide how the state should change based on the action type.
+
+# 최적화
+
+![image.png](image%2024.png)
+
+Highlight updates when components render.로 확인하자.
+
+## useMemo
+
+메모이제이션을 활용한 불필요한 연산 최적화를 사용하는 리액트 훅
+
+```jsx
+  const getAnalyzedData = () => {
+    const totalCount = todos.length;
+    const checkCount = todos.filter((todo) => todo.isDone).length;
+    const notCheckedCount = totalCount - checkCount;
+
+    console.log(totalCount, checkCount, notCheckedCount);
+
+    return { totalCount, checkCount, notCheckedCount };
+  };
+
+  const { totalCount, checkCount, notCheckedCount } = getAnalyzedData();
+
+return (
+  <div className="List">
+    <div>Todo List🌿</div>
+    <div>totalCount : {totalCount}</div>
+    <div>checkCount : {checkCount}</div>
+    <div>notCheckedCount : {notCheckedCount}</div>
+  </div>
+)
+```
+
+검색어를 입력하는데도 Re-render가 계속해서 일어난다.
+
+이렇게 되는걸 방지하기 위해 useMemo를 사용한다.
+
+## React.memo
+
+불 필요한 리 렌더링 방지하기.
+
+`컴포넌트를 인수로 받아, 최적화된 컴포넌트를 만들어 반환한다.`
+
+```jsx
+const MemoizedComponent = memo(Component)
+```
+
+이렇게 만들어진 Component는 부모 Component가 Re-Render 되더라도 자신이 받는 Props가 바뀌지 않으면 Re-render되지 않도록 memo로 최적화된다.
+
+```jsx
+import "./Header.css";
+import { useState, memo } from "react";
+
+const Header = () => {
+  const [date, setDate] = useState(new Date());
+
+  return (
+    <>
+      <div>오늘은😊</div>
+      <h1>{date.toLocaleString()}</h1>
+    </>
+  );
+};
+
+export default memo(Header);
+
+```
+
+Header는 전혀 변하지 않는데, 매번 새로 Re-Render가 진행되고 있다.
+
+이때도 memo를 통해서 최적화해주면 된다.
+
+- 왜 여기선 작동하지 않는가?
+
+![image.png](image%2025.png)
+
+```jsx
+import "./TodoItem.css";
+import { memo } from "react";
+
+const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
+  const onChangeCheckbox = () => {
+    onUpdate(id);
+  };
+
+  const onClickDeleteButton = () => {
+    onDelete(id);
+  };
+
+  return (
+    <div className="TodoItem">
+      <input
+        onChange={onChangeCheckbox}
+        readOnly
+        className="input"
+        type="checkbox"
+        checked={isDone}
+      ></input>
+      <div className="content">{content}</div>
+      <div className="date">{date}</div>
+      <button onClick={onClickDeleteButton}>삭제</button>
+    </div>
+  );
+};
+
+export default memo(TodoItem);
+
+```
+
+memo는 현재 props와 과거 props를 비교해서 Re-Render 여부를 결정한다.
+
+즉 App() 컴포넌트가 Re-Render 될 때 마다, App() 내부에 있는 함수들은 주소로 얕은 비교를 한다.
+
+그런데 이런 함수들은 자식 Component의 Props로 전달되기 때문에 항상 다른 값으로 될 수 밖에 없다.
+
+App Component 에서 함수를 제거하지 않는 이상 새로운 함수로 인식하기 때문에 Re-Render 될 수 밖에 없다.
+
+- 그럼 어떻게 해야하는가?
+1. 함수 자체를 memoization해서 다시 생성 되지 안게 방지하는 방법(useCallback);
+
+1. memo 함수뒤에 callback함수를 넘겨서 최적화 기능을 customize 해주면 된다.
+
+```jsx
+export default memo(TodoItem, (prevProps, nextProps) => {
+    if (prevProps.id !== nextProps.id) return false;
+    if (prevProps.isDone !== nextProps.isDone) return false;
+    if (prevProps.content !== nextProps.content) return false;
+    if (prevProps.date !== nextProps.date) return false;
+    return true;
+    // 반환값에 따라, Props가 바뀌었는지 안바뀌었는지 판단
+    // T -> Props 바뀌지 않음 -> 리렌더링 X
+    // F -> Props 바뀜 -> 리렌더링 O
+})
+```
+
+위 처럼 기능이 추가된 컴포넌트들을 고차 컴포넌트(Higher Order Component)라고 정의한다.
+
+그리고 이를 HOC라고 부른다.
+
+## useCallback
+
+불 필요한 함수 재생성 방지
+
+```jsx
+  if (prevProps.id !== nextProps.id) return false;
+  if (prevProps.isDone !== nextProps.isDone) return false;
+  if (prevProps.content !== nextProps.content) return false;
+  if (prevProps.date !== nextProps.date) return false;
+```
+
+이렇게 하나하나씩 넣어주기도 귀찮고,
+
+위 React.memo에서 설명했듯이 함수 자체를 한번만 Re-Render 되게만들면 된다.
+
+```jsx
+const onDelete = useCallback((targetId) => {
+  dispatch({
+    type: "DELETE",
+    targetId: targetId,
+    });
+},[]);
+```
+
+이런식으로 useCallback 함수로 감싸주면 된다.
+
+최적화의 순서는 우선 기능을 완성시킨 후에 최적화를 하는게 일반적이다.
+
+개발 하는 도중에 계속 useCallback과 같은 최적화를 하게되면, 기능을 추가하거나 수정할 때 오류가 발생할 가능성이 높아진다.
+
+그래서 기능 구현을 먼저하고 마지막에 최적화를 하는게 좋다.
+
+# Context
+
+React Context
+
+컴포넌트 간의 데이터를 전달하는 또 다른 방법
+
+기존의 Props가 가지고 있던 단점을 해결할 수 있다.
+
+Props는 부모 → 자식으로만 데이터를 전달할 수 있다.
+
+![image.png](image%2026.png)
+
+그래서 중간다리로 계속 데이터를 하나씩 넘겨줘야한다.
+
+![image.png](image%2027.png)
+
+변수명 하나 바뀌면 다 바꿔야한다.
+
+그리고 이를 Props가 드릴처럼 내려간다고 해서 Props Drilling이라고 정의한다.
+
+![image.png](image%2028.png)
+
+이를 해결하기 위해 Context라는 데이터 보관소를 만들어 놓고 필요할때 뽑아쓴다.
+
+- Context는 이렇게 나눠서 만들 수도 있다.
+
+![image.png](image%2029.png)
+
+## Context 사용법 (다시 배울 것. 어려움)
+
+Provider는 Context가 공급할 데이터를 설정하거나 Context의 데이터를 공급받을 Component를 설정하는 Property이다.
+
+```jsx
+import { createContext } from "react";
+export const TodoContext = createContext();
+
+<TodoContext.Provider
+  value={{
+    todos,
+    onCreate,
+    onUpdate,
+    onDelete,
+  }}
+>
+  <Editor/>
+  <List/>
+</TodoContext.Provider>
+  //<Editor onCreate={onCreate} /> 이렇게 안써도됨
+  //<List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
+
+```
+
+- 구조분해할당을 언제 써야하는가?
+
+```jsx
+const data = useContext(TodoContext);
+```
+
+위 처럼 데이터를 받게 되면, 아래의 코드를 작성하게 될 때, 매번 아래처럼 작성해줘야할 것 처럼 느꼈다.
+
+```jsx
+const onSubmit = () => {
+  if (content === "") {
+    contentFocus.current.focus();
+    return;
+  }
+  data.onCreate(content);
+  setContent("");
+};
+```
+
+그런데 구조 분해할당을 이용하면 위처럼 작성하지 않아도 된다.
+
+```jsx
+const {onCreate} = useContext(TodoContext);
+
+const onSubmit = () => {
+  if (content === "") {
+    contentFocus.current.focus();
+    return;
+  }
+  onCreate(content);
+  setContent("");
+};
+```
+
+모든 코드를 변경하지 않고도 깔끔하게 할 수 있다.
+
+`이렇게 Context를 사용하니 코드는 깔끔해졌는데, 최적화가 전부다 풀린다.`
+
+- 왜 문제가 발생했을까?
+
+![image.png](image%2030.png)
+
+TodoContext.Provider도 하나의 컴포넌트로 받아온 props들이 변경되면 계속해서 Re-Render를 진행한다.
+
+todos가 추가되거나 수정되면 TodoContext.Provider의 value안에 {`{todos, …}`} ← 이 객체 자체가 새로 생성되어서 Re-Render가 발생한다.
+
+![image.png](image%2031.png)
+
+이때, TodoItem에서 onUpdate, onDelete도 새로 생성되어서 받아오기 때문에 TodoItem 역시 Re-Render가 진행이 되는것이다.
+
+![image.png](image%2032.png)
+
+- 어떻게 해결해야 하는가?
+
+TodoContext를 변경될 수 있는 값(todos), 변경될 수 없는 값(onCreate,onUpdate,…)으로 나누어야 한다.
+
+![image.png](image%2033.png)
+
+```jsx
+  const memoizedDispatch = useMemo(() => {
+    return { onCreate, onDelete, onUpdate };
+  }, []);
+
+  return (
+    <div className="App">
+      {/* <Exam /> */}
+      <Header />
+      <TodoStateContext.Provider value={todos}>
+        <TodoDispatchContext.Provider value={memoizedDispatch}>
+          <Editor />
+          <List />
+        </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider>
+    </div>
+  );
+```
+
+이렇게 쪼개서 넣어줘야한다.
+
+이전에도 말했듯이  TodoContext.Provider의 value안에 { `{todos, onUpdate, onDelete...}` } 이 객체가 재생성되면서 생기는 오류이기 때문에,  앞으로 렌더링이 되지않는 onUpdate, onDelete 등의
+
+`함수들은 memo를 활용해서 변하지 않는 객체로 만들어서 넣어줘야한다.`
+
+# Page Routing
+
+![image.png](image%2034.png)
+
+원래 알다시피, 서버가 Template Engine으로 Html을 동적으로 뿌려준다.
+
+이때, 서버가 여러개의 페이지를 미리 가지고 있는 방식을 Multi Page Application (MPA)라고 정의한다.
+
+![image.png](image%2035.png)
+
+완성된 페이지를 요청하면 응답해주는 방식을 서버 사이드 렌더링이라고 정의한다. (SSR)
+
+React는 이러한 MPA방식을 따르지 않는다. React는 쾌적한 페이지 이동 제공이 어렵기 때문이다.
+
+![image.png](image%2036.png)
+
+![image.png](image%2037.png)
+
+또한 서버의 부하를 줄 수 있어서 Single Page Application 방식을 채택한다.
+
+페이지 이동이 매끄럽고 효율적이라는 장점이 있다.
+
+`다수의 사용자가 접속해도 크게 상관이 없다.` (아예 상관없는거 아닌가?)
+
+리액트 어플리케이션은 index.html 딱 1개만 가지고 있다.
+
+그리고 그 밑에 Javascript 파일들만 존재한다.
+
+어떤 요청이 들어오던지 간에, index.html만 반환한다. 
+
+![image.png](image%2038.png)
+
+이때 Javascript File들을 묶는걸 Bundling 이라고 하고,  Bundling된 Javascript 파일을 Bundle Js File이라고 하고, 이 작업은 Vite가 담당한다.
+
+이때 Bundle Js File을 React App으로 봐도 된다.
+
+SPA를 활용해서, /settings로 페이지 이동을 이제는 페이지를 이동하는게 아니라, 새로운 페이지에 필요한 컴포넌트들로 화면을 교체해준다.
+
+![image.png](image%2039.png)
+
+BrowserRouter는 브라우저의 현재주소를 저장하고 감지하는 역할을 한다.
+
+모든 컴포넌트들이 현재 주소를 불러와서 쓸 수 있고 감지가 가능하다.
+
+### 페이지 이동법
+
+```jsx
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+```
+
+경로에 따른 컴포넌트들을 미리 다 배치해주어야 한다.
+
+```jsx
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="diary" element={<Diary />} />
+      <Route path="new" element={<New />} />
+    </Routes>
+  );
+}
+```
+
+기억해야 할 점.
+
+<Routes> 안에는 반드시 <Route>만 들어갈 수 있다. → 그렇게 안하면 오류남
+
+```jsx
+function App() {
+  return (
+    <>
+      <div>Hello</ div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/diary" element={<Diary />} />
+        <Route path="/new" element={<New />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+}
+```
+
+Routes 바깥에 div를 넣으면 나오긴한다. 그런데, 모든 페이지에 Hello가 나오고 밑 부분은 주소에 따라서 달라지게 된다.
+
+- useNavigate
+
+어떤 버튼을 사용해서 페이지를 이동시켜야 한다면, useNavigate 훅을 사용하자.
+
+```jsx
+function App() {
+  const nav = useNavigate();
+  const onClickButton = () => {
+    nav("/new");
+  };
+  return (
+    <>
+		  <button onClick={onClickButton}>New 페이지로 이동</button>
+    </>
+  );
+}
+```
+
+nav(-1)을 넘기면 바로 이전 페이지로 이동한다.
+
+### 동적 경로(Dynamic Segments)로 페이지 라우팅
+
+![image.png](image%2040.png)
+
+1. URL Parameter
+
+/뒤에 아이템의 id를 명시
+
+아이템의 id등의 변경도지 않는 값을 주소로 명시하기 위해 사용된다.
+
+```jsx
+<Route path="/diary:/id" element={<Diary />} /> // 슬래시:id를 사용해서 받겠다고 선언하기
+```
+
+1. Query String
+
+~/search/?value=검색어
+
+검색어 등의 자주 변경되는 값을 주소로 명시하기 위해 사용된다.
+
+```jsx
+import { useSearchParams} from "react-router-dom";
+
+const Home = () => {
+    const [params, setParams] = useSearchParams();
+    console.log(params.get("value")) ;
+    
+    return <div>Home</div>
+}
+```
+
+# Emotion Diary
+
+<img /> 는 내부에 src={””}를 사용해서 경로를 지정한다.
+
+Vite는 asset과 public에서 차이를 낸다.
+
+![image.png](image%2041.png)
+
+public 에서 불러오면 아래 처럼 사용할 수 있다. (최적화가 안이루어짐.)
+
+```jsx
+<img src={"/emotion1.png"}/>
+<img src={"/emotion2.png"}/>
+<img src={"/emotion3.png"}/>
+<img src={"/emotion4.png"}/>
+<img src={"/emotion5.png"}/>
+```
+
+assets에 넣어서 관리하면 아래처럶 작성할 수 있다. (최적화가 이루어짐)
+
+![image.png](image%2042.png)
+
+```jsx
+import emotion1 from "./assets/emotion1.png";
+import emotion2 from "./assets/emotion2.png";
+import emotion3 from "./assets/emotion3.png";
+import emotion4 from "./assets/emotion4.png";
+import emotion5 from "./assets/emotion5.png";
+
+return (
+    <>
+      <img src={emotion1} />
+      <img src={emotion2} />
+      <img src={emotion3} />
+      <img src={emotion4} />
+      <img src={emotion5} />
+    </>)
+```
+
+이후 npm run build를 해주면, build 결과로 dist가 나오는데, 이것이 build의 결과물이다.
+
+![image.png](image%2043.png)
+
+여기서 볼수 있는 코드들이 모든 Javascript 코드들이 번들링되어 올라가있다.
+
+여기서 최적화된 코드 Data URL은 이렇게 Cache화 되어, 한번 불러오면 더이상 불어오지 않게 최적화가 되어있다.
+
+![image.png](image%2044.png)
+
+반면에, public 되어서 올라간 코드는 
+
+![image.png](image%2045.png)
+
+매번 계속해서 불러오게 된다.
+
+![image.png](image%2046.png)
+
+보다시피, 145B처럼 계속 불러오지만, data URL로 작성된 코드는 불러오지 않는다.
+
+- import getEmotionImage VS import { getEmotionImage } 의 차이
+    
+    ```jsx
+    ./util/get-emotion-image.js
+    
+    import emotion1 from "../assets/emotion1.png";
+    import emotion2 from "../assets/emotion2.png";
+    import emotion3 from "../assets/emotion3.png";
+    import emotion4 from "../assets/emotion4.png";
+    import emotion5 from "../assets/emotion5.png";
+    
+    export function getEmotionImage(emotionId) {
+      switch (emotionId) {
+        case 1:
+          return emotion1;
+        case 2:
+          return emotion2;
+        case 3:
+          return emotion3;
+        case 4:
+          return emotion4;
+        case 5:
+          return emotion5;
+        default:
+          return null;
+      }
+    }
+    
+    import { getEmotionImage } from "./util/get-emotion-image";
+    import getEmotionImage from "./util/get-emotion-image";
+    
+    what is difference?
+    ```
+    
+    함수 왼쪽에 export를 쓰는 경우에는 반드시 구조분해 할당으로 받아야한다.
+    
+    그냥 규칙이다. import { getEmotionImage } from "./util/get-emotion-image";
+    
+    만약 일반적인 함수로 받고 싶다면 export default 를 써야한다.
+    
+    ```jsx
+    import getEmotionImage from "./util/get-emotion-image";
+    export default function getEmotionImage(emotionId) { ... }
+    ```
+    
+    vh(Viewport Height) → 현재 브라우저의 스크린 높이
+    
+    100vh 현재 브라우저 스크린 최대 스크린 높이
+    
+    프로젝트 개발 순서는 모두 다르다.
+    
+    다만, 페이지 라우팅, 글로벌 레이아웃 설정, 공통 컴포넌트 구현, 개별 페이지 및 복잡한 기능 구현.
+    
+    - 버튼과 같은 내용을 다룰 때는 padding으로 내부 속성을 잡아주는게 좋다.
+    
+    ex) padding : 10px, 20px이런 식으로
+    
+    ![image.png](image%2047.png)
+    
+    - 버튼 별로 CSS를 어떻게 적용시켜 줘야하지?
+    
+    처음에 나는 switch 문을 통해서, 각각을 return 해줘야 겠다는 생각을 했는데, 이렇게 해도 css에 접근할 수 없다는 한계를 느꼇다.
+    
+    - 해결책
+    
+    ```jsx
+    <button onClick={onClick} className={`Button Button_${type}`}> {text} </button>
+    ```
+    
+    이렇게 template Literal을 사용한 후 className으로 type을 넘겨주면 된다.
+    
+    이후, css에서아래 처럼 작성하면 간단하다.
+    
+    ```jsx
+    .Button {
+      background-color: rgb(236, 236, 236);
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 18px;
+      white-space: nowrap; /* 화면이 줄어도 줄바꿈 되지 않는 속성 */
+    }
+    
+    .Button_POSITIVE {
+      background-color: rgb(100, 201, 100);
+      color: white;
+    }
+    
+    .Button_NEGATIVE {
+      background-color: rgb(253, 86, 95);
+      color: white;
+    }
+    
+    ```
+    
+
+### 직접 만들면서 무엇을 모르는지 체크.
+
+- 아직도 State함수를 쓸줄 모르고 있다.
+
+```jsx
+import { useState } from "react";
+import Header from "../src/components/Header";
+import Button from "../src/components/Button";
+import DiaryList from "../src/components/DiaryList";
+
+const Home = () => {
+  const [pivotDate, setPivotDate] = useState(new Date());
+
+  const onIncreaseMonth = () => {
+    pivotDate.getMonth() + 1; //setPivotDate를 활용해서 저장해야함.
+  };
+  const onDecreaseMonth = () => {
+    pivotDate.getMonth() - 1;
+  };
+}
+```
+
+- 월 증가,감소 함수는 어떻게 만들지?
+
+```jsx
+const onIncreaseMonth = () => {
+    setPivotDate(new Date(pivotDate.getFullYear(),pivotDate.getMonth()-1));
+}
+```
+
+Date객체에 대한 이해가 없었음.
+
+new Date()안에 순서대로 연,월,일,시,분,초가 쭉 들어간다. 맨 앞부분만 채워주면 그에 맞게 새로운 Date가 생성되는 것이다.
+
+- 시간대에 맞는 자료 찾는 로직
+
+```jsx
+const getMonthlyDate = (pivotDate, data) => {
+  const beginTime = new Date(
+    pivotDate.getFullYear(),
+    pivotDate.getMonth(),
+    1,
+    0,
+    0,
+    0
+  ).getTime();
+
+  const endTime = new Date(
+    pivotDate.getFullYear(),
+    pivotDate.getMonth() + 1,
+    0,
+    23,
+    59,
+    59
+  ).getTime();
+
+  return data.filter(
+    (diary) => beginTime <= diary.createdDate && diary.createdDate <= endTime
+  );
+};
+```
+
+왜 그런지는 아직 이해하지 못했다.
+
+너무 오래걸릴것 같아 다음으로 넘긴다. Date 객체에 대한 이해가 필요하다.
+
+`왜 endTime의 Month는 +1이고, beginTime의 일에는 1인지 이해가 안된다.`
+
+- 최신순, 오래된순으로 정렬하는 방법
+
+```jsx
+import "./DiaryList.css";
+import Button from "./Button";
+import DiaryItem from "./Diaryitem";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const DiaryList = ({ monthlyData }) => {
+  const nav = useNavigate();
+  const [sortType, setSortType] = useState("latest");
+
+  const onChangeSortType = (e) => {
+    setSortType(e.target.value);
+  };
+
+  const getSortedData = () => {
+    return monthlyData.toSorted((a, b) => {
+      if (sortType === "oldest") {
+        return Number(a.createdDate) - Number(b.createdDate);
+      } else {
+        return Number(b.createdDate) - Number(a.createdDate);
+      }
+    });
+  }; //sort()는 그냥 뒤집기만 하고 return이 없다.
+
+  const sortedData = getSortedData();
+
+  console.log(monthlyData + "DiaryList Check");
+  return (
+    <div className="diaryList">
+      <div className="menu_bar">
+        <select onChange={onChangeSortType}>
+          <option value={"latest"}>최신순</option>
+          <option value={"oldest"}>오래된 순</option>
+        </select>
+        <Button
+          onClick={() => nav("/new")}
+          text={"새 일기 쓰기"}
+          type={"POSITIVE"}
+        />
+      </div>
+
+      <div className="list_wrapper">
+        {sortedData.map((diary) => (
+          <DiaryItem key={diary.id} {...diary} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default DiaryList;
+```
+
+- 이 코드도 좋은 코드가 아니다.
+    
+    ```jsx
+    <div>
+      <EmotionItem emotionId={1} text={"완전 좋음"} />
+      <EmotionItem emotionId={2} text={"좋음"} />
+      <EmotionItem emotionId={3} text={"그럭저럭"} />
+      <EmotionItem emotionId={4} text={"나쁨"} />
+      <EmotionItem emotionId={5} text={"끔찍함"} />
+    </div>
+    ```
+    
+    위 코드는 빼서 쓸 수 있다.
+    
+    여러개가 추가되었을 때, 이렇게 하나하나 작성하는 코드는 좋지 않다.
+    
+    ```jsx
+    const emotionList = [
+      {
+        emotionId: 1,
+        text: "완전 좋음",
+      },
+      {
+        emotionId: 2,
+        text: "좋음",
+      },
+      {
+        emotionId: 3,
+        text: "그럭저럭",
+      },
+      {
+        emotionId: 4,
+        text: "나쁨",
+      },
+      {
+        emotionId: 5,
+        text: "끔찍함",
+      },
+    ];
+    ```
+    
+    이렇게 데이터로 빼서 따로 관리해 주는게 훨씬 좋은 구조이다.
+    
+- 콜백함수의 차이
+    
+    ```jsx
+    {emotionList.map((item) => {
+      return <EmotionItem key={item.emotionId} {...item} />;
+    })}
+    ```
+    
+    콜백함수에서 return을 해줄 수 있으면 `{}` 를 써도된다.
+    
+    만약 return 없이 return의 역할을 하게 하려면 아래처럼 `()`로 작성해야한다.
+    
+    ```jsx
+    {emotionList.map((item) => (
+      <EmotionItem key={item.emotionId} {...item} />
+    ))}
+    ```
+    
+- `어떻게 true, false를 받아서 설정해주지?`
+    
+    ```jsx
+    import { getEmotionImage } from "../util/get-emotion-image";
+    import "./EmotionItem.css";
+    
+    const EmotionItem = ({ emotionId, text }) => {
+      const onClickEmotion = (event) => {
+        const emotionState = useState(false);
+        event.currentTarget.className = `emotionItem emotionItem${emotionId}`;
+      };
+    
+      return (
+        <div onClick={onClickEmotion} className="emotionItem">
+          <img className="emotion_img" src={getEmotionImage(emotionId)} />
+          <div className="emotion_name">{text}</div>
+        </div>
+      );
+    };
+    
+    export default EmotionItem;
+    
+    ```
+    
+    위 처럼 여러 방법을 고안해 보고 있었는데 다 좋지 않은 방법인것 같다.
+    
+    강사님이 해주신 방법이 가장 고수인 느낌이다.
+    
+    ```jsx
+    <div
+      className={`emotionItem ${isSelected ? `emotionItem${emotionId}` : ""} `}
+    >
+    ```
+    
+    2중으로 Template Literal을 사용하셨는데, 이게 가장 깔끔해 보인다.
+    
+- 뒤로 가기 방지
+    
+    ```jsx
+    const onSubmit = (input) => {
+        onCreate(input.createdDate.getTime(), input.emotionId, input.content);
+        nav("/", { replace: true });
+    };
+    ```
+    
+    생성을 한다. 그리고 브라우저의 뒤로가기 버튼을 눌러도 replace: true가 설정되어 있어서
+    
+    뒤로가기가 작동하지 않는다.
+    
+- window.confirm
+    
+    ```jsx
+    const onClickDelete = () => {
+      window.confirm("일기를 정말 삭제할까요? 다시 복구되지 않아요!");
+    };
+    ```
+    
+    window.confirm 함수의 반환값은 예를 누르면 true, 아니오를 누를면 false 를 반환한다.
+    
+- `수정 같은 경우는 인강 다시 보고 만들도록 하자.`
+    
+    여기서 부터 오류가 생기고 코드도 복잡하고 지금 당장 필요하다고 느껴지지 않아, 공부 효율이 굉장히 낮다고 판단되어서 그냥 넘어간다.
+    
+- 웹 스토리지 이용하기
+    
+    앞에서 사용한 useState나 useReducer로 저장되는 변수들은 결국 Javascript 변수라서 브라우저에서 새로고침을 하면 다시 초기화 된다.
+    
+    그래서 결국 State값을 외부 데이터베이스에 저장하고, 다시 저장된 State값을 불러와야한다.
+    
+    웹 브라우저 내장 DB를 사용하고자 한다면 둘다 사용해주면 된다.
+    
+    ```jsx
+    localStorage.setItem(key, value)
+    localStorage.getItem(key)
+    ```
+    
+    Session과 Local 2가지 종류가 존재한다.
+    
+    ![image.png](image%2048.png)
+    
+    - 세션 스토리지
+    
+    브라우저 `탭 별로` 데이터를 보관
+    
+    탭이 종료되기 전에는 데이터 유지 (새로고침)
+    
+    탭이 종료되거나 꺼지면 데이터 삭제
+    
+    - 로컬 스토리지
+    
+    사이트 `주소 별로` 데이터 보관
+    
+    사용자가 직접 삭제하기 전까지 데이터 보관
+    
+    탭이 꺼지고 컴퓨터가 꺼져도 남아있다.
+    
+    사용자가 직접 삭제하기 전 까지는 데이터를 보관한다.
+    
+    ```jsx
+    localStorage.setItem("person", {name: "신승윤"})
+    ```
+    
+    위 코드는 원하지 않는 형태로 데이터가 저장된다.
+    
+    ![image.png](image%2049.png)
+    
+    위 처럼, [object Object]로 저장이 되는데, 이는 우리가 사용할 수 없는 형태로 저장된 것이다.
+    
+    `웹 스토리지는 모든 데이터들을 문자열 형태로 저장한다.`
+    
+    그래서 JSON.stringify()를 사용해서 꼭 호출해주도록 하자.
+    
+    ```jsx
+    localStorage.setItem("person", JSON.stringify({name: "신승윤"}))
+    ```
+    
+    위 처럼 작성하면 되는 것이다.
+    
+    ![image.png](image%2050.png)
+    
+    다시 불러오기 위해서는 JSON.parse()를 사용해야 한다.
+    
+    ```jsx
+    JSON.parse(localStorage.getItem("person"))
+    ```
+    
+    이렇게 하면 객체로 다시 저장이 된다.
+    
+    ![image.png](image%2051.png)
+    
+    - 주의
+    
+    JSON.parse(undefined) 매개변수로 undefined이 들어가면 오류가 발생하므로 조심하자.
+    
+    localStorage.removeItem(”test”) 이렇게 사용하면 된다.
+    
+    웹 브라우저에서 그냥 지우고 싶으면 백스페이스키 누르면 삭제된다.
+    
+    ## 배포 준비하기
+    
+    ![image.png](image%2052.png)
+    
+    index.html 에 title을 바꾸면 된다. 
+    
+    - 만약 매 페이지 마다 title을 바꾸고 싶다면?
+    
+    각 컴포넌트에 
+    
+    ```jsx
+    useEffect(() => {
+        const $title = document.getElementByTagName("title")[0];
+        $title.innerText = "새 일기 쓰기";
+    ,[]}
+    ```
+    
+    Dom 속성을 빼서 쓸때는 titleElement 처럼 길게 이름을 쓰면 낭비이므로 관례적으로 $를 사용한다.
+    
+    일반적으로 Custom Hook으로 만들어서 사용하면 편하다.
+    
+    ```jsx
+    impoprt {useEffect} from 'react';
+    
+    const usePageTitle = (title) => {
+        useEffect(() => {
+            const $title = document.getElementByTagName("title");
+            $title.innerText = title;
+        }. [title])
+    }
+    
+    export default usePageTitle
+    ```
+    
+    ![image.png](image%2053.png)
+    
+    index.html 에서 바꾸면 된다.
+    
+    ```jsx
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    ```
+    
+    ![image.png](image%2054.png)
+    
+    ```jsx
+    <meta property="og:title" content="감정 일기장"/>
+    <meta property="og:description" content="나만의 감정 일기장"/>
+    <meta property="og:image" content="thumbnail.png"/>
+    ```
+    
+    ![image.png](image%2055.png)

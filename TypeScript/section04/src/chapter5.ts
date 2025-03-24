@@ -9,3 +9,4 @@ let post: Post = {
 };
 
 const len: number = post.author!.length;
+ 
