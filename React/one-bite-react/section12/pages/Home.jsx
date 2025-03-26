@@ -4,7 +4,7 @@ import Button from "../src/components/Button";
 import DiaryList from "../src/components/DiaryList";
 import { DiaryStateContext } from "../src/App";
 
-const getMonthlyDate = (pivotDate, data) => {
+const getMonthlyData = (pivotDate, data) => {
   const beginTime = new Date(
     pivotDate.getFullYear(),
     pivotDate.getMonth(),
@@ -12,8 +12,7 @@ const getMonthlyDate = (pivotDate, data) => {
     0,
     0,
     0
-  ).getTime();
-
+  ).getTime(); //해당 년월의 1일에 0시 0분 0초
   const endTime = new Date(
     pivotDate.getFullYear(),
     pivotDate.getMonth() + 1,
@@ -21,8 +20,7 @@ const getMonthlyDate = (pivotDate, data) => {
     23,
     59,
     59
-  ).getTime();
-
+  ).getTime(); //이렇게 넣어주면, 3번째 파라미터 0은 없는 값으로 전날의 마지막 값을 반환해준다.
   return data.filter(
     (diary) => beginTime <= diary.createdDate && diary.createdDate <= endTime
   );
@@ -30,12 +28,9 @@ const getMonthlyDate = (pivotDate, data) => {
 
 const Home = () => {
   const data = useContext(DiaryStateContext);
-  console.log(data);
   const [pivotDate, setPivotDate] = useState(new Date());
-  console.log(pivotDate);
-
-  const monthlyData = getMonthlyDate(pivotDate, data);
-  console.log(monthlyData + "Home Check");
+  const monthlyData = getMonthlyData(pivotDate, data);
+  console.log(monthlyData);
 
   const onDecreaseMonth = () => {
     pivotDate.setMonth(pivotDate.getMonth() - 1);
@@ -54,7 +49,8 @@ const Home = () => {
         leftChild={<Button onClick={onDecreaseMonth} text={"<"} />}
         rightChild={<Button onClick={onIncreaseMonth} text={">"} />}
       />
-      <DiaryList monthlyData={monthlyData} />
+
+      <DiaryList data={monthlyData} />
     </>
   );
 };
