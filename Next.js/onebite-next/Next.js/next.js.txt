@@ -1,0 +1,387 @@
+React는 라이브러리.
+
+Next.js는 프레임워크이다.
+
+개발자의 자유도에 따라 라이브러리 프레임워크가 결정됨.
+
+## 사전 렌더링의 이해
+
+브라우저의 요청에 사전에 렌더링이 완료된 HTML을 응답하는 렌더링 방식
+
+Client Side Rendering의 단점을 효율적으로 해결하는 기술
+
+![image.png](attachment:cda1e811-23ef-478f-956c-08d801c8fc92:image.png)
+
+Client Side Rendering는 React.js 앱의 기본적인 렌더링 방식이다.
+
+클라이언트(브라우저)에서 직접 화면을 렌더링 하는 방식.
+
+### 기존의 리액트의 렌더링
+
+![image.png](attachment:2388d4e0-e39d-4c3b-825c-648598727ac4:image.png)
+
+유저는 브라우저를 통해 서버에 접속 요청을 하고 index.html을 받아오고, 빈 화면을 ㄹ렌더링 한 후, JS Bundling을 한 뒤 Javascript 코드를 모두 실행시켜 컴포넌트로 가진 상태에서 컨텐츠를 렌더링한다.
+
+![image.png](attachment:50c77ec6-3d80-47c2-b768-6c0c07383040:image.png)
+
+이때 요청이 시작된 순간부터 화면이 렌더링되기 까지의 시간을 “First Contentful Paint”라고 정의한다. `FCP`
+
+“요청 시작” 시점으로부터 컨텐츠가 화면에 처음 나타나는데 걸리는 시간.
+
+![image.png](attachment:9458350e-9344-4d13-a76c-223fc4e10de1:image.png)
+
+매우 중요한 지표이다.
+
+그런데, 리액트는 FCP가 길어지는 단점을 가지게 된다.
+
+`초기 접속 이후에는 페이지 이동이 빠르지만, 초기 접속 속도가 느리다는 단점이있다.`
+
+그래서 Next.js 에서는 사전 렌더링이라는 React.js의 렌더링 방식인 CSR의 단점을 해결한다.
+
+- 사전 렌더링 방식
+
+서버에서 Javascript코드(React 컴포넌트)를 HTML으로 렌더링한다.
+
+이미 렌더링 된 HTML 코드를 브라우저에 보내준다.
+
+// 이거 그냥 서버 사이드 렌더링이잖아.
+
+브라우저에 저장된 HTML을 그대로 화면에 렌더링한다.
+
+![image.png](attachment:63f47267-3698-4940-ae4f-a2139b372bd0:image.png)
+
+이때 Javascript 코드가 없어서 상호작용은 불가능하다.
+
+이후에 JS Bundle을 하고 Javascript를 실행해 HTML과 연결한다.
+
+![image.png](attachment:31b8a021-627b-4f95-b7d5-af44fffcc259:image.png)
+
+`여기서 이렇게 그냥 화면이 있고, Javascript코드를 연결하는 과정을 Next.js에서는 매말라 있던 땅에 물을 뿌려주는 작업이라고 생각해서 Hydration(수화)라고 정의한다.`
+
+![image.png](attachment:238c4899-083a-4eae-b546-3d1dba3c23b5:image.png)
+
+TTI는 Time To Interactive의 약자로, 상호작용 가능성을 의미한다.
+
+여기서 페이지 이동은 클라이언트 사이드 렌더링 방식으로 처리한다.
+
+![image.png](attachment:790151ed-fc5f-4d64-b644-56602ba98977:image.png)
+
+![image.png](attachment:785e3752-e7b8-415c-83c5-c4da647a7c58:image.png)
+
+## Page Router
+
+![image.png](attachment:4289ea16-8e8b-49f9-8ca0-a14bd7d0ef8c:image.png)
+
+페이지라우터는 Javascript의 파일명을 기준으로 작동한다.
+
+![image.png](attachment:5b3b6bfe-958e-4fca-83e7-1be969811c22:image.png)
+
+폴더의 기준으로도 라우팅을 할 수 있게 한다.
+
+![image.png](attachment:f5e12ea9-e718-4e34-951a-6bf89ad1f44e:image.png)
+
+위 처럼 Javascript 코드 자체를 동적 경로로 설정해둬도 된다는걸 알고 있자.
+
+npx는 Node Package Executor의 줄임말이다.
+
+import alias는 절대 경로로 모듈을 import할 수 있도록 도와주는 기능을 의미한다.
+
+```tsx
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
+```
+
+위 코드에서 Component는 Page역할을 하는 컴포넌트이다.
+
+pageProps는 Page에 들어갈 props들이다.
+
+return문을 보면, Page 역할을 할 Component를 렌더링 하면서 pageProps를 구조분해할당으로 흩뿌려서 전달하고 있는걸 볼 수 있다.
+
+### 어떻게 페이지에 접근 하는가?
+
+![image.png](attachment:81c897e8-45b9-4213-b80c-df217a7122d2:image.png)
+
+폴더 안에 이렇게 넣어두면
+
+[localhost:300](http://localhost:300)0/search/
+
+[localhost:300](http://localhost:300)0/search/settings
+
+이렇게 접근 가능하다.
+
+### 어떻게 쿼리스트링으로 접근하는가?
+
+```tsx
+import { useRouter } from "next/router";
+//이때, next/router를 사용해야함. Page Router용은 이거임.
+
+export default funcntion Page() {
+    const router = useRouter();
+    const {q} = router.query.q;
+		return <h1> Search {q} </h1>;
+}
+
+//만약 [id].tsx로 만들었다면?
+export default function Page() {
+    const router = useRouter();
+    const { id } = router.query //이렇게 써야함. 객체 내부에 id로 들어감
+    console.log(router);
+
+    return <h1>Book {id}</h1>;
+}
+
+// 만약 뒤에 번호가 계속해서 들어가면?
+// ex) 255/255/1234/2345/234
+// [...id].tsx 이렇게 파일명을 만들어주면 된다.
+// [...id]를 Catch All Segment라고 정의한다.
+
+// 이때, localhost:3000/book로 접속하면 404가 뜬다.
+// query가 아무것도 없으면 index.tsx를 만들어줘야하기 때문이다.
+// 그런데 이것조차 싫다면 범용적으로 [[...id]].tsx 이렇게 만들면 작동한다.
+// 이때, [[...id]]를 Optional Catch All Segment라고 정의한다.
+// 어떤 경로가 들어오든 모두 대응한다는 의미이다.
+```
+
+![image.png](attachment:3a879304-077d-4c1b-9773-ed5454173b0c:image.png)
+
+### 404 페이지 만드는법.
+
+page 안에, 404.tsx를 만들고 작성해주면 된다.
+
+```tsx
+// pages/404.tsx
+export default function Page() {
+  return <div>존재하지 않는 페이지 입니다.</div>;
+}
+```
+
+### 네비게이팅
+
+```tsx
+import type { AppProps } from "next/app";
+import Link from "next/link";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <header>
+        <Link href={"/"}>index</Link>
+        &nbsp;
+        <Link href={"/search"}>index</Link>
+        &nbsp;
+        <Link href={"/book/1"}>index</Link>
+      </header>
+      <Component {...pageProps} />;
+      <div>
+          <button></button>
+      </div>
+    </>
+  );
+}
+```
+
+- Programmatic Navigation
+
+```tsx
+export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const onClickButton = () => {
+    router.push("/test");
+  };
+
+  return (
+    <>
+      <Component {...pageProps} />;
+      <div>
+        <button onClick={onClickButton}>/test 페이지로 이동</button>
+      </div>
+    </>
+  );
+}
+
+```
+
+조건에 따라서 함수를 실행시켜 페이지를 이동시킬 수도 있다.
+
+push는 그냥 이동시키는 것이고,
+
+replace는 뒤로가기를 방지해서 이동시키는 것,
+
+back으로 뒤로가게 만들수도 있다.
+
+## Pre-Fetching
+
+`페이지를 미리 불러오는 기능이다.`
+
+![image.png](attachment:55328285-a97d-460c-9d64-7f081f7088eb:image.png)
+
+모든 리액트 컴포넌트 들은 Page 별로 저장되어진다.
+
+![image.png](attachment:def08bca-f0b4-4da4-a642-061e1dc4cd1f:image.png)
+
+![image.png](attachment:5d1e5039-8731-40bd-808f-278336efd05a:image.png)
+
+현재 페이지에 필요한 Javascript 코드만 전달된다.
+
+Javascript의 모든 페이지의 Bundle파일을 전달하면, Bundle파일의 용량이 너무 커져서 Hydration이 늦어지기 때문이다.
+
+`ex) /search 접속을 요청한다. → Search JS Bundle`만 전달한다.
+
+![image.png](attachment:4122b854-d5b9-41c1-951e-2e9735423ec1:image.png)
+
+![image.png](attachment:3ffdc385-b781-43d1-a107-88243d03a86e:image.png)
+
+Pre-Fetching은 Dev 환경에서는 작동하지 않는다.
+
+Production 모드에서만 작동하므로 npm run build, npm run start로 실행해야 한다.
+
+### Pre-Fetching이 안되는 경우
+
+```tsx
+export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const onClickButton = () => {
+    router.push("/test");
+  };
+
+  return (
+    <>
+      <Component {...pageProps} />;
+      <div>
+        <button onClick={onClickButton}>/test 페이지로 이동</button>
+      </div>
+    </>
+  );
+}
+
+```
+
+Programmatic 하게 정의된 함수에서는 Pre-Fetching이 작동하지 않는다.
+
+```tsx
+export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const onClickButton = () => {
+    router.prefetch("/test");
+  };
+  
+  useEffect(() => {
+      router.prefetch("/test");
+  }, [])
+
+  return (
+    <>
+      <Component {...pageProps} />;
+      <div>
+        <button onClick={onClickButton}>/test 페이지로 이동</button>
+      </div>
+    </>
+  );
+}
+
+```
+
+### Pre-Fetching 작동을 막는법
+
+```tsx
+import type { AppProps } from "next/app";
+import Link from "next/link";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <header>
+        <Link href={"/"}>index</Link>
+        &nbsp;
+        <Link href={"/search"} prefetch={false}>index</Link>
+        &nbsp;
+        <Link href={"/book/1"}>index</Link>
+      </header>
+      <Component {...pageProps} />;
+      <div>
+          <button></button>
+      </div>
+    </>
+  );
+}
+```
+
+## API Routes
+
+![image.png](attachment:eec0f36f-4e47-4a44-acde-36b9b6abd5ae:image.png)
+
+![image.png](attachment:e377ea75-d29f-4fcc-ac09-d6cd50d954b4:image.png)
+
+```tsx
+import type { NextApiRequest, NextApiResponse } from "next";
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const date = new Date();
+  res.json({ time: date.toLocaleString() });
+}
+
+```
+
+이렇게 작동하게 만들 수 있다.
+
+## 스타일링
+
+```tsx
+export default function Home() {
+  return <h1 style={{ color: "red" }}>안녕</h1>;
+}
+```
+
+```tsx
+import "./index.css";
+
+export default function Home() {
+    return <h1 style={{ color: "red" }}>안녕</h1>;
+}
+```
+
+React에서는 되지만, Next.js에서는 예외적으로 오류가 발생한다.
+
+Global CSS cannot be imported from files other than your Custom <App>이라고 한다.
+
+![image.png](attachment:ba570b45-29b0-4ea8-b9d9-6689d5c0240a:image.png)
+
+한 페이지 내에서 2개를 동시에 불러오려고 하면, 2개의 CSS를 불러와야하는데, 만약, 태그가 .h1으로 같다면, red임과 동시에 blue여야하는데 이렇게 중복되는 오류를 막기 위해서다.
+
+`이럴때, CSS Module을 사용하면 된다.`
+
+```tsx
+import style from "./index.module.css";
+
+export default function Home() {
+    return <h1 className={style.h1}>안녕</h1>;
+}
+```
+
+이렇게하면, style 자체에 고유한 h1파일이 생기면서 CSS를 작성할 수 있게 된다.
+
+### 각 페이지에만 필요한 요소가 있을 때는 어떻게 해야 하는가?
+
+```tsx
+import style from "./index.module.css";
+import SearchableLayout from "@/components/searchable-layout";
+import { ReactNode } from "react";
+
+export default function Home() {
+  return <h1 className={style.h1}>안녕</h1>;
+}
+
+Home.getLayout = (page: ReactNode) => {
+  return <SearchableLayout>{page}</SearchableLayout>;
+};
+```
+
+위 처럼 해야한다.
+
+Home은 함수이고 Javascript에서 함수는 객체라서 가능한 문법이다. 
+
+```tsx
+//undefined 일 때 나타나는 요소!
+const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
+```
