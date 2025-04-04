@@ -31,16 +31,20 @@ export default function SearchableLayout({
   };
 
   return (
-    <div>
+    <div className={style.layout}>
       <div className={style.searchbar_container}>
         <input
+          className={style.search_input}
           onKeyDown={onKeyDown}
           onChange={onChangeSearch}
+          value={search}
           placeholder="검색어를 입력하세요 ..."
         />
-        <button onClick={onSubmit}>검색</button>
+        <button className={style.search_button} onClick={onSubmit}>
+          검색
+        </button>
       </div>
-      {children}
+      <main className={style.main_content}>{children}</main>
     </div>
   );
 }

@@ -14,11 +14,13 @@ export default function BookItem({
   return (
     <Link href={`book/${id}`} className={style.container}>
       <img src={coverImgUrl} />
-      <div>{title}</div>
-      <div>{subTitle}</div>
-      <br />
       <div>
-        {author} | {publisher}
+        <div className={style.title}>{title}</div>
+        <div className={style.subTitle}>{subTitle}</div>
+        <br />
+        <div className={style.author}>
+          {author} | {publisher}
+        </div>
       </div>
     </Link>
   );
