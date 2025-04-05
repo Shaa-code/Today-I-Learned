@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import style from "./[id].module.css";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import fetchOneBook from "@/lib/fetch-one-book";
 
 const mockData = {
   id: 1,
@@ -13,9 +15,25 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
-export default function Page() {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const id = context.params!.id; //접근하려면 반드시 아이디가 있어야한다. 단언해도된다.
+  const book = await fetchOneBook(Number(id));
+
+  console.log(id);
+  return {
+    props: { book },
+  };
+};
+
+export default function Page({
+  book,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  if (!book) return "문제가 발생했습니다 다시 시도하세요.";
+
   const { id, title, subTitle, description, author, publisher, coverImgUrl } =
-    mockData;
+    book;
 
   return (
     <div className={style.container}>
