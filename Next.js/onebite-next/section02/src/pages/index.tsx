@@ -4,10 +4,11 @@ import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
 import fetchBooks from "@/lib/fetch-books";
 import fetchRandomBooks from "@/lib/fetch-random-books";
-import { InferGetServerSidePropsType } from "next";
+import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
 import { ReactNode } from "react";
+import Head from "next/head";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const [allBooks, recoBooks] = await Promise.all([
     fetchBooks(),
     fetchRandomBooks(),
@@ -27,8 +28,18 @@ export const getServerSideProps = async () => {
 export default function Home({
   allBooks,
   recoBooks,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return (
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  <>
+    <Head>
+      <title>한입 북스</title>
+      <meta property="og:image" content="/thumbnail.png" />
+      <meta property="og:title" content="한입북스" />
+      <meta
+        property="og:description"
+        content="한입 북스에 등록된 도서들을 만나보세요."
+      />
+    </Head>
+    return (
     <div className={style.container}>
       <section>
         <h3>지금 추천하는 도서</h3>
@@ -43,7 +54,8 @@ export default function Home({
         ))}
       </section>
     </div>
-  );
+    );
+  </>;
 }
 
 Home.getLayout = (page: ReactNode) => {
