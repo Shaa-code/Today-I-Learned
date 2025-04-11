@@ -1,0 +1,28 @@
+{
+  "name": "coupang-notifier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "tsc && electron .",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/play-sound": "^1.1.2",
+    "electron": "^35.1.4",
+    "node-notifier": "^10.0.1",
+    "play-sound": "^1.1.6",
+    "puppeteer": "^24.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
