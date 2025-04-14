@@ -3,11 +3,22 @@ import style from "./page.module.css";
 export default async function Page({
   params,
 }: {
-  params: Promise<{ id: string | string[] }>;
+  params: { id: string | string[] };
 }) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
-  );
+  const id = params.id;
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_SERVER_URL;
+  if (!apiUrl) {
+    return (
+      <div>
+        API URL is not configured. Please check your environment variables.
+      </div>
+    );
+  }
+
+  const response = await fetch(`${apiUrl}/book/${id}`);
+
+  console.log(apiUrl);
 
   if (!response.ok) {
     return <div>오류가 발생했습니다...</div>;
@@ -15,8 +26,15 @@ export default async function Page({
 
   const book = await response.json();
 
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
-    book;
+  const {
+    id: bookId,
+    title,
+    subTitle,
+    description,
+    author,
+    publisher,
+    coverImgUrl,
+  } = book;
 
   return (
     <div className={style.container}>
