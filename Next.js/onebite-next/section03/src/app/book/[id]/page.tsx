@@ -1,10 +1,11 @@
+import { Metadata } from "next";
 import style from "./page.module.css";
 
-export default async function Page({
-  params,
-}: {
-  params: { id: string | string[] };
-}) {
+export function generateStaticParams(){
+  return [{id: "1"},{id:"2"},{id:"3"}]
+}
+
+export default async function Page({ params }: {params: {id : string| string[]}}) {
   const id = params.id;
 
   const apiUrl = process.env.NEXT_PUBLIC_API_SERVER_URL;
