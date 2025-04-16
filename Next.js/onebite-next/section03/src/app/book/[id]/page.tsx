@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import style from "./page.module.css";
 
-export function generateStaticParams(){
-  return [{id: "1"},{id:"2"},{id:"3"}]
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
 
-export default async function Page({ params }: {params: {id : string| string[]}}) {
-  const id = params.id;
-
+async function BookDetail({ bookId }: { bookId: string }) {
   const apiUrl = process.env.NEXT_PUBLIC_API_SERVER_URL;
   if (!apiUrl) {
     return (
@@ -17,7 +17,7 @@ export default async function Page({ params }: {params: {id : string| string[]}}
     );
   }
 
-  const response = await fetch(`${apiUrl}/book/${id}`);
+  const response = await fetch(` ${apiUrl}/book/${bookId}`);
 
   console.log(apiUrl);
 
@@ -27,15 +27,8 @@ export default async function Page({ params }: {params: {id : string| string[]}}
 
   const book = await response.json();
 
-  const {
-    id: bookId,
-    title,
-    subTitle,
-    description,
-    author,
-    publisher,
-    coverImgUrl,
-  } = book;
+  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
+    book;
 
   return (
     <div className={style.container}>
@@ -53,4 +46,25 @@ export default async function Page({ params }: {params: {id : string| string[]}}
       <div className={style.description}>{description}</div>
     </div>
   );
+}
+
+function ReviewEditor({ bookId }: { bookId: string }) {
+  return (
+    <section>
+      <form>
+        <input name="bookId" value={bookId} hidden readOnly />
+        <input required name="content" placeholder="리뷰 내용" />
+        <input required name="author" placeholder="작성자" />
+        <button type="submit">작성하기</button>
+      </form>
+    </section>
+  );
+}
+
+export default function Page({ params }: { params: { id: string } }) {
+  return;
+  <div className={style.container}>
+    <BookDetail bookId={params.id} />;
+    <ReviewEditor bookId={params.id} />
+  </div>;
 }
