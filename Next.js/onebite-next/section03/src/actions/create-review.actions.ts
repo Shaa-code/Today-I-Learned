@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-export async function createReviewAction(formData: FormData) {
+export async function createReviewAction(_: any, formData: FormData) {
   const bookId = formData.get("bookId")?.toString();
   const content = formData.get("content")?.toString();
   const author = formData.get("author")?.toString();
@@ -22,12 +22,21 @@ export async function createReviewAction(formData: FormData) {
         body: JSON.stringify({ bookId, content, author }),
       }
     );
+
     if (!response.ok) {
-      console.log(response.status);
-      revalidatePath(`/book/${bookId}`);
+      throw new Error(response.statusText);
     }
+
+    console.log(response.status);
+    revalidatePath(`/book/${bookId}`);
+
+    return {
+      status: true,
+      error: "",
+    };
   } catch (err) {
     console.error(err);
+
     return {
       status: false,
       error: `리뷰 저장에 실패했습니다. : ${err}`,
